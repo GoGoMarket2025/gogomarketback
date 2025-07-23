@@ -1278,7 +1278,7 @@ figure {
     left: 0;
     position: absolute;
     background: white;
-    z-index: 999;
+    z-index: 1000;
     width: 100%;
     display: none;
 }

@@ -3,13 +3,13 @@ importScripts('https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js');
 importScripts('https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js');
 
 firebase.initializeApp({
-    apiKey: "AIzaSyDAV9XDbTCF33Uw86kIIm9r8hR_-beOhbg",
-    authDomain: "valley-test-v14-8.firebaseapp.com",
-    projectId: "valley-test-v14-8",
-    storageBucket: "valley-test-v14-8.firebasestorage.app",
-    messagingSenderId: "698827859086",
-    appId: "1:698827859086:web:128d4390971873bd3215df",
-    measurementId: "G-KXWVQ7XEE5"
+    apiKey: "AIzaSyC52DsEyBnO7txToVXyjXWwtrygQDW1zGc",
+    authDomain: "homegogomarket.firebaseapp.com",
+    projectId: "homegogomarket",
+    storageBucket: "homegogomarket.firebasestorage.app",
+    messagingSenderId: "1000922177401",
+    appId: "1:1000922177401:web:167b5cddc73aac616559a8",
+    measurementId: "G-GW5BR51G2W"
 });
 
 const messaging = firebase.messaging();
