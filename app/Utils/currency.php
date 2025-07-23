@@ -233,14 +233,17 @@ if (!function_exists('setCurrencySymbol')) {
      */
     function setCurrencySymbol(string|int|float $amount, string $currencyCode = USD, string $type = 'default'): string
     {
-        $decimalPointSettings = getWebConfig('decimal_point_settings');
-        $position = getWebConfig('currency_symbol_position');
+        $decimalPointSettings = getWebConfig('decimal_point_settings') ?? 0;
+        $position = getWebConfig('currency_symbol_position') ?? 'right';
+
+        // ➕ Добавили разделение пробелом вместо запятой
+        $formattedAmount = number_format((float)$amount, $decimalPointSettings, '.', ' ');
+
         if ($position === 'left') {
-            $string = getCurrencySymbol(currencyCode: $currencyCode, type: $type) . '' . number_format($amount, (!empty($decimalPointSettings) ? $decimalPointSettings : 0));
-        } else {
-            $string = number_format($amount, !empty($decimalPointSettings) ? $decimalPointSettings : 0) . '' . getCurrencySymbol(currencyCode: $currencyCode, type: $type);
+            return getCurrencySymbol(currencyCode: $currencyCode, type: $type) . ' ' . $formattedAmount;
         }
-        return $string;
+
+        return $formattedAmount . ' ' . getCurrencySymbol(currencyCode: $currencyCode, type: $type);
     }
 }
 
