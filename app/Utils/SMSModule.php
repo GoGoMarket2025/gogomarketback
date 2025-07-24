@@ -5,6 +5,7 @@ namespace App\Utils;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Nexmo\Laravel\Facade\Nexmo;
+use Ramsey\Uuid\Nonstandard\Uuid;
 use Twilio\Rest\Client;
 use Modules\Gateways\Traits\SmsGateway;
 
@@ -71,7 +72,7 @@ class SMSModule
                     "messages" => [
                         [
                             "recipient" => $receiver,
-                            "message-id" => "das23232",
+                            "message-id" => Uuid::uuid4(),
                             "sms" => [
                                 "originator" => "3700",
                                 "content" => [
