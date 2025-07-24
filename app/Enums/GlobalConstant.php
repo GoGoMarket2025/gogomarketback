@@ -1178,7 +1178,8 @@ enum GlobalConstant
         'paytabs',
         'liqpay',
         'mercadopago',
-        'bkash'
+        'bkash',
+
     ];
 
     const DEFAULT_SMS_GATEWAYS = [
@@ -1188,6 +1189,7 @@ enum GlobalConstant
         'msg91',
         'releans',
         'alphanet_sms',
+        'playmobile',
     ];
 
 

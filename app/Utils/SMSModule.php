@@ -5,6 +5,7 @@ namespace App\Utils;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Nexmo\Laravel\Facade\Nexmo;
+use Ramsey\Uuid\Nonstandard\Uuid;
 use Twilio\Rest\Client;
 use Modules\Gateways\Traits\SmsGateway;
 
@@ -33,6 +34,11 @@ class SMSModule
             return self::two_factor($receiver, $otp);
         }
 
+        $config = self::get_settings('playmobile');
+        if (isset($config) && $config['status'] == 1) {
+            return self::playmobile($receiver, $otp);
+        }
+
         $config = self::get_settings('msg91');
         if (isset($config) && $config['status'] == 1) {
             return self::msg_91($receiver, $otp);
@@ -49,6 +55,66 @@ class SMSModule
         }
 
         return 'not_found';
+    }
+
+    public static function playmobile($receiver, $otp)
+    {
+        $config = self::get_settings('playmobile');
+        $response = 'error';
+        if (isset($config) && $config['status'] == 1) {
+            $message = $otp;
+            $api_key = $config['api_key'];
+
+            try {
+                $curl = curl_init();
+
+                $payload = [
+                    "messages" => [
+                        [
+                            "recipient" => $receiver,
+                            "message-id" => Uuid::uuid4(),
+                            "sms" => [
+                                "originator" => "3700",
+                                "content" => [
+                                    "text" => $message
+                                ]
+                            ]
+                        ]
+                    ]
+                ];
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://send.smsxabar.uz/broker-api/send",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => json_encode($payload),
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: application/json",
+                        "Authorization: Basic " . $api_key
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                curl_close($curl);
+
+                if ($err) {
+                    $response = $err;
+                } else {
+                    $responseCode = json_decode($response, true);
+                    if (isset($responseCode['status']) && $responseCode['status'] === 'ok') {
+                        $response = 'success';
+                    }
+                }
+            } catch (\Exception $exception) {
+                $response = 'error';
+            }
+        }
+        return $response;
     }
 
     public static function twilio($receiver, $otp)
