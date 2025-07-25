@@ -10,6 +10,7 @@ use App\Http\Controllers\Customer\Auth\RegisterController;
 use App\Http\Controllers\Customer\Auth\SocialAuthController;
 use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\SystemController;
+use App\Http\Controllers\Payment_Methods\PaymeMerchantController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\ChattingController;
 use App\Http\Controllers\Web\CouponController;
@@ -433,6 +434,16 @@ if (!$isGatewayPublished) {
                 ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
         });
 
+        //PAYME
+        Route::group(['prefix' => 'payme', 'as' => 'payme.'], function () {
+            Route::get('pay', [App\Http\Controllers\Payment_Methods\PaymeController::class, 'payment']);
+            Route::get('success', [App\Http\Controllers\Payment_Methods\PaymeController::class, 'success'])->name('success');
+            Route::get('cancel', [App\Http\Controllers\Payment_Methods\PaymeController::class, 'cancel'])->name('cancel');
+        });
+
+        //PAYME MERCHANT API
+        Route::post('payme-merchant', [App\Http\Controllers\Payment_Methods\PaymeMerchantController::class, 'handle'])->name('payme.merchant');
+
         //SENANG-PAY
         Route::group(['prefix' => 'senang-pay', 'as' => 'senang-pay.'], function () {
             Route::get('pay', [SenangPayController::class, 'index']);
@@ -491,5 +502,6 @@ if (!$isGatewayPublished) {
             Route::any('callback', [PaytabsController::class, 'callback'])->name('callback');
             Route::any('response', [PaytabsController::class, 'response'])->name('response');
         });
+
     });
 }

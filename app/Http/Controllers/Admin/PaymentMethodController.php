@@ -77,7 +77,7 @@ class PaymentMethodController extends Controller
     {
         collect(['status'])->each(fn($item, $key) => $request[$item] = $request->has($item) ? (int)$request[$item] : 0);
         $validation = [
-            'gateway' => 'required|in:ssl_commerz,sixcash,worldpay,payfast,swish,esewa,maxicash,hubtel,viva_wallet,tap,thawani,moncash,pvit,ccavenue,foloosi,iyzi_pay,xendit,fatoorah,hyper_pay,amazon_pay,paypal,stripe,razor_pay,senang_pay,paytabs,paystack,paymob_accept,paytm,flutterwave,liqpay,bkash,mercadopago,cash_after_service,digital_payment,momo',
+            'gateway' => 'required|in:ssl_commerz,sixcash,worldpay,payfast,swish,esewa,maxicash,hubtel,viva_wallet,tap,thawani,moncash,pvit,ccavenue,foloosi,iyzi_pay,xendit,fatoorah,hyper_pay,amazon_pay,paypal,payme,stripe,razor_pay,senang_pay,paytabs,paystack,paymob_accept,paytm,flutterwave,liqpay,bkash,mercadopago,cash_after_service,digital_payment,momo',
             'mode' => 'required|in:live,test'
         ];
 
@@ -94,6 +94,12 @@ class PaymentMethodController extends Controller
                 'status' => 'required|in:1,0',
                 'client_id' => 'required',
                 'client_secret' => 'required'
+            ];
+        } elseif ($request['gateway'] == 'payme') {
+            $additional_data = [
+                'status' => 'required|in:1,0',
+                'merchant_id' => 'required',
+                'merchant_key' => 'required',
             ];
         } elseif ($request['gateway'] == 'stripe') {
             $additional_data = [
@@ -313,7 +319,7 @@ class PaymentMethodController extends Controller
 
         $additional_data_image = $settings['additional_data'] != null ? json_decode($settings['additional_data']) : null;
 
-        if( !$additional_data_image || !isset($additional_data_image->gateway_image) || (isset($additional_data_image->gateway_image) && $additional_data_image->gateway_image == '') || (isset($additional_data_image->gateway_image) && !file_exists(base_path("storage/app/public/payment_modules/gateway_image/".$additional_data_image->gateway_image)))){
+        if (!$additional_data_image || !isset($additional_data_image->gateway_image) || (isset($additional_data_image->gateway_image) && $additional_data_image->gateway_image == '') || (isset($additional_data_image->gateway_image) && !file_exists(base_path("storage/app/public/payment_modules/gateway_image/" . $additional_data_image->gateway_image)))) {
             $request->validate([
                 'gateway_image' => 'required',
             ]);
