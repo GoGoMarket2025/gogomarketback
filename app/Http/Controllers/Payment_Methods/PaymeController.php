@@ -203,6 +203,10 @@ class PaymeController extends Controller
             ->whereJsonContains('additional_data->payme_order_reference', $orderId)
             ->first();
 
+        if (round($paymentRequest->payment_amount * 100) != $amount) {
+            return $this->error(-31001, 'Incorrect amount.');
+        }
+
         if (!$paymentRequest) {
             // If payment request not found, check if order already exists
             $order = \App\Models\Order::where('order_group_id', $orderId)->first();
