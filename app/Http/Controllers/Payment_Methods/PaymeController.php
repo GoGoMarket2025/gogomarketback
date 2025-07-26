@@ -117,6 +117,12 @@ class PaymeController extends Controller
 
         CartManager::cart_clean($request);
 
+        // Update payment data with order information
+        $additionalData['payme_order_reference'] = $getUniqueId;
+        $additionalData['order_ids'] = $orderIds;
+        $payment_data->additional_data = json_encode($additionalData);
+        $payment_data->save();
+
         // Continue with payment gateway redirection
         $amount = round($payment_data->payment_amount * 100);
         $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
