@@ -45,9 +45,6 @@ class PaymeController extends Controller
             'payment_id' => 'required|uuid'
         ]);
 
-        $payme_url = "https://checkout.paycom.uz/test";
-
-        return redirect()->away($payme_url);
 
         if ($validator->fails()) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, $this->error_processor($validator)), 400);
@@ -68,13 +65,8 @@ class PaymeController extends Controller
         // Get cart group IDs
         $cartGroupIds = [];
         if (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
-            if ($additionalData['is_guest']) {
-                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])
-                    ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-            } else {
-                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])
-                    ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-            }
+            $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])
+                ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
         } else {
             $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
         }
@@ -125,7 +117,9 @@ class PaymeController extends Controller
         $amount = round($payment_data->payment_amount * 100);
         $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
+        $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
+        return redirect()->away($payme_url);
     }
 
     /**
