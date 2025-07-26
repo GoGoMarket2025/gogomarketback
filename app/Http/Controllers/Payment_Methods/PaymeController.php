@@ -221,33 +221,15 @@ class PaymeController extends Controller
             }
         }
 
-        // Check if there's a transaction in created state
-        $existingTransaction = \App\Models\OrderTransaction::where('order_id', $order->id ?? null)
-            ->where('transaction_id', $transactionId)
-            ->where('status', 'pending')
+        // Check if there's a transaction with the same transaction_id
+        $existingTransaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)
             ->first();
 
         if ($existingTransaction) {
-            // Always return the transaction information for an existing transaction,
-            // regardless of the time parameter
+            // If a transaction with this ID already exists, return its information
             return response()->json([
                 'result' => [
                     'create_time' => (int)$existingTransaction->created_at->timestamp * 1000,
-                    'transaction' => $transactionId,
-                    'state' => 1
-                ]
-            ]);
-        }
-
-        // Check if there's any transaction for this order
-        $anyTransaction = \App\Models\OrderTransaction::where('order_id', $order->id ?? null)
-            ->where('transaction_id', $transactionId)
-            ->first();
-
-        if ($anyTransaction) {
-            return response()->json([
-                'result' => [
-                    'create_time' => (int)$anyTransaction->created_at->timestamp * 1000,
                     'transaction' => $transactionId,
                     'state' => 1
                 ]
