@@ -73,11 +73,9 @@ class PaymeController extends Controller
 
         // Check for Basic token
         if (str_starts_with($authHeader, 'Basic ')) {
-            $token = substr($authHeader, 6); // Strip "Basic "
+            $token = substr($authHeader, 6);
             $decodedToken = base64_decode($token);
-
-            $expectedUsername = 'Paycom';
-            $expectedToken = $expectedUsername . $this->config_values->merchant_key;
+            $expectedToken = $this->config_values->merchant_key;
 
             if ($decodedToken !== $expectedToken) {
                 return response()->json([
