@@ -396,6 +396,12 @@ if (!$isGatewayPublished) {
         //PAYME
         Route::group(['prefix' => 'payme', 'as' => 'payme.'], function () {
             Route::get('pay', [PaymeController::class, 'payment']);
+            Route::any('success', [PaymeController::class, 'success'])->name('success')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+            Route::any('failed', [PaymeController::class, 'failed'])->name('failed')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+            Route::any('canceled', [PaymeController::class, 'canceled'])->name('canceled')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
         });
 
 

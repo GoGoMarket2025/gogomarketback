@@ -5305,4 +5305,8 @@ return [
 	"exchange_rate_cannot_be_zero" => "Exchange rate cannot be zero",
 	"successfully updated" => "Successfully updated",
 	"my_Compare_List" => "My Compare List",
+	"Please_update_address_information" => "Please update address information",
+	"incomplete_info" => "Incomplete info",
+	"thank_you_for_your_order" => "Thank you for your order",
+	"Please_remove_this_unavailable_product_for_continue" => "Please remove this unavailable product for continue",
 ];
