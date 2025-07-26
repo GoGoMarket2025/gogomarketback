@@ -53,26 +53,40 @@ class PaymeController extends Controller
         // Store cart information in the session for later order creation
         $additionalData = json_decode($payment_data->additional_data, true);
 
+        // Get cart group IDs and store them for later use
+        $customerConditions = [];
+        if (isset($additionalData['customer_id'])) {
+            $customerConditions['customer_id'] = $additionalData['customer_id'];
+            $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
+        }
+
+        if (!empty($customerConditions)) {
+            $cartGroupIds = \App\Models\Cart::where($customerConditions)
+                ->where('is_checked', 1)
+                ->groupBy('cart_group_id')
+                ->pluck('cart_group_id')
+                ->toArray();
+        } else {
+            $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
+        }
+
         // Store minimal required data for order creation after payment
         $orderData = [
             'payment_id' => $request['payment_id'],
             'additional_data' => $additionalData,
             'order_group_id' => \App\Utils\OrderManager::generateUniqueOrderID(),
+            'cart_group_ids' => $cartGroupIds,
             'timestamp' => time()
         ];
 
         // Store order data in session for later processing
         session()->put('payme_pending_order', $orderData);
 
-        dump($orderData);
-        die();
-
         // Continue with payment gateway redirection (lightweight operation)
         $amount = round($payment_data->payment_amount * 100);
         $payload = "m={$this->config_values->merchant_id};ac.order_id={$orderData['order_group_id']};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/{$encoded}";
-
 
 
         return redirect()->away($payme_url);
@@ -460,27 +474,51 @@ class PaymeController extends Controller
         $generateUniqueId = $pendingOrderData['order_group_id'];
         $orderIds = [];
 
-        // Get cart group IDs - using a more efficient query approach
-        $customerConditions = [];
-        if (isset($additionalData['customer_id'])) {
-            $customerConditions['customer_id'] = $additionalData['customer_id'];
-            $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
+        // Use cart group IDs stored in the session during payment initiation
+        $cartGroupIds = $pendingOrderData['cart_group_ids'] ?? [];
+
+        // Fallback to retrieving cart group IDs if not found in session
+        if (empty($cartGroupIds)) {
+            \Illuminate\Support\Facades\Log::warning('Cart group IDs not found in session, attempting to retrieve from database');
+
+            $customerConditions = [];
+            if (isset($additionalData['customer_id'])) {
+                $customerConditions['customer_id'] = $additionalData['customer_id'];
+                $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
+            }
+
+            if (!empty($customerConditions)) {
+                $cartGroupIds = \App\Models\Cart::where($customerConditions)
+                    ->where('is_checked', 1)
+                    ->groupBy('cart_group_id')
+                    ->pluck('cart_group_id')
+                    ->toArray();
+            } else {
+                $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
+            }
         }
 
-        if (!empty($customerConditions)) {
-            $cartGroupIds = \App\Models\Cart::where($customerConditions)
-                ->where('is_checked', 1)
-                ->groupBy('cart_group_id')
-                ->pluck('cart_group_id')
-                ->toArray();
-        } else {
-            $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
+        if (empty($cartGroupIds)) {
+            \Illuminate\Support\Facades\Log::error('No cart group IDs found for order creation', [
+                'payment_id' => $pendingOrderData['payment_id'],
+                'additional_data' => $additionalData
+            ]);
         }
 
         $isGuestUserInOrder = $additionalData['is_guest_in_order'] ?? 0;
 
         // Create order for each cart group - in batches if possible
         foreach ($cartGroupIds as $cartGroupId) {
+            // Verify cart exists before attempting to create order
+            $cartExists = \App\Models\Cart::where('cart_group_id', $cartGroupId)->exists();
+            if (!$cartExists) {
+                \Illuminate\Support\Facades\Log::warning('Cart not found for cart_group_id: ' . $cartGroupId, [
+                    'payment_id' => $pendingOrderData['payment_id'],
+                    'cart_group_id' => $cartGroupId
+                ]);
+                continue; // Skip this cart group
+            }
+
             $data = [
                 'payment_method' => 'payme',
                 'order_status' => 'confirmed', // Already paid
@@ -503,13 +541,25 @@ class PaymeController extends Controller
             ];
 
             try {
+                \Illuminate\Support\Facades\Log::info('Creating deferred order for cart_group_id: ' . $cartGroupId, [
+                    'payment_id' => $pendingOrderData['payment_id'],
+                    'cart_group_id' => $cartGroupId
+                ]);
+
                 $orderId = \App\Utils\OrderManager::generate_order($data);
                 $orderIds[] = $orderId;
+
+                \Illuminate\Support\Facades\Log::info('Successfully created order: ' . $orderId);
 
                 // Generate referral bonus if applicable
                 \App\Utils\OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
             } catch (\Exception $e) {
-                \Illuminate\Support\Facades\Log::error('Error creating deferred order: ' . $e->getMessage());
+                \Illuminate\Support\Facades\Log::error('Error creating deferred order: ' . $e->getMessage(), [
+                    'payment_id' => $pendingOrderData['payment_id'],
+                    'cart_group_id' => $cartGroupId,
+                    'exception' => $e,
+                    'trace' => $e->getTraceAsString()
+                ]);
             }
         }
 
