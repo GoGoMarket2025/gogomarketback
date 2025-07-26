@@ -50,61 +50,21 @@ class PaymeController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
         }
 
-        // Create order with payment_status = 'unpaid' before redirecting to payment gateway
+        // Store cart information in the session for later order creation
         $additionalData = json_decode($payment_data->additional_data, true);
-        $generateUniqueId = \App\Utils\OrderManager::generateUniqueOrderID();
 
-        // Get cart group IDs
-        if (isset($additionalData['payment_request_from']) && in_array($additionalData['payment_request_from'], ['app'])) {
-            if ($additionalData['is_guest']) {
-                $cartGroupIds = \App\Models\Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-            } else {
-                $cartGroupIds = \App\Models\Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-            }
-        } elseif (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
-            if ($additionalData['is_guest']) {
-                $cartGroupIds = \App\Models\Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-            } else {
-                $cartGroupIds = \App\Models\Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-            }
-        } else {
-            $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
-        }
+        // Store minimal required data for order creation after payment
+        $orderData = [
+            'payment_id' => $request['payment_id'],
+            'additional_data' => $additionalData,
+            'order_group_id' => \App\Utils\OrderManager::generateUniqueOrderID(),
+            'timestamp' => time()
+        ];
 
-        $orderIds = [];
-        $isGuestUserInOrder = $additionalData['is_guest_in_order'] ?? 0;
+        // Store order data in session for later processing
+        session()->put('payme_pending_order', $orderData);
 
-        // Create order for each cart group
-        foreach ($cartGroupIds as $cartGroupId) {
-            $data = [
-                'payment_method' => 'payme',
-                'order_status' => 'pending',
-                'payment_status' => 'unpaid',
-                'transaction_ref' => '',
-                'order_group_id' => $generateUniqueId,
-                'cart_group_id' => $cartGroupId,
-                'request' => [
-                    'customer_id' => $additionalData['customer_id'] ?? 0,
-                    'is_guest' => $isGuestUserInOrder,
-                    'guest_id' => $isGuestUserInOrder ? ($additionalData['customer_id'] ?? 0) : null,
-                    'order_note' => $additionalData['order_note'] ?? null,
-                    'coupon_code' => $additionalData['coupon_code'] ?? null,
-                    'coupon_discount' => $additionalData['coupon_discount'] ?? null,
-                    'address_id' => $additionalData['address_id'] ?? null,
-                    'billing_address_id' => $additionalData['billing_address_id'] ?? null,
-                    'payment_request_from' => $additionalData['payment_request_from'] ?? 'web',
-                ],
-                'new_customer_id' => $additionalData['new_customer_id'] ?? null,
-            ];
-
-            $orderId = \App\Utils\OrderManager::generate_order($data);
-            $orderIds[] = $orderId;
-        }
-
-        // Store order IDs in session for later reference
-        session()->put('payme_order_ids', $orderIds);
-
-        // Continue with payment gateway redirection
+        // Continue with payment gateway redirection (lightweight operation)
         $amount = round($payment_data->payment_amount * 100);
         $payload = "m={$this->config_values->merchant_id};ac.order_id={$payment_data->id};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
@@ -424,28 +384,39 @@ class PaymeController extends Controller
 
             $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
 
-            // Check if we have existing orders from the payment process
-            $orderIds = session()->get('payme_order_ids', []);
+            // Process deferred order creation
+            $pendingOrderData = session()->get('payme_pending_order', null);
 
-            if (!empty($orderIds)) {
-                // Update existing orders to mark them as paid
-                foreach ($orderIds as $orderId) {
-                    \App\Models\Order::where('id', $orderId)->update([
-                        'order_status' => 'confirmed',
-                        'payment_status' => 'paid',
-                        'transaction_ref' => $payment_data->transaction_id
-                    ]);
+            if ($pendingOrderData && $pendingOrderData['payment_id'] == $request['payment_id']) {
+                // Create orders now that payment is complete
+                $this->createDeferredOrders($pendingOrderData, $payment_data->transaction_id);
 
-                    // Generate referral bonus if applicable
-                    \App\Utils\OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
-                }
-
-                // Clear the session
-                session()->forget('payme_order_ids');
+                // Clear the pending order data
+                session()->forget('payme_pending_order');
             } else {
-                // If no existing orders found, fall back to the original success hook
-                if (isset($payment_data) && function_exists($payment_data->success_hook)) {
-                    call_user_func($payment_data->success_hook, $payment_data);
+                // Check if we have existing orders from the previous process
+                $orderIds = session()->get('payme_order_ids', []);
+
+                if (!empty($orderIds)) {
+                    // Update existing orders to mark them as paid
+                    foreach ($orderIds as $orderId) {
+                        \App\Models\Order::where('id', $orderId)->update([
+                            'order_status' => 'confirmed',
+                            'payment_status' => 'paid',
+                            'transaction_ref' => $payment_data->transaction_id
+                        ]);
+
+                        // Generate referral bonus if applicable
+                        \App\Utils\OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
+                    }
+
+                    // Clear the session
+                    session()->forget('payme_order_ids');
+                } else {
+                    // If no existing orders found, fall back to the original success hook
+                    if (isset($payment_data) && function_exists($payment_data->success_hook)) {
+                        call_user_func($payment_data->success_hook, $payment_data);
+                    }
                 }
             }
         }
@@ -453,9 +424,81 @@ class PaymeController extends Controller
         return $this->payment_response($payment_data, 'success');
     }
 
+    /**
+     * Create orders that were deferred during payment initialization
+     */
+    private function createDeferredOrders($pendingOrderData, $transactionId)
+    {
+        $additionalData = $pendingOrderData['additional_data'];
+        $generateUniqueId = $pendingOrderData['order_group_id'];
+        $orderIds = [];
+
+        // Get cart group IDs - using a more efficient query approach
+        $customerConditions = [];
+        if (isset($additionalData['customer_id'])) {
+            $customerConditions['customer_id'] = $additionalData['customer_id'];
+            $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
+        }
+
+        if (!empty($customerConditions)) {
+            $cartGroupIds = \App\Models\Cart::where($customerConditions)
+                ->where('is_checked', 1)
+                ->groupBy('cart_group_id')
+                ->pluck('cart_group_id')
+                ->toArray();
+        } else {
+            $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
+        }
+
+        $isGuestUserInOrder = $additionalData['is_guest_in_order'] ?? 0;
+
+        // Create order for each cart group - in batches if possible
+        foreach ($cartGroupIds as $cartGroupId) {
+            $data = [
+                'payment_method' => 'payme',
+                'order_status' => 'confirmed', // Already paid
+                'payment_status' => 'paid',
+                'transaction_ref' => $transactionId,
+                'order_group_id' => $generateUniqueId,
+                'cart_group_id' => $cartGroupId,
+                'request' => [
+                    'customer_id' => $additionalData['customer_id'] ?? 0,
+                    'is_guest' => $isGuestUserInOrder,
+                    'guest_id' => $isGuestUserInOrder ? ($additionalData['customer_id'] ?? 0) : null,
+                    'order_note' => $additionalData['order_note'] ?? null,
+                    'coupon_code' => $additionalData['coupon_code'] ?? null,
+                    'coupon_discount' => $additionalData['coupon_discount'] ?? null,
+                    'address_id' => $additionalData['address_id'] ?? null,
+                    'billing_address_id' => $additionalData['billing_address_id'] ?? null,
+                    'payment_request_from' => $additionalData['payment_request_from'] ?? 'web',
+                ],
+                'new_customer_id' => $additionalData['new_customer_id'] ?? null,
+            ];
+
+            try {
+                $orderId = \App\Utils\OrderManager::generate_order($data);
+                $orderIds[] = $orderId;
+
+                // Generate referral bonus if applicable
+                \App\Utils\OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('Error creating deferred order: ' . $e->getMessage());
+            }
+        }
+
+        // Store order IDs in session for reference
+        session()->put('payme_order_ids', $orderIds);
+    }
+
     public function failed(Request $request)
     {
         $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
+
+        // Clear any pending order data for this payment
+        $pendingOrderData = session()->get('payme_pending_order', null);
+        if ($pendingOrderData && $pendingOrderData['payment_id'] == $request['payment_id']) {
+            session()->forget('payme_pending_order');
+        }
 
         // Check if we have existing orders from the payment process
         $orderIds = session()->get('payme_order_ids', []);
@@ -484,6 +527,12 @@ class PaymeController extends Controller
     public function canceled(Request $request)
     {
         $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
+
+        // Clear any pending order data for this payment
+        $pendingOrderData = session()->get('payme_pending_order', null);
+        if ($pendingOrderData && $pendingOrderData['payment_id'] == $request['payment_id']) {
+            session()->forget('payme_pending_order');
+        }
 
         // Check if we have existing orders from the payment process
         $orderIds = session()->get('payme_order_ids', []);
