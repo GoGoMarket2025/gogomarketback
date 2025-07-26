@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Payment_Methods;
 
 use App\Models\Cart;
+use App\Models\Currency;
 use App\Models\Order;
 use App\Models\PaymentRequest;
 use App\Models\ShippingAddress;
@@ -77,10 +78,14 @@ class PaymeController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'No items in cart']), 400);
         }
 
-
         // Create orders for each cart group
         $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
-        $currencyCode = $payment_data->currency_code ?? 'UZS';
+        $currency_model = getWebConfig(name: 'currency_model');
+        if ($currency_model == 'multi_currency') {
+            $currencyCode = $request->current_currency_code ?? Currency::find(getWebConfig(name: 'system_default_currency'))->code;
+        } else {
+            $currencyCode = Currency::find(getWebConfig(name: 'system_default_currency'))->code;
+        }
 
         $getUniqueId = OrderManager::generateUniqueOrderID();
 
@@ -112,19 +117,11 @@ class PaymeController extends Controller
 
         CartManager::cart_clean($request);
 
-
-        // Update payment data with order information
-//        $additionalData['payme_order_reference'] = $getUniqueId;
-//        $additionalData['order_ids'] = $orderIds;
-//        $payment_data->additional_data = json_encode($additionalData);
-//        $payment_data->save();
-
-
-        // Continue with payment gateway redirection
-        $amount = round($payment_data->payment_amount * 100);
-        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
-        $encoded = rtrim(base64_encode($payload), '=');
-        $payme_url = "https://checkout.paycom.uz/{$encoded}";
+//        // Continue with payment gateway redirection
+//        $amount = round($payment_data->payment_amount * 100);
+//        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
+//        $encoded = rtrim(base64_encode($payload), '=');
+        $payme_url = "https://checkout.paycom.uz/312";
 
         return redirect()->away($payme_url);
     }
