@@ -66,7 +66,7 @@ class PaymeController extends Controller
 
         // Continue with payment gateway redirection (lightweight operation)
         $amount = round($payment_data->payment_amount * 100);
-        $payload = "m={$this->config_values->merchant_id};ac.order_id={$payment_data->id};amount={$amount}";
+        $payload = "m={$this->config_values->merchant_id};ac.order_id={$orderData['order_group_id']};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
@@ -136,7 +136,18 @@ class PaymeController extends Controller
             ], 200);
         }
 
-        $order = $this->payment::where(['id' => $orderId])->where(['is_paid' => 0])->first();
+        // Get payment_id from the session using order_group_id
+        $pendingOrderData = session()->get('payme_pending_order', null);
+        $paymentId = null;
+
+        if ($pendingOrderData && $pendingOrderData['order_group_id'] == $orderId) {
+            $paymentId = $pendingOrderData['payment_id'];
+        }
+
+        // If payment_id found in session, use it; otherwise, try using orderId directly
+        $order = $paymentId ?
+            $this->payment::where(['id' => $paymentId])->where(['is_paid' => 0])->first() :
+            $this->payment::where(['id' => $orderId])->where(['is_paid' => 0])->first();
 
         if (!$order) {
             return response()->json([
@@ -178,7 +189,18 @@ class PaymeController extends Controller
             ], 200);
         }
 
-        $order = $this->payment::where(['id' => $orderId])->first();
+        // Get payment_id from the session using order_group_id
+        $pendingOrderData = session()->get('payme_pending_order', null);
+        $paymentId = null;
+
+        if ($pendingOrderData && $pendingOrderData['order_group_id'] == $orderId) {
+            $paymentId = $pendingOrderData['payment_id'];
+        }
+
+        // If payment_id found in session, use it; otherwise, try using orderId directly
+        $order = $paymentId ?
+            $this->payment::where(['id' => $paymentId])->first() :
+            $this->payment::where(['id' => $orderId])->first();
 
         if (!$order) {
             return response()->json([
