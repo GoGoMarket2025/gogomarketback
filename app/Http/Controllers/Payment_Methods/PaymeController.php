@@ -83,6 +83,10 @@ class PaymeController extends Controller
         $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
         $currencyCode = $payment_data->currency_code ?? 'UZS';
 
+        $payme_url = "https://checkout.paycom.uz/312";
+
+        return redirect()->away($payme_url);
+
         foreach ($cartGroupIds as $groupId) {
             $data = [
                 'payment_method' => 'payme',
