@@ -90,37 +90,37 @@ class PaymeController extends Controller
         $getUniqueId = OrderManager::generateUniqueOrderID();
 
         $orderIds = [];
-//        foreach ($cartGroupIds as $groupId) {
-//            $data = [
-//                'payment_method' => 'cash_on_delivery',
-//                'order_status' => 'pending',
-//                'payment_status' => 'unpaid',
-//                'transaction_ref' => '',
-//                'order_group_id' => $getUniqueId,
-//                'cart_group_id' => $groupId,
-//                'request' => $request,
-//                'newCustomerRegister' => $newCustomerRegister,
-//                'bring_change_amount' => $request['bring_change_amount'] ?? 0,
-//                'bring_change_amount_currency' => $currencyCode,
-//            ];
-//
-//            $orderId = OrderManager::generate_order($data);
-//
-//            $order = Order::find($orderId);
-//            $order->billing_address = ($request['billing_address_id'] != null) ? $request['billing_address_id'] : $order['billing_address'];
-//            $order->billing_address_data = ($request['billing_address_id'] != null) ? ShippingAddress::find($request['billing_address_id']) : $order['billing_address_data'];
-//            $order->order_note = ($request['order_note'] != null) ? $request['order_note'] : $order['order_note'];
-//            $order->save();
-//
-//            $orderIds[] = $orderId;
-//        }
+        foreach ($cartGroupIds as $groupId) {
+            $data = [
+                'payment_method' => 'cash_on_delivery',
+                'order_status' => 'pending',
+                'payment_status' => 'unpaid',
+                'transaction_ref' => '',
+                'order_group_id' => $getUniqueId,
+                'cart_group_id' => $groupId,
+                'request' => $request,
+                'newCustomerRegister' => $newCustomerRegister,
+                'bring_change_amount' => $request['bring_change_amount'] ?? 0,
+                'bring_change_amount_currency' => $currencyCode,
+            ];
+
+            $orderId = OrderManager::generate_order($data);
+
+            $order = Order::find($orderId);
+            $order->billing_address = ($request['billing_address_id'] != null) ? $request['billing_address_id'] : $order['billing_address'];
+            $order->billing_address_data = ($request['billing_address_id'] != null) ? ShippingAddress::find($request['billing_address_id']) : $order['billing_address_data'];
+            $order->order_note = ($request['order_note'] != null) ? $request['order_note'] : $order['order_note'];
+            $order->save();
+
+            $orderIds[] = $orderId;
+        }
 
 //        CartManager::cart_clean($request);
 
-//        // Continue with payment gateway redirection
-//        $amount = round($payment_data->payment_amount * 100);
-//        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
-//        $encoded = rtrim(base64_encode($payload), '=');
+        // Continue with payment gateway redirection
+        $amount = round($payment_data->payment_amount * 100);
+        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
+        $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/312";
 
         return redirect()->away($payme_url);
