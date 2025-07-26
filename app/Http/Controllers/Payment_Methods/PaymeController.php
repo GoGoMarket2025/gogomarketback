@@ -15,6 +15,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Symfony\Component\VarDumper\VarDumper;
@@ -83,39 +85,66 @@ class PaymeController extends Controller
         $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
         $currencyCode = $payment_data->currency_code ?? 'UZS';
 
-        $payme_url = "https://checkout.paycom.uz/312";
+        // Set a reasonable time limit for this operation
+        set_time_limit(60); // 60 seconds should be enough for order creation
 
-        return redirect()->away($payme_url);
+        try {
+            // Start a database transaction to improve performance and ensure data consistency
+            DB::beginTransaction();
 
-        foreach ($cartGroupIds as $groupId) {
-            $data = [
-                'payment_method' => 'payme',
-                'order_status' => 'pending',
-                'payment_status' => 'unpaid',
-                'transaction_ref' => '',
-                'order_group_id' => $getUniqueId,
-                'cart_group_id' => $groupId,
-                'request' => [
-                    'customer_id' => $additionalData['customer_id'] ?? null,
-                    'is_guest' => $additionalData['is_guest'] ?? 0,
-                    'guest_id' => isset($additionalData['is_guest']) && $additionalData['is_guest'] ? $additionalData['customer_id'] : null,
-                    'order_note' => $additionalData['order_note'] ?? null,
-                    'coupon_code' => $additionalData['coupon_code'] ?? null,
-                    'address_id' => $additionalData['address_id'] ?? null,
-                    'billing_address_id' => $additionalData['billing_address_id'] ?? null,
-                ],
-                'newCustomerRegister' => $newCustomerRegister,
-            ];
+            // Set a start time to check for timeout
+            $startTime = microtime(true);
+            $timeoutSeconds = 30; // 30 seconds timeout for order creation
 
-            $orderId = OrderManager::generate_order($data);
-            $orderIds[] = $orderId;
+            foreach ($cartGroupIds as $groupId) {
+                // Check if we're approaching the timeout
+                if ((microtime(true) - $startTime) > $timeoutSeconds) {
+                    // Log the timeout and break out of the loop
+                    Log::warning('Payme order creation timeout reached after processing ' . count($orderIds) . ' orders');
+                    break;
+                }
+
+                $data = [
+                    'payment_method' => 'payme',
+                    'order_status' => 'pending',
+                    'payment_status' => 'unpaid',
+                    'transaction_ref' => '',
+                    'order_group_id' => $getUniqueId,
+                    'cart_group_id' => $groupId,
+                    'request' => [
+                        'customer_id' => $additionalData['customer_id'] ?? null,
+                        'is_guest' => $additionalData['is_guest'] ?? 0,
+                        'guest_id' => isset($additionalData['is_guest']) && $additionalData['is_guest'] ? $additionalData['customer_id'] : null,
+                        'order_note' => $additionalData['order_note'] ?? null,
+                        'coupon_code' => $additionalData['coupon_code'] ?? null,
+                        'address_id' => $additionalData['address_id'] ?? null,
+                        'billing_address_id' => $additionalData['billing_address_id'] ?? null,
+                    ],
+                    'newCustomerRegister' => $newCustomerRegister,
+                ];
+
+                $orderId = OrderManager::generate_order($data);
+                $orderIds[] = $orderId;
+            }
+
+            // Update payment data with order information
+            $additionalData['payme_order_reference'] = $getUniqueId;
+            $additionalData['order_ids'] = $orderIds;
+            $payment_data->additional_data = json_encode($additionalData);
+            $payment_data->save();
+
+            // Commit the transaction
+            DB::commit();
+        } catch (\Exception $e) {
+            // Rollback the transaction in case of an error
+            DB::rollBack();
+
+            // Log the error
+            Log::error('Payme order creation failed: ' . $e->getMessage());
+
+            // Return an error response
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'Order creation failed']), 500);
         }
-
-        // Update payment data with order information
-        $additionalData['payme_order_reference'] = $getUniqueId;
-        $additionalData['order_ids'] = $orderIds;
-        $payment_data->additional_data = json_encode($additionalData);
-        $payment_data->save();
 
         // Continue with payment gateway redirection
         $amount = round($payment_data->payment_amount * 100);
