@@ -15,7 +15,7 @@ class PaymentMethodUpdateRequest extends FormRequest
     protected $stopOnFirstFailure = true;
 
     public function __construct(
-        private readonly SettingRepositoryInterface         $settingRepo,
+        private readonly SettingRepositoryInterface $settingRepo,
     )
     {
     }
@@ -28,7 +28,7 @@ class PaymentMethodUpdateRequest extends FormRequest
     public function rules(): array
     {
         $validationRules = [
-            'gateway' => 'required', Rule::in(['ssl_commerz', 'sixcash', 'worldpay', 'payfast', 'swish', 'esewa', 'maxicash', 'hubtel', 'viva_wallet', 'tap', 'thawani', 'moncash', 'pvit', 'ccavenue', 'foloosi', 'iyzi_pay', 'xendit', 'fatoorah', 'hyper_pay', 'amazon_pay', 'paypal', 'stripe', 'razor_pay', 'senang_pay', 'paytabs','paystack', 'paymob_accept', 'paytm', 'flutterwave', 'liqpay', 'bkash', 'mercadopago', 'cash_after_service', 'digital_payment', 'momo']),
+            'gateway' => 'required', Rule::in(['ssl_commerz', 'payme', 'sixcash', 'worldpay', 'payfast', 'swish', 'esewa', 'maxicash', 'hubtel', 'viva_wallet', 'tap', 'thawani', 'moncash', 'pvit', 'ccavenue', 'foloosi', 'iyzi_pay', 'xendit', 'fatoorah', 'hyper_pay', 'amazon_pay', 'paypal', 'stripe', 'razor_pay', 'senang_pay', 'paytabs', 'paystack', 'paymob_accept', 'paytm', 'flutterwave', 'liqpay', 'bkash', 'mercadopago', 'cash_after_service', 'digital_payment', 'momo']),
             'mode' => 'required|in:live,test',
         ];
         $additionalDataRules = $this->getAdditionalDataRules();
@@ -47,10 +47,10 @@ class PaymentMethodUpdateRequest extends FormRequest
     protected function getAdditionalDataRules(): array
     {
         collect(['status'])->each(fn($item, $key) => $this[$item] = $this->has($item) ? (int)$this[$item] : 0);
-        $settings = $this->settingRepo->getFirstWhere(params: ['key_name'=>$this['gateway'], 'settings_type'=>'payment_config']);
+        $settings = $this->settingRepo->getFirstWhere(params: ['key_name' => $this['gateway'], 'settings_type' => 'payment_config']);
         $additionalDataImage = $settings['additional_data'] != null ? json_decode($settings['additional_data']) : null;
 
-        if($this['gateway'] == 'paymob_accept' && !$this['supported_country'] && !$this['secret_key']){
+        if ($this['gateway'] == 'paymob_accept' && !$this['supported_country'] && !$this['secret_key']) {
             Setting::updateOrCreate(['key_name' => 'paymob_accept', 'settings_type' => 'payment_config'], [
                 'key_name' => 'paymob_accept',
                 'live_values' => [
@@ -75,7 +75,7 @@ class PaymentMethodUpdateRequest extends FormRequest
                 ],
                 'settings_type' => 'payment_config',
                 'mode' => 'test',
-                'is_active' => 0 ,
+                'is_active' => 0,
                 'additional_data' => null,
             ]);
         }
@@ -302,6 +302,12 @@ class PaymentMethodUpdateRequest extends FormRequest
             $additionalDataRules = [
                 'status' => 'required|in:1,0',
                 'api_key' => 'required',
+            ];
+        } elseif ($this['gateway'] == 'payme') {
+            $additionalDataRules = [
+                'status' => 'required|in:1,0',
+                'merchant_id' => 'required',
+                'merchant_key' => 'required',
             ];
         }
 

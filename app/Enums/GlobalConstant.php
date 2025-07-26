@@ -530,6 +530,7 @@ enum GlobalConstant
         ['key' => 'ssl_commerz', 'value' => 'SSLCOMMERZ'],
         ['key' => 'stripe', 'value' => 'Stripe'],
         ['key' => 'paypal', 'value' => 'PayPal'],
+        ['key' => 'payme', 'value' => 'Payme'],
         ['key' => 'razor_pay', 'value' => 'Razor Pay'],
         ['key' => 'paystack', 'value' => 'Paystack'],
         ['key' => 'senang_pay', 'value' => 'Senang Pay'],
@@ -1179,7 +1180,7 @@ enum GlobalConstant
         'liqpay',
         'mercadopago',
         'bkash',
-
+        'payme', // Add this line
     ];
 
     const DEFAULT_SMS_GATEWAYS = [

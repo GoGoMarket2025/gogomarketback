@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payment_Methods\PaymeController;
 use App\Http\Controllers\RestAPI\v1\auth\CustomerAPIAuthController;
 use App\Http\Controllers\RestAPI\v1\auth\EmailVerificationController;
 use App\Http\Controllers\RestAPI\v1\auth\ForgotPasswordController;
@@ -41,6 +42,9 @@ use App\Http\Controllers\Customer\PaymentController;
  */
 
 Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['api_lang']], function () {
+
+    // This will result in: /api/v1/payme/pay
+    Route::any('payme/pay', [PaymeController::class, 'handle']);
 
     Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
         Route::controller(PassportAuthController::class)->group(function () {

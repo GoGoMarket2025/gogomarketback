@@ -9,6 +9,9 @@ trait PaymentGatewayTrait
     public function getPaymentGatewaySupportedCurrencies($key = null): array
     {
         $paymentGateway = [
+            "payme" => [
+                "UZS" => "Uzbekistani Som",
+            ],
             "amazon_pay" => [
                 "USD" => "United States Dollar",
                 "GBP" => "Pound Sterling",

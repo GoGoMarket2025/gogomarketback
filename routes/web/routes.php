@@ -10,6 +10,8 @@ use App\Http\Controllers\Customer\Auth\RegisterController;
 use App\Http\Controllers\Customer\Auth\SocialAuthController;
 use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\SystemController;
+use App\Http\Controllers\Payment_Methods\PaymeController;
+use App\Http\Controllers\Payment_Methods\PaymeMerchantController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\ChattingController;
 use App\Http\Controllers\Web\CouponController;
@@ -387,8 +389,21 @@ try {
 } catch (\Exception $exception) {
 }
 
+
 if (!$isGatewayPublished) {
     Route::group(['prefix' => 'payment'], function () {
+
+        //PAYME
+        Route::group(['prefix' => 'payme', 'as' => 'payme.'], function () {
+            Route::get('pay', [PaymeController::class, 'payment']);
+            Route::any('success', [PaymeController::class, 'success'])->name('success')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+            Route::any('failed', [PaymeController::class, 'failed'])->name('failed')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+            Route::any('canceled', [PaymeController::class, 'canceled'])->name('canceled')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+        });
+
 
         //SSLCOMMERZ
         Route::group(['prefix' => 'sslcommerz', 'as' => 'sslcommerz.'], function () {
@@ -432,6 +447,10 @@ if (!$isGatewayPublished) {
             Route::any('cancel', [PaypalPaymentController::class, 'cancel'])->name('cancel')
                 ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
         });
+
+
+        //PAYME MERCHANT API
+        Route::post('payme-merchant', [App\Http\Controllers\Payment_Methods\PaymeMerchantController::class, 'handle'])->name('payme.merchant');
 
         //SENANG-PAY
         Route::group(['prefix' => 'senang-pay', 'as' => 'senang-pay.'], function () {
@@ -491,5 +510,6 @@ if (!$isGatewayPublished) {
             Route::any('callback', [PaytabsController::class, 'callback'])->name('callback');
             Route::any('response', [PaytabsController::class, 'response'])->name('response');
         });
+
     });
 }
