@@ -5309,4 +5309,8 @@ return [
 	"incomplete_info" => "Incomplete info",
 	"thank_you_for_your_order" => "Thank you for your order",
 	"Please_remove_this_unavailable_product_for_continue" => "Please remove this unavailable product for continue",
+	"This_product_has_restocked" => "This product has restocked",
+	"linked_orders" => "Linked orders",
+	"payme" => "Payme",
+	"reference_Code" => "Reference Code",
 ];

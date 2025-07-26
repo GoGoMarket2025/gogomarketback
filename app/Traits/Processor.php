@@ -91,6 +91,9 @@ trait  Processor
         if (in_array($payment_info->payment_platform, ['web', 'app']) && $payment_info['external_redirect_link'] != null) {
             return redirect($payment_info['external_redirect_link'] . '?flag=' . $payment_flag . '&&token=' . base64_encode($token_string) . '&&new_user=' . $getNewUser);
         }
-        return redirect()->route('payment-' . $payment_flag, ['token' => base64_encode($token_string), 'new_user' => $getNewUser]);
+
+        // Redirect to web-payment-success route with flag parameter instead of payment-{flag} route
+        // This ensures the web_payment_success method is called, which displays notifications and the order complete view
+        return redirect()->route('web-payment-success', ['flag' => $payment_flag, 'token' => base64_encode($token_string), 'new_user' => $getNewUser]);
     }
 }

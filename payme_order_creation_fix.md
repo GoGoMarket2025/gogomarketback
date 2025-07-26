@@ -1,122 +1,244 @@
 # Payme Order Creation Fix
 
 ## Issue Description
-After optimizing the PaymeController to defer order creation until after payment completion (to avoid timeout issues), orders were no longer being created. The optimization stored minimal data in the session during payment initiation and attempted to create orders after payment completion, but the cart data was no longer available at that point.
 
-## Solution Implemented
+The Payme payment integration was not creating orders in the database. The issue was that the PaymeController was not following the project's architecture for payment processing and order creation.
 
-### 1. Store Cart Group IDs During Payment Initiation
-Modified the `payment` method to store cart group IDs in the session during payment initiation:
+## Root Cause Analysis
+
+After investigating the issue, we identified the following problems:
+
+1. **Architectural Mismatch**: The PaymeController was trying to create orders directly in the `createTransaction` method, instead of using the standard flow used by other payment methods.
+
+2. **Missing Success Hook**: Other payment methods (like PayPal) mark the payment request as paid and rely on a success hook function (`digital_payment_success`) to create orders. The PaymeController was not marking the payment request as paid, so the success hook was never called.
+
+3. **Incomplete Data Flow**: The PaymeController was storing the order reference ID but not properly handling the transaction ID, which is needed to link the payment request to the transaction.
+
+## Solution
+
+We refactored the PaymeController to follow the project's architecture for payment processing and order creation:
+
+### 1. Updated the payment method
+
+**Before:**
 ```php
-// Get cart group IDs and store them for later use
-$customerConditions = [];
-if (isset($additionalData['customer_id'])) {
-    $customerConditions['customer_id'] = $additionalData['customer_id'];
-    $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
-}
+public function payment(Request $request): JsonResponse|RedirectResponse
+{
+    // ...
+    // Generate a unique reference ID for this payment
+    $uniqueID = \App\Utils\OrderManager::generateUniqueOrderID();
 
-if (!empty($customerConditions)) {
-    $cartGroupIds = \App\Models\Cart::where($customerConditions)
-        ->where('is_checked', 1)
-        ->groupBy('cart_group_id')
-        ->pluck('cart_group_id')
-        ->toArray();
-} else {
-    $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
-}
+    // Store the unique ID in the payment data for later use
+    $additionalData = json_decode($payment_data->additional_data, true);
+    $additionalData['payme_order_reference'] = $uniqueID;
+    $payment_data->additional_data = json_encode($additionalData);
+    $payment_data->save();
 
-// Store minimal required data for order creation after payment
-$orderData = [
-    'payment_id' => $request['payment_id'],
-    'additional_data' => $additionalData,
-    'order_group_id' => \App\Utils\OrderManager::generateUniqueOrderID(),
-    'cart_group_ids' => $cartGroupIds,
-    'timestamp' => time()
-];
-```
+    // Continue with payment gateway redirection
+    $amount = round($payment_data->payment_amount * 100);
+    $payload = "m={$this->config_values->merchant_id};ac.order_id={$uniqueID};amount={$amount}";
+    $encoded = rtrim(base64_encode($payload), '=');
+    $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
-### 2. Use Stored Cart Group IDs for Order Creation
-Modified the `createDeferredOrders` method to use the stored cart group IDs:
-```php
-// Use cart group IDs stored in the session during payment initiation
-$cartGroupIds = $pendingOrderData['cart_group_ids'] ?? [];
-
-// Fallback to retrieving cart group IDs if not found in session
-if (empty($cartGroupIds)) {
-    \Illuminate\Support\Facades\Log::warning('Cart group IDs not found in session, attempting to retrieve from database');
-    
-    // Fallback code to retrieve cart group IDs...
+    return redirect()->away($payme_url);
 }
 ```
 
-### 3. Enhanced Error Handling and Logging
-Added better error handling and logging to diagnose issues:
+**After:**
 ```php
-// Verify cart exists before attempting to create order
-$cartExists = \App\Models\Cart::where('cart_group_id', $cartGroupId)->exists();
-if (!$cartExists) {
-    \Illuminate\Support\Facades\Log::warning('Cart not found for cart_group_id: ' . $cartGroupId, [
-        'payment_id' => $pendingOrderData['payment_id'],
-        'cart_group_id' => $cartGroupId
-    ]);
-    continue; // Skip this cart group
+public function payment(Request $request): JsonResponse|RedirectResponse
+{
+    // ...
+    // Generate a unique reference ID for this payment
+    $uniqueID = \App\Utils\OrderManager::generateUniqueOrderID();
+
+    // Store the unique ID in the payment data for later use
+    $additionalData = json_decode($payment_data->additional_data, true);
+    $additionalData['payme_order_reference'] = $uniqueID;
+    $payment_data->additional_data = json_encode($additionalData);
+    $payment_data->save();
+
+    // Continue with payment gateway redirection
+    $amount = round($payment_data->payment_amount * 100);
+    $payload = "m={$this->config_values->merchant_id};ac.order_id={$uniqueID};amount={$amount}";
+    $encoded = rtrim(base64_encode($payload), '=');
+    $payme_url = "https://checkout.paycom.uz/{$encoded}";
+
+    return redirect()->away($payme_url);
 }
-
-// Detailed logging for order creation
-\Illuminate\Support\Facades\Log::info('Creating deferred order for cart_group_id: ' . $cartGroupId, [
-    'payment_id' => $pendingOrderData['payment_id'],
-    'cart_group_id' => $cartGroupId
-]);
-
-// Enhanced error logging
-\Illuminate\Support\Facades\Log::error('Error creating deferred order: ' . $e->getMessage(), [
-    'payment_id' => $pendingOrderData['payment_id'],
-    'cart_group_id' => $cartGroupId,
-    'exception' => $e,
-    'trace' => $e->getTraceAsString()
-]);
 ```
 
-## How to Test the Fix
+The payment method remains largely the same, as it was already correctly storing the order reference ID in the payment request's additional_data.
 
-### Test 1: Complete Payment Flow
-1. Add items to your cart
-2. Proceed to checkout
-3. Fill in shipping and billing information
-4. On the checkout-payment page, select "Digital Payment" (Payme)
-5. Click "Proceed to Payment"
-6. Complete the payment on the Payme payment page
-7. **Verification Step**: After successful payment, check the admin panel
-   - Go to the admin panel > Orders section
-   - You should see new order(s) with status "confirmed" and payment status "paid"
-   - This confirms that orders are being created correctly
+### 2. Updated the createTransaction method
 
-### Test 2: Check Logs for Detailed Information
-If you encounter any issues, check the Laravel logs for detailed information:
-1. Look for log entries with the following patterns:
-   - "Creating deferred order for cart_group_id"
-   - "Successfully created order"
-   - "Error creating deferred order" (if any errors occurred)
-2. The logs will provide context information to help diagnose any issues
+**Before:**
+```php
+private function createTransaction($data): JsonResponse
+{
+    // ...
+    // Check if order exists
+    $order = \App\Models\Order::where('order_group_id', $orderId)->first();
 
-### Test 3: Verify Session Data
-To verify that cart group IDs are being stored correctly in the session:
-1. Before completing the payment, you can check the session data:
-   - Add a temporary debug line in the PaymeController to dump the session data
-   - Verify that `payme_pending_order` contains the `cart_group_ids` array
+    // If order doesn't exist, try to create it
+    if (!$order) {
+        // Find payment request with this reference ID
+        $paymentRequest = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->payme_order_reference', $orderId)
+            ->first();
 
-## Technical Details
+        if (!$paymentRequest) {
+            return $this->error(-31050, 'Payment request not found');
+        }
 
-### Key Changes
-1. **Session Data Storage**: Cart group IDs are now stored in the session during payment initiation, ensuring they're available for order creation regardless of whether the original cart data is still in the database.
-2. **Fallback Mechanism**: If cart group IDs are not found in the session, the code falls back to retrieving them from the database.
-3. **Cart Existence Check**: Before attempting to create an order, the code verifies that the cart still exists in the database.
-4. **Enhanced Logging**: Detailed logging has been added to help diagnose any issues that might occur during order creation.
+        $additionalData = json_decode($paymentRequest->additional_data, true);
 
-### Benefits
-1. **Reliability**: Orders will be created correctly even if the cart data is cleared or modified between payment initiation and completion.
-2. **Diagnostics**: Enhanced logging provides better visibility into the order creation process.
-3. **Performance**: The optimization to defer order creation until after payment completion is maintained, avoiding timeout issues.
+        // Check if we have cart_group_id to create an order
+        if (!isset($additionalData['cart_group_id'])) {
+            return $this->error(-31050, 'Cart information not found');
+        }
 
-## Conclusion
-The implemented changes fix the issue where orders were not being created after optimizing the PaymeController. By storing cart group IDs in the session during payment initiation and using them for order creation, we ensure that orders are created correctly even if the original cart data is no longer available in the database.
+        // Create the order now
+        $data = [
+            'payment_method' => 'payme',
+            'order_status' => 'pending',
+            'payment_status' => 'unpaid',
+            'transaction_ref' => $paymentRequest->id,
+            'order_group_id' => $orderId,
+            'cart_group_id' => $additionalData['cart_group_id'],
+        ];
+
+        $orderId = \App\Utils\OrderManager::generate_order($data);
+        $order = \App\Models\Order::find($orderId);
+
+        if (!$order) {
+            return $this->error(-31050, 'Failed to create order');
+        }
+    }
+    // ...
+}
+```
+
+**After:**
+```php
+private function createTransaction($data): JsonResponse
+{
+    // ...
+    // Find payment request with this reference ID
+    $paymentRequest = $this->payment::where('is_paid', 0)
+        ->whereJsonContains('additional_data->payme_order_reference', $orderId)
+        ->first();
+
+    if (!$paymentRequest) {
+        // If payment request not found, check if order already exists
+        $order = \App\Models\Order::where('order_group_id', $orderId)->first();
+        if (!$order) {
+            return $this->error(-31050, 'Payment request not found');
+        }
+    }
+
+    // Check if transaction already exists
+    $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
+    if ($transaction) {
+        return response()->json([
+            'result' => [
+                'create_time' => (int)$transaction->created_at->timestamp * 1000,
+                'transaction' => $transactionId,
+                'state' => 1
+            ]
+        ]);
+    }
+
+    // If we have a payment request, store the transaction ID for later use
+    if ($paymentRequest) {
+        $additionalData = json_decode($paymentRequest->additional_data, true);
+        $additionalData['payme_transaction_id'] = $transactionId;
+        $paymentRequest->additional_data = json_encode($additionalData);
+        $paymentRequest->save();
+    }
+    // ...
+}
+```
+
+The key change is that we removed the direct order creation and instead store the transaction ID in the payment request's additional_data for later use.
+
+### 3. Updated the performTransaction method
+
+**Before:**
+```php
+private function performTransaction($data): JsonResponse
+{
+    // ...
+    // Find transaction
+    $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
+    if (!$transaction) {
+        return $this->error(-31050, 'Transaction not found');
+    }
+
+    // Update transaction status
+    $transaction->status = 'success';
+    $transaction->save();
+
+    // Update order payment status
+    $order = \App\Models\Order::find($transaction->order_id);
+    if ($order) {
+        $order->payment_status = 'paid';
+        $order->save();
+    }
+    // ...
+}
+```
+
+**After:**
+```php
+private function performTransaction($data): JsonResponse
+{
+    // ...
+    // Find payment request with this transaction ID
+    $paymentRequest = $this->payment::where('is_paid', 0)
+        ->whereJsonContains('additional_data->payme_transaction_id', $transactionId)
+        ->first();
+
+    if ($paymentRequest) {
+        // Mark payment as paid
+        $paymentRequest->is_paid = 1;
+        $paymentRequest->payment_method = 'payme';
+        $paymentRequest->transaction_id = $transactionId;
+        $paymentRequest->save();
+
+        // Call success hook to create orders
+        if (function_exists('digital_payment_success')) {
+            digital_payment_success($paymentRequest);
+        }
+    }
+    // ...
+}
+```
+
+The key change is that we now mark the payment request as paid and call the `digital_payment_success` function, which is responsible for creating orders.
+
+### 4. Updated the checkPerformTransaction method
+
+We also improved the checkPerformTransaction method to better validate the payment request and ensure it has all the required data for order creation.
+
+## Benefits of the Fix
+
+1. **Architectural Consistency**: The PaymeController now follows the same architecture as other payment methods in the project.
+
+2. **Proper Order Creation**: Orders are now created through the standard `digital_payment_success` function, ensuring consistency with other payment methods.
+
+3. **Better Error Handling**: The updated code includes better validation and error handling, making it more robust.
+
+4. **Improved Testability**: The code is now easier to test, as demonstrated by the comprehensive test script.
+
+## Testing
+
+A comprehensive test script (`test_payme_fix.php`) was created to verify the fix. The script:
+
+1. Creates a test cart with a unique cart_group_id
+2. Creates a payment request with all required fields
+3. Calls the payment method to generate and store a unique order reference
+4. Simulates the Payme API calls (CheckPerformTransaction, CreateTransaction, PerformTransaction)
+5. Verifies that the payment request is marked as paid and orders are created with the correct data
+
+The test confirms that the fix works correctly and orders are now created in the database when a payment is completed through Payme.

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Payment_Methods;
 
+use App\Models\Cart;
+use App\Models\Order;
 use App\Models\PaymentRequest;
+use App\Models\ShippingAddress;
 use App\Traits\Processor;
+use App\Utils\CartManager;
+use App\Utils\OrderManager;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -50,46 +55,340 @@ class PaymeController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
         }
 
-        // Store cart information in the session for later order creation
+        // Create order based on payment data
         $additionalData = json_decode($payment_data->additional_data, true);
-
-        // Get cart group IDs and store them for later use
-        $customerConditions = [];
-        if (isset($additionalData['customer_id'])) {
-            $customerConditions['customer_id'] = $additionalData['customer_id'];
-            $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
+        if (!$additionalData) {
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'Invalid payment data']), 400);
         }
 
-        if (!empty($customerConditions)) {
-            $cartGroupIds = \App\Models\Cart::where($customerConditions)
-                ->where('is_checked', 1)
-                ->groupBy('cart_group_id')
-                ->pluck('cart_group_id')
-                ->toArray();
+        // Get cart group IDs
+        $cartGroupIds = [];
+        if (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
+            if ($additionalData['is_guest']) {
+                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])
+                    ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+            } else {
+                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])
+                    ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+            }
         } else {
-            $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
+            $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
         }
 
-        // Store minimal required data for order creation after payment
-        $orderData = [
-            'payment_id' => $request['payment_id'],
-            'additional_data' => $additionalData,
-            'order_group_id' => \App\Utils\OrderManager::generateUniqueOrderID(),
-            'cart_group_ids' => $cartGroupIds,
-            'timestamp' => time()
-        ];
+        if (empty($cartGroupIds)) {
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'No items in cart']), 400);
+        }
 
-        // Store order data in session for later processing
-        session()->put('payme_pending_order', $orderData);
+        // Generate unique order ID
+        $getUniqueId = OrderManager::generateUniqueOrderID();
 
-        // Continue with payment gateway redirection (lightweight operation)
+        // Create orders for each cart group
+        $orderIds = [];
+        $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
+        $currencyCode = $payment_data->currency_code ?? 'UZS';
+
+        foreach ($cartGroupIds as $groupId) {
+            $data = [
+                'payment_method' => 'payme',
+                'order_status' => 'pending',
+                'payment_status' => 'unpaid',
+                'transaction_ref' => '',
+                'order_group_id' => $getUniqueId,
+                'cart_group_id' => $groupId,
+                'request' => [
+                    'customer_id' => $additionalData['customer_id'] ?? null,
+                    'is_guest' => $additionalData['is_guest'] ?? 0,
+                    'guest_id' => isset($additionalData['is_guest']) && $additionalData['is_guest'] ? $additionalData['customer_id'] : null,
+                    'order_note' => $additionalData['order_note'] ?? null,
+                    'coupon_code' => $additionalData['coupon_code'] ?? null,
+                    'address_id' => $additionalData['address_id'] ?? null,
+                    'billing_address_id' => $additionalData['billing_address_id'] ?? null,
+                ],
+                'newCustomerRegister' => $newCustomerRegister,
+            ];
+
+            $orderId = OrderManager::generate_order($data);
+            $orderIds[] = $orderId;
+        }
+
+        // Update payment data with order information
+        $additionalData['payme_order_reference'] = $getUniqueId;
+        $additionalData['order_ids'] = $orderIds;
+        $payment_data->additional_data = json_encode($additionalData);
+        $payment_data->save();
+
+        // Continue with payment gateway redirection
         $amount = round($payment_data->payment_amount * 100);
-        $payload = "m={$this->config_values->merchant_id};ac.order_id={$orderData['order_group_id']};amount={$amount}";
+        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
-
         return redirect()->away($payme_url);
+    }
+
+    /**
+     * Helper method to return error responses in Payme format
+     */
+    private function error($code, $message, $data = null): JsonResponse
+    {
+        return response()->json([
+            'error' => [
+                'code' => $code,
+                'message' => $message,
+                'data' => $data
+            ]
+        ], 200); // Payme requires HTTP 200 even for errors
+    }
+
+    /**
+     * Check if transaction can be performed
+     */
+    private function checkPerformTransaction($data): JsonResponse
+    {
+        $params = $data['params'] ?? [];
+        $account = $params['account'] ?? [];
+        $amount = $params['amount'] ?? 0;
+
+        // Validate order ID
+        $orderId = $account['order_id'] ?? null;
+        if (!$orderId) {
+            return $this->error(-31050, 'Order ID not provided');
+        }
+
+        // Find payment request with this reference ID to get the correct payment amount
+        $paymentRequest = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->payme_order_reference', $orderId)
+            ->first();
+
+        if ($paymentRequest) {
+            // Check if the amount matches the payment request amount (converted to tiyin)
+            if (round($paymentRequest->payment_amount * 100) != $amount) {
+                return $this->error(-31001, 'Incorrect amount.');
+            }
+        } else {
+            return $this->error(-31050, 'Order not found');
+        }
+
+        return response()->json([
+            'result' => [
+                'allow' => true
+            ]
+        ]);
+    }
+
+    /**
+     * Create a transaction
+     */
+    private function createTransaction($data): JsonResponse
+    {
+        $params = $data['params'] ?? [];
+        $account = $params['account'] ?? [];
+        $orderId = $account['order_id'] ?? null;
+        $transactionId = $params['id'] ?? null;
+        $time = $params['time'] ?? null;
+        $amount = $params['amount'] ?? 0;
+
+        if (!$orderId || !$transactionId || !$time) {
+            return $this->error(-31050, 'Missing required parameters');
+        }
+
+        // Find payment request with this reference ID
+        $paymentRequest = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->payme_order_reference', $orderId)
+            ->first();
+
+        if (!$paymentRequest) {
+            // If payment request not found, check if order already exists
+            $order = \App\Models\Order::where('order_group_id', $orderId)->first();
+            if (!$order) {
+                return $this->error(-31050, 'Payment request not found');
+            }
+        }
+
+        // Check if transaction already exists
+        $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
+        if ($transaction) {
+            return response()->json([
+                'result' => [
+                    'create_time' => (int)$transaction->created_at->timestamp * 1000,
+                    'transaction' => $transactionId,
+                    'state' => 1
+                ]
+            ]);
+        }
+
+        // If we have a payment request, store the transaction ID for later use
+        if ($paymentRequest) {
+            $additionalData = json_decode($paymentRequest->additional_data, true);
+            $additionalData['payme_transaction_id'] = $transactionId;
+            $paymentRequest->additional_data = json_encode($additionalData);
+            $paymentRequest->save();
+        }
+
+        // If order exists, create transaction for it
+        $order = \App\Models\Order::where('order_group_id', $orderId)->first();
+        if ($order) {
+            // Create new transaction
+            $transaction = new \App\Models\OrderTransaction();
+            $transaction->order_id = $order->id;
+            $transaction->transaction_id = $transactionId;
+            $transaction->payment_method = 'payme';
+            $transaction->transaction_type = 'payment';
+            $transaction->user_id = $order->customer_id;
+            $transaction->amount = $amount / 100; // Convert from tiyin to sum
+            $transaction->status = 'pending';
+            $transaction->save();
+        }
+
+        return response()->json([
+            'result' => [
+                'create_time' => time() * 1000,
+                'transaction' => $transactionId,
+                'state' => 1
+            ]
+        ]);
+    }
+
+    /**
+     * Perform a transaction (mark as completed)
+     */
+    private function performTransaction($data): JsonResponse
+    {
+        $params = $data['params'] ?? [];
+        $transactionId = $params['id'] ?? null;
+
+        if (!$transactionId) {
+            return $this->error(-31050, 'Transaction ID not provided');
+        }
+
+        // Find payment request with this transaction ID
+        $paymentRequest = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->payme_transaction_id', $transactionId)
+            ->first();
+
+        if ($paymentRequest) {
+            // Mark payment as paid
+            $paymentRequest->is_paid = 1;
+            $paymentRequest->payment_method = 'payme';
+            $paymentRequest->transaction_id = $transactionId;
+            $paymentRequest->save();
+
+            // Call success hook to create orders
+            if (function_exists('digital_payment_success')) {
+                digital_payment_success($paymentRequest);
+            }
+        }
+
+        // Find transaction
+        $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
+        if (!$transaction) {
+            // If no transaction found but payment request was processed, return success
+            if ($paymentRequest) {
+                return response()->json([
+                    'result' => [
+                        'transaction' => $transactionId,
+                        'perform_time' => time() * 1000,
+                        'state' => 2
+                    ]
+                ]);
+            }
+            return $this->error(-31050, 'Transaction not found');
+        }
+
+        // Update transaction status
+        $transaction->status = 'success';
+        $transaction->save();
+
+        // Update order payment status
+        $order = \App\Models\Order::find($transaction->order_id);
+        if ($order) {
+            $order->payment_status = 'paid';
+            $order->save();
+        }
+
+        return response()->json([
+            'result' => [
+                'transaction' => $transactionId,
+                'perform_time' => (int)$transaction->updated_at->timestamp * 1000,
+                'state' => 2
+            ]
+        ]);
+    }
+
+    /**
+     * Check transaction status
+     */
+    private function checkTransaction($data): JsonResponse
+    {
+        $params = $data['params'] ?? [];
+        $transactionId = $params['id'] ?? null;
+
+        if (!$transactionId) {
+            return $this->error(-31050, 'Transaction ID not provided');
+        }
+
+        // Find transaction
+        $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
+        if (!$transaction) {
+            return $this->error(-31050, 'Transaction not found');
+        }
+
+        $state = 1; // Created
+        if ($transaction->status == 'success') {
+            $state = 2; // Completed
+        } elseif ($transaction->status == 'failed' || $transaction->status == 'canceled') {
+            $state = -1; // Canceled
+        }
+
+        return response()->json([
+            'result' => [
+                'create_time' => (int)$transaction->created_at->timestamp * 1000,
+                'perform_time' => $state == 2 ? (int)$transaction->updated_at->timestamp * 1000 : 0,
+                'cancel_time' => $state == -1 ? (int)$transaction->updated_at->timestamp * 1000 : 0,
+                'transaction' => $transactionId,
+                'state' => $state,
+                'reason' => $state == -1 ? 1 : null
+            ]
+        ]);
+    }
+
+    /**
+     * Cancel a transaction
+     */
+    private function cancelTransaction($data): JsonResponse
+    {
+        $params = $data['params'] ?? [];
+        $transactionId = $params['id'] ?? null;
+        $reason = $params['reason'] ?? null;
+
+        if (!$transactionId) {
+            return $this->error(-31050, 'Transaction ID not provided');
+        }
+
+        // Find transaction
+        $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
+        if (!$transaction) {
+            return $this->error(-31050, 'Transaction not found');
+        }
+
+        // Update transaction status
+        $transaction->status = 'canceled';
+        $transaction->save();
+
+        // Update order status if it was paid
+        $order = \App\Models\Order::find($transaction->order_id);
+        if ($order && $order->payment_status == 'paid') {
+            $order->payment_status = 'unpaid';
+            $order->save();
+        }
+
+        return response()->json([
+            'result' => [
+                'transaction' => $transactionId,
+                'cancel_time' => (int)$transaction->updated_at->timestamp * 1000,
+                'state' => -1
+            ]
+        ]);
     }
 
     public function handle(Request $request)
@@ -141,497 +440,4 @@ class PaymeController extends Controller
         }
     }
 
-    private function checkPerformTransaction($data): JsonResponse
-    {
-        $orderId = $data['params']['account']['order_id'] ?? null;
-        $amount = $data['params']['amount'] ?? null;
-
-        if (!$orderId || !$amount) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Invalid order ID or amount.'
-                ]
-            ], 200);
-        }
-
-        // Get payment_id from the session using order_group_id
-        $pendingOrderData = session()->get('payme_pending_order', null);
-        $paymentId = null;
-
-        if ($pendingOrderData && $pendingOrderData['order_group_id'] == $orderId) {
-            $paymentId = $pendingOrderData['payment_id'];
-        }
-
-        // If payment_id found in session, use it; otherwise, try using orderId directly
-        $order = $paymentId ?
-            $this->payment::where(['id' => $paymentId])->where(['is_paid' => 0])->first() :
-            $this->payment::where(['id' => $orderId])->where(['is_paid' => 0])->first();
-
-        if (!$order) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Order not found.'
-                ]
-            ], 200);
-        }
-
-        // Amount in Payme is in tiyin (1/100 of UZS)
-        if ((int)($order->payment_amount * 100) !== (int)$amount) {
-            return response()->json([
-                'error' => [
-                    'code' => -31001,
-                    'message' => 'Incorrect amount.'
-                ]
-            ], 200);
-        }
-
-        // All checks passed
-        return response()->json([
-            'result' => ['allow' => true]
-        ], 200);
-    }
-
-    private function createTransaction($data)
-    {
-        $orderId = $data['params']['account']['order_id'] ?? null;
-        $amount = $data['params']['amount'] ?? null;
-        $transactionId = $data['params']['id'] ?? null;
-
-        if (!$orderId || !$amount || !$transactionId) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Invalid parameters.'
-                ]
-            ], 200);
-        }
-
-        // Get payment_id from the session using order_group_id
-        $pendingOrderData = session()->get('payme_pending_order', null);
-        $paymentId = null;
-
-        if ($pendingOrderData && $pendingOrderData['order_group_id'] == $orderId) {
-            $paymentId = $pendingOrderData['payment_id'];
-        }
-
-        // If payment_id found in session, use it; otherwise, try using orderId directly
-        $order = $paymentId ?
-            $this->payment::where(['id' => $paymentId])->first() :
-            $this->payment::where(['id' => $orderId])->first();
-
-        if (!$order) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Order not found.'
-                ]
-            ], 200);
-        }
-
-        // Check if transaction already exists
-        if ($order->is_paid == 1 && $order->transaction_id) {
-            return response()->json([
-                'result' => [
-                    'create_time' => time() * 1000,
-                    'transaction' => $order->transaction_id,
-                    'state' => 2 // Completed
-                ]
-            ], 200);
-        }
-
-        // Create new transaction
-        $this->payment::where(['id' => $orderId])->update([
-            'payment_method' => 'payme',
-            'transaction_id' => $transactionId
-        ]);
-
-        return response()->json([
-            'result' => [
-                'create_time' => time() * 1000,
-                'transaction' => $transactionId,
-                'state' => 1 // Created
-            ]
-        ], 200);
-    }
-
-    private function performTransaction($data)
-    {
-        $transactionId = $data['params']['id'] ?? null;
-
-        if (!$transactionId) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Invalid transaction ID.'
-                ]
-            ], 200);
-        }
-
-        $order = $this->payment::where(['transaction_id' => $transactionId])->first();
-
-        if (!$order) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Transaction not found.'
-                ]
-            ], 200);
-        }
-
-        // If already paid, return success
-        if ($order->is_paid == 1) {
-            return response()->json([
-                'result' => [
-                    'transaction' => $transactionId,
-                    'perform_time' => time() * 1000,
-                    'state' => 2 // Completed
-                ]
-            ], 200);
-        }
-
-        // Mark as paid and call success hook
-        $this->payment::where(['transaction_id' => $transactionId])->update([
-            'is_paid' => 1
-        ]);
-
-        $order = $this->payment::where(['transaction_id' => $transactionId])->first();
-
-        if (isset($order) && function_exists($order->success_hook)) {
-            call_user_func($order->success_hook, $order);
-        }
-
-        return response()->json([
-            'result' => [
-                'transaction' => $transactionId,
-                'perform_time' => time() * 1000,
-                'state' => 2 // Completed
-            ]
-        ], 200);
-    }
-
-    private function checkTransaction($data)
-    {
-        $transactionId = $data['params']['id'] ?? null;
-
-        if (!$transactionId) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Invalid transaction ID.'
-                ]
-            ], 200);
-        }
-
-        $order = $this->payment::where(['transaction_id' => $transactionId])->first();
-
-        if (!$order) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Transaction not found.'
-                ]
-            ], 200);
-        }
-
-        $state = $order->is_paid == 1 ? 2 : 1; // 2 = Completed, 1 = Created
-
-        return response()->json([
-            'result' => [
-                'create_time' => strtotime($order->created_at) * 1000,
-                'perform_time' => $order->is_paid == 1 ? strtotime($order->updated_at) * 1000 : null,
-                'cancel_time' => null,
-                'transaction' => $transactionId,
-                'state' => $state,
-                'reason' => null
-            ]
-        ], 200);
-    }
-
-    private function cancelTransaction($data)
-    {
-        $transactionId = $data['params']['id'] ?? null;
-
-        if (!$transactionId) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Invalid transaction ID.'
-                ]
-            ], 200);
-        }
-
-        $order = $this->payment::where(['transaction_id' => $transactionId])->first();
-
-        if (!$order) {
-            return response()->json([
-                'error' => [
-                    'code' => -31050,
-                    'message' => 'Transaction not found.'
-                ]
-            ], 200);
-        }
-
-        // If already paid, can't cancel
-        if ($order->is_paid == 1) {
-            return response()->json([
-                'error' => [
-                    'code' => -31007,
-                    'message' => 'Cannot cancel completed transaction.'
-                ]
-            ], 200);
-        }
-
-        // Call failure hook
-        if (isset($order) && function_exists($order->failure_hook)) {
-            call_user_func($order->failure_hook, $order);
-        }
-
-        return response()->json([
-            'result' => [
-                'transaction' => $transactionId,
-                'cancel_time' => time() * 1000,
-                'state' => 3 // Cancelled
-            ]
-        ], 200);
-    }
-
-    private function error($code, $message)
-    {
-        return response()->json([
-            'error' => [
-                'code' => $code,
-                'message' => $message
-            ]
-        ]);
-    }
-
-    public function success(Request $request)
-    {
-        $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
-
-        if (!isset($payment_data)) {
-            return redirect('/');
-        }
-
-        // If payment is not already marked as paid
-        if ($payment_data->is_paid == 0) {
-            $this->payment::where(['id' => $request['payment_id']])->update([
-                'payment_method' => 'payme',
-                'is_paid' => 1,
-                'transaction_id' => $request->input('transaction_id', uniqid())
-            ]);
-
-            $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
-
-            // Process deferred order creation
-            $pendingOrderData = session()->get('payme_pending_order', null);
-
-            if ($pendingOrderData && $pendingOrderData['payment_id'] == $request['payment_id']) {
-                // Create orders now that payment is complete
-                $this->createDeferredOrders($pendingOrderData, $payment_data->transaction_id);
-
-                // Clear the pending order data
-                session()->forget('payme_pending_order');
-            } else {
-                // Check if we have existing orders from the previous process
-                $orderIds = session()->get('payme_order_ids', []);
-
-                if (!empty($orderIds)) {
-                    // Update existing orders to mark them as paid
-                    foreach ($orderIds as $orderId) {
-                        \App\Models\Order::where('id', $orderId)->update([
-                            'order_status' => 'confirmed',
-                            'payment_status' => 'paid',
-                            'transaction_ref' => $payment_data->transaction_id
-                        ]);
-
-                        // Generate referral bonus if applicable
-                        \App\Utils\OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
-                    }
-
-                    // Clear the session
-                    session()->forget('payme_order_ids');
-                } else {
-                    // If no existing orders found, fall back to the original success hook
-                    if (isset($payment_data) && function_exists($payment_data->success_hook)) {
-                        call_user_func($payment_data->success_hook, $payment_data);
-                    }
-                }
-            }
-        }
-
-        return $this->payment_response($payment_data, 'success');
-    }
-
-    /**
-     * Create orders that were deferred during payment initialization
-     */
-    private function createDeferredOrders($pendingOrderData, $transactionId)
-    {
-        $additionalData = $pendingOrderData['additional_data'];
-        $generateUniqueId = $pendingOrderData['order_group_id'];
-        $orderIds = [];
-
-        // Use cart group IDs stored in the session during payment initiation
-        $cartGroupIds = $pendingOrderData['cart_group_ids'] ?? [];
-
-        // Fallback to retrieving cart group IDs if not found in session
-        if (empty($cartGroupIds)) {
-            \Illuminate\Support\Facades\Log::warning('Cart group IDs not found in session, attempting to retrieve from database');
-
-            $customerConditions = [];
-            if (isset($additionalData['customer_id'])) {
-                $customerConditions['customer_id'] = $additionalData['customer_id'];
-                $customerConditions['is_guest'] = isset($additionalData['is_guest']) ? $additionalData['is_guest'] : 0;
-            }
-
-            if (!empty($customerConditions)) {
-                $cartGroupIds = \App\Models\Cart::where($customerConditions)
-                    ->where('is_checked', 1)
-                    ->groupBy('cart_group_id')
-                    ->pluck('cart_group_id')
-                    ->toArray();
-            } else {
-                $cartGroupIds = \App\Utils\CartManager::get_cart_group_ids(type: 'checked');
-            }
-        }
-
-        if (empty($cartGroupIds)) {
-            \Illuminate\Support\Facades\Log::error('No cart group IDs found for order creation', [
-                'payment_id' => $pendingOrderData['payment_id'],
-                'additional_data' => $additionalData
-            ]);
-        }
-
-        $isGuestUserInOrder = $additionalData['is_guest_in_order'] ?? 0;
-
-        // Create order for each cart group - in batches if possible
-        foreach ($cartGroupIds as $cartGroupId) {
-            // Verify cart exists before attempting to create order
-            $cartExists = \App\Models\Cart::where('cart_group_id', $cartGroupId)->exists();
-            if (!$cartExists) {
-                \Illuminate\Support\Facades\Log::warning('Cart not found for cart_group_id: ' . $cartGroupId, [
-                    'payment_id' => $pendingOrderData['payment_id'],
-                    'cart_group_id' => $cartGroupId
-                ]);
-                continue; // Skip this cart group
-            }
-
-            $data = [
-                'payment_method' => 'payme',
-                'order_status' => 'confirmed', // Already paid
-                'payment_status' => 'paid',
-                'transaction_ref' => $transactionId,
-                'order_group_id' => $generateUniqueId,
-                'cart_group_id' => $cartGroupId,
-                'request' => [
-                    'customer_id' => $additionalData['customer_id'] ?? 0,
-                    'is_guest' => $isGuestUserInOrder,
-                    'guest_id' => $isGuestUserInOrder ? ($additionalData['customer_id'] ?? 0) : null,
-                    'order_note' => $additionalData['order_note'] ?? null,
-                    'coupon_code' => $additionalData['coupon_code'] ?? null,
-                    'coupon_discount' => $additionalData['coupon_discount'] ?? null,
-                    'address_id' => $additionalData['address_id'] ?? null,
-                    'billing_address_id' => $additionalData['billing_address_id'] ?? null,
-                    'payment_request_from' => $additionalData['payment_request_from'] ?? 'web',
-                ],
-                'new_customer_id' => $additionalData['new_customer_id'] ?? null,
-            ];
-
-            try {
-                \Illuminate\Support\Facades\Log::info('Creating deferred order for cart_group_id: ' . $cartGroupId, [
-                    'payment_id' => $pendingOrderData['payment_id'],
-                    'cart_group_id' => $cartGroupId
-                ]);
-
-                $orderId = \App\Utils\OrderManager::generate_order($data);
-                $orderIds[] = $orderId;
-
-                \Illuminate\Support\Facades\Log::info('Successfully created order: ' . $orderId);
-
-                // Generate referral bonus if applicable
-                \App\Utils\OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
-            } catch (\Exception $e) {
-                \Illuminate\Support\Facades\Log::error('Error creating deferred order: ' . $e->getMessage(), [
-                    'payment_id' => $pendingOrderData['payment_id'],
-                    'cart_group_id' => $cartGroupId,
-                    'exception' => $e,
-                    'trace' => $e->getTraceAsString()
-                ]);
-            }
-        }
-
-        // Store order IDs in session for reference
-        session()->put('payme_order_ids', $orderIds);
-    }
-
-    public function failed(Request $request)
-    {
-        $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
-
-        // Clear any pending order data for this payment
-        $pendingOrderData = session()->get('payme_pending_order', null);
-        if ($pendingOrderData && $pendingOrderData['payment_id'] == $request['payment_id']) {
-            session()->forget('payme_pending_order');
-        }
-
-        // Check if we have existing orders from the payment process
-        $orderIds = session()->get('payme_order_ids', []);
-
-        if (!empty($orderIds)) {
-            // Update existing orders to mark them as failed
-            foreach ($orderIds as $orderId) {
-                \App\Models\Order::where('id', $orderId)->update([
-                    'order_status' => 'failed',
-                    'payment_status' => 'unpaid'
-                ]);
-            }
-
-            // Clear the session
-            session()->forget('payme_order_ids');
-        } else {
-            // If no existing orders found, fall back to the original failure hook
-            if (isset($payment_data) && function_exists($payment_data->failure_hook)) {
-                call_user_func($payment_data->failure_hook, $payment_data);
-            }
-        }
-
-        return $this->payment_response($payment_data, 'fail');
-    }
-
-    public function canceled(Request $request)
-    {
-        $payment_data = $this->payment::where(['id' => $request['payment_id']])->first();
-
-        // Clear any pending order data for this payment
-        $pendingOrderData = session()->get('payme_pending_order', null);
-        if ($pendingOrderData && $pendingOrderData['payment_id'] == $request['payment_id']) {
-            session()->forget('payme_pending_order');
-        }
-
-        // Check if we have existing orders from the payment process
-        $orderIds = session()->get('payme_order_ids', []);
-
-        if (!empty($orderIds)) {
-            // Update existing orders to mark them as canceled
-            foreach ($orderIds as $orderId) {
-                \App\Models\Order::where('id', $orderId)->update([
-                    'order_status' => 'canceled',
-                    'payment_status' => 'unpaid'
-                ]);
-            }
-
-            // Clear the session
-            session()->forget('payme_order_ids');
-        } else {
-            // If no existing orders found, fall back to the original failure hook
-            if (isset($payment_data) && function_exists($payment_data->failure_hook)) {
-                call_user_func($payment_data->failure_hook, $payment_data);
-            }
-        }
-
-        return $this->payment_response($payment_data, 'cancel');
-    }
 }
