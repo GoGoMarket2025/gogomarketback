@@ -198,26 +198,85 @@ class PaymeController extends Controller
             return $this->error(-31050, 'Missing required parameters');
         }
 
-        // Find payment request with this reference ID
-        $paymentRequest = $this->payment::where('is_paid', 0)
-            ->whereJsonContains('additional_data->payme_order_reference', $orderId)
-            ->first();
+        // Find order by order_group_id
+        $order = \App\Models\Order::where('order_group_id', $orderId)->first();
+        if (!$order) {
+            // If order not found, check if there's a payment request
+            $paymentRequest = $this->payment::where('is_paid', 0)
+                ->whereJsonContains('additional_data->payme_order_reference', $orderId)
+                ->first();
 
-        if (!$paymentRequest) {
-            // If payment request not found, check if order already exists
-            $order = \App\Models\Order::where('order_group_id', $orderId)->first();
-            if (!$order) {
-                return $this->error(-31050, 'Payment request not found');
+            if (!$paymentRequest) {
+                return $this->error(-31050, 'Order not found.');
+            }
+
+            // Validate amount against payment request
+            if (round($paymentRequest->payment_amount * 100) != $amount) {
+                return $this->error(-31001, 'Incorrect amount.');
+            }
+        } else {
+            // Validate amount against order amount
+            if (round($order->order_amount * 100) != $amount) {
+                return $this->error(-31001, 'Incorrect amount.');
             }
         }
 
-        if (round($paymentRequest->payment_amount * 100) != $amount) {
-            return $this->error(-31001, 'Incorrect amount.');
+        // Check if there's a transaction in created state
+        $existingTransaction = \App\Models\OrderTransaction::where('order_id', $order->id ?? null)
+            ->where('transaction_id', $transactionId)
+            ->where('status', 'pending')
+            ->first();
+
+        if ($existingTransaction) {
+            if ($time > $existingTransaction->created_at->timestamp * 1000) {
+                return $this->error(-31050, 'Уже имеется платеж в ожидании для оплаты');
+            }
+
+            return response()->json([
+                'result' => [
+                    'create_time' => (int)$existingTransaction->created_at->timestamp * 1000,
+                    'transaction' => $transactionId,
+                    'state' => 1
+                ]
+            ]);
         }
 
-        // Check if transaction already exists
-        $transaction = \App\Models\OrderTransaction::where('transaction_id', $transactionId)->first();
-        if ($transaction) {
+        // Check if there's any transaction for this order
+        $anyTransaction = \App\Models\OrderTransaction::where('order_id', $order->id ?? null)
+            ->where('transaction_id', $transactionId)
+            ->first();
+
+        if ($anyTransaction) {
+            return response()->json([
+                'result' => [
+                    'create_time' => (int)$anyTransaction->created_at->timestamp * 1000,
+                    'transaction' => $transactionId,
+                    'state' => 1
+                ]
+            ]);
+        }
+
+        // If we have a payment request, store the transaction ID for later use
+        if (isset($paymentRequest)) {
+            $additionalData = json_decode($paymentRequest->additional_data, true);
+            $additionalData['payme_transaction_id'] = $transactionId;
+            $paymentRequest->additional_data = json_encode($additionalData);
+            $paymentRequest->save();
+        }
+
+        // Create a new transaction if we have an order
+        if (isset($order)) {
+            $transaction = new \App\Models\OrderTransaction();
+            $transaction->order_id = $order->id;
+            $transaction->customer_id = $order->customer_id;
+            $transaction->seller_id = $order->seller_id;
+            $transaction->seller_is = $order->seller_is;
+            $transaction->transaction_id = $transactionId;
+            $transaction->order_amount = $order->order_amount;
+            $transaction->payment_method = 'payme';
+            $transaction->status = 'pending'; // Equivalent to STATE_CREATED
+            $transaction->save();
+
             return response()->json([
                 'result' => [
                     'create_time' => (int)$transaction->created_at->timestamp * 1000,
@@ -227,18 +286,10 @@ class PaymeController extends Controller
             ]);
         }
 
-        // If we have a payment request, store the transaction ID for later use
-        if ($paymentRequest) {
-            $additionalData = json_decode($paymentRequest->additional_data, true);
-            $additionalData['payme_transaction_id'] = $transactionId;
-            $paymentRequest->additional_data = json_encode($additionalData);
-            $paymentRequest->save();
-        }
-
-
+        // If we don't have an order yet (only payment request), return a generic response
         return response()->json([
             'result' => [
-                'create_time' => time() * 1000,
+                'create_time' => $time,
                 'transaction' => $transactionId,
                 'state' => 1
             ]
