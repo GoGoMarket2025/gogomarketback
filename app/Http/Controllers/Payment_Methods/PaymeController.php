@@ -231,20 +231,6 @@ class PaymeController extends Controller
             $paymentRequest->save();
         }
 
-        // If order exists, create transaction for it
-        $order = \App\Models\Order::where('order_group_id', $orderId)->first();
-        if ($order) {
-            // Create new transaction
-            $transaction = new \App\Models\OrderTransaction();
-            $transaction->order_id = $order->id;
-            $transaction->transaction_id = $transactionId;
-            $transaction->payment_method = 'payme';
-            $transaction->transaction_type = 'payment';
-            $transaction->user_id = $order->customer_id;
-            $transaction->amount = $amount / 100; // Convert from tiyin to sum
-            $transaction->status = 'pending';
-            $transaction->save();
-        }
 
         return response()->json([
             'result' => [
