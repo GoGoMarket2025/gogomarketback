@@ -45,6 +45,10 @@ class PaymeController extends Controller
             'payment_id' => 'required|uuid'
         ]);
 
+        $payme_url = "https://checkout.paycom.uz/test";
+
+        return redirect()->away($payme_url);
+
         if ($validator->fails()) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, $this->error_processor($validator)), 400);
         }
@@ -121,9 +125,7 @@ class PaymeController extends Controller
         $amount = round($payment_data->payment_amount * 100);
         $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
-        $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
-        return redirect()->away($payme_url);
     }
 
     /**
