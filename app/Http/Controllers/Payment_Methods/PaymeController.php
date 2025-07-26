@@ -228,10 +228,8 @@ class PaymeController extends Controller
             ->first();
 
         if ($existingTransaction) {
-            if ($time > $existingTransaction->created_at->timestamp * 1000) {
-                return $this->error(-31050, 'Уже имеется платеж в ожидании для оплаты');
-            }
-
+            // Always return the transaction information for an existing transaction,
+            // regardless of the time parameter
             return response()->json([
                 'result' => [
                     'create_time' => (int)$existingTransaction->created_at->timestamp * 1000,
