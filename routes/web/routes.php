@@ -10,6 +10,7 @@ use App\Http\Controllers\Customer\Auth\RegisterController;
 use App\Http\Controllers\Customer\Auth\SocialAuthController;
 use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\SystemController;
+use App\Http\Controllers\Payment_Methods\PaymeController;
 use App\Http\Controllers\Payment_Methods\PaymeMerchantController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\ChattingController;
@@ -388,8 +389,15 @@ try {
 } catch (\Exception $exception) {
 }
 
+
 if (!$isGatewayPublished) {
     Route::group(['prefix' => 'payment'], function () {
+
+        //PAYME
+        Route::group(['prefix' => 'payme', 'as' => 'payme.'], function () {
+            Route::get('pay', [PaymeController::class, 'payment']);
+        });
+
 
         //SSLCOMMERZ
         Route::group(['prefix' => 'sslcommerz', 'as' => 'sslcommerz.'], function () {
@@ -434,12 +442,6 @@ if (!$isGatewayPublished) {
                 ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
         });
 
-        //PAYME
-        Route::group(['prefix' => 'payme', 'as' => 'payme.'], function () {
-            Route::get('pay', [App\Http\Controllers\Payment_Methods\PaymeController::class, 'payment']);
-            Route::get('success', [App\Http\Controllers\Payment_Methods\PaymeController::class, 'success'])->name('success');
-            Route::get('cancel', [App\Http\Controllers\Payment_Methods\PaymeController::class, 'cancel'])->name('cancel');
-        });
 
         //PAYME MERCHANT API
         Route::post('payme-merchant', [App\Http\Controllers\Payment_Methods\PaymeMerchantController::class, 'handle'])->name('payme.merchant');

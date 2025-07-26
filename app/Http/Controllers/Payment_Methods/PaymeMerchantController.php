@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Payment_Methods;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Request;
 use Illuminate\Support\Facades\DB;
 
 class PaymeMerchantController extends Controller
@@ -59,8 +61,7 @@ class PaymeMerchantController extends Controller
         }
     }
 
-    // Implement the required methods according to Payme documentation
-    // ...
+
 
     private function error($code, $message)
     {

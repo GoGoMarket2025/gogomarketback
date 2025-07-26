@@ -5304,4 +5304,5 @@ return [
 	"no_currency_found" => "No currency found",
 	"exchange_rate_cannot_be_zero" => "Exchange rate cannot be zero",
 	"successfully updated" => "Successfully updated",
+	"my_Compare_List" => "My Compare List",
 ];
