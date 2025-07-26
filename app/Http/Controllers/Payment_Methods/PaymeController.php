@@ -77,7 +77,7 @@ class PaymeController extends Controller
             $decodedToken = base64_decode($token);
 
             $expectedUsername = 'Paycom';
-            $expectedToken = $this->config_values->merchant_key;
+            $expectedToken = $expectedUsername . $this->config_values->merchant_key;
 
             if ($decodedToken !== $expectedToken) {
                 return response()->json([
@@ -93,8 +93,63 @@ class PaymeController extends Controller
         $data = $request->all();
         $method = $data['method'] ?? '';
 
-        return "here";
+        switch ($method) {
+            case 'CheckPerformTransaction':
+                return $this->checkPerformTransaction($data);
+            case 'CreateTransaction':
+                return $this->createTransaction($data);
+            case 'PerformTransaction':
+                return $this->performTransaction($data);
+            case 'CheckTransaction':
+                return $this->checkTransaction($data);
+            case 'CancelTransaction':
+                return $this->cancelTransaction($data);
+            default:
+                return $this->error(405, 'Method not found');
+        }
     }
+
+    private function checkPerformTransaction($data)
+    {
+        $orderId = $data['params']['account']['order_id'] ?? null;
+        $amount = $data['params']['amount'] ?? null;
+
+        if (!$orderId || !$amount) {
+            return response()->json([
+                'error' => [
+                    'code' => -31050,
+                    'message' => 'Invalid order ID or amount.'
+                ]
+            ], 200);
+        }
+
+        $order = $this->payment::where(['id' => $orderId])->where(['is_paid' => 0])->first();
+
+        if (!$order) {
+            return response()->json([
+                'error' => [
+                    'code' => -31050,
+                    'message' => 'Order not found.'
+                ]
+            ], 200);
+        }
+
+        // Amount in Payme is in tiyin (1/100 of UZS)
+        if ((int)($order->order_price * 100) !== (int)$amount) {
+            return response()->json([
+                'error' => [
+                    'code' => -31001,
+                    'message' => 'Incorrect amount.'
+                ]
+            ], 200);
+        }
+
+        // All checks passed
+        return response()->json([
+            'result' => ['allow' => true]
+        ], 200);
+    }
+
 
     private function error($code, $message)
     {

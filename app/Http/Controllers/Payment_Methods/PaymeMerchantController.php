@@ -28,6 +28,7 @@ class PaymeMerchantController extends Controller
     {
         return true;
     }
+
     public function handle(Request $request)
     {
         // Verify authentication
@@ -41,35 +42,9 @@ class PaymeMerchantController extends Controller
             return $this->error(401, 'Invalid merchant');
         }
 
-        // Process the request based on method
-        $data = $request->all();
-        $method = $data['method'] ?? '';
 
-        switch ($method) {
-            case 'CheckPerformTransaction':
-                return $this->checkPerformTransaction($data);
-            case 'CreateTransaction':
-                return $this->createTransaction($data);
-            case 'PerformTransaction':
-                return $this->performTransaction($data);
-            case 'CheckTransaction':
-                return $this->checkTransaction($data);
-            case 'CancelTransaction':
-                return $this->cancelTransaction($data);
-            default:
-                return $this->error(405, 'Method not found');
-        }
     }
 
 
 
-    private function error($code, $message)
-    {
-        return response()->json([
-            'error' => [
-                'code' => $code,
-                'message' => $message
-            ]
-        ]);
-    }
 }
