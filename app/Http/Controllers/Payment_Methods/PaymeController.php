@@ -64,11 +64,16 @@ class PaymeController extends Controller
         // Store order data in session for later processing
         session()->put('payme_pending_order', $orderData);
 
+        dump($orderData);
+        die();
+
         // Continue with payment gateway redirection (lightweight operation)
         $amount = round($payment_data->payment_amount * 100);
         $payload = "m={$this->config_values->merchant_id};ac.order_id={$orderData['order_group_id']};amount={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/{$encoded}";
+
+
 
         return redirect()->away($payme_url);
     }
