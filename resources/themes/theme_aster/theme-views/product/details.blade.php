@@ -303,6 +303,10 @@
                                                         </div>
                                                     @endif
 
+                                                    <?php
+                                                    var_dump(json_decode($product->choice_options));
+                                                    ?>
+
                                                     @foreach (json_decode($product->choice_options) as  $choice)
                                                         <div class="d-flex gap-4 flex-wrap align-items-center mb-4">
                                                             <h6 class="fw-semibold">{{translate($choice->title)}}</h6>
