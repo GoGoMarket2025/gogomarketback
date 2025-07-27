@@ -50,7 +50,7 @@ class ProductDetailsController extends Controller
         $theme_name = theme_root_path();
 
         return match ($theme_name) {
-//            'default' => self::getDefaultTheme(slug: $slug),
+            'default' => self::getDefaultTheme(slug: $slug),
             'theme_aster' => self::getThemeAster(slug: $slug),
 //            'theme_fashion' => self::getThemeFashion(slug: $slug),
         };
