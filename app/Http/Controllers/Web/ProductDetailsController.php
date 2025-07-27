@@ -51,7 +51,7 @@ class ProductDetailsController extends Controller
 
         return match ($theme_name) {
             'default' => self::getDefaultTheme(slug: $slug),
-            'theme_aster' => self::getThemeAster(slug: $slug),
+//            'theme_aster' => self::getThemeAster(slug: $slug),
 //            'theme_fashion' => self::getThemeFashion(slug: $slug),
         };
     }
