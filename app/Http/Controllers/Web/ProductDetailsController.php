@@ -138,9 +138,6 @@ class ProductDetailsController extends Controller
 
             $previewFileInfo = getFileInfoFromURL(url: $product?->preview_file_full_url['path']);
 
-            dump($product);
-            die();
-
             return view(VIEW_FILE_NAMES['products_details'], compact('product', 'countWishlist', 'countOrder', 'relatedProducts',
                 'dealOfTheDay', 'currentDate', 'sellerVacationStartDate', 'sellerVacationEndDate', 'sellerTemporaryClose',
                 'inHouseVacationStartDate', 'inHouseVacationEndDate', 'inHouseVacationStatus', 'inHouseTemporaryClose', 'overallRating',
@@ -159,7 +156,7 @@ class ProductDetailsController extends Controller
             withCount: ['orderDetails' => 'orderDetails', 'wishList' => 'wishList']
         );
 
-        if ($product ) {
+        if ($product) {
             $productDetailsMeta = $product?->seoInfo;
             $productAuthorsInfo = $this->productService->getProductAuthorsInfo(product: $product);
             $productPublishingHouseInfo = $this->productService->getProductPublishingHouseInfo(product: $product);

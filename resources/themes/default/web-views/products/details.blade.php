@@ -77,7 +77,8 @@
                                         <i class="fa {{($wishlistStatus == 1?'fa-heart':'fa-heart-o')}} wishlist_icon_{{$product['id']}} web-text-primary"
                                            aria-hidden="true"></i>
                                         <div class="wishlist-tooltip" x-placement="top">
-                                            <div class="arrow"></div><div class="inner">
+                                            <div class="arrow"></div>
+                                            <div class="inner">
                                                 <span class="add">{{translate('added_to_wishlist')}}</span>
                                                 <span class="remove">{{translate('removed_from_wishlist')}}</span>
                                             </div>
@@ -151,13 +152,16 @@
                                     <span
                                         class="d-inline-block  align-middle mt-1 {{Session::get('direction') === "rtl" ? 'ml-md-2 ml-sm-0' : 'mr-md-2 mr-sm-0'}} fs-14 text-muted">({{$overallRating[0]}})</span>
                                     <span
-                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-1 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-1 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}"><span class="web-text-primary">{{$overallRating[1]}}</span> {{translate('reviews')}}</span>
+                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-1 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-1 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}"><span
+                                            class="web-text-primary">{{$overallRating[1]}}</span> {{translate('reviews')}}</span>
                                     <span class="__inline-25"></span>
                                     <span
-                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-1 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-1 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}"><span class="web-text-primary">{{$countOrder}}</span> {{translate('orders')}}   </span>
+                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-1 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-1 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}"><span
+                                            class="web-text-primary">{{$countOrder}}</span> {{translate('orders')}}   </span>
                                     <span class="__inline-25">    </span>
                                     <span
-                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-capitalize"> <span class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}} </span>
+                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-capitalize"> <span
+                                            class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}} </span>
                                 </div>
 
                                 @if($product['product_type'] == 'digital')
@@ -200,7 +204,8 @@
                                                 {{ getProductPriceByType(product: $product, type: 'discounted_unit_price', result: 'string') }}
                                             </span>
                                             @if(getProductPriceByType(product: $product, type: 'discount', result: 'value') > 0)
-                                                <del class="product-total-unit-price align-middle text-muted fs-18 font-semibold">
+                                                <del
+                                                    class="product-total-unit-price align-middle text-muted fs-18 font-semibold">
                                                     {{ webCurrencyConverter(amount: $product->unit_price) }}
                                                 </del>
                                             @endif
@@ -225,11 +230,12 @@
                                                                        name="color" value="{{ $color }}"
                                                                        @if($key == 0) checked @endif>
                                                                 <label style="background: {{ $color }};"
-                                                                    class="focus-preview-image-by-color shadow-border"
-                                                                    for="{{ str_replace(' ', '', ($product->id. '-color-'. str_replace('#','',$color))) }}"
-                                                                    data-toggle="tooltip"
-                                                                    data-key="{{ str_replace('#','',$color) }}"
-                                                                   data-colorid="preview-box-{{ str_replace('#','',$color) }}" data-title="{{ getColorNameByCode(code: $color) }}">
+                                                                       class="focus-preview-image-by-color shadow-border"
+                                                                       for="{{ str_replace(' ', '', ($product->id. '-color-'. str_replace('#','',$color))) }}"
+                                                                       data-toggle="tooltip"
+                                                                       data-key="{{ str_replace('#','',$color) }}"
+                                                                       data-colorid="preview-box-{{ str_replace('#','',$color) }}"
+                                                                       data-title="{{ getColorNameByCode(code: $color) }}">
                                                                     <span class="outline"></span></label>
                                                             </li>
                                                         @endforeach
@@ -250,39 +256,38 @@
                                     @php($extensionIndex=0)
                                     @if($product['product_type'] == 'digital' && $product['digital_product_file_types'] && count($product['digital_product_file_types']) > 0 && $product['digital_product_extensions'])
                                         @foreach($product['digital_product_extensions'] as $extensionKey => $extensionGroup)
-                                        <div class="row flex-start mx-0 align-items-center mb-1">
-                                            <div class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-capitalize mb-2">
-                                                {{ translate($extensionKey) }} :
-                                            </div>
-                                            <div>
-                                                @if(count($extensionGroup) > 0)
-                                                <div class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-0 mx-1 flex-start ps-0">
-                                                    @foreach($extensionGroup as $index => $extension)
-                                                    <div class="user-select-none">
-                                                        <div class="for-mobile-capacity">
-                                                            <input type="radio" hidden
-                                                                   id="extension_{{ str_replace(' ', '-', $extension) }}"
-                                                                   name="variant_key"
-                                                                   value="{{ $extensionKey.'-'.preg_replace('/\s+/', '-', $extension) }}"
-                                                                {{ $extensionIndex == 0 ? 'checked' : ''}}>
-                                                            <label for="extension_{{ str_replace(' ', '-', $extension) }}"
-                                                                   class="__text-12px">
-                                                                {{ $extension }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    @php($extensionIndex++)
-                                                    @endforeach
+                                            <div class="row flex-start mx-0 align-items-center mb-1">
+                                                <div
+                                                    class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-capitalize mb-2">
+                                                    {{ translate($extensionKey) }} :
                                                 </div>
-                                                @endif
+                                                <div>
+                                                    @if(count($extensionGroup) > 0)
+                                                        <div
+                                                            class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-0 mx-1 flex-start ps-0">
+                                                            @foreach($extensionGroup as $index => $extension)
+                                                                <div class="user-select-none">
+                                                                    <div class="for-mobile-capacity">
+                                                                        <input type="radio" hidden
+                                                                               id="extension_{{ str_replace(' ', '-', $extension) }}"
+                                                                               name="variant_key"
+                                                                               value="{{ $extensionKey.'-'.preg_replace('/\s+/', '-', $extension) }}"
+                                                                            {{ $extensionIndex == 0 ? 'checked' : ''}}>
+                                                                        <label
+                                                                            for="extension_{{ str_replace(' ', '-', $extension) }}"
+                                                                            class="__text-12px">
+                                                                            {{ $extension }}
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                @php($extensionIndex++)
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     @endif
-
-                                    <?php
-                                    var_dump(json_decode($product->choice_options) );
-                                    ?>
 
                                     @foreach (json_decode($product->choice_options) as $key => $choice)
                                         <div class="row flex-start mx-0 align-items-center">
@@ -291,7 +296,8 @@
                                                 :
                                             </div>
                                             <div>
-                                                <div class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-0 mx-1 flex-start row ps-0">
+                                                <div
+                                                    class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-0 mx-1 flex-start row ps-0">
                                                     @foreach ($choice->options as $index => $option)
                                                         <div class="user-select-none">
                                                             <div class="for-mobile-capacity">
@@ -315,9 +321,11 @@
                                                 <div class="product-description-label text-dark font-bold mt-0">
                                                     {{translate('quantity')}} :
                                                 </div>
-                                                <div class="d-flex justify-content-center align-items-center quantity-box border rounded border-base web-text-primary">
+                                                <div
+                                                    class="d-flex justify-content-center align-items-center quantity-box border rounded border-base web-text-primary">
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-number __p-10 web-text-primary" type="button"
+                                                        <button class="btn btn-number __p-10 web-text-primary"
+                                                                type="button"
                                                                 data-type="minus" data-field="quantity"
                                                                 disabled="disabled">
                                                             -
@@ -331,15 +339,19 @@
                                                            min="{{ $product->minimum_order_qty ?? 1 }}"
                                                            max="{{$product['product_type'] == 'physical' ? $product->current_stock : 100}}">
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-number __p-10 web-text-primary" type="button"
+                                                        <button class="btn btn-number __p-10 web-text-primary"
+                                                                type="button"
                                                                 data-producttype="{{ $product->product_type }}"
                                                                 data-type="plus" data-field="quantity">
                                                                 +
                                                         </button>
                                                     </span>
                                                 </div>
-                                                <input type="hidden" class="product-generated-variation-code" name="product_variation_code" data-product-id="{{ $product['id'] }}">
-                                                <input type="hidden" value="" class="product-exist-in-cart-list form-control w-50" name="key">
+                                                <input type="hidden" class="product-generated-variation-code"
+                                                       name="product_variation_code"
+                                                       data-product-id="{{ $product['id'] }}">
+                                                <input type="hidden" value=""
+                                                       class="product-exist-in-cart-list form-control w-50" name="key">
                                             </div>
                                             <div class="product-details-chosen-price-section">
                                                 <div
@@ -348,8 +360,10 @@
                                                         class="product-description-label text-dark font-bold text-capitalize">
                                                         <strong>{{translate('total_price')}}</strong> :
                                                     </div>
-                                                    &nbsp; <strong class="text-base product-details-chosen-price-amount"></strong>
-                                                    <small class="ms-2 font-regular product-details-tax-amount-container">
+                                                    &nbsp; <strong
+                                                        class="text-base product-details-chosen-price-amount"></strong>
+                                                    <small
+                                                        class="ms-2 font-regular product-details-tax-amount-container">
                                                         (<small>{{translate('tax')}} : </small>
                                                         <small class="product-details-tax-amount"></small>)
                                                     </small>
@@ -359,36 +373,39 @@
                                     </div>
 
                                     <div class="__btn-grp mt-2 mb-3 product-add-and-buy-section-parent">
-                                        <div class="product-add-and-buy-section gap-2 {!! $firstVariationQuantity <= 0 ? '' : 'd-flex' !!}" {!! $firstVariationQuantity <= 0 ? 'style="display: none;"' : '' !!}>
+                                        <div
+                                            class="product-add-and-buy-section gap-2 {!! $firstVariationQuantity <= 0 ? '' : 'd-flex' !!}" {!! $firstVariationQuantity <= 0 ? 'style="display: none;"' : '' !!}>
                                             @if(($product->added_by == 'seller' && ($sellerTemporaryClose || (isset($product->seller->shop) && $product->seller->shop->vacation_status && $currentDate >= $sellerVacationStartDate && $currentDate <= $sellerVacationEndDate))) ||
                                              ($product->added_by == 'admin' && ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate))))
-                                                    <button class="btn btn-secondary" type="button" disabled>
-                                                        {{ translate('buy_now') }}
-                                                    </button>
-                                                    <button class="btn btn--primary string-limit" type="button" disabled>
-                                                        {{ translate('add_to_cart') }}
-                                                    </button>
-                                                @else
-                                                    <button type="button"
-                                                            class="btn btn-secondary element-center btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} product-buy-now-button"
-                                                            data-form=".add-to-cart-details-form"
-                                                            data-auth="{{( getWebConfig(name: 'guest_checkout') == 1 || Auth::guard('customer')->check() ? 'true':'false')}}"
-                                                            data-route="{{ route('shop-cart') }}"
-                                                    >
-                                                        <span class="string-limit">{{ translate('buy_now') }}</span>
-                                                    </button>
-                                                    <button class="btn btn--primary element-center product-add-to-cart-button"
-                                                            type="button"
-                                                            data-form=".add-to-cart-details-form"
-                                                            data-update="{{ translate('update_cart') }}"
-                                                            data-add="{{ translate('add_to_cart') }}"
-                                                    >
-                                                        <span class="string-limit">{{ translate('add_to_cart') }}</span>
-                                                    </button>
-                                                @endif
+                                                <button class="btn btn-secondary" type="button" disabled>
+                                                    {{ translate('buy_now') }}
+                                                </button>
+                                                <button class="btn btn--primary string-limit" type="button" disabled>
+                                                    {{ translate('add_to_cart') }}
+                                                </button>
+                                            @else
+                                                <button type="button"
+                                                        class="btn btn-secondary element-center btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} product-buy-now-button"
+                                                        data-form=".add-to-cart-details-form"
+                                                        data-auth="{{( getWebConfig(name: 'guest_checkout') == 1 || Auth::guard('customer')->check() ? 'true':'false')}}"
+                                                        data-route="{{ route('shop-cart') }}"
+                                                >
+                                                    <span class="string-limit">{{ translate('buy_now') }}</span>
+                                                </button>
+                                                <button
+                                                    class="btn btn--primary element-center product-add-to-cart-button"
+                                                    type="button"
+                                                    data-form=".add-to-cart-details-form"
+                                                    data-update="{{ translate('update_cart') }}"
+                                                    data-add="{{ translate('add_to_cart') }}"
+                                                >
+                                                    <span class="string-limit">{{ translate('add_to_cart') }}</span>
+                                                </button>
+                                            @endif
                                         </div>
                                         @if(($product['product_type'] == 'physical'))
-                                            <div class="product-restock-request-section collapse" {!! $firstVariationQuantity <= 0 ? 'style="display: block;"' : '' !!}>
+                                            <div
+                                                class="product-restock-request-section collapse" {!! $firstVariationQuantity <= 0 ? 'style="display: block;"' : '' !!}>
                                                 <button type="button"
                                                         class="btn request-restock-btn btn-outline-primary fw-semibold product-restock-request-button"
                                                         data-auth="{{ auth('customer')->check() }}"
@@ -400,12 +417,15 @@
                                                 </button>
                                             </div>
                                         @endif
-                                        <button type="button" data-product-id="{{ $product['id'] }}" class="btn __text-18px border product-action-add-wishlist">
+                                        <button type="button" data-product-id="{{ $product['id'] }}"
+                                                class="btn __text-18px border product-action-add-wishlist">
                                             <i class="fa {{($wishlistStatus == 1?'fa-heart':'fa-heart-o')}} wishlist_icon_{{$product['id']}} web-text-primary"
                                                aria-hidden="true"></i>
-                                            <span class="fs-14 text-muted align-bottom countWishlist-{{$product['id']}}">{{$countWishlist}}</span>
+                                            <span
+                                                class="fs-14 text-muted align-bottom countWishlist-{{$product['id']}}">{{$countWishlist}}</span>
                                             <div class="wishlist-tooltip" x-placement="top">
-                                                <div class="arrow"></div><div class="inner">
+                                                <div class="arrow"></div>
+                                                <div class="inner">
                                                     <span class="add">{{translate('added_to_wishlist')}}</span>
                                                     <span class="remove">{{translate('removed_from_wishlist')}}</span>
                                                 </div>
@@ -443,7 +463,7 @@
                             </ul>
                             <div class="tab-content px-lg-3">
                                 <div class="tab-pane fade show active text-justify" id="overview"
-                                        role="tabpanel">
+                                     role="tabpanel">
                                     <div class="row pt-2 specification">
 
                                         @if($product->video_url != null && (str_contains($product->video_url, "youtube.com/embed/")))
@@ -454,7 +474,8 @@
                                             </div>
                                         @endif
                                         @if ($product['details'])
-                                            <div class="text-body col-lg-12 col-md-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
+                                            <div
+                                                class="text-body col-lg-12 col-md-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
                                                 {!! $product['details'] !!}
                                             </div>
                                         @endif
@@ -464,8 +485,8 @@
                                         <div>
                                             <div class="text-center text-capitalize py-5">
                                                 <img class="mw-90"
-                                                        src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}"
-                                                        alt="">
+                                                     src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}"
+                                                     alt="">
                                                 <p class="text-capitalize mt-2">
                                                     <small>{{translate('product_details_not_found')}}
                                                         !</small>
@@ -480,8 +501,8 @@
                                         <div>
                                             <div class="text-center text-capitalize">
                                                 <img class="mw-100"
-                                                        src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
-                                                        alt="">
+                                                     src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
+                                                     alt="">
                                                 <p class="text-capitalize">
                                                     <small>{{translate('No_review_given_yet')}}!</small>
                                                 </p>
@@ -528,10 +549,10 @@
                                                     <div class="w-0 flex-grow">
                                                         <div class="progress text-body __h-5px">
                                                             <div class="progress-bar web--bg-primary"
-                                                                    role="progressbar"
-                                                                    style="width: <?php echo $widthRating = ($rating[0] != 0) ? ($rating[0] / $overallRating[1]) * 100 : (0); ?>%;"
-                                                                    aria-valuenow="60" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                 role="progressbar"
+                                                                 style="width: <?php echo $widthRating = ($rating[0] != 0) ? ($rating[0] / $overallRating[1]) * 100 : (0); ?>%;"
+                                                                 aria-valuenow="60" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-1 text-body">
@@ -551,9 +572,9 @@
                                                     <div class="w-0 flex-grow">
                                                         <div class="progress __h-5px">
                                                             <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                    style="width: <?php echo $widthRating = ($rating[1] != 0) ? ($rating[1] / $overallRating[1]) * 100 : (0); ?>%; background-color: #a7e453;"
-                                                                    aria-valuenow="27" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                 style="width: <?php echo $widthRating = ($rating[1] != 0) ? ($rating[1] / $overallRating[1]) * 100 : (0); ?>%; background-color: #a7e453;"
+                                                                 aria-valuenow="27" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
@@ -573,9 +594,9 @@
                                                     <div class="w-0 flex-grow">
                                                         <div class="progress __h-5px">
                                                             <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                    style="width: <?php echo $widthRating = ($rating[2] != 0) ? ($rating[2] / $overallRating[1]) * 100 : (0); ?>%; background-color: #ffda75;"
-                                                                    aria-valuenow="17" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                 style="width: <?php echo $widthRating = ($rating[2] != 0) ? ($rating[2] / $overallRating[1]) * 100 : (0); ?>%; background-color: #ffda75;"
+                                                                 aria-valuenow="17" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
@@ -595,9 +616,9 @@
                                                     <div class="w-0 flex-grow">
                                                         <div class="progress __h-5px">
                                                             <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                    style="width: <?php echo $widthRating = ($rating[3] != 0) ? ($rating[3] / $overallRating[1]) * 100 : (0); ?>%; background-color: #fea569;"
-                                                                    aria-valuenow="9" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                 style="width: <?php echo $widthRating = ($rating[3] != 0) ? ($rating[3] / $overallRating[1]) * 100 : (0); ?>%; background-color: #fea569;"
+                                                                 aria-valuenow="9" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
@@ -617,9 +638,9 @@
                                                     <div class="w-0 flex-grow">
                                                         <div class="progress __h-5px">
                                                             <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                    style="width: <?php echo $widthRating = ($rating[4] != 0) ? ($rating[4] / $overallRating[1]) * 100 : (0); ?>%;"
-                                                                    aria-valuenow="4" aria-valuemin="0"
-                                                                    aria-valuemax="100"></div>
+                                                                 style="width: <?php echo $widthRating = ($rating[4] != 0) ? ($rating[4] / $overallRating[1]) * 100 : (0); ?>%;"
+                                                                 aria-valuenow="4" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
@@ -669,8 +690,9 @@
                                 @if ($value['status'] == 1 && !empty($value['title']))
                                     <div class="shipping-details-bottom-border">
                                         <div class="px-3 py-3">
-                                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}} __img-20"
-                                                 src="{{ getStorageImages(path: imagePathProcessing(imageData: $value['image'],path: 'company-reliability'), type: 'source', source: 'public/assets/front-end/img'.'/'.$value['item'].'.png') }}"
+                                            <img
+                                                class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}} __img-20"
+                                                src="{{ getStorageImages(path: imagePathProcessing(imageData: $value['image'],path: 'company-reliability'), type: 'source', source: 'public/assets/front-end/img'.'/'.$value['item'].'.png') }}"
                                                 alt="">
                                             <span>{{translate($value['title'])}}</span>
                                         </div>
@@ -681,46 +703,136 @@
                     @endif
 
                     @if(getWebConfig(name: 'business_mode')=='multi')
-                    <div class="__inline-31">
+                        <div class="__inline-31">
 
-                        @if($product->added_by=='seller')
-                            @if(isset($product->seller->shop))
-                                <div class="row position-relative">
-                                    <div class="col-12 position-relative">
-                                        <a href="{{route('shopView',['id'=> $product?->seller?->shop->id])}}" class="d-block">
-                                            <div class="d-flex __seller-author align-items-center">
-                                                <div>
-                                                    <img class="__img-60 img-circle" alt=""
-                                                         src="{{ getStorageImages(path: $product?->seller?->shop->image_full_url, type: 'shop') }}">
+                            @if($product->added_by=='seller')
+                                @if(isset($product->seller->shop))
+                                    <div class="row position-relative">
+                                        <div class="col-12 position-relative">
+                                            <a href="{{route('shopView',['id'=> $product?->seller?->shop->id])}}"
+                                               class="d-block">
+                                                <div class="d-flex __seller-author align-items-center">
+                                                    <div>
+                                                        <img class="__img-60 img-circle" alt=""
+                                                             src="{{ getStorageImages(path: $product?->seller?->shop->image_full_url, type: 'shop') }}">
+                                                    </div>
+                                                    <div
+                                                        class="ms-2 w-0 flex-grow">
+                                                        <h2 class="fs-15 mb-1">
+                                                            {{$product->seller->shop->name}}
+                                                        </h2>
+                                                        <h3 class="text-capitalize fs-12">{{translate('vendor_info')}}</h3>
+                                                    </div>
                                                 </div>
-                                                <div
-                                                    class="ms-2 w-0 flex-grow">
-                                                    <h2 class="fs-15 mb-1">
-                                                        {{$product->seller->shop->name}}
-                                                    </h2>
-                                                    <h3 class="text-capitalize fs-12">{{translate('vendor_info')}}</h3>
+                                                <div class="d-flex align-items-center">
+
+                                                    @if($sellerTemporaryClose || ($product->seller->shop->vacation_status && $currentDate >= $sellerVacationStartDate && $currentDate <= $sellerVacationEndDate))
+                                                        <span class="chat-seller-info product-details-seller-info"
+                                                              data-toggle="tooltip"
+                                                              title="{{ translate('this_shop_is_temporary_closed_or_on_vacation').' '.translate('You_cannot_add_product_to_cart_from_this_shop_for_now') }}">
+                                                        <img
+                                                            src="{{theme_asset(path: 'public/assets/front-end/img/info.png')}}"
+                                                            alt="i">
+                                                    </span>
+                                                    @endif
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-6 ">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center rounded __h-79px hr-right-before">
+                                                        <div class="text-center">
+                                                            <img
+                                                                src="{{theme_asset(path: 'public/assets/front-end/img/rating.svg')}}"
+                                                                class="mb-2" alt="">
+                                                            <div class="__text-12px text-base">
+                                                                <strong>{{$totalReviews}}</strong> {{translate('reviews')}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center rounded __h-79px">
+                                                        <div class="text-center">
+                                                            <img
+                                                                src="{{theme_asset(path: 'public/assets/front-end/img/products.svg')}}"
+                                                                class="mb-2" alt="">
+                                                            <div class="__text-12px text-base">
+                                                                <strong>{{$productsForReview->total()}}</strong> {{translate('products')}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex align-items-center">
-
-                                                @if($sellerTemporaryClose || ($product->seller->shop->vacation_status && $currentDate >= $sellerVacationStartDate && $currentDate <= $sellerVacationEndDate))
-                                                    <span class="chat-seller-info product-details-seller-info"
-                                                          data-toggle="tooltip"
-                                                          title="{{ translate('this_shop_is_temporary_closed_or_on_vacation').' '.translate('You_cannot_add_product_to_cart_from_this_shop_for_now') }}">
-                                                        <img src="{{theme_asset(path: 'public/assets/front-end/img/info.png')}}" alt="i">
+                                        </div>
+                                        <div class="col-12 position-static mt-3">
+                                            <div class="chat_with_seller-buttons">
+                                                @if (auth('customer')->id())
+                                                    <button
+                                                        class="btn w-100 d-block text-center web--bg-primary text-white"
+                                                        data-toggle="modal"
+                                                        data-target="#chatting_modal" {{ ($product->seller->shop->temporary_close || ($product->seller->shop->vacation_status && date('Y-m-d') >= date('Y-m-d', strtotime($product->seller->shop->vacation_start_date)) && date('Y-m-d') <= date('Y-m-d', strtotime($product->seller->shop->vacation_end_date)))) ? 'disabled' : '' }}>
+                                                        <img class="mb-1" alt=""
+                                                             src="{{theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
+                                                        <span class="d-none d-sm-inline-block text-capitalize">
+                                                        {{translate('chat_with_vendor')}}
                                                     </span>
+                                                    </button>
+                                                @else
+                                                    <a href="{{route('customer.auth.login')}}"
+                                                       class="btn w-100 d-block text-center web--bg-primary text-white">
+                                                        <img
+                                                            src="{{theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}"
+                                                            class="mb-1" alt="">
+                                                        <span
+                                                            class="d-none d-sm-inline-block text-capitalize">{{translate('chat_with_vendor')}}</span>
+                                                    </a>
                                                 @endif
                                             </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @else
+                                <div class="row position-relative d-flex justify-content-between">
+                                    <div class="col-9">
+                                        <a href="{{route('shopView',[0])}}" class="row d-flex ">
+                                            <div>
+                                                <img class="__inline-32" alt=""
+                                                     src="{{ getStorageImages(path:$web_config['fav_icon'], type: 'logo') }}">
+                                            </div>
+                                            <div
+                                                class="{{Session::get('direction') === "rtl" ? 'right' : 'mt-3 ml-2'}} get-view-by-onclick"
+                                                data-link="{{ route('shopView',[0]) }}">
+                                                <h2 class="font-bold __text-16px mb-0">
+                                                    {{$web_config['company_name']}}
+                                                </h2><br>
+                                            </div>
+
+                                            @if($product->added_by == 'admin' && ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate)))
+                                                <div class="{{Session::get('direction') === "rtl" ? 'right' : 'ml-3'}}">
+                                                <span class="chat-seller-info" data-toggle="tooltip"
+                                                      title="{{translate('this_shop_is_temporary_closed_or_on_vacation._You_cannot_add_product_to_cart_from_this_shop_for_now')}}">
+                                                    <img
+                                                        src="{{theme_asset(path: 'public/assets/front-end/img/info.png')}}"
+                                                        alt="i">
+                                                </span>
+                                                </div>
+                                            @endif
                                         </a>
                                     </div>
+
                                     <div class="col-12 mt-2">
                                         <div class="row d-flex justify-content-between">
                                             <div class="col-6 ">
                                                 <div
                                                     class="d-flex justify-content-center align-items-center rounded __h-79px hr-right-before">
                                                     <div class="text-center">
-                                                        <img src="{{theme_asset(path: 'public/assets/front-end/img/rating.svg')}}"
-                                                             class="mb-2" alt="">
+                                                        <img
+                                                            src="{{theme_asset(path: 'public/assets/front-end/img/rating.svg')}}"
+                                                            class="mb-2" alt="">
                                                         <div class="__text-12px text-base">
                                                             <strong>{{$totalReviews}}</strong> {{translate('reviews')}}
                                                         </div>
@@ -747,106 +859,28 @@
                                             @if (auth('customer')->id())
                                                 <button class="btn w-100 d-block text-center web--bg-primary text-white"
                                                         data-toggle="modal"
-                                                        data-target="#chatting_modal" {{ ($product->seller->shop->temporary_close || ($product->seller->shop->vacation_status && date('Y-m-d') >= date('Y-m-d', strtotime($product->seller->shop->vacation_start_date)) && date('Y-m-d') <= date('Y-m-d', strtotime($product->seller->shop->vacation_end_date)))) ? 'disabled' : '' }}>
+                                                        data-target="#chatting_modal" {{ ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate)) ? 'disabled' : '' }}>
                                                     <img class="mb-1" alt=""
-                                                        src="{{theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
+                                                         src="{{ theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
                                                     <span class="d-none d-sm-inline-block text-capitalize">
                                                         {{translate('chat_with_vendor')}}
-                                                    </span>
+                                                </span>
                                                 </button>
                                             @else
-                                                <a href="{{route('customer.auth.login')}}"
+                                                <a href="{{ route('shopView',[0]) }}"
                                                    class="btn w-100 d-block text-center web--bg-primary text-white">
-                                                    <img src="{{theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}"
-                                                        class="mb-1" alt="">
-                                                    <span class="d-none d-sm-inline-block text-capitalize">{{translate('chat_with_vendor')}}</span>
+                                                    <img class="mb-1" alt=""
+                                                         src="{{ theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
+                                                    <span class="d-none d-sm-inline-block text-capitalize">
+                                                        {{translate('chat_with_vendor')}}
+                                                </span>
                                                 </a>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                             @endif
-                        @else
-                            <div class="row position-relative d-flex justify-content-between">
-                                <div class="col-9">
-                                    <a href="{{route('shopView',[0])}}" class="row d-flex ">
-                                        <div>
-                                            <img class="__inline-32" alt=""
-                                                 src="{{ getStorageImages(path:$web_config['fav_icon'], type: 'logo') }}">
-                                        </div>
-                                        <div class="{{Session::get('direction') === "rtl" ? 'right' : 'mt-3 ml-2'}} get-view-by-onclick"
-                                             data-link="{{ route('shopView',[0]) }}">
-                                            <h2 class="font-bold __text-16px mb-0">
-                                                {{$web_config['company_name']}}
-                                            </h2><br>
-                                        </div>
-
-                                        @if($product->added_by == 'admin' && ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate)))
-                                            <div class="{{Session::get('direction') === "rtl" ? 'right' : 'ml-3'}}">
-                                                <span class="chat-seller-info" data-toggle="tooltip"
-                                                      title="{{translate('this_shop_is_temporary_closed_or_on_vacation._You_cannot_add_product_to_cart_from_this_shop_for_now')}}">
-                                                    <img src="{{theme_asset(path: 'public/assets/front-end/img/info.png')}}"
-                                                         alt="i">
-                                                </span>
-                                            </div>
-                                        @endif
-                                    </a>
-                                </div>
-
-                                <div class="col-12 mt-2">
-                                    <div class="row d-flex justify-content-between">
-                                        <div class="col-6 ">
-                                            <div
-                                                class="d-flex justify-content-center align-items-center rounded __h-79px hr-right-before">
-                                                <div class="text-center">
-                                                    <img src="{{theme_asset(path: 'public/assets/front-end/img/rating.svg')}}"
-                                                         class="mb-2" alt="">
-                                                    <div class="__text-12px text-base">
-                                                        <strong>{{$totalReviews}}</strong> {{translate('reviews')}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div
-                                                class="d-flex justify-content-center align-items-center rounded __h-79px">
-                                                <div class="text-center">
-                                                    <img src="{{theme_asset(path: 'public/assets/front-end/img/products.svg')}}"
-                                                         class="mb-2" alt="">
-                                                    <div class="__text-12px text-base">
-                                                        <strong>{{$productsForReview->total()}}</strong> {{translate('products')}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 position-static mt-3">
-                                    <div class="chat_with_seller-buttons">
-                                        @if (auth('customer')->id())
-                                            <button class="btn w-100 d-block text-center web--bg-primary text-white"
-                                                    data-toggle="modal"
-                                                    data-target="#chatting_modal" {{ ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate)) ? 'disabled' : '' }}>
-                                                <img class="mb-1" alt=""
-                                                     src="{{ theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
-                                                <span class="d-none d-sm-inline-block text-capitalize">
-                                                        {{translate('chat_with_vendor')}}
-                                                </span>
-                                            </button>
-                                        @else
-                                            <a href="{{ route('shopView',[0]) }}" class="btn w-100 d-block text-center web--bg-primary text-white">
-                                                <img class="mb-1" alt=""
-                                                     src="{{ theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
-                                                <span class="d-none d-sm-inline-block text-capitalize">
-                                                        {{translate('chat_with_vendor')}}
-                                                </span>
-                                            </a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
+                        </div>
                     @endif
 
                     <div class="pt-4 pb-3">
@@ -900,7 +934,8 @@
             </div>
         @endif
 
-        <div class="modal fade rtl text-align-direction" id="show-modal-view" tabindex="-1" role="dialog" aria-labelledby="show-modal-image"
+        <div class="modal fade rtl text-align-direction" id="show-modal-view" tabindex="-1" role="dialog"
+             aria-labelledby="show-modal-image"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
