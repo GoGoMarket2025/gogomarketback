@@ -138,6 +138,9 @@ class ProductDetailsController extends Controller
 
             $previewFileInfo = getFileInfoFromURL(url: $product?->preview_file_full_url['path']);
 
+            dump($product);
+            die();
+
             return view(VIEW_FILE_NAMES['products_details'], compact('product', 'countWishlist', 'countOrder', 'relatedProducts',
                 'dealOfTheDay', 'currentDate', 'sellerVacationStartDate', 'sellerVacationEndDate', 'sellerTemporaryClose',
                 'inHouseVacationStartDate', 'inHouseVacationEndDate', 'inHouseVacationStatus', 'inHouseTemporaryClose', 'overallRating',
