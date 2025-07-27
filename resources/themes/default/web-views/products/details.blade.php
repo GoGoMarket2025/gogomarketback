@@ -280,6 +280,10 @@
                                         @endforeach
                                     @endif
 
+                                    <?php
+                                    var_dump(json_decode($product->choice_options) );
+                                    ?>
+
                                     @foreach (json_decode($product->choice_options) as $key => $choice)
                                         <div class="row flex-start mx-0 align-items-center">
                                             <div
