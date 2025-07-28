@@ -215,11 +215,6 @@
                 @include('web-views.partials._category-wise-product', ['decimal_point_settings'=>$decimalPointSettings])
             @endforeach
         @endif
-
-        @php($companyReliability = getWebConfig(name: 'company_reliability'))
-        @if($companyReliability != null)
-            @include('web-views.partials._company-reliability')
-        @endif
     </div>
 
     <span id="direction-from-session" data-value="{{ session()->get('direction') }}"></span>
