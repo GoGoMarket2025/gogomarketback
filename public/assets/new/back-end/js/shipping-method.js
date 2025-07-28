@@ -55,7 +55,7 @@ function deleteDataWithoutForm() {
             text: getText.data("text"),
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#ff5b0a",
             cancelButtonColor: "#d33",
             cancelButtonText: getText.data("cancel"),
             confirmButtonText: getText.data("confirm"),

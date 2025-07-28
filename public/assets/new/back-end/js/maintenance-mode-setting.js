@@ -140,7 +140,7 @@ $(document).ready(function () {
                     text: $(this).data('warning'),
                     type: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
+                    confirmButtonColor: '#ff5b0a',
                     cancelButtonColor: '#d33',
                     cancelButtonText: getConfirmAndCancelButtonText.data('cancel'),
                     confirmButtonText: getConfirmAndCancelButtonText.data('confirm'),
