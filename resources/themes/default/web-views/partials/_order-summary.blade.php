@@ -119,22 +119,6 @@
                 </span>
             </div>
         </div>
-        @php($company_reliability = getWebConfig(name: 'company_reliability'))
-        @if($company_reliability != null)
-            <div class="pt-5">
-                <div class="footer-slider owl-theme owl-carousel">
-                    @foreach ($company_reliability as $key=>$value)
-                        @if ($value['status'] == 1 && !empty($value['title']))
-                            <div class="">
-                                <img class="order-summery-footer-image" alt=""
-                                     src="{{ getStorageImages(path: imagePathProcessing(imageData: $value['image'],path:'company-reliability'), type: 'source', source: theme_asset(path: 'public/assets/front-end/img').'/'.$value['item'].'.png') }}">
-                                <div class="deal-title">{{translate($value['title'])}}</div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        @endif
 
         <div class="pt-4">
             <a class="btn btn--primary btn-block proceed_to_next_button {{$cart->count() <= 0 ? 'custom-disabled' : ''}} action-checkout-function">{{translate('proceed_to_Checkout')}}</a>
