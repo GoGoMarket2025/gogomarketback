@@ -1588,6 +1588,7 @@ function cartQuantityInitialize() {
                     Swal.fire({
                         icon: "error",
                         title: $("#message-cart").data("text"),
+                        confirmButtonColor: '#ff5b0a',
                         text: $("#message-sorry-stock-limit-exceeded").data(
                             "text"
                         ),
@@ -1632,6 +1633,7 @@ function cartQuantityInitialize() {
             Swal.fire({
                 icon: "error",
                 title: $("#message-cart").data("text"),
+                confirmButtonColor: '#ff5b0a',
                 text: $("#message-sorry-stock-limit-exceeded").data("text"),
             });
             // $(".input-number").val($(".input-number").attr("max"));
@@ -1644,6 +1646,7 @@ function cartQuantityInitialize() {
             Swal.fire({
                 icon: "error",
                 title: $("#message-cart").data("text"),
+                confirmButtonColor: '#ff5b0a',
                 text: $("#message-sorry-stock-limit-exceeded").data("text"),
             });
             productContainer
