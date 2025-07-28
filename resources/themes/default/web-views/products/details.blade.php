@@ -422,7 +422,7 @@
 
                     <div class="mt-4 rtl text-align-direction">
                         <div class="px-4 pb-3 mb-3 mr-0 mr-md-2 bg-white __review-overview __rounded-10 pt-3">
-                            <ul class="nav nav-tabs nav--tabs d-flex justify-content-center mt-3"
+                            <ul class="nav nav-tabs nav--tabs d-flex justify-content-center mt-3 gap-3"
                                 role="tablist">
                                 <li class="nav-item">
                                     <h2 class="nav-link __inline-27 tab_link active" href="#overview"
