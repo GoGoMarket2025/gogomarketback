@@ -291,7 +291,7 @@ function basicFunctionalityForCartSummary() {
                 text: $(this).data("message"),
                 showCancelButton: true,
                 showConfirmButton: true,
-                confirmButtonColor: "#3085d6",
+                confirmButtonColor: "#ff5b0a",
                 cancelButtonColor: "#d33",
                 cancelButtonText: getNoWord,
                 confirmButtonText: getYesWord,

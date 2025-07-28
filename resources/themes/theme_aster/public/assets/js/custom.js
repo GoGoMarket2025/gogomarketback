@@ -1353,7 +1353,7 @@ function shopFollowAction(shop_id) {
         Swal.fire({
             title: followButton.data("titletext"),
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#ff5b0a",
             cancelButtonColor: "#d33",
             confirmButtonText: followButton.data("titletext2"),
             cancelButtonText: followButton.data("cancelbuttontext"),

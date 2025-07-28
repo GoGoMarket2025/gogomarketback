@@ -81,7 +81,7 @@ $('.banner-delete-button').on('click', function () {
         title: messageAreYouSureDeleteThis,
         text: messageYouWillNotAbleRevertThis,
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#ff5b0a',
         cancelButtonColor: '#d33',
         confirmButtonText: getYesWord,
         cancelButtonText: getNoWord,
@@ -118,7 +118,7 @@ $('.most-demanded-product-delete-button').on('click', function () {
         title: $(this).data('warning-text'),
         text:  $(this).data('text'),
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#ff5b0a',
         cancelButtonColor: '#d33',
         icon: 'warning',
         reverseButtons: true
