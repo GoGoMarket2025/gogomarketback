@@ -372,12 +372,13 @@
                 document.getElementById('longitude').value = coordinates.lng;
 
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                if (status === google.maps.GeocoderStatus.OK && results[1]) {
-                    document.getElementById('address').value = results[1].formatted_address;
+                if (status === google.maps.GeocoderStatus.OK && results[0]) {
+                    document.getElementById('address').value = results[0].formatted_address;
 
                     let systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
                     if (systemCountryRestrictStatus) {
-                    const countryObject = findCountryObject(results[1].address_components);
+                    const countryObject = findCountryObject(results[0].address_components);
+                    console.log(countryObject)
                     deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
                     }
                 }
