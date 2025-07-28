@@ -180,7 +180,7 @@ span.badge-accent:hover {
 }
 
 .custom-light-primary-color-20 {
-    background-color: var(--web-primary-20);
+    background-color: var(--web-primary);
 }
 
 .password-toggle-btn
@@ -248,7 +248,7 @@ span.badge-accent:hover {
 }
 
 .bg-white-overlay-50 {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--web-primary);
 }
 
 .min-width-160px {
