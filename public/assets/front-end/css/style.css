@@ -959,7 +959,7 @@ a {
     position: absolute;
     inset: -4px;
     border-radius: 50%;
-    border: 2px solid var(--primary-clr);
+    border: 2px solid var(--web-primary);
     /*box-shadow: 0px 4px 10px #00000040;*/
 }
 
@@ -7311,6 +7311,7 @@ span.badge-accent:hover {
     border-radius: 100px !important;
     padding: 9px 17px;
     cursor: pointer;
+    border: 1px solid var(--web-primary);
 }
 .nav--tabs li a::before,
 .nav--tabs li .tab_link::before {
@@ -7784,7 +7785,7 @@ span.badge-accent:hover {
 
 .checkbox-alphanumeric input:checked ~ label {
     transform: scale(1);
-    border-color: var(--primary-clr) !important;
+    border-color: var(--web-primary) !important;
 } /*# sourceMappingURL=style.css.map */
 
 .free-delivery-area {
