@@ -4111,7 +4111,7 @@ a {
 }
 
 .__inline-61 .owl-nav {
-    top: 40%;
+    top: 50%;
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -6758,7 +6758,7 @@ a {
     border: none;
     outline: none;
     box-shadow: none;
-    background-color: var(--primary-clr);
+    background-color: var(--web-primary);
     border-radius: 3px;
 }
 .owl-dots button.active {
