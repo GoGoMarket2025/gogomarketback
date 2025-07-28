@@ -90,7 +90,6 @@
                                         <div class="form-group col-md-6">
                                             <label for="zip">
                                                 {{translate('zip_code')}}
-                                                <span class="text-danger">*</span>
                                             </label>
                                             @if($zip_restrict_status)
                                                 <select name="zip" id="" class="form-control selectpicker"
@@ -101,7 +100,7 @@
                                                     @endforeach
                                                 </select>
                                             @else
-                                                <input class="form-control" type="text" id="zip" name="zip" required>
+                                                <input class="form-control" type="text" id="zip" name="zip">
                                             @endif
                                         </div>
                                     </div>
@@ -145,8 +144,8 @@
                                                            title="{{translate('search_your_location_here')}}" type="text"
                                                            placeholder="{{translate('search_here')}}"/>
                                                     <div class="__h-200px" id="location_map_canvas"></div>
-                                                    <button onclick="locateMe()" type="button" class="btn btn--primary" style="cursor: pointer; position: absolute; top: 10px; left: 20px; z-index: 10;">
-                                                        📍
+                                                    <button onclick="locateMe()" type="button" class="btn btn--primary mt-3" style="width: 100%">
+                                                        📍 Найти меня
                                                     </button>
                                                 </div>
                                             </div>
@@ -334,69 +333,70 @@
         </script>
         <script>
             "use strict";
-
             async function initAutocomplete() {
-                var myLatLng = {
+            var myLatLng = {
                 lat: {{$default_location?$default_location['lat']:'-33.8688'}},
                 lng: {{$default_location?$default_location['lng']:'151.2195'}}
-                };
+            };
 
-                const { Map } = await google.maps.importLibrary("maps");
-                const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-                const map = new google.maps.Map(document.getElementById("location_map_canvas"), {
+            const map = new google.maps.Map(document.getElementById("location_map_canvas"), {
                 center: myLatLng,
                 zoom: 13,
                 mapId: 'roadmap'
-                });
+            });
 
-                window.gmap = map; // сохраняем карту глобально для кнопки
-
-                var marker = new AdvancedMarkerElement({
+            const marker = new AdvancedMarkerElement({
                 map,
-                position: myLatLng,
-                });
-                marker.setMap(map);
+                position: myLatLng
+            });
 
-                var geocoder = new google.maps.Geocoder();
+            marker.setMap(map);
 
-                google.maps.event.addListener(map, 'click', function (mapsMouseEvent) {
-                var coordinates = mapsMouseEvent.latLng.toJSON();
-                var latlng = new google.maps.LatLng(coordinates.lat, coordinates.lng);
-                marker.position = { lat: coordinates.lat, lng: coordinates.lng };
+            // Глобальные переменные
+            window.gmap = map;
+            window.gmapMainMarker = marker;
+
+            const geocoder = new google.maps.Geocoder();
+
+            google.maps.event.addListener(map, 'click', function (mapsMouseEvent) {
+                const coordinates = mapsMouseEvent.latLng.toJSON();
+                const latlng = new google.maps.LatLng(coordinates.lat, coordinates.lng);
+
+                marker.position = coordinates;
                 map.panTo(latlng);
 
                 document.getElementById('latitude').value = coordinates.lat;
                 document.getElementById('longitude').value = coordinates.lng;
 
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                    if (status === google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                        document.getElementById('address').value = results[1].formatted_address;
+                if (status === google.maps.GeocoderStatus.OK && results[1]) {
+                    document.getElementById('address').value = results[1].formatted_address;
 
-                        let systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
-                        if (systemCountryRestrictStatus) {
-                        const countryObject = findCountryObject(results[1].address_components);
-                        deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address')
-                        }
+                    let systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
+                    if (systemCountryRestrictStatus) {
+                    const countryObject = findCountryObject(results[1].address_components);
+                    deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
                     }
-                    }
+                }
                 });
-                });
+            });
 
-                const input = document.getElementById("pac-input");
-                const searchBox = new google.maps.places.SearchBox(input);
-                map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+            const input = document.getElementById("pac-input");
+            const searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
-                map.addListener("bounds_changed", () => {
+            map.addListener("bounds_changed", () => {
                 searchBox.setBounds(map.getBounds());
-                });
+            });
 
-                let markers = [];
+            let markers = [];
 
-                searchBox.addListener("places_changed", () => {
+            searchBox.addListener("places_changed", () => {
                 const places = searchBox.getPlaces();
-                if (places.length == 0) return;
+                if (places.length === 0) return;
 
                 markers.forEach((m) => m.setMap(null));
                 markers = [];
@@ -404,75 +404,90 @@
                 const bounds = new google.maps.LatLngBounds();
 
                 places.forEach((place) => {
-                    if (!place.geometry || !place.geometry.location) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                    }
+                if (!place.geometry || !place.geometry.location) return;
 
-                    var mrkr = new AdvancedMarkerElement({
+                const mrkr = new AdvancedMarkerElement({
                     map,
                     title: place.name,
                     position: place.geometry.location,
-                    });
+                });
 
-                    google.maps.event.addListener(mrkr, "click", function () {
+                google.maps.event.addListener(mrkr, "click", function () {
                     document.getElementById('latitude').value = this.position.lat();
                     document.getElementById('longitude').value = this.position.lng();
-                    });
+                });
 
-                    markers.push(mrkr);
+                markers.push(mrkr);
 
-                    if (place.geometry.viewport) {
+                if (place.geometry.viewport) {
                     bounds.union(place.geometry.viewport);
-                    } else {
+                } else {
                     bounds.extend(place.geometry.location);
-                    }
+                }
                 });
 
                 map.fitBounds(bounds);
-                });
+            });
             }
 
-            // Кнопка "📍 Найти меня"
+            // 📍 Функция "Найти меня"
             function locateMe() {
-                if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                    const userLatLng = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
+            if (!navigator.geolocation) {
+                alert("Ваш браузер не поддерживает геолокацию.");
+                return;
+            }
 
-                    const map = window.gmap;
-                    if (!map) return;
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                const userLatLng = { lat, lng };
 
-                    const userMarker = new google.maps.marker.AdvancedMarkerElement({
-                        map,
-                        position: userLatLng,
-                        title: "Вы здесь"
-                    });
-
-                    map.setCenter(userLatLng);
-                    map.setZoom(15);
-                    },
-                    (err) => {
-                    // alert("Не удалось получить местоположение: " + err.message);
-                    }
-                );
-                } else {
-                // alert("Ваш браузер не поддерживает геолокацию.");
+                const map = window.gmap;
+                const marker = window.gmapMainMarker;
+                if (!map || !marker) {
+                    alert("Карта или маркер не инициализированы.");
+                    return;
                 }
+
+                marker.position = userLatLng;
+                map.setCenter(userLatLng);
+                map.setZoom(15);
+
+                document.getElementById('latitude').value = lat;
+                document.getElementById('longitude').value = lng;
+
+                const geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ location: userLatLng }, (results, status) => {
+                    console.log(results);
+
+                    if (status === "OK" && results[0]) {
+                        console.log(results[0].formatted_address);
+                    document.getElementById('address').value = results[0].formatted_address;
+
+                    const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
+                    if (systemCountryRestrictStatus) {
+                        const countryObject = findCountryObject(results[0].address_components);
+                        deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
+                    }
+                    }
+                });
+                },
+                (err) => {
+                alert("Ошибка геолокации: " + err.message);
+                }
+            );
             }
 
             function callBackFunction() {
                 initAutocomplete();
             }
 
-            // Предотвращаем отправку формы при нажатии Enter
             $(document).on("keydown", "input", function (e) {
                 if (e.which === 13) e.preventDefault();
             });
-            </script>
+        </script>
+
 
     @endif
 @endpush
