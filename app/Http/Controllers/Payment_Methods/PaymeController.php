@@ -125,7 +125,7 @@ class PaymeController extends Controller
 
         // Continue with payment gateway redirection
         $amount = round($payment_data->payment_amount * 100);
-        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};amount={$amount}";
+        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};a={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
