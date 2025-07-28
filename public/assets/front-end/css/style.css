@@ -801,10 +801,6 @@ a {
     transform: scale(0.88);
 }
 
-.widget-list-item {
-    text-transform: capitalize;
-}
-
 .widget-list-item a {
     color: #ffffff;
 }
