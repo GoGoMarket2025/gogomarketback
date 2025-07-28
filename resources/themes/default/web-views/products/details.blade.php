@@ -16,47 +16,41 @@
                         <div class="col-lg-5 col-md-4">
                             <div class="cz-product-gallery">
                                 <div class="cz-preview">
-                                    <div id="sync1" class="owl-carousel owl-theme product-thumbnail-slider">
-                                        @if($product->images!=null && json_decode($product->images)>0)
-                                            @if(json_decode($product->colors) && count($product->color_images_full_url)>0)
-                                                @foreach ($product->color_images_full_url as $key => $photo)
-                                                    @if($photo['color'] != null)
-                                                        <div
-                                                            class="product-preview-item d-flex align-items-center justify-content-center {{$key==0?'active':''}}"
-                                                            id="image{{$photo['color']}}">
-                                                            <img class="cz-image-zoom img-responsive w-100"
-                                                                 src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
-                                                                 data-zoom="{{ getStorageImages(path: $photo['image_name'], type: 'product')  }}"
-                                                                 alt="{{ translate('product') }}" width="">
-                                                            <div class="cz-image-zoom-pane"></div>
-                                                        </div>
-                                                    @else
-                                                        <div
-                                                            class="product-preview-item d-flex align-items-center justify-content-center {{$key==0?'active':''}}"
-                                                            id="image{{$key}}">
-                                                            <img class="cz-image-zoom img-responsive w-100"
-                                                                 src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
-                                                                 data-zoom="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
-                                                                 alt="{{ translate('product') }}" width="">
-                                                            <div class="cz-image-zoom-pane"></div>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            @else
-                                                @foreach ($product->images_full_url as $key => $photo)
-                                                    <div
-                                                        class="product-preview-item d-flex align-items-center justify-content-center {{$key==0?'active':''}}"
-                                                        id="image{{$key}}">
+                                <div id="sync1" class="owl-carousel owl-theme product-thumbnail-slider">
+                                    @if($product->images!=null && json_decode($product->images)>0)
+                                        @if(json_decode($product->colors) && count($product->color_images_full_url)>0)
+                                            @foreach ($product->color_images_full_url as $key => $photo)
+                                                @php
+                                                    $imageUrl = getStorageImages(path: $photo['image_name'], type: 'product');
+                                                @endphp
+                                                <div class="product-preview-item d-flex align-items-center justify-content-center {{ $key == 0 ? 'active' : '' }}" id="image{{ $photo['color'] ?? $key }}">
+                                                    <a href="{{ $imageUrl }}" data-lightbox="product-gallery-{{ $product->id }}">
                                                         <img class="cz-image-zoom img-responsive w-100"
-                                                             src="{{ getStorageImages($photo, type: 'product') }}"
-                                                             data-zoom="{{ getStorageImages(path: $photo, type: 'product') }}"
-                                                             alt="{{ translate('product') }}" width="">
-                                                        <div class="cz-image-zoom-pane"></div>
-                                                    </div>
-                                                @endforeach
-                                            @endif
+                                                            src="{{ $imageUrl }}"
+                                                            data-zoom="{{ $imageUrl }}"
+                                                            alt="{{ translate('product') }}">
+                                                    </a>
+                                                    <div class="cz-image-zoom-pane"></div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            @foreach ($product->images_full_url as $key => $photo)
+                                                @php
+                                                    $imageUrl = getStorageImages($photo, type: 'product');
+                                                @endphp
+                                                <div class="product-preview-item d-flex align-items-center justify-content-center {{ $key == 0 ? 'active' : '' }}" id="image{{ $key }}">
+                                                    <a href="{{ $imageUrl }}" data-lightbox="product-gallery-{{ $product->id }}">
+                                                        <img class="cz-image-zoom img-responsive w-100"
+                                                            src="{{ $imageUrl }}"
+                                                            data-zoom="{{ $imageUrl }}"
+                                                            alt="{{ translate('product') }}">
+                                                    </a>
+                                                    <div class="cz-image-zoom-pane"></div>
+                                                </div>
+                                            @endforeach
                                         @endif
-                                    </div>
+                                    @endif
+                                </div>
 
                                     @if($product?->preview_file_full_url['path'])
                                         <div>
