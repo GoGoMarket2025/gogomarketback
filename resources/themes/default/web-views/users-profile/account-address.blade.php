@@ -315,6 +315,7 @@
         const deliveryRestrictedCountries = @json($countriesName);
         function deliveryRestrictedCountriesCheck(countryOrCode, elementSelector, inputElement) {
             const foundIndex = deliveryRestrictedCountries.findIndex(country => country.toLowerCase() === countryOrCode.toLowerCase());
+            console.log(foundIndex)
             if (foundIndex !== -1) {
                 $(elementSelector).removeClass('map-area-alert-danger');
                 $(inputElement).parent().find('.map-address-alert').removeClass('opacity-100').addClass('opacity-0')
@@ -469,6 +470,7 @@
                     const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
                     if (systemCountryRestrictStatus) {
                         const countryObject = findCountryObject(results[0].address_components);
+                        console.log(countryObject);
                         deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
                     }
                     }
