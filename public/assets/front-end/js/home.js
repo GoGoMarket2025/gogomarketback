@@ -256,13 +256,11 @@ $(document).ready(function () {
         itemCount > 1 ? owlNav.show() : owlNav.hide();
     }
 
-    let isLoopHeroSlider = $(".hero-slider").data('loop')?.toString === '1';
-
     $(".hero-slider").owlCarousel({
-        loop: isLoopHeroSlider,
-        autoplay: isLoopHeroSlider,
+        loop: true,
+        autoplay: true,
         margin: 20,
-        nav: isLoopHeroSlider,
+        nav: true,
         navText:
             directionFromSession === "rtl"
                 ? [
@@ -273,8 +271,8 @@ $(document).ready(function () {
                       "<i class='czi-arrow-left'></i>",
                       "<i class='czi-arrow-right'></i>",
                   ],
-        dots: isLoopHeroSlider,
-        autoplayHoverPause: isLoopHeroSlider,
+        dots: true,
+        autoplayHoverPause: true,
         autoplaySpeed: 1500,
         slideTransition: "linear",
         items: 1,
