@@ -47,6 +47,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     // This will result in: /api/v1/payme/pay
     Route::any('payme/pay', [PaymeController::class, 'handle']);
 
+    Route::any('click/handle', [ClickController::class, 'handle']);
     Route::any('click/prepare', [ClickController::class, 'prepare']);
     Route::any('click/complete', [ClickController::class, 'complete']);
 

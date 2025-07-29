@@ -141,6 +141,13 @@ class ClickController extends Controller
         return redirect()->away($click_url);
     }
 
+    public function handle(Request $request)
+    {
+        $data = $request->all();
+        Log::warning('CLICK Handle Request:', $data);
+
+        return "here";
+    }
     public function prepare(Request $request): JsonResponse
     {
         $data = $request->all();
