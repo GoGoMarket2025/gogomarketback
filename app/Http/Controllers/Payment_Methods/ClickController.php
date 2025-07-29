@@ -143,8 +143,9 @@ class ClickController extends Controller
 
     public function prepare(Request $request): JsonResponse
     {
-        Log::warning('CLICK Prepare Request:', $request->all());
-        if (!$this->isValidSignature($request->all())) {
+        $data = $request->all();
+        Log::warning('CLICK Prepare Request:', $data);
+        if (!$this->isValidSignature($data)) {
             return $this->clickError(-1, 'SIGN CHECK FAILED!');
         }
 
