@@ -141,9 +141,10 @@ class ClickController extends Controller
         return redirect()->away($click_url);
     }
 
-    private function prepare(Request $request): JsonResponse
+    public function prepare(Request $request): JsonResponse
     {
-        if (!$this->isValidSignature($request)) {
+        Log::info('CLICK Prepare Request:', $request->all());
+        if (!$this->isValidSignature($request->all())) {
             return $this->clickError(-1, 'SIGN CHECK FAILED!');
         }
 
@@ -171,7 +172,7 @@ class ClickController extends Controller
         ]);
     }
 
-    private function complete(Request $request): JsonResponse
+    public function complete(Request $request): JsonResponse
     {
         $orderId = $request->get('merchant_trans_id');
         $clickTransId = $request->get('click_trans_id');
@@ -237,7 +238,7 @@ class ClickController extends Controller
         string $signTime
     ): string
     {
-        $secretKey = config('click.secret_key');
+        $secretKey = $this->config_values->secret_key;
 
         $data = [
             $clickTransId,
