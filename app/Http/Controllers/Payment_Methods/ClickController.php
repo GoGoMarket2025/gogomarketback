@@ -144,7 +144,9 @@ class ClickController extends Controller
     public function handle(Request $request)
     {
         $data = $request->all();
-        Log::warning('CLICK Handle Request:', $data);
+        Log::warning('CLICK warning Handle Request:', $data);
+        Log::debug('CLICK debug Handle Request:', $data);
+        Log::info('CLICK info Handle Request:', $data);
 
         return "here";
     }
