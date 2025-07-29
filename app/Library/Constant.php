@@ -530,6 +530,7 @@ const GATEWAYS_PAYMENT_METHODS = [
     ['key' => 'stripe', 'value' => 'Stripe'],
     ['key' => 'paypal', 'value' => 'PayPal'],
     ['key' => 'payme', 'value' => 'Payme'],
+    ['key' => 'click', 'value' => 'Click'],
     ['key' => 'razor_pay', 'value' => 'Razor Pay'],
     ['key' => 'paystack', 'value' => 'Paystack'],
     ['key' => 'senang_pay', 'value' => 'Senang Pay'],

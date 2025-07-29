@@ -46,6 +46,9 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     // This will result in: /api/v1/payme/pay
     Route::any('payme/pay', [PaymeController::class, 'handle']);
 
+    Route::any('click/prepare', [PaymeController::class, 'handle']);
+    Route::any('click/complete', [PaymeController::class, 'handle']);
+
     Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
         Route::controller(PassportAuthController::class)->group(function () {
             Route::get('logout', 'logout')->middleware('auth:api');
