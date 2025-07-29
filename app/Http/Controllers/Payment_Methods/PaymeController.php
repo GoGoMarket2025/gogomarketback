@@ -10,17 +10,11 @@ use App\Models\ShippingAddress;
 use App\Traits\Processor;
 use App\Utils\CartManager;
 use App\Utils\OrderManager;
-use Illuminate\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Symfony\Component\VarDumper\VarDumper;
 
 class PaymeController extends Controller
 {
