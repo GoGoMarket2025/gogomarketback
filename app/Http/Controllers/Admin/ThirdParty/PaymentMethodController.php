@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Symfony\Component\VarDumper\VarDumper;
 
 class PaymentMethodController extends BaseController
 {
@@ -175,6 +176,7 @@ class PaymentMethodController extends BaseController
 
     private function checkMinimumOneDigitalPayment(): bool
     {
+
         $paymentGatewayStatus = config('get_payment_publish_status') ?? 0;
 
         $gatewayKeys = [];

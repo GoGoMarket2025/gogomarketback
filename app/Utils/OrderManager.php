@@ -743,57 +743,57 @@ class OrderManager
             }
         }
 
-        try {
-            $emailServices_smtp = getWebConfig(name: 'mail_config');
-            if ($emailServices_smtp['status'] == 0) {
-                $emailServices_smtp = getWebConfig(name: 'mail_config_sendgrid');
-            }
-            if ($emailServices_smtp['status'] == 1) {
-                if ($isGuestUser) {
-                    $offline_user = ShippingAddress::where('id', $address_id)->first();
-                    if (!$offline_user) {
-                        $offline_user = ShippingAddress::find($billing_address_id);
-                    }
-                    $email = $offline_user['email'];
-                    $userName = $offline_user['contact_person_name'];
-                } else {
-                    if ($req) {
-                        $getLoggedUser = User::find($getCustomerID);
-                        $email = $getLoggedUser['email'];
-                        $userName = $getLoggedUser['f_name'];
-                    } else {
-                        $email = $user['email'];
-                        $userName = $user['f_name'];
-                    }
-                }
-                $data = [
-                    'subject' => translate('order_placed'),
-                    'title' => translate('order_placed'),
-                    'userName' => $userName,
-                    'userType' => 'customer',
-                    'templateName' => 'order-place',
-                    'order' => $order,
-                    'orderId' => $order_id,
-                    'shopName' => $seller?->shop?->name ?? getWebConfig('company_name'),
-                    'shopId' => $seller?->shop?->id ?? 0,
-                    'attachmentPath' => self::storeInvoice($order_id),
-                ];
-                event(new OrderPlacedEvent(email: $email, data: $data));
-                $dataForVendor = [
-                    'subject' => translate('new_order_received'),
-                    'title' => translate('new_order_received'),
-                    'userType' => $seller_data->seller_is == 'admin' ? 'admin' : 'vendor',
-                    'templateName' => 'order-received',
-                    'order' => $order,
-                    'orderId' => $order_id,
-                    'vendorName' => $seller?->f_name,
-                    'adminName' => $seller?->name,
-                ];
-                event(new OrderPlacedEvent(email: $seller->email, data: $dataForVendor));
-            }
-        } catch (\Exception $exception) {
-
-        }
+//        try {
+//            $emailServices_smtp = getWebConfig(name: 'mail_config');
+//            if ($emailServices_smtp['status'] == 0) {
+//                $emailServices_smtp = getWebConfig(name: 'mail_config_sendgrid');
+//            }
+//            if ($emailServices_smtp['status'] == 1) {
+//                if ($isGuestUser) {
+//                    $offline_user = ShippingAddress::where('id', $address_id)->first();
+//                    if (!$offline_user) {
+//                        $offline_user = ShippingAddress::find($billing_address_id);
+//                    }
+//                    $email = $offline_user['email'];
+//                    $userName = $offline_user['contact_person_name'];
+//                } else {
+//                    if ($req) {
+//                        $getLoggedUser = User::find($getCustomerID);
+//                        $email = $getLoggedUser['email'];
+//                        $userName = $getLoggedUser['f_name'];
+//                    } else {
+//                        $email = $user['email'];
+//                        $userName = $user['f_name'];
+//                    }
+//                }
+//                $data = [
+//                    'subject' => translate('order_placed'),
+//                    'title' => translate('order_placed'),
+//                    'userName' => $userName,
+//                    'userType' => 'customer',
+//                    'templateName' => 'order-place',
+//                    'order' => $order,
+//                    'orderId' => $order_id,
+//                    'shopName' => $seller?->shop?->name ?? getWebConfig('company_name'),
+//                    'shopId' => $seller?->shop?->id ?? 0,
+//                    'attachmentPath' => self::storeInvoice($order_id),
+//                ];
+//                event(new OrderPlacedEvent(email: $email, data: $data));
+//                $dataForVendor = [
+//                    'subject' => translate('new_order_received'),
+//                    'title' => translate('new_order_received'),
+//                    'userType' => $seller_data->seller_is == 'admin' ? 'admin' : 'vendor',
+//                    'templateName' => 'order-received',
+//                    'order' => $order,
+//                    'orderId' => $order_id,
+//                    'vendorName' => $seller?->f_name,
+//                    'adminName' => $seller?->name,
+//                ];
+//                event(new OrderPlacedEvent(email: $seller->email, data: $dataForVendor));
+//            }
+//        } catch (\Exception $exception) {
+//
+//        }
 
         return $order_id;
     }
