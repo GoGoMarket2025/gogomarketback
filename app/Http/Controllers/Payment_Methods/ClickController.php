@@ -136,18 +136,6 @@ class ClickController extends Controller
         return redirect()->away($click_url);
     }
 
-    public function handle(Request $request)
-    {
-        $data = $request->all();
-        Log::warning('CLICK warning Handle Request:', $data);
-        Log::debug('CLICK debug Handle Request:', $data);
-        Log::info('CLICK info Handle Request:', $data);
-
-        return response()->json([
-            'message' => 'here'
-        ]);
-    }
-
     public function prepare(Request $request): JsonResponse
     {
 
@@ -167,7 +155,7 @@ class ClickController extends Controller
 
         if (!$order) {
             Log::warning('Incorrect order', $data);
-            return $this->clickError(-5, 'User does not exist');
+            return $this->clickError(-5, 'Order does not exist');
         }
 
         if ((int)$amount !== (int)($order->payment_amount)) {
@@ -186,7 +174,7 @@ class ClickController extends Controller
 
     public function complete(Request $request): JsonResponse
     {
-        Log::warning('CLICK Complete Request:', $request);
+        Log::warning('CLICK Complete Request:', $request->all());
 
         $orderId = $request->get('merchant_trans_id');
         $clickTransId = $request->get('click_trans_id');
@@ -272,6 +260,8 @@ class ClickController extends Controller
 
     protected function isValidSignature(array $data): bool
     {
+        Log::warning("generateSignString");
+
         $generated = $this->generateSignString(
             $data['click_trans_id'],
             $data['service_id'],
