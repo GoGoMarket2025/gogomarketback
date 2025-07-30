@@ -156,7 +156,7 @@ class ClickController extends Controller
         Log::warning("Order - $order");
 
         if (!$order) {
-            Log::warning('Incorrect order', $data);
+            Log::warning('Incorrect order');
             return $this->clickError(-5, 'Order does not exist');
         }
 
