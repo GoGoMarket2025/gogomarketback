@@ -219,14 +219,13 @@ class ClickController extends Controller
                 'status' => $status ? 'success' : 'canceled'
             ]
         );
-        Log::warning($status);
 
         if ($status) {
-            $order->payment_status = 'paid';
-            $order->save();
+            $o->payment_status = 'paid';
+            $o->save();
         } else {
-            $order->payment_status = 'unpaid';
-            $order->save();
+            $o->payment_status = 'unpaid';
+            $o->save();
         }
 
         return response()->json([
