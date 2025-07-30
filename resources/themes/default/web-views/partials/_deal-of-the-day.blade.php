@@ -46,7 +46,7 @@
                                     <h3 class="font-semibold pt-1 h6">
                                         {{ Str::limit($dealOfTheDay->product['name'], 80) }}
                                     </h3>
-                                    <h4 class="mb-4 pt-1 d-flex flex-wrap justify-content-center align-items-center text-center gap-8 lh-1 letter-spacing-0">
+                                    <h4 class="mb-4 pt-1 d-flex flex-column flex-wrap justify-content-center align-items-center text-center gap-8 lh-1 letter-spacing-0">
 
                                         @if(getProductPriceByType(product: $dealOfTheDay?->product, type: 'discount', result: 'value') > 0)
                                             <del class="fs-14 font-semibold __color-9B9B9B">
@@ -116,7 +116,7 @@
                                     <h3 class="font-semibold pt-1 h6">
                                         {{ Str::limit($recommendedProduct['name'],30) }}
                                     </h3>
-                                    <h4 class="mb-4 pt-1 d-flex flex-wrap justify-content-center align-items-center text-center gap-8 lh-1 letter-spacing-0">
+                                    <h4 class="mb-4 pt-1 d-flex flex-column flex-wrap justify-content-center align-items-center text-center gap-8 lh-1 letter-spacing-0">
                                         @if($recommendedProduct->discount > 0)
                                             <del class="__text-12px __color-9B9B9B">
                                                 {{ webCurrencyConverter(amount: $recommendedProduct->unit_price) }}
