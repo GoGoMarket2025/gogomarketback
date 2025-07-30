@@ -270,6 +270,6 @@ class ClickController extends Controller
         );
         Log::warning($generated . " - " . $data['sign_string']);
 
-        return $generated === $data['sign_string'];
+        return $generated == $data['sign_string'];
     }
 }
