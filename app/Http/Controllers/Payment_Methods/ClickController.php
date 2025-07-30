@@ -150,32 +150,32 @@ class ClickController extends Controller
     {
         $data = $request->all();
         Log::warning('CLICK Prepare Request:', $data);
-//        if (!$this->isValidSignature($data)) {
-//            return $this->clickError(-1, 'SIGN CHECK FAILED!');
-//        }
+        if (!$this->isValidSignature($data)) {
+            return $this->clickError(-1, 'SIGN CHECK FAILED!');
+        }
 
-//        $orderId = $request->get('merchant_trans_id');
-//        $amount = $request->get('amount');
-//
-//        $order = $this->payment::where('is_paid', 0)
-//            ->whereJsonContains('additional_data->click_order_reference', $orderId)
-//            ->first();
-//
-//        if (!$order) {
-//            return $this->clickError(-5, 'User does not exist');
-//        }
-//
-//        if ((int)$amount !== (int)($order->order_amount)) {
-//            return $this->clickError(-2, 'Incorrect parameter amount');
-//        }
-//
-//        return response()->json([
-//            'click_trans_id' => $request->get('click_trans_id'),
-//            'merchant_trans_id' => $orderId,
-//            'merchant_prepare_id' => uniqid(),
-//            'error' => 0,
-//            'error_note' => 'Success'
-//        ]);
+        $orderId = $request->get('merchant_trans_id');
+        $amount = $request->get('amount');
+
+        $order = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->click_order_reference', $orderId)
+            ->first();
+
+        if (!$order) {
+            return $this->clickError(-5, 'User does not exist');
+        }
+
+        if ((int)$amount !== (int)($order->order_amount)) {
+            return $this->clickError(-2, 'Incorrect parameter amount');
+        }
+
+        return response()->json([
+            'click_trans_id' => $request->get('click_trans_id'),
+            'merchant_trans_id' => $orderId,
+            'merchant_prepare_id' => uniqid(),
+            'error' => 0,
+            'error_note' => 'Success'
+        ]);
     }
 
     public function complete(Request $request): JsonResponse
