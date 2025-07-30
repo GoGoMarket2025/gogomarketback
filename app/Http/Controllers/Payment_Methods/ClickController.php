@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Payment_Methods;
 use App\Models\Cart;
 use App\Models\Currency;
 use App\Models\Order;
+use App\Models\OrderTransaction;
 use App\Models\PaymentRequest;
 use App\Models\ShippingAddress;
 use App\Traits\Processor;
@@ -146,8 +147,10 @@ class ClickController extends Controller
             'message' => 'here'
         ]);
     }
+
     public function prepare(Request $request): JsonResponse
     {
+
         $data = $request->all();
         Log::warning('CLICK Prepare Request:', $data);
         if (!$this->isValidSignature($data)) {
@@ -180,13 +183,18 @@ class ClickController extends Controller
 
     public function complete(Request $request): JsonResponse
     {
+        Log::warning('CLICK Complete Request:', $request);
+
         $orderId = $request->get('merchant_trans_id');
         $clickTransId = $request->get('click_trans_id');
         $merchantPrepareId = $request->get('merchant_prepare_id');
         $amount = $request->get('amount');
         $status = $request->get('error') == 0;
 
-        $order = Order::where('id', $orderId)->first();
+        $order = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->click_order_reference', $orderId)
+            ->first();
+
         if (!$order) {
             return $this->clickError(-5, 'User does not exist');
         }
@@ -244,7 +252,7 @@ class ClickController extends Controller
         string $signTime
     ): string
     {
-        $secretKey = $this->config_values->secret_key;
+        $secretKey = $this->config_values->merchant_key;
 
         $data = [
             $clickTransId,
