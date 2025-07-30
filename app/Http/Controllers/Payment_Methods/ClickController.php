@@ -154,6 +154,7 @@ class ClickController extends Controller
         $data = $request->all();
         Log::warning('CLICK Prepare Request:', $data);
         if (!$this->isValidSignature($data)) {
+            Log::warning("SIGN CHECK FAILED!");
             return $this->clickError(-1, 'SIGN CHECK FAILED!');
         }
 
