@@ -2404,7 +2404,7 @@ a {
 }
 
 .__inline-9 .widget-list-link:hover {
-    color: #999898 !important;
+    text-decoration: underline;
 }
 
 .__inline-9 .subscribe-border {
