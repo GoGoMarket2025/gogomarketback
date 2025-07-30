@@ -215,7 +215,7 @@ class ClickController extends Controller
                 'seller_id' => $o->seller_id,
                 'seller_is' => $o->seller_is,
                 'payment_method' => 'click',
-                'order_amount' => $o->order_amount,
+                'order_amount' => $o->payment_amount,
                 'status' => $status ? 'success' : 'canceled'
             ]
         );
