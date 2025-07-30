@@ -24,7 +24,7 @@
                         <div class="row pb-1">
                             <div class="col-md-6">
                                 <input type="hidden" name="id" value="{{$shippingAddress->id}}">
-                                <ul class="donate-now d-flex gap-2">
+                                <ul class="donate-now d-flex gap-2 flex-wrap">
                                     <li class="address_type_li">
                                         <input type="radio" class="address_type" id="a25" name="addressAs" value="permanent"  {{ $shippingAddress->address_type == 'permanent' ? 'checked' : ''}} />
                                         <label for="a25" class="component">{{translate('permanent')}}</label>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-6">
                                 <input type="hidden" id="is_billing" value="{{$shippingAddress->is_billing}}">
-                                <ul class="donate-now d-flex gap-2">
+                                <ul class="donate-now d-flex gap-2 flex-wrap">
                                     <li class="address_type_bl">
                                         <input type="radio" class="bill_type" id="b25" name="is_billing" value="0"  {{ $shippingAddress->is_billing == '0' ? 'checked' : ''}} />
                                         <label for="b25" class="component">{{translate('shipping')}}</label>
