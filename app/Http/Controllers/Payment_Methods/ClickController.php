@@ -153,17 +153,17 @@ class ClickController extends Controller
             ->whereJsonContains('additional_data->click_order_reference', $orderId)
             ->first();
 
-        Log::warning("Order - $order");
-
         if (!$order) {
             Log::warning('Incorrect order');
             return $this->clickError(-5, 'Order does not exist');
         }
+        Log::warning("1");
 
         if ((int)$amount !== (int)($order->payment_amount)) {
             Log::warning('Incorrect amount');
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
+        Log::warning("2");
 
         return response()->json([
             'click_trans_id' => $request->get('click_trans_id'),
