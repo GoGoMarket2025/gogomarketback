@@ -161,7 +161,7 @@ class ClickController extends Controller
         }
 
         if ((int)$amount !== (int)($order->payment_amount)) {
-            Log::warning('Incorrect amount', $data);
+            Log::warning('Incorrect amount');
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
 
