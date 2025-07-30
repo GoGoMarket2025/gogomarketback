@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
     <title>@yield('title')</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ dynamicAsset(path: 'public/assets/back-end/libs/bootstrap-5/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ dynamicAsset(path: 'public/assets/modules/payment/mercado_pogo/css/index.css') }}">
     <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/jquery.js') }}"></script>

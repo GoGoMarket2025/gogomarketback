@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <title>{{ translate('invoice') }}</title>
         <meta http-equiv="Content-Type" content="text/html;"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1">
         <style>
             @font-face {
                 font-family: 'Inter';

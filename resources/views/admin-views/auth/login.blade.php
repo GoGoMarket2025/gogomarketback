@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="_token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1, shrink-to-fit=no">
     <title>{{ translate($role) }} | {{ translate('login') }}</title>
     <link rel="shortcut icon" href="{{ getStorageImages(path: getWebConfig(name: 'company_fav_icon'), type:'backend-logo') }}">
 
