@@ -193,11 +193,15 @@ class ClickController extends Controller
             ->whereJsonContains('additional_data->click_order_reference', $orderId)
             ->first();
 
+        Log::warning($order);
+
+
         if (!$order) {
-            return $this->clickError(-5, 'User does not exist');
+            return $this->clickError(-5, 'Order does not exist');
         }
 
-        if ((int)$amount !== (int)($order->order_amount * 100)) {
+        if (intval($amount) !== intval($order->payment_amount)) {
+            Log::warning('Incorrect amount');
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
 
