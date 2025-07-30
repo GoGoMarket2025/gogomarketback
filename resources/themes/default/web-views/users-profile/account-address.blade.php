@@ -25,7 +25,7 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <ul class="donate-now d-flex gap-2">
+                                    <ul class="donate-now d-flex gap-2 flex-wrap">
                                         <li>
                                             <input type="radio" id="a25" name="addressAs" value="permanent"/>
                                             <label for="a25" class="component">{{translate('permanent')}}</label>
@@ -44,7 +44,7 @@
 
                                 <div class="col-md-6 d-flex">
 
-                                    <ul class="donate-now d-flex gap-2">
+                                    <ul class="donate-now d-flex gap-2 flex-wrap">
                                         <li>
                                             <input type="radio" name="is_billing" id="b25" value="0" checked/>
                                             <label for="b25" class="billing_component">{{translate('shipping')}}</label>
