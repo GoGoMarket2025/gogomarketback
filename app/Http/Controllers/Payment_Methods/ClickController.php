@@ -150,7 +150,7 @@ class ClickController extends Controller
         $amount = $request->get('amount');
 
         $order = $this->payment::where('is_paid', 0)
-            ->whereJsonContains('additional_data->payme_order_reference', $orderId)
+            ->whereJsonContains('additional_data->click_order_reference', $orderId)
             ->first();
 
         Log::warning("Order - $order");
