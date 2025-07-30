@@ -165,10 +165,12 @@ class ClickController extends Controller
             ->first();
 
         if (!$order) {
+            Log::warning('Incorrect order', $data);
             return $this->clickError(-5, 'User does not exist');
         }
 
-        if ((int)$amount !== (int)($order->order_amount)) {
+        if ((int)$amount !== (int)($order->payment_amount)) {
+            Log::warning('Incorrect amount', $data);
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
 
