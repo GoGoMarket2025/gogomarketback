@@ -157,18 +157,23 @@ class ClickController extends Controller
             Log::warning('Incorrect order');
             return $this->clickError(-5, 'Order does not exist');
         }
-        Log::warning("1");
 
         if (intval($amount) !== intval($order->payment_amount)) {
             Log::warning('Incorrect amount');
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
-        Log::warning("2");
+
+        $additionalData = json_decode($order->additional_data, true);
+        $additionalData['click_trans_id'] = $request->get('click_trans_id');
+        $additionalData['click_paydoc_id'] = $request->get('click_paydoc_id');
+        $order->additional_data = json_encode($additionalData);
+        $order->save();
+
 
         return response()->json([
             'click_trans_id' => $request->get('click_trans_id'),
             'merchant_trans_id' => $orderId,
-            'merchant_prepare_id' => uniqid(),
+            'merchant_prepare_id' => $order->id,
             'error' => 0,
             'error_note' => 'Success'
         ]);
