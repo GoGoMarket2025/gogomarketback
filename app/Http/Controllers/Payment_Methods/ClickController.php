@@ -88,7 +88,7 @@ class ClickController extends Controller
         $orderIds = [];
         foreach ($cartGroupIds as $groupId) {
             $data = [
-                'payment_method' => 'cash_on_delivery',
+                'payment_method' => 'click',
                 'order_status' => 'pending',
                 'payment_status' => 'unpaid',
                 'transaction_ref' => '',
