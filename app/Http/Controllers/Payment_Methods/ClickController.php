@@ -260,8 +260,6 @@ class ClickController extends Controller
 
     protected function isValidSignature(array $data): bool
     {
-        Log::warning("generateSignString");
-
         $generated = $this->generateSignString(
             $data['click_trans_id'],
             $data['service_id'],
@@ -270,6 +268,7 @@ class ClickController extends Controller
             $data['action'],
             $data['sign_time']
         );
+        Log::warning($generated . " - " . $data['sign_string']);
 
         return $generated === $data['sign_string'];
     }
