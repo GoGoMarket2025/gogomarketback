@@ -149,7 +149,7 @@ class ClickController extends Controller
         $orderId = $request->get('merchant_trans_id');
         $amount = $request->get('amount');
 
-        Log::warning("Amout", $amount);
+        Log::warning("Amout - {$amount}" );
 
 
         $order = $this->payment::where('is_paid', 0)
