@@ -205,13 +205,15 @@ class ClickController extends Controller
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
 
+        $o = \App\Models\Order::where('order_group_id', $orderId)->first();
+
         $transaction = OrderTransaction::firstOrCreate(
             ['transaction_id' => $clickTransId],
             [
                 'order_id' => $order->id,
-                'customer_id' => $order->customer_id,
-                'seller_id' => $order->seller_id,
-                'seller_is' => $order->seller_is,
+                'customer_id' => $o->customer_id,
+                'seller_id' => $o->seller_id,
+                'seller_is' => $o->seller_is,
                 'payment_method' => 'click',
                 'order_amount' => $order->order_amount,
                 'status' => $status ? 'success' : 'canceled'
