@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payment_Methods\ClickController;
 use App\Http\Controllers\Payment_Methods\PaymeController;
 use App\Http\Controllers\RestAPI\v1\auth\CustomerAPIAuthController;
 use App\Http\Controllers\RestAPI\v1\auth\EmailVerificationController;
@@ -45,6 +46,10 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
     // This will result in: /api/v1/payme/pay
     Route::any('payme/pay', [PaymeController::class, 'handle']);
+
+    Route::any('click/handle', [ClickController::class, 'handle']);
+    Route::any('click/prepare', [ClickController::class, 'prepare']);
+    Route::any('click/complete', [ClickController::class, 'complete']);
 
     Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
         Route::controller(PassportAuthController::class)->group(function () {

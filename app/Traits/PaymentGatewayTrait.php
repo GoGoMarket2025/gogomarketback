@@ -12,6 +12,9 @@ trait PaymentGatewayTrait
             "payme" => [
                 "UZS" => "Uzbekistani Som",
             ],
+            "click" => [
+                "UZS" => "Uzbekistani Som",
+            ],
             "amazon_pay" => [
                 "USD" => "United States Dollar",
                 "GBP" => "Pound Sterling",

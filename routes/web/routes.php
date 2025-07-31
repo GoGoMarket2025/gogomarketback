@@ -10,6 +10,7 @@ use App\Http\Controllers\Customer\Auth\RegisterController;
 use App\Http\Controllers\Customer\Auth\SocialAuthController;
 use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\SystemController;
+use App\Http\Controllers\Payment_Methods\ClickController;
 use App\Http\Controllers\Payment_Methods\PaymeController;
 use App\Http\Controllers\Payment_Methods\PaymeMerchantController;
 use App\Http\Controllers\Web\CartController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\Web\ShopViewController;
 use App\Http\Controllers\Web\UserProfileController;
 use App\Http\Controllers\Web\UserWalletController;
 use App\Http\Controllers\Web\WebController;
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 use App\Enums\ViewPaths\Web\Review;
 use App\Enums\ViewPaths\Web\UserLoyalty;
@@ -397,11 +399,22 @@ if (!$isGatewayPublished) {
         Route::group(['prefix' => 'payme', 'as' => 'payme.'], function () {
             Route::get('pay', [PaymeController::class, 'payment']);
             Route::any('success', [PaymeController::class, 'success'])->name('success')
-                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+                ->withoutMiddleware([VerifyCsrfToken::class]);
             Route::any('failed', [PaymeController::class, 'failed'])->name('failed')
-                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+                ->withoutMiddleware([VerifyCsrfToken::class]);
             Route::any('canceled', [PaymeController::class, 'canceled'])->name('canceled')
-                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+                ->withoutMiddleware([VerifyCsrfToken::class]);
+        });
+
+        //Click
+        Route::group(['prefix' => 'click', 'as' => 'click.'], function () {
+            Route::get('pay', [ClickController::class, 'payment']);
+            Route::any('success', [ClickController::class, 'success'])->name('success')
+                ->withoutMiddleware([VerifyCsrfToken::class]);
+            Route::any('failed', [ClickController::class, 'failed'])->name('failed')
+                ->withoutMiddleware([VerifyCsrfToken::class]);
+            Route::any('canceled', [ClickController::class, 'canceled'])->name('canceled')
+                ->withoutMiddleware([VerifyCsrfToken::class]);
         });
 
 
