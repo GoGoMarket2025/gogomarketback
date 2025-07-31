@@ -10,6 +10,7 @@ use App\Models\PaymentRequest;
 use App\Models\ShippingAddress;
 use App\Traits\Processor;
 use App\Utils\CartManager;
+use App\Utils\Helpers;
 use App\Utils\OrderManager;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -84,11 +85,12 @@ class ClickController extends Controller
         }
 
         $getUniqueId = OrderManager::generateUniqueOrderID();
+        $user = Helpers::getCustomerInformation($request);
 
         $orderIds = [];
         foreach ($cartGroupIds as $groupId) {
             $data = [
-                'payment_method' => 'click',
+                'payment_method' => 'click_method',
                 'order_status' => 'pending',
                 'payment_status' => 'unpaid',
                 'transaction_ref' => '',

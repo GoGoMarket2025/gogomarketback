@@ -86,7 +86,7 @@ class PaymeController extends Controller
         $orderIds = [];
         foreach ($cartGroupIds as $groupId) {
             $data = [
-                'payment_method' => 'cash_on_delivery',
+                'payment_method' => 'payme_method',
                 'order_status' => 'pending',
                 'payment_status' => 'unpaid',
                 'transaction_ref' => '',
