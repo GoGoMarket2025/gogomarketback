@@ -39,7 +39,7 @@
                                                 </span>
                                             </div>
                                             <ul class="list-unstyled list-inline-dot fs-12 mb-0">
-                                                <li class="mb-0">{{ $rating_count }} {{('reviews')}} </li>
+                                                <li class="mb-0">{{translate('reviews')}}: {{ $rating_count }}  </li>
                                             </ul>
                                         </div>
 
@@ -83,7 +83,7 @@
                                                 </span>
                                             </div>
                                             <ul class="list-unstyled list-inline-dot fs-12 mb-0">
-                                                <li class="mb-0">{{$rating_count}} {{('reviews')}} </li>
+                                                <li class="mb-0">{{translate('reviews')}}: {{$rating_count}}  </li>
                                             </ul>
                                         </div>
 

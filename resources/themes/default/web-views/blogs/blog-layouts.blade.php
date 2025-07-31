@@ -13,7 +13,7 @@
     <meta name="baidu-site-verification" content="{{getWebConfig('baidu_webmaster_code')}}">
     <meta name="yandex-verification" content="{{getWebConfig('yandex_webmaster_code')}}">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ $web_config['fav_icon']['path'] }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ $web_config['fav_icon']['path'] }}">
     <link rel="stylesheet" media="screen" href="{{ theme_asset(path: 'public/assets/front-end/vendor/simplebar/dist/simplebar.min.css') }}">

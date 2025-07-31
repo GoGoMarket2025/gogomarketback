@@ -869,7 +869,6 @@ a {
 }
 
 .__auth-dropdown {
-    max-width: 150px;
     min-width: 0 !important;
 }
 
@@ -1750,7 +1749,6 @@ a {
 
 .__account-address .modal-header {
     justify-content: center;
-    text-transform: capitalize;
 }
 
 .__account-address .cz-sidebar-body h3:hover + .divider-role {
@@ -1820,22 +1818,15 @@ a {
 }
 
 .__account-address .donate-now li {
-    float: left;
-    width: 100px;
-    height: 40px;
-    position: relative;
-    padding: 22px;
-    text-align: center;
+    display: inline-flex;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 42px;
+
 }
 
 .__account-address .donate-now label,
 .__account-address .donate-now input {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     border-radius: 5px;
 }
 
@@ -1851,7 +1842,7 @@ a {
 }
 
 .__account-address .donate-now label {
-    padding: 5px;
+    padding: 5px 10px;
     border: 1px solid #ccc;
     cursor: pointer;
     z-index: 90;
@@ -2404,7 +2395,7 @@ a {
 }
 
 .__inline-9 .widget-list-link:hover {
-    color: #999898 !important;
+    text-decoration: underline;
 }
 
 .__inline-9 .subscribe-border {

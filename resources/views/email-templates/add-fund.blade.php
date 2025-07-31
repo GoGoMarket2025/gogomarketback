@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ translate('Add_Fund_Transaction_Status') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1">
     <style>
 
         @import url('https://fonts.googleapis.com/css?family=Helvetica:700,400');
