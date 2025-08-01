@@ -125,7 +125,7 @@ class UzumController extends Controller
         $checkOutUrl = $this->config_values->checkout_url;
         $terminalId = $this->config_values->terminal_id;
         $apiKey = $this->config_values->api_key;
-        $amount = round($payment_data->payment_amount);
+        $amount = round($payment_data->payment_amount * 100);
 
 
         // Optional: define base URI from .env or config
