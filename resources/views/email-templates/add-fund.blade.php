@@ -81,7 +81,7 @@
     </div>
 
     <div style="background-color: #F5F5F5; width: 90%;margin: 30px auto auto;padding: 10px 20px 20px 5px;">
-        <table style="width: 100%; text-transform: capitalize; font-size: 11px;line-height: 13px;text-align: center;color: #242A30;">
+        <table style="width: 100%; font-size: 11px;line-height: 13px;text-align: center;color: #242A30;">
             <tbody>
             <tr style="font-weight: 700;">
                 <th class="col" style="width:10%;">{{ translate('sl') }}</th>

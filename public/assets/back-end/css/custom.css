@@ -306,7 +306,6 @@ ol.breadcrumb {
     font-size: 12px;
     line-height: 15px;
     margin-top: 47px;
-    text-transform: capitalize;
     font-weight: 500;
     color: var(--title-clr);
 }
