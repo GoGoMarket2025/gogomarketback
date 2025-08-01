@@ -5308,6 +5308,7 @@ return [
 	"Please_update_address_information" => "Please update address information",
 	"no_items_in_basket" => "No items in basket",
 	"no_Ticket_Found" => "Заявок не найдено",
+	"no_ticket_found" => "Заявок не найдено",
 	"add_new_ticket" => "Создать новую заявку",
 	"choose_priority" => "Выбрать приоритет",
 	"urgent" => "Срочный",
