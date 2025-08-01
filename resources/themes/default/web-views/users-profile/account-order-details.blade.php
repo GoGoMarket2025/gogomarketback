@@ -62,7 +62,7 @@
                                                             class="text-muted text-capitalize">{{translate('payment_status')}}</span>
                                                         :
                                                         <span
-                                                            class="text-{{$order['payment_status'] == 'paid' ? 'success' : 'danger'}} text-capitalize">{{$order['payment_status']}}</span>
+                                                            class="text-{{$order['payment_status'] == 'paid' ? 'success' : 'danger'}} text-capitalize">{{$order['payment_status'] == 'paid' ? translate('paid') : translate('unpaid')}}</span>
                                                     </div>
                                                     <div class="mt-2 fs-12">
                                                         <span
