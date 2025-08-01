@@ -31,7 +31,7 @@
                 </span>
             @elseif($order['order_status'] == 'delivered' ? 'badge-soft-success':'')
                 <span
-                    class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'pending' || $order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary border-soft-primary':''}}">
+                    class="fs-12 font-semibold rounded badge __badge badge-soft-primary border-soft-primary">
                     {{ translate('delivered_by') }}
                 </span>
             @else
