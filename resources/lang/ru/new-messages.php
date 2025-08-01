@@ -1417,6 +1417,7 @@ return [
 	"if_you_encounter_any_issues_during_the_translation_process,_please_contact_your_administrator." => "Если возникнут проблемы с переводом — свяжитесь с администратором.",
 	"check_Please" => "Проверьте, пожалуйста",
 	"failed_To_Delivery" => "Не удалось доставить",
+	"failed_to_delivery" => "Не удалось доставить",
 	"out_For_Delivery" => "В доставке",
 	"you_have_new order" => "У вас новый заказ",
 	"commission_given" => "Комиссия выдана",
