@@ -531,6 +531,7 @@ const GATEWAYS_PAYMENT_METHODS = [
     ['key' => 'paypal', 'value' => 'PayPal'],
     ['key' => 'payme', 'value' => 'Payme'],
     ['key' => 'click', 'value' => 'Click'],
+    ['key' => 'uzum', 'value' => 'Uzum'],
     ['key' => 'razor_pay', 'value' => 'Razor Pay'],
     ['key' => 'paystack', 'value' => 'Paystack'],
     ['key' => 'senang_pay', 'value' => 'Senang Pay'],

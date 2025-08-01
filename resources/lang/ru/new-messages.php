@@ -5307,4 +5307,7 @@ return [
 	"payment_details" => "Payment details",
 	"Please_update_address_information" => "Please update address information",
 	"no_items_in_basket" => "No items in basket",
+	"want_to_turn_Off_uzum_as_the_Digital_Payment_method" => "Want to turn Off uzum as the Digital Payment method",
+	"Форма" => "Форма",
+	"the_following_items_in_your_cart_are_currently_out_of_stock" => "The following items in your cart are currently out of stock",
 ];

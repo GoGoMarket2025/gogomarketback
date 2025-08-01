@@ -51,6 +51,7 @@ trait Payment
             'paypal' => 'payment/paypal/pay',
             'payme' => 'payment/payme/pay',
             'click' => 'payment/click/pay',
+            'uzum' => 'payment/uzum/pay',
             'paytabs' => 'payment/paytabs/pay',
             'liqpay' => 'payment/liqpay/pay',
             'razor_pay' => 'payment/razor-pay/pay',
