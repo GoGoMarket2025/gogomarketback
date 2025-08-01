@@ -14,7 +14,7 @@
     <div>
         <div class="d-flex align-items-center gap-2 text-capitalize">
             <h4 class="text-capitalize mb-0 mobile-fs-14 fs-18 font-bold">{{translate('order')}} #{{$order->id}} </h4>
-            @if($order['order_status'] == 'confirmed' || $order['order_status'] == 'delivered' || $order['order_status'] == 'processing' ? 'badge-soft-success':'')
+            @if($order['order_status'] == 'confirmed' || $order['order_status'] == 'processing' ? 'badge-soft-success':'')
                 <span
                     class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'confirmed' || $order['order_status'] == 'delivered' || $order['order_status'] == 'processing' ? 'badge-soft-success border-soft-success':''}}">
                     {{ $order['order_status'] == 'processing' ? translate('packaging') : $order['order_status'] }}
