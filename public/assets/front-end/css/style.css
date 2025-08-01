@@ -722,7 +722,6 @@ a {
 .recomanded-buy-button .buy_btn {
     display: block;
     width: 100%;
-    text-transform: capitalize;
     font-size: 20px;
 }
 
@@ -1010,7 +1009,6 @@ a {
 }
 
 .product-title2 {
-    text-transform: capitalize;
     display: block !important;
 }
 
@@ -1129,7 +1127,6 @@ a {
 }
 .featured_deal_title {
     font-size: 22px;
-    text-transform: capitalize;
 }
 
 @media (max-width: 767px) {
@@ -1570,7 +1567,6 @@ a {
 .__table thead td {
     border-top: none;
     font-weight: 700;
-    text-transform: capitalize;
     font-size: 15px;
     white-space: nowrap;
 }
@@ -1626,7 +1622,6 @@ a {
 }
 
 .__customer-sidebar .widget-title a {
-    text-transform: capitalize;
     padding: 6px 10px;
     font-size: 15px;
     display: block;
@@ -1642,7 +1637,6 @@ a {
 }
 
 .headerTitle {
-    text-transform: capitalize;
 }
 
 .__img-full {
@@ -2182,7 +2176,6 @@ a {
 
 .__ticket-table th {
     font-weight: 700;
-    text-transform: capitalize;
     border-top: none;
     white-space: nowrap;
 }
@@ -2408,7 +2401,6 @@ a {
     padding: 11px;
     padding-left: 15px;
     padding-right: 15px;
-    text-transform: capitalize;
     border: none;
 }
 
@@ -5753,7 +5745,6 @@ a {
     font-size: 18px;
     font-weight: 600;
     color: #ffffff;
-    text-transform: capitalize;
     z-index: 3;
 }
 
@@ -5769,7 +5760,6 @@ a {
     font-size: 15px;
     font-weight: 600;
     color: #ffffff;
-    text-transform: capitalize;
 }
 
 .vacation-closed {
@@ -5784,7 +5774,6 @@ a {
     font-size: 18px;
     font-weight: 600;
     color: #ffffff;
-    text-transform: capitalize;
     padding: 6px;
     width: 100%;
 }
@@ -5801,7 +5790,6 @@ a {
     font-size: 10px;
     font-weight: 600;
     color: #ffffff;
-    text-transform: capitalize;
     padding: 6px;
     width: 100%;
 }
@@ -7627,7 +7615,6 @@ span.badge-accent:hover {
 .msg-user h5 {
     font-size: 14px;
     font-weight: 600;
-    text-transform: capitalize;
 }
 
 .bg-section {
@@ -8217,7 +8204,6 @@ span.badge-accent:hover {
     font-size: 11px;
     font-weight: 500;
     text-align: center;
-    text-transform: capitalize;
     line-height: 1;
 }
 
@@ -8505,7 +8491,6 @@ input.form-control.fz-30 {
     max-width: 356px;
 }
 .form-label {
-    text-transform: capitalize;
 }
 
 .no-gutter {
@@ -8826,7 +8811,6 @@ input.form-control.fz-30 {
 .section-title {
     font-size: clamp(2rem, 1.8rem + 1vw, 3rem);
     font-weight: 800;
-    text-transform: capitalize;
 }
 
 .middle-step-of-steps {
