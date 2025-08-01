@@ -5331,6 +5331,8 @@ return [
 	"Confirm Password" => "Подтвердить пароль",
     "Confirm_Password" => "Подтвердить пароль",
     "confirm_password" => "Подтвердить пароль",
+	"confirm_Password" => "Подтвердить пароль",
+	"confirm_Password." => "Подтвердить пароль.",
 	"Update_Review" => "Обновить отзыв",
 	"update_review" => "Обновить отзыв",
 	"Resend_OTP" => "Повторная отправка кода",
