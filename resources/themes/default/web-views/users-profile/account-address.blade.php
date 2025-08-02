@@ -315,6 +315,8 @@
         const deliveryRestrictedCountries = @json($countriesName);
         function deliveryRestrictedCountriesCheck(countryOrCode, elementSelector, inputElement) {
             const foundIndex = deliveryRestrictedCountries.findIndex(country => country.toLowerCase() === countryOrCode.toLowerCase());
+            console.log(countryOrCode);
+            console.log(deliveryRestrictedCountries);
             console.log(foundIndex)
             if (foundIndex !== -1) {
                 $(elementSelector).removeClass('map-area-alert-danger');
