@@ -1,5 +1,5 @@
 :root {
-    --c1: #1455ac;
+    --c1: #ff5b0a;
     --c1-rgb: 20, 85, 172;
     --c2: #ff6767;
     --title-color: #334257;
@@ -5909,7 +5909,7 @@ body *::-webkit-scrollbar-thumb {
     background: #fef8f2;
 }
 .content .badge-soft-info {
-    color: #1455ac;
+    color: #ff5b0a;
     border-radius: 5px;
     border: 1px solid rgba(20, 85, 172, 0.2);
     background: #e9f3ff;
@@ -5943,7 +5943,7 @@ body *::-webkit-scrollbar-thumb {
     font-style: normal;
     font-weight: 600;
     line-height: 10.5px;
-    color: #1455ac;
+    color: #ff5b0a;
 }
 .badge--primary-light {
     border-radius: 3px;
@@ -7151,7 +7151,7 @@ table .store-name:hover {
 }
 .language-warning-modal,
 .language-complete-modal {
-    --c1: #1455ac;
+    --c1: #ff5b0a;
 }
 .language-warning-modal .modal-content {
     border-left: 4px solid var(--c1);
@@ -7965,8 +7965,8 @@ img[class*="ratio-"] {
     position: absolute;
     inset-inline-end: -10px;
     inset-block-start: -10px;
-    border: 1px solid #1455ac;
-    color: #1455ac;
+    border: 1px solid #ff5b0a;
+    color: #ff5b0a;
     border-radius: 100%;
     width: 32px;
     height: 32px;

@@ -367,8 +367,8 @@ span.badge-accent:hover {
 }
 
 .order-details-nav.nav-menu > *.active {
-    border-color: #1455ac;
-    color: #1455ac;
+    border-color: #ff5b0a;
+    color: #ff5b0a;
     font-weight: 700;
 }
 
@@ -791,7 +791,7 @@ figure {
 }
 
 .image-default-bg-color {
-    background-color: #1455ac10;
+    background-color: #ff5b0a10;
 }
 
 @media (min-width: 768px) {
@@ -810,7 +810,7 @@ figure {
 .rating {
     cursor: pointer;
     --dir: right;
-    --fill: #1455ac;
+    --fill: #ff5b0a;
     --fillbg: rgba(100, 100, 100, 0.15);
     --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
     --stars: 5;
@@ -1674,7 +1674,7 @@ body {
 .clearance-sale-title-bg .sub-title {
     position: absolute;
     bottom: 2.3rem;
-    color: #1455ac;
+    color: #ff5b0a;
     font-size: 12px;
     font-weight: 800;
     line-height: 19px;

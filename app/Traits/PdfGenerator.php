@@ -49,7 +49,7 @@ trait  PdfGenerator
         $getCompanyPhone = getWebConfig(name: 'company_phone');
         $getCompanyEmail = getWebConfig(name: 'company_email');
         if ($requestFrom == 'web' && theme_root_path() == 'theme_aster' || theme_root_path() == 'theme_fashion') {
-            return '<div style="width:560px;margin: 0 auto;background-color: #1455AC">
+            return '<div style="width:560px;margin: 0 auto;background-color: #ff5b0a">
                 <table class="fs-10">
                     <tr>
                         <td style="padding: 10px">

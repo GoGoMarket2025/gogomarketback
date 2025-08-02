@@ -550,7 +550,7 @@ html[dir="rtl"] .footer_banner:nth-child(5) {
 .qty_plus {
     display: flex;
     align-items: center;
-    color: #1455ac;
+    color: #ff5b0a;
     cursor: pointer;
 }
 
