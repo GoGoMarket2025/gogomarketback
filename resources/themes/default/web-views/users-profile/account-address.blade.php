@@ -472,7 +472,6 @@
                             district: get('district'),
                             street: get('route'),
                             streetNumber: get('street_number'),
-                            countryCode: components.find((c) => c.types.includes('country'))?.short_name || '',
                         };
 
                         return {
@@ -491,6 +490,7 @@
                     const address = results.find(x => x.types.includes('street_address'));
                     if (address) {
                         const parsed = extractAddressInfo(address.address_components);
+                        console.log(parsed);
                         function buildAddressString(address) {
                             const {
                                 street,
