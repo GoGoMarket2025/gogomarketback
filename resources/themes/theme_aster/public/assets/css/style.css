@@ -2455,7 +2455,7 @@ input:-webkit-autofill:active {
 }
 
 .overlay-custom {
-    --color: linear-gradient(92.74deg, #1b7fed 2.45%, #176bc7 98.1%);
+    --color: linear-gradient(92.74deg, #ff5b0a 2.45%, #176bc7 98.1%);
 }
 
 .overlay-custom:after {

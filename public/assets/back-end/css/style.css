@@ -2487,7 +2487,7 @@ select {
 }
 
 .__inline-9 .subscribe-button {
-    background: #1b7fed;
+    background: #ff5b0a;
     position: absolute;
     top: 0;
     color: white;
@@ -3133,15 +3133,15 @@ select {
 
 .__inline-45 .btn-p {
     color: #fff;
-    background-color: #1b7fed;
-    border-color: #1b7fed;
+    background-color: #ff5b0a;
+    border-color: #ff5b0a;
     box-shadow: none;
 }
 
 .__inline-45 .btn-p:hover {
     color: #fff;
-    background-color: #1b7fed;
-    border-color: #1b7fed;
+    background-color: #ff5b0a;
+    border-color: #ff5b0a;
     box-shadow: none;
 }
 
@@ -3178,7 +3178,7 @@ select {
 }
 
 .__inline-45 .cz-sidebar-body h3:hover + .divider-role {
-    border-bottom: 3px solid #1b7fed !important;
+    border-bottom: 3px solid #ff5b0a !important;
     transition: 0.2s ease-in-out;
 }
 
@@ -3223,7 +3223,7 @@ select {
 }
 
 .__inline-45 .iconHad {
-    color: #1b7fed;
+    color: #ff5b0a;
     padding: 4px;
 }
 
@@ -3297,7 +3297,7 @@ select {
 
 .__inline-45 .donate-now input[type="radio"]:checked + label,
 .__inline-45 .Checked + label {
-    background: #1b7fed;
+    background: #ff5b0a;
 }
 
 .__inline-45 .donate-now label {
@@ -3317,7 +3317,7 @@ select {
 
 @media (max-width: 600px) {
     .__inline-45 .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__inline-45 .sidebar_heading h1 {
         text-align: center;
@@ -3416,7 +3416,7 @@ select {
 
 @media (max-width: 600px) {
     .__inline-47 .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__inline-47 .sidebar_heading h1 {
         text-align: center;
@@ -4424,8 +4424,8 @@ select {
 
 .__inline-70 {
     border-radius: 25px;
-    border: 1px solid #1b7fed;
-    color: #1b7fed;
+    border: 1px solid #ff5b0a;
+    color: #ff5b0a;
 }
 
 .__inline-71 {
@@ -4577,7 +4577,7 @@ select {
 }
 
 .__color-1B7FED {
-    color: #1b7fed;
+    color: #ff5b0a;
 }
 
 .__max-h-12rem {

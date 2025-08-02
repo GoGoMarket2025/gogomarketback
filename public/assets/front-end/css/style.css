@@ -579,7 +579,7 @@ a {
 }
 
 .__best-selling:hover .ptr {
-    color: #1b7fed;
+    color: #ff5b0a;
 }
 
 .best-selling-image {
@@ -658,11 +658,11 @@ a {
 }
 
 .flash_deal_product:hover .flash-product-title {
-    color: #1b7fed;
+    color: #ff5b0a;
 }
 
 .btn-scroll-top {
-    background: #1b7fed;
+    background: #ff5b0a;
     color: #fff !important;
 }
 
@@ -858,12 +858,12 @@ a {
     }
 }
 ::-moz-selection {
-    background: #1b7fed;
+    background: #ff5b0a;
     color: #fff;
 }
 
 ::selection {
-    background: #1b7fed;
+    background: #ff5b0a;
     color: #fff;
 }
 
@@ -1062,7 +1062,7 @@ a {
     width: 35px;
     height: 35px;
     border-radius: 3px;
-    background: #1b7fed;
+    background: #ff5b0a;
     padding: 0;
     display: flex;
     align-items: center;
@@ -2072,7 +2072,7 @@ a {
 }
 
 .__chat-seller .active {
-    background: #1b7fed;
+    background: #ff5b0a;
 }
 
 .__chat-seller .active h5 {
@@ -2095,7 +2095,7 @@ a {
 
 @media (max-width: 600px) {
     .__chat-seller .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__chat-seller .sidebar_heading h1 {
         text-align: center;
@@ -3064,15 +3064,15 @@ a {
 
 .__inline-45 .btn-p {
     color: #fff;
-    background-color: #1b7fed;
-    border-color: #1b7fed;
+    background-color: #ff5b0a;
+    border-color: #ff5b0a;
     box-shadow: none;
 }
 
 .__inline-45 .btn-p:hover {
     color: #fff;
-    background-color: #1b7fed;
-    border-color: #1b7fed;
+    background-color: #ff5b0a;
+    border-color: #ff5b0a;
     box-shadow: none;
 }
 
@@ -3109,7 +3109,7 @@ a {
 }
 
 .__inline-45 .cz-sidebar-body h3:hover + .divider-role {
-    border-bottom: 3px solid #1b7fed !important;
+    border-bottom: 3px solid #ff5b0a !important;
     transition: 0.2s ease-in-out;
 }
 
@@ -3154,7 +3154,7 @@ a {
 }
 
 .__inline-45 .iconHad {
-    color: #1b7fed;
+    color: #ff5b0a;
     padding: 4px;
 }
 
@@ -3228,7 +3228,7 @@ a {
 
 .__inline-45 .donate-now input[type="radio"]:checked + label,
 .__inline-45 .Checked + label {
-    background: #1b7fed;
+    background: #ff5b0a;
 }
 
 .__inline-45 .donate-now label {
@@ -3248,7 +3248,7 @@ a {
 
 @media (max-width: 600px) {
     .__inline-45 .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__inline-45 .sidebar_heading h1 {
         text-align: center;
@@ -3346,7 +3346,7 @@ a {
 
 @media (max-width: 600px) {
     .__inline-47 .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__inline-47 .sidebar_heading h1 {
         text-align: center;
@@ -4397,8 +4397,8 @@ a {
 
 .__inline-70 {
     border-radius: 25px;
-    border: 1px solid #1b7fed;
-    color: #1b7fed;
+    border: 1px solid #ff5b0a;
+    color: #ff5b0a;
 }
 
 .__inline-71 {
@@ -4546,7 +4546,7 @@ a {
 }
 
 .__color-1B7FED {
-    color: #1b7fed;
+    color: #ff5b0a;
 }
 
 .__max-h-12rem {
