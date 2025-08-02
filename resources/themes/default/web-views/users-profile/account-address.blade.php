@@ -486,6 +486,12 @@
 
                     console.log(extractAddressInfo(results));
 
+                    const address = results.find(x => x.types.includes('street_address'));
+                    if (address) {
+                        const parsed = extractAddressInfo(address.address_components);
+                        console.log(parsed);
+                    }
+
                     if (status === "OK" && results[0]) {
                         console.log(results[0].formatted_address);
                     document.getElementById('address').value = results[0].formatted_address;
