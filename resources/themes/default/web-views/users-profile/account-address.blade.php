@@ -464,23 +464,25 @@
                 const geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ location: userLatLng }, (results, status) => {
                     function extractAddressInfo(components) {
-                    const get = (type) =>
-                        components.find((c) => c.types.includes(type))?.long_name || '';
+                        const get = (type) =>
+                            components.find((c) => c.types.includes(type))?.long_name || '';
 
-                    const raw = {
-                        street: get('route'),
-                        district: get('sublocality_level_1'),
-                        city: get('locality'),
-                        region: get('administrative_area_level_1'),
-                        country: get('country'),
-                        countryCode: components.find((c) => c.types.includes('country'))?.short_name || '',
-                    };
+                        const raw = {
+                            street: get('route'),
+                            district: get('sublocality_level_1'),
+                            city: get('locality'),
+                            region: get('administrative_area_level_1'),
+                            country: get('country'),
+                            countryCode: components.find((c) => c.types.includes('country'))?.short_name || '',
+                        };
 
-                    return {
-                        ...raw,
-                        country: raw.country,
-                    };
+                        return {
+                            ...raw,
+                            country: raw.country,
+                        };
                     }
+
+                    console.log(results);
 
                     console.log(extractAddressInfo(results));
 
