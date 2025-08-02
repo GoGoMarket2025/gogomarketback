@@ -485,15 +485,15 @@
 
                     console.log(extractAddressInfo(results));
 
+
+                    if (status === "OK" && results[0]) {
+
                     const address = results.find(x => x.types.includes('street_address'));
                     if (address) {
                         const parsed = extractAddressInfo(address.address_components);
                         console.log(parsed);
+                        document.getElementById('address').value = parsed;
                     }
-
-                    if (status === "OK" && results[0]) {
-                        console.log(parsed);
-                    document.getElementById('address').value = results[0].formatted_address;
 
                     const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
                     if (systemCountryRestrictStatus) {
