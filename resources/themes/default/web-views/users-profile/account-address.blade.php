@@ -468,11 +468,10 @@
                             components.find((c) => c.types.includes(type))?.long_name || '';
 
                         const raw = {
-                            street: get('route'),
-                            district: get('sublocality_level_1'),
-                            city: get('locality'),
                             region: get('administrative_area_level_1'),
-                            country: get('country'),
+                            district: get('district'),
+                            street: get('route'),
+                            streetNumber: get('street_number'),
                             countryCode: components.find((c) => c.types.includes('country'))?.short_name || '',
                         };
 
@@ -493,7 +492,7 @@
                     }
 
                     if (status === "OK" && results[0]) {
-                        console.log(results[0].formatted_address);
+                        console.log(parsed);
                     document.getElementById('address').value = results[0].formatted_address;
 
                     const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
