@@ -11687,7 +11687,7 @@ button.bg-accent:focus {
 }
 
 .text-capitalize {
-    text-transform: capitalize !important;
+    /* text-transform: capitalize !important; */
 }
 
 .font-weight-light {
