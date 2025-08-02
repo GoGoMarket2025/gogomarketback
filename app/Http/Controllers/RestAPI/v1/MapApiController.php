@@ -112,7 +112,7 @@ class MapApiController extends Controller
         }
 
         $apiKey = getWebConfig(name: 'map_api_key_server');
-        $response = Http::get('https://maps.googleapis.com/maps/api/geocode/json?language=en&latlng=' . $request['lat'] . ',' . $request['lng'] . '&key=' . $apiKey);
+        $response = Http::get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request['lat'] . ',' . $request['lng'] . '&key=' . $apiKey);
         return response()->json($response->json());
     }
 }

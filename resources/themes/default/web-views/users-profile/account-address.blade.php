@@ -312,9 +312,9 @@
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/account-address.js') }}"></script>
     <script>
         "use strict";
-        const deliveryRestrictedCountries = @json($countriesName);
+        const deliveryRestrictedCountries = @json($countriesCode);
         function deliveryRestrictedCountriesCheck(countryOrCode, elementSelector, inputElement) {
-            const foundIndex = deliveryRestrictedCountries.findIndex(country => country.toLowerCase() === countryOrCode.toLowerCase());
+            const foundIndex = deliveryRestrictedCountries.findIndex(countryCode => countryCode.toLowerCase() === countryOrCode.toLowerCase());
             console.log(countryOrCode);
             console.log(deliveryRestrictedCountries);
             console.log(foundIndex)
@@ -382,7 +382,7 @@
                     if (systemCountryRestrictStatus) {
                     const countryObject = findCountryObject(results[0].address_components);
                     console.log(countryObject)
-                    deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
+                    deliveryRestrictedCountriesCheck(countryObject.short_name, '.location-map-address-canvas-area', '#address');
                     }
                 }
                 });
@@ -473,7 +473,7 @@
                     if (systemCountryRestrictStatus) {
                         const countryObject = findCountryObject(results[0].address_components);
                         console.log(countryObject);
-                        deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
+                        deliveryRestrictedCountriesCheck(countryObject.short_name, '.location-map-address-canvas-area', '#address');
                     }
                     }
                 });
