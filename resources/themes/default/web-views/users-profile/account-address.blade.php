@@ -375,6 +375,22 @@
                 document.getElementById('longitude').value = coordinates.lng;
 
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    function extractAddressInfo(components) {
+                        const get = (type) =>
+                            components.find((c) => c.types.includes(type))?.long_name || '';
+
+                        const raw = {
+                            region: get('administrative_area_level_1'),
+                            district: get('district'),
+                            street: get('route'),
+                            streetNumber: get('street_number'),
+                        };
+
+                        return {
+                            ...raw,
+                            country: raw.country,
+                        };
+                    }
                 if (status === google.maps.GeocoderStatus.OK && results[0]) {
                     const address = results.find(x => x.types.includes('street_address'));
                     if (address) {
