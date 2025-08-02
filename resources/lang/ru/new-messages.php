@@ -4983,7 +4983,7 @@ return [
 	"limit_for_same_user" => "Ограничение для того же пользователя",
 	"coupon_list" => "Список купонов",
 	"search_by_Title_or_Code_or_Discount_Type" => "Поиск по заголовке или коду или скидке",
-	"no_coupon_found" => "Купона не найдено",
+	"no_coupon_found" => "У вас пока нет купонов",
 	"new_order_message" => "Новое сообщение заказа",
 	"refund_request_message" => "Сообщение запроса на возврат",
 	"order_edit_message" => "Заказать редактирование сообщения",

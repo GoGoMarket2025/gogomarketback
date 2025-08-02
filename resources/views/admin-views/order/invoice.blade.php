@@ -446,7 +446,7 @@
             }
 
             .text-capitalize {
-                text-transform: capitalize;
+                /* text-transform: capitalize; */
             }
 
             .text-dark, strong {
