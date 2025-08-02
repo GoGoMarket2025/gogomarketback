@@ -145,7 +145,7 @@ $direction = Session::get('direction');
             padding: 10px 25px;
             align-items: center;
             gap: 10px;
-            background: #1455AC !important;
+            background: #ff5b0a !important;
             color: #ffffff !important;
             width: 160px;
             height: 38px;

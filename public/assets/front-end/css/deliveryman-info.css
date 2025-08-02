@@ -13,8 +13,8 @@
 }
 
 .nav-menu > *.active {
-    border-color: #1455AC;
-    color: #1455AC;
+    border-color: #ff5b0a;
+    color: #ff5b0a;
     font-weight: 700;
 }
 

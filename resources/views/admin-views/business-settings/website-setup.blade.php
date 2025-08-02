@@ -277,7 +277,7 @@
                                                     <div class="d-flex align-items-center gap-10 bg-white border rounded py-2 px-10">
                                                         <input type="color" name="primary" value="{{ $businessSetting['primary_color'] }}"
                                                         class="form-control form-control_color color-code-preview">
-                                                        <span class="fs-14 fw-medium text-dark color-code color-code-selection">#1455AC</span>
+                                                        <span class="fs-14 fw-medium text-dark color-code color-code-selection">#ff5b0a</span>
                                                     </div>
                                                 </div>
                                             </div>
