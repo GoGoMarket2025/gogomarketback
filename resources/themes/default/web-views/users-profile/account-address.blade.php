@@ -476,11 +476,9 @@
                         countryCode: components.find((c) => c.types.includes('country'))?.short_name || '',
                     };
 
-                    const translatedCountry = countryTranslate[raw.country] || raw.country;
-
                     return {
                         ...raw,
-                        country: translatedCountry,
+                        country: raw.country,
                     };
                     }
 
