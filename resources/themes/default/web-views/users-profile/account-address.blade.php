@@ -491,8 +491,26 @@
                     const address = results.find(x => x.types.includes('street_address'));
                     if (address) {
                         const parsed = extractAddressInfo(address.address_components);
-                        console.log(parsed);
-                        document.getElementById('address').value = parsed;
+                        function buildAddressString(address) {
+                            const {
+                                street,
+                                streetNumber,
+                                district,
+                                region,
+                                country,
+                                countryCode
+                            } = address;
+
+                            const parts = [
+                                [streetNumber, street].filter(Boolean).join(' '),
+                                district,
+                                region,
+                                country || countryCode // fallback to countryCode if country is undefined
+                            ];
+
+                            return parts.filter(Boolean).join(', ');
+                        }
+                        document.getElementById('address').value = buildAddressString(parsed);
                     }
 
                     const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
