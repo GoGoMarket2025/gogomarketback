@@ -452,7 +452,7 @@ const TELEPHONE_CODES = [
     ["name" => 'Ukraine (+380)', "code" => '380'],
     ["name" => 'United Arab Emirates (+971)', "code" => '971'],
     ["name" => 'Uruguay (+598)', "code" => '598'],
-    ["name" => 'Uzbekistan (+7)', "code" => '7'],
+    ["name" => 'Uzbekistan (+998)', "code" => '998'],
     ["name" => 'Vanuatu (+678)', "code" => '678'],
     ["name" => 'Vatican City (+379)', "code" => '379'],
     ["name" => 'Venezuela (+58)', "code" => '58'],
