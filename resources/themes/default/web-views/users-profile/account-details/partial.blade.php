@@ -27,12 +27,7 @@
             @elseif($order['order_status'] == 'pending' || $order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary':'')
                 <span
                     class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'pending' || $order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary border-soft-primary':''}}">
-                    {{ $order['order_status'] == 'out_for_delivery' ? translate('out_For_Delivery') : $order['order_status'] }}
-                </span>
-            @elseif($order['order_status'] == 'pending' ? 'badge-soft-primary':'')
-                <span
-                    class="fs-12 font-semibold rounded badge __badge badge-soft-primary border-soft-primary">
-                    {{ translate('out_For_Delivery') }}
+                    {{ $order['order_status'] == 'pending' || $order['order_status'] == 'out_for_delivery' ? translate('out_For_Delivery') : $order['order_status'] }}
                 </span>
             @elseif($order['order_status'] == 'delivered' ? 'badge-soft-success':'')
                 <span
