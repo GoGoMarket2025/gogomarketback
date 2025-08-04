@@ -664,7 +664,7 @@ return [
 	"extra_discount_added_successfully" => "Дополнительная скидка успешно добавлена",
 	"order_list" => "Список заказов",
 	"invoice" => "Счет",
-	"unpaid" => "Неоплачено",
+	"unpaid" => "Не оплачено",
 	"location_Data" => "Данные о местоположении",
 	"thanks_for_the_purchase" => "Спасибо за покупку",
 	"total_Price" => "Общая цена",
