@@ -28,7 +28,7 @@ class PaymentMethodUpdateRequest extends FormRequest
     public function rules(): array
     {
         $validationRules = [
-            'gateway' => 'required', Rule::in(['ssl_commerz', 'payme', 'click', 'sixcash', 'worldpay', 'payfast', 'swish', 'esewa', 'maxicash', 'hubtel', 'viva_wallet', 'tap', 'thawani', 'moncash', 'pvit', 'ccavenue', 'foloosi', 'iyzi_pay', 'xendit', 'fatoorah', 'hyper_pay', 'amazon_pay', 'paypal', 'stripe', 'razor_pay', 'senang_pay', 'paytabs', 'paystack', 'paymob_accept', 'paytm', 'flutterwave', 'liqpay', 'bkash', 'mercadopago', 'cash_after_service', 'digital_payment', 'momo']),
+            'gateway' => 'required', Rule::in(['ssl_commerz', 'payme', 'click', 'uzum', 'sixcash', 'worldpay', 'payfast', 'swish', 'esewa', 'maxicash', 'hubtel', 'viva_wallet', 'tap', 'thawani', 'moncash', 'pvit', 'ccavenue', 'foloosi', 'iyzi_pay', 'xendit', 'fatoorah', 'hyper_pay', 'amazon_pay', 'paypal', 'stripe', 'razor_pay', 'senang_pay', 'paytabs', 'paystack', 'paymob_accept', 'paytm', 'flutterwave', 'liqpay', 'bkash', 'mercadopago', 'cash_after_service', 'digital_payment', 'momo']),
             'mode' => 'required|in:live,test',
         ];
         $additionalDataRules = $this->getAdditionalDataRules();
@@ -315,6 +315,13 @@ class PaymentMethodUpdateRequest extends FormRequest
                 'merchant_id' => 'required',
                 'merchant_key' => 'required',
                 'service_id' => 'required',
+            ];
+        } elseif ($this['gateway'] == 'uzum') {
+            $additionalDataRules = [
+                'status' => 'required|in:1,0',
+                'checkout_url' => 'required',
+                'terminal_id' => 'required',
+                'api_key' => 'required',
             ];
         }
 

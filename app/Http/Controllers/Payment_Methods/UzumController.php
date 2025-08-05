@@ -1,0 +1,193 @@
+<?php
+
+namespace App\Http\Controllers\Payment_Methods;
+
+use App\Models\Cart;
+use App\Models\Currency;
+use App\Models\Order;
+use App\Models\OrderTransaction;
+use App\Models\PaymentRequest;
+use App\Models\ShippingAddress;
+use App\Traits\Processor;
+use App\Utils\CartManager;
+use App\Utils\Helpers;
+use App\Utils\OrderManager;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
+class UzumController extends Controller
+{
+    use Processor;
+
+    private mixed $config_values;
+    private PaymentRequest $payment;
+
+    public function __construct(PaymentRequest $payment)
+    {
+        $config = $this->payment_config('uzum', 'payment_config');
+        if (!is_null($config) && $config->mode == 'live') {
+            $this->config_values = json_decode($config->live_values);
+        } elseif (!is_null($config) && $config->mode == 'test') {
+            $this->config_values = json_decode($config->test_values);
+        }
+
+        $this->payment = $payment;
+    }
+
+    // Create a payment
+    public function payment(Request $request): JsonResponse|RedirectResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'payment_id' => 'required|uuid'
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, $this->error_processor($validator)), 400);
+        }
+
+        $payment_data = $this->payment::where(['id' => $request['payment_id']])->where(['is_paid' => 0])->first();
+
+        if (!isset($payment_data)) {
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
+        }
+
+        // Create order based on payment data
+        $additionalData = json_decode($payment_data->additional_data, true);
+        if (!$additionalData) {
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'Invalid payment data']), 400);
+        }
+
+        // Get cart group IDs
+        $cartGroupIds = [];
+        if (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
+            $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])
+                ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+        } else {
+            $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
+        }
+
+        if (empty($cartGroupIds)) {
+            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'No items in cart']), 400);
+        }
+
+        // Create orders for each cart group
+        $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
+        $currency_model = getWebConfig(name: 'currency_model');
+        if ($currency_model == 'multi_currency') {
+            $currencyCode = $request->current_currency_code ?? Currency::find(getWebConfig(name: 'system_default_currency'))->code;
+        } else {
+            $currencyCode = Currency::find(getWebConfig(name: 'system_default_currency'))->code;
+        }
+
+        $getUniqueId = OrderManager::generateUniqueOrderID();
+        $user = Helpers::getCustomerInformation($request);
+
+        $orderIds = [];
+        foreach ($cartGroupIds as $groupId) {
+            $data = [
+                'payment_method' => 'uzum_method',
+                'order_status' => 'pending',
+                'payment_status' => 'unpaid',
+                'transaction_ref' => '',
+                'order_group_id' => $getUniqueId,
+                'cart_group_id' => $groupId,
+                'request' => $request,
+                'newCustomerRegister' => $newCustomerRegister,
+                'bring_change_amount' => $request['bring_change_amount'] ?? 0,
+                'bring_change_amount_currency' => $currencyCode,
+            ];
+
+            $orderId = OrderManager::generate_order($data);
+
+            $order = Order::find($orderId);
+            $order->billing_address = ($request['billing_address_id'] != null) ? $request['billing_address_id'] : $order['billing_address'];
+            $order->billing_address_data = ($request['billing_address_id'] != null) ? ShippingAddress::find($request['billing_address_id']) : $order['billing_address_data'];
+            $order->order_note = ($request['order_note'] != null) ? $request['order_note'] : $order['order_note'];
+            $order->save();
+
+            $orderIds[] = $orderId;
+        }
+
+//        CartManager::cart_clean($request);
+
+        // Update payment data with order information
+        $additionalData['uzum_order_reference'] = $getUniqueId;
+        $additionalData['order_ids'] = $orderIds;
+        $payment_data->additional_data = json_encode($additionalData);
+        $payment_data->save();
+
+        $checkOutUrl = $this->config_values->checkout_url;
+        $terminalId = $this->config_values->terminal_id;
+        $apiKey = $this->config_values->api_key;
+        $amount = round($payment_data->payment_amount * 100);
+
+
+        // Optional: define base URI from .env or config
+        $baseUri = $checkOutUrl;
+        $headers = [
+            'Content-Language' => 'ru-RU',
+            'X-Terminal-Id' => $terminalId,
+            'X-API-Key' => $apiKey,
+            'Content-Type' => 'application/json',
+        ];
+
+        // Предположим, что $order — это модель заказа, аналогичная $model в Yii
+        $data = [
+            'amount' => $amount,
+            'clientId' => (string)$user->id,
+            'currency' => 860,
+            'paymentDetails' => "Оплата за заказ № {$getUniqueId}",
+            'paymentParams' => [
+                'payType' => 'ONE_STEP',
+                'force3ds' => false,
+                'phoneNumber' => (string)$user->phone,
+            ],
+            'viewType' => 'IFRAME',
+            'sessionTimeoutSecs' => 1800,
+            'successUrl' => 'https://gogomarket.uz',
+            'failureUrl' => 'https://gogomarket.uz',
+            'orderNumber' => $getUniqueId,
+        ];
+        // Send request with headers and timeout
+        $response = Http::withHeaders($headers)
+            ->timeout(10)
+            ->post("{$baseUri}/api/v1/payment/register", $data);
+
+        // Handle response
+        if (!$response->successful()) {
+            Log::error('Uzum API Error', [
+                'status' => $response->status(),
+                'body' => $response->body(),
+            ]);
+        }
+        $responseData = $response->json();
+        // Access the paymentRedirectUrl
+        $uzumUrl = $responseData['result']['paymentRedirectUrl'] ?? null;
+        $uzumOrderId = $responseData['result']['orderId'] ?? null;
+
+        $additionalData = json_decode($payment_data->additional_data, true);
+        $additionalData['uzum_order_id'] = $uzumOrderId;
+        $payment_data->additional_data = json_encode($additionalData);
+        $payment_data->save();
+        return redirect()->away($uzumUrl);
+    }
+
+    public function handle(Request $request): JsonResponse
+    {
+
+        $data = $request->all();
+        Log::warning('Uzum Handle request:', $data);
+
+
+        return response()->json([
+            'data' => true
+        ]);
+    }
+
+}

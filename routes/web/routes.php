@@ -13,6 +13,7 @@ use App\Http\Controllers\Customer\SystemController;
 use App\Http\Controllers\Payment_Methods\ClickController;
 use App\Http\Controllers\Payment_Methods\PaymeController;
 use App\Http\Controllers\Payment_Methods\PaymeMerchantController;
+use App\Http\Controllers\Payment_Methods\UzumController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\ChattingController;
 use App\Http\Controllers\Web\CouponController;
@@ -414,6 +415,17 @@ if (!$isGatewayPublished) {
             Route::any('failed', [ClickController::class, 'failed'])->name('failed')
                 ->withoutMiddleware([VerifyCsrfToken::class]);
             Route::any('canceled', [ClickController::class, 'canceled'])->name('canceled')
+                ->withoutMiddleware([VerifyCsrfToken::class]);
+        });
+
+        //Uzum
+        Route::group(['prefix' => 'uzum', 'as' => 'uzum.'], function () {
+            Route::get('pay', [UzumController::class, 'payment']);
+            Route::any('success', [UzumController::class, 'success'])->name('success')
+                ->withoutMiddleware([VerifyCsrfToken::class]);
+            Route::any('failed', [UzumController::class, 'failed'])->name('failed')
+                ->withoutMiddleware([VerifyCsrfToken::class]);
+            Route::any('canceled', [UzumController::class, 'canceled'])->name('canceled')
                 ->withoutMiddleware([VerifyCsrfToken::class]);
         });
 

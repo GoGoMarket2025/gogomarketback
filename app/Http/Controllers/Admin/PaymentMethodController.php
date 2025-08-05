@@ -77,7 +77,7 @@ class PaymentMethodController extends Controller
     {
         collect(['status'])->each(fn($item, $key) => $request[$item] = $request->has($item) ? (int)$request[$item] : 0);
         $validation = [
-            'gateway' => 'required|in:ssl_commerz,sixcash,worldpay,payfast,swish,esewa,maxicash,hubtel,viva_wallet,tap,thawani,moncash,pvit,ccavenue,foloosi,iyzi_pay,xendit,fatoorah,hyper_pay,amazon_pay,paypal,payme,click,stripe,razor_pay,senang_pay,paytabs,paystack,paymob_accept,paytm,flutterwave,liqpay,bkash,mercadopago,cash_after_service,digital_payment,momo',
+            'gateway' => 'required|in:ssl_commerz,sixcash,worldpay,payfast,swish,esewa,maxicash,hubtel,viva_wallet,tap,thawani,moncash,pvit,ccavenue,foloosi,iyzi_pay,xendit,fatoorah,hyper_pay,amazon_pay,paypal,payme,click,uzum,stripe,razor_pay,senang_pay,paytabs,paystack,paymob_accept,paytm,flutterwave,liqpay,bkash,mercadopago,cash_after_service,digital_payment,momo',
             'mode' => 'required|in:live,test'
         ];
 
@@ -107,6 +107,13 @@ class PaymentMethodController extends Controller
                 'merchant_id' => 'required',
                 'merchant_key' => 'required',
                 'service_id' => 'required',
+            ];
+        } elseif ($request['gateway'] == 'uzum') {
+            $additional_data = [
+                'status' => 'required|in:1,0',
+                'checkout_url' => 'required',
+                'terminal_id' => 'required',
+                'api_key' => 'required',
             ];
         } elseif ($request['gateway'] == 'stripe') {
             $additional_data = [
