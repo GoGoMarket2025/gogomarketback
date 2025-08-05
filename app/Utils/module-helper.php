@@ -187,8 +187,8 @@ if (!function_exists('digital_creat_order')) {
         foreach ($cartGroupIds as $cartGroupId) {
             $data += [
                 'payment_method' => $paymentData['payment_method'],
-                'order_status' => 'confirmed',
-                'payment_status' => 'paid',
+                'order_status' => 'pending',
+                'payment_status' => 'unpaid',
                 'transaction_ref' => $paymentData['transaction_id'],
                 'order_group_id' => $generateUniqueId,
                 'new_customer_id' => $addCustomer ? $addCustomer['id'] : ($additionalData['new_customer_id'] ?? null),
