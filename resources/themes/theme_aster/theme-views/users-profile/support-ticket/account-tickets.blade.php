@@ -119,7 +119,7 @@
                                 <label for="rating">{{ translate('priority') }}</label>
                                 <select id="ticket-priority" name="ticket_priority" class="form-select" required>
                                     <option value>{{translate('choose_priority')}}</option>
-                                    <option value="Urgent">{{translate('Urgent')}}</option>
+                                    <option value="Urgent">{{translate('urgent')}}</option>
                                     <option value="High">{{translate('High')}}</option>
                                     <option value="Medium">{{translate('Medium')}}</option>
                                     <option value="Low">{{translate('Low')}}</option>

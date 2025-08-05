@@ -2302,7 +2302,7 @@ $toast-types: (
     background-color: rgba(0, 198, 174, 0.05);
 }
 .text-cyan-blue {
-    color: #1455ac !important;
+    color: #ff5b0a !important;
 }
 
 .order-track-info {
@@ -3013,7 +3013,6 @@ $toast-types: (
         font-size: 12px;
         line-height: 15px;
         margin-top: 47px;
-        text-transform: capitalize;
         font-weight: 500;
         color: var(--bs-dark);
     }
@@ -3602,7 +3601,6 @@ $toast-types: (
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
-    text-transform: capitalize;
 }
 
 .auth-wrapper-right .auth-header .badge {

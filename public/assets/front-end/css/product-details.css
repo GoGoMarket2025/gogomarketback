@@ -117,7 +117,7 @@ figure {
 .contact {
     font-weight: 600;
     min-height: 45px;
-    background: transparent linear-gradient(269deg, #00ade3 0%, #1b7fed 100%) 0%
+    background: transparent linear-gradient(269deg, #00ade3 0%, #ff5b0a 100%) 0%
         0% no-repeat padding-box;
     border-radius: 6px;
     border: none;
@@ -129,7 +129,7 @@ figure {
 .follow {
     font-weight: 600;
     min-height: 45px;
-    background: transparent linear-gradient(269deg, #00ade3 0%, #1b7fed 100%) 0%
+    background: transparent linear-gradient(269deg, #00ade3 0%, #ff5b0a 100%) 0%
         0% no-repeat padding-box;
     border-radius: 6px;
     border: none;
@@ -149,7 +149,7 @@ figure {
 }
 
 .product_overview .nav-tabs .nav-link.active::before {
-    background-color: #1b7fed;
+    background-color: #ff5b0a;
 }
 
 .product_overview .nav-tabs .nav-link::before {
@@ -174,7 +174,7 @@ figure {
 }
 
 /*.text-accent {
-    color: #1B7FED !important;
+    color: #ff5b0a !important;
     font-size: 29px;
     font-weight: 700;
 }*/
@@ -209,7 +209,7 @@ figure {
 }
 
 .product_review_rating {
-    color: #1b7fed;
+    color: #ff5b0a;
     font-size: 18px;
     font-weight: 600;
     padding-right: 5px;

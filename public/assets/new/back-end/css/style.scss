@@ -1,6 +1,6 @@
 :root,
 [data-bs-theme="light"] {
-    --bs-primary: #1455ac;
+    --bs-primary: #ff5b0a;
     --bs-primary-rgb: 20, 85, 172;
     --bs-secondary: #f58300;
     --bs-secondary-rgb: 245, 131, 0;
@@ -901,7 +901,6 @@ $size: 50px;
 .option-select-btn label span {
     color: var(--c1);
     border-radius: 5px;
-    text-transform: capitalize;
     padding: 6px 12px;
     cursor: pointer;
     display: block;

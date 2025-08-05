@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
-                        <button type="submit" class="btn btn--primary">{{('submit')}}</button>
+                        <button type="submit" class="btn btn--primary">{{translate('submit')}}</button>
                     </div>
                 </form>
             </div>

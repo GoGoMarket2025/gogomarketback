@@ -742,7 +742,7 @@
 }
 .free-delivery-progress .progress-bar {
     border-radius: 5px;
-    background: #1455ac;
+    background: #ff5b0a;
 }
 
 .fs-16 {
@@ -1530,7 +1530,7 @@ body *::-webkit-scrollbar-thumb {
 }
 
 .review-reply {
-    border: 1px solid #1455ac0d;
+    border: 1px solid #ff5b0a0d;
     color: #262d34cc;
 }
 .before-content-border {

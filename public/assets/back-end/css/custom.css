@@ -1,5 +1,5 @@
 :root {
-    --c1: #1455ac;
+    --c1: #ff5b0a;
     --c1-rgb: 20, 85, 172;
     --c2: #ff6767;
     --title-color: #334257;
@@ -306,7 +306,6 @@ ol.breadcrumb {
     font-size: 12px;
     line-height: 15px;
     margin-top: 47px;
-    text-transform: capitalize;
     font-weight: 500;
     color: var(--title-clr);
 }
@@ -1239,7 +1238,7 @@ input[name="gateway_image"] {
 }
 
 .text-cyan-blue {
-    color: #1455ac !important;
+    color: #ff5b0a !important;
 }
 
 .min-w-30px {
@@ -1538,7 +1537,7 @@ input[name="gateway_image"] {
 }
 
 .btn--primary-2 {
-    background-color: #1455ac;
+    background-color: #ff5b0a;
     color: #fff;
 }
 
@@ -1548,7 +1547,7 @@ input[name="gateway_image"] {
 }
 
 .custom-sorting-radio-list input[type="radio"] {
-    accent-color: #1455ac;
+    accent-color: #ff5b0a;
 }
 
 .custom-sorting-radio-list.checked-dark input[type="radio"]:checked + label {

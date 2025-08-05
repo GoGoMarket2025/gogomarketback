@@ -14,7 +14,7 @@
     <div>
         <div class="d-flex align-items-center gap-2 text-capitalize">
             <h4 class="text-capitalize mb-0 mobile-fs-14 fs-18 font-bold">{{translate('order')}} #{{$order->id}} </h4>
-            @if($order['order_status'] == 'confirmed' || $order['order_status'] == 'delivered' || $order['order_status'] == 'processing' ? 'badge-soft-success':'')
+            @if($order['order_status'] == 'confirmed' || $order['order_status'] == 'processing' ? 'badge-soft-success':'')
                 <span
                     class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'confirmed' || $order['order_status'] == 'delivered' || $order['order_status'] == 'processing' ? 'badge-soft-success border-soft-success':''}}">
                     {{ $order['order_status'] == 'processing' ? translate('packaging') : $order['order_status'] }}
@@ -22,12 +22,22 @@
             @elseif($order['order_status'] == 'failed' || $order['order_status'] == 'canceled' || $order['order_status'] == 'returned' ? 'badge-soft-danger':'')
                 <span
                     class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'failed' || $order['order_status'] == 'canceled' || $order['order_status'] == 'returned' ? 'badge-soft-danger':''}}">
-                    {{ $order['order_status'] == 'failed' ? translate('Failed_To_Delivery') : $order['order_status'] }}
+                    {{ $order['order_status'] == 'failed' || $order['order_status'] == 'canceled' ? translate('failed_to_delivery') : $order['order_status'] }}
                 </span>
-            @elseif($order['order_status'] == 'pending' || $order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary':'')
+            @elseif($order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary':'')
                 <span
-                    class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'pending' || $order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary border-soft-primary':''}}">
-                    {{ $order['order_status'] == 'out_for_delivery' ? translate('Out_For_Delivery') : $order['order_status'] }}
+                    class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary border-soft-primary':''}}">
+                    {{ $order['order_status'] == 'out_for_delivery' ? translate('out_For_Delivery') : $order['order_status'] }}
+                </span>
+            @elseif($order['order_status'] == 'pending' ? 'badge-soft-primary':'')
+                <span
+                    class="fs-12 font-semibold rounded badge __badge badge-soft-primary border-soft-primary">
+                    {{ translate('pending') }}
+                </span>
+            @elseif($order['order_status'] == 'delivered' ? 'badge-soft-success':'')
+                <span
+                    class="fs-12 font-semibold rounded badge __badge badge-soft-success border-soft-success">
+                    {{ translate('delivered_by') }}
                 </span>
             @else
                 <span class="fs-12 font-semibold badge __badge-soft-primary rounded">

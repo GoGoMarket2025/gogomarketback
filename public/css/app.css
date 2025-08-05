@@ -10653,7 +10653,7 @@ button.bg-dark:focus {
 }
 
 .text-capitalize {
-  text-transform: capitalize !important;
+  /* text-transform: capitalize !important; */
 }
 
 .font-weight-light {

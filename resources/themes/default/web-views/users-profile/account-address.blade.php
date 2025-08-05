@@ -312,9 +312,11 @@
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/account-address.js') }}"></script>
     <script>
         "use strict";
-        const deliveryRestrictedCountries = @json($countriesName);
+        const deliveryRestrictedCountries = @json($countriesCode);
         function deliveryRestrictedCountriesCheck(countryOrCode, elementSelector, inputElement) {
-            const foundIndex = deliveryRestrictedCountries.findIndex(country => country.toLowerCase() === countryOrCode.toLowerCase());
+            const foundIndex = deliveryRestrictedCountries.findIndex(countryCode => countryCode.toLowerCase() === countryOrCode.toLowerCase());
+            console.log(countryOrCode);
+            console.log(deliveryRestrictedCountries);
             console.log(foundIndex)
             if (foundIndex !== -1) {
                 $(elementSelector).removeClass('map-area-alert-danger');
@@ -373,14 +375,54 @@
                 document.getElementById('longitude').value = coordinates.lng;
 
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    function extractAddressInfo(components) {
+                        const get = (type) =>
+                            components.find((c) => c.types.includes(type))?.long_name || '';
+
+                        const raw = {
+                            region: get('administrative_area_level_1'),
+                            district: get('district'),
+                            street: get('route'),
+                            streetNumber: get('street_number'),
+                        };
+
+                        return {
+                            ...raw,
+                            country: raw.country,
+                        };
+                    }
                 if (status === google.maps.GeocoderStatus.OK && results[0]) {
-                    document.getElementById('address').value = results[0].formatted_address;
+                    const address = results.find(x => x.types.includes('street_address'));
+                    if (address) {
+                        const parsed = extractAddressInfo(address.address_components);
+                        console.log(parsed);
+                        function buildAddressString(address) {
+                            const {
+                                street,
+                                streetNumber,
+                                district,
+                                region,
+                                country,
+                                countryCode
+                            } = address;
+
+                            const parts = [
+                                region,
+                                district,
+                                [streetNumber, street].filter(Boolean).join(' '),
+                                country || countryCode // fallback to countryCode if country is undefined
+                            ];
+
+                            return parts.filter(Boolean).join(', ');
+                        }
+                        document.getElementById('address').value = buildAddressString(parsed);
+                    }
 
                     let systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
                     if (systemCountryRestrictStatus) {
                     const countryObject = findCountryObject(results[0].address_components);
                     console.log(countryObject)
-                    deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
+                    deliveryRestrictedCountriesCheck(countryObject.short_name, '.location-map-address-canvas-area', '#address');
                     }
                 }
                 });
@@ -461,17 +503,61 @@
 
                 const geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ location: userLatLng }, (results, status) => {
+                    function extractAddressInfo(components) {
+                        const get = (type) =>
+                            components.find((c) => c.types.includes(type))?.long_name || '';
+
+                        const raw = {
+                            region: get('administrative_area_level_1'),
+                            district: get('district'),
+                            street: get('route'),
+                            streetNumber: get('street_number'),
+                        };
+
+                        return {
+                            ...raw,
+                            country: raw.country,
+                        };
+                    }
+
                     console.log(results);
 
+                    console.log(extractAddressInfo(results));
+
+
                     if (status === "OK" && results[0]) {
-                        console.log(results[0].formatted_address);
-                    document.getElementById('address').value = results[0].formatted_address;
+
+                    const address = results.find(x => x.types.includes('street_address'));
+                    if (address) {
+                        const parsed = extractAddressInfo(address.address_components);
+                        console.log(parsed);
+                        function buildAddressString(address) {
+                            const {
+                                street,
+                                streetNumber,
+                                district,
+                                region,
+                                country,
+                                countryCode
+                            } = address;
+
+                            const parts = [
+                                region,
+                                district,
+                                [streetNumber, street].filter(Boolean).join(' '),
+                                country || countryCode // fallback to countryCode if country is undefined
+                            ];
+
+                            return parts.filter(Boolean).join(', ');
+                        }
+                        document.getElementById('address').value = buildAddressString(parsed);
+                    }
 
                     const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
                     if (systemCountryRestrictStatus) {
                         const countryObject = findCountryObject(results[0].address_components);
                         console.log(countryObject);
-                        deliveryRestrictedCountriesCheck(countryObject.long_name, '.location-map-address-canvas-area', '#address');
+                        deliveryRestrictedCountriesCheck(countryObject.short_name, '.location-map-address-canvas-area', '#address');
                     }
                     }
                 });

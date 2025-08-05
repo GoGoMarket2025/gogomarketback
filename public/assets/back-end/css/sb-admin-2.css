@@ -314,6 +314,7 @@ input[type="radio"],
 input[type="checkbox"] {
     box-sizing: border-box;
     padding: 0;
+    accent-color: var(--web-primary);
 }
 
 textarea {
@@ -9961,7 +9962,7 @@ button.bg-dark:focus {
 }
 
 .text-capitalize {
-    text-transform: capitalize !important;
+    /* text-transform: capitalize !important; */
 }
 
 .font-weight-light {

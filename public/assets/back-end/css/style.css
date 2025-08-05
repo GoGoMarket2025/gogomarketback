@@ -1,5 +1,5 @@
 :root {
-    --c1: #1455ac;
+    --c1: #ff5b0a;
     --c1-rgb: 20, 85, 172;
     --c2: #ff6767;
     --title-color: #334257;
@@ -343,7 +343,6 @@ aside li .nav-link > span:not(:first-child) {
 }
 
 thead.text-capitalize th {
-    text-transform: capitalize;
     font-size: 14px;
 }
 
@@ -435,10 +434,6 @@ thead.text-capitalize th {
     opacity: 0.1;
 }
 
-label {
-    text-transform: capitalize;
-}
-
 .label_1 {
     /*position: absolute;*/
     font-size: 10px;
@@ -513,10 +508,6 @@ label {
 .deco-none {
     color: inherit;
     text-decoration: inherit;
-}
-
-.qcont:first-letter {
-    text-transform: capitalize;
 }
 
 /* Rounded sliders */
@@ -824,7 +815,6 @@ label {
 .option-select-btn label span {
     color: var(--c1);
     border-radius: 5px;
-    text-transform: capitalize;
     padding: 6px 12px;
     cursor: pointer;
     display: block;
@@ -2497,14 +2487,13 @@ select {
 }
 
 .__inline-9 .subscribe-button {
-    background: #1b7fed;
+    background: #ff5b0a;
     position: absolute;
     top: 0;
     color: white;
     padding: 11px;
     padding-left: 15px;
     padding-right: 15px;
-    text-transform: capitalize;
     border: none;
 }
 
@@ -3144,15 +3133,15 @@ select {
 
 .__inline-45 .btn-p {
     color: #fff;
-    background-color: #1b7fed;
-    border-color: #1b7fed;
+    background-color: #ff5b0a;
+    border-color: #ff5b0a;
     box-shadow: none;
 }
 
 .__inline-45 .btn-p:hover {
     color: #fff;
-    background-color: #1b7fed;
-    border-color: #1b7fed;
+    background-color: #ff5b0a;
+    border-color: #ff5b0a;
     box-shadow: none;
 }
 
@@ -3189,7 +3178,7 @@ select {
 }
 
 .__inline-45 .cz-sidebar-body h3:hover + .divider-role {
-    border-bottom: 3px solid #1b7fed !important;
+    border-bottom: 3px solid #ff5b0a !important;
     transition: 0.2s ease-in-out;
 }
 
@@ -3234,7 +3223,7 @@ select {
 }
 
 .__inline-45 .iconHad {
-    color: #1b7fed;
+    color: #ff5b0a;
     padding: 4px;
 }
 
@@ -3308,7 +3297,7 @@ select {
 
 .__inline-45 .donate-now input[type="radio"]:checked + label,
 .__inline-45 .Checked + label {
-    background: #1b7fed;
+    background: #ff5b0a;
 }
 
 .__inline-45 .donate-now label {
@@ -3328,7 +3317,7 @@ select {
 
 @media (max-width: 600px) {
     .__inline-45 .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__inline-45 .sidebar_heading h1 {
         text-align: center;
@@ -3427,7 +3416,7 @@ select {
 
 @media (max-width: 600px) {
     .__inline-47 .sidebar_heading {
-        background: #1b7fed;
+        background: #ff5b0a;
     }
     .__inline-47 .sidebar_heading h1 {
         text-align: center;
@@ -4435,8 +4424,8 @@ select {
 
 .__inline-70 {
     border-radius: 25px;
-    border: 1px solid #1b7fed;
-    color: #1b7fed;
+    border: 1px solid #ff5b0a;
+    color: #ff5b0a;
 }
 
 .__inline-71 {
@@ -4588,7 +4577,7 @@ select {
 }
 
 .__color-1B7FED {
-    color: #1b7fed;
+    color: #ff5b0a;
 }
 
 .__max-h-12rem {
@@ -5920,7 +5909,7 @@ body *::-webkit-scrollbar-thumb {
     background: #fef8f2;
 }
 .content .badge-soft-info {
-    color: #1455ac;
+    color: #ff5b0a;
     border-radius: 5px;
     border: 1px solid rgba(20, 85, 172, 0.2);
     background: #e9f3ff;
@@ -5954,7 +5943,7 @@ body *::-webkit-scrollbar-thumb {
     font-style: normal;
     font-weight: 600;
     line-height: 10.5px;
-    color: #1455ac;
+    color: #ff5b0a;
 }
 .badge--primary-light {
     border-radius: 3px;
@@ -6438,7 +6427,6 @@ body *::-webkit-scrollbar-thumb {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
-    text-transform: capitalize;
 }
 .customer-details-new-card-content-list {
     padding: 0;
@@ -6986,7 +6974,6 @@ table .store-name:hover {
 .add-outline-btn {
     font-size: 14px;
     font-weight: 600;
-    text-transform: capitalize;
     height: 44px;
     border-radius: 5px;
     border: 1px solid var(--primary-clr);
@@ -7164,7 +7151,7 @@ table .store-name:hover {
 }
 .language-warning-modal,
 .language-complete-modal {
-    --c1: #1455ac;
+    --c1: #ff5b0a;
 }
 .language-warning-modal .modal-content {
     border-left: 4px solid var(--c1);
@@ -7556,7 +7543,6 @@ img[class*="ratio-"] {
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
-    text-transform: capitalize;
 }
 
 .auth-wrapper-right .auth-header .badge {
@@ -7979,8 +7965,8 @@ img[class*="ratio-"] {
     position: absolute;
     inset-inline-end: -10px;
     inset-block-start: -10px;
-    border: 1px solid #1455ac;
-    color: #1455ac;
+    border: 1px solid #ff5b0a;
+    color: #ff5b0a;
     border-radius: 100%;
     width: 32px;
     height: 32px;

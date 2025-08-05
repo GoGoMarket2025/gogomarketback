@@ -527,14 +527,14 @@ html[dir="rtl"] .footer_banner:nth-child(5) {
 }
 
 .btn-outline--info {
-    border: 1px solid #1b7fed;
-    color: #1b7fed !important;
+    border: 1px solid #ff5b0a;
+    color: #ff5b0a !important;
 }
 
 .btn-outline--info:hover {
-    border-color: #1b7fed;
+    border-color: #ff5b0a;
     color: #fff !important;
-    background-color: #1b7fed;
+    background-color: #ff5b0a;
 }
 
 .qty_input {
@@ -550,7 +550,7 @@ html[dir="rtl"] .footer_banner:nth-child(5) {
 .qty_plus {
     display: flex;
     align-items: center;
-    color: #1455ac;
+    color: #ff5b0a;
     cursor: pointer;
 }
 
