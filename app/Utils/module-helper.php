@@ -126,7 +126,6 @@ if (!function_exists('digital_creat_order')) {
 
         if ($newCustomerInfo) {
             $checkCustomer = User::where(['email' => $newCustomerInfo['email']])->orWhere(['phone' => $newCustomerInfo['phone']])->first();
-            $user = $checkCustomer;
             if (!$checkCustomer) {
                 $addCustomer = User::create([
                     'name' => $newCustomerInfo['name'],
@@ -141,6 +140,7 @@ if (!function_exists('digital_creat_order')) {
             } else {
                 $addCustomer = $checkCustomer;
             }
+            $user = $addCustomer;
             session()->put('newRegisterCustomerInfo', $addCustomer);
 
             if ($additionalData['is_guest']) {
