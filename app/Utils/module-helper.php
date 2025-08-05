@@ -118,6 +118,7 @@ if (!function_exists('digital_creat_order')) {
         $generateUniqueId = OrderManager::generateUniqueOrderID();
         $orderIds = [];
 
+        $user = [];
         $additionalData = json_decode($paymentData['additional_data'], true);
 
         $addCustomer = null;
@@ -125,6 +126,7 @@ if (!function_exists('digital_creat_order')) {
 
         if ($newCustomerInfo) {
             $checkCustomer = User::where(['email' => $newCustomerInfo['email']])->orWhere(['phone' => $newCustomerInfo['phone']])->first();
+            $user = $checkCustomer;
             if (!$checkCustomer) {
                 $addCustomer = User::create([
                     'name' => $newCustomerInfo['name'],
@@ -213,7 +215,7 @@ if (!function_exists('digital_creat_order')) {
         return array(
             "uniqueId" => $generateUniqueId,
             "orderId" => $orderId,
-            "customer" => $newCustomerInfo
+            "customer" => $user
         );
     }
 }
