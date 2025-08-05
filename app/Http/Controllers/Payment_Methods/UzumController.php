@@ -121,19 +121,19 @@ class UzumController extends Controller
     {
 
         $data = $request->all();
-
         $payment_data = $this->payment::where('is_paid', 0)
             ->whereJsonContains('additional_data->uzum_order_id', $data["orderId"])
             ->first();
 
-
-        if ($payment_data){
+        if ($payment_data) {
             $additionalData = json_decode($payment_data->additional_data, true);
-            $orders = Order::where('order_group_id', $additionalData["order_group_id"])->get();
-
-
+            Order::where('order_group_id', $additionalData["order_group_id"])
+                ->update([
+                    'order_status' => 'confirmed',
+                    'payment_status' => 'paid',
+                ]);
             return response()->json([
-                "data" => $orders
+                'data' => true
             ]);
         }
 
