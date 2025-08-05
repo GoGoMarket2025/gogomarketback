@@ -60,8 +60,7 @@ class UzumController extends Controller
         }
 
         $data = digital_creat_order($payment_data);
-        $user = User::find($payment_data['customer_id']);
-        dump($user);
+        dump($payment_data['customer_id']);
         die();
 
 
