@@ -117,6 +117,11 @@ class UzumController extends Controller
         return redirect()->away($uzumUrl);
     }
 
+    public function success(Request $request): JsonResponse
+    {
+        return response()->json(['message' => 'Payment succeeded'], 200);
+    }
+
     public function handle(Request $request): JsonResponse
     {
 
