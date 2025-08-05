@@ -76,51 +76,11 @@ class UzumController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'No items in cart']), 400);
         }
 
-        // Create orders for each cart group
-        $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
-        $currency_model = getWebConfig(name: 'currency_model');
-        if ($currency_model == 'multi_currency') {
-            $currencyCode = $request->current_currency_code ?? Currency::find(getWebConfig(name: 'system_default_currency'))->code;
-        } else {
-            $currencyCode = Currency::find(getWebConfig(name: 'system_default_currency'))->code;
-        }
 
-        $getUniqueId = OrderManager::generateUniqueOrderID();
         $user = Helpers::getCustomerInformation($request);
+        dump($user);
 
-        $orderIds = [];
-        foreach ($cartGroupIds as $groupId) {
-            $data = [
-                'payment_method' => 'uzum_method',
-                'order_status' => 'pending',
-                'payment_status' => 'unpaid',
-                'transaction_ref' => '',
-                'order_group_id' => $getUniqueId,
-                'cart_group_id' => $groupId,
-                'request' => $request,
-                'newCustomerRegister' => $newCustomerRegister,
-                'bring_change_amount' => $request['bring_change_amount'] ?? 0,
-                'bring_change_amount_currency' => $currencyCode,
-            ];
-
-            $orderId = OrderManager::generate_order($data);
-
-            $order = Order::find($orderId);
-            $order->billing_address = ($request['billing_address_id'] != null) ? $request['billing_address_id'] : $order['billing_address'];
-            $order->billing_address_data = ($request['billing_address_id'] != null) ? ShippingAddress::find($request['billing_address_id']) : $order['billing_address_data'];
-            $order->order_note = ($request['order_note'] != null) ? $request['order_note'] : $order['order_note'];
-            $order->save();
-
-            $orderIds[] = $orderId;
-        }
-
-//        CartManager::cart_clean($request);
-
-        // Update payment data with order information
-        $additionalData['uzum_order_reference'] = $getUniqueId;
-        $additionalData['order_ids'] = $orderIds;
-        $payment_data->additional_data = json_encode($additionalData);
-        $payment_data->save();
+        die();
 
         $checkOutUrl = $this->config_values->checkout_url;
         $terminalId = $this->config_values->terminal_id;
