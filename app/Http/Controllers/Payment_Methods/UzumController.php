@@ -126,9 +126,14 @@ class UzumController extends Controller
             ->whereJsonContains('additional_data->uzum_order_id', $data["orderId"])
             ->first();
 
+
         if ($payment_data){
+            $additionalData = json_decode($payment_data->additional_data, true);
+
+
+
             return response()->json([
-                "data" => $payment_data
+                "data" => $additionalData
             ]);
         }
 
