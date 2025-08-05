@@ -58,13 +58,8 @@ class UzumController extends Controller
         if (!isset($payment_data)) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
         }
-
-//        $data = digital_creat_order($payment_data);
+        $data = digital_creat_order($payment_data);
         $user = User::find($payment_data['payer_id']);
-        dump($user->id);
-        dump($user);
-        die();
-
 
         $checkOutUrl = $this->config_values->checkout_url;
         $terminalId = $this->config_values->terminal_id;
@@ -86,7 +81,7 @@ class UzumController extends Controller
             'amount' => $amount,
             'clientId' => (string)$user->id,
             'currency' => 860,
-            'paymentDetails' => "Оплата за заказ № {$getUniqueId}",
+            'paymentDetails' => "Оплата за заказ № {$data["uniqueId"]}",
             'paymentParams' => [
                 'payType' => 'ONE_STEP',
                 'force3ds' => false,
@@ -96,7 +91,7 @@ class UzumController extends Controller
             'sessionTimeoutSecs' => 1800,
             'successUrl' => 'https://gogomarket.uz',
             'failureUrl' => 'https://gogomarket.uz',
-            'orderNumber' => $getUniqueId,
+            'orderNumber' => $data["uniqueId"],
         ];
         // Send request with headers and timeout
         $response = Http::withHeaders($headers)

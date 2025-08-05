@@ -214,10 +214,6 @@ if (!function_exists('digital_creat_order')) {
         return array(
             "uniqueId" => $generateUniqueId,
             "orderId" => $orderId,
-            "customer" => array(
-                "id" => $addCustomer ? $addCustomer['id'] : ($additionalData['new_customer_id'] ?? null),
-                "phone" => $addCustomer ? $addCustomer['phone'] : ($additionalData['new_customer_phone'] ?? null),
-            )
         );
     }
 }
