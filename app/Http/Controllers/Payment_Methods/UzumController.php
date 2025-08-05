@@ -47,6 +47,9 @@ class UzumController extends Controller
         ]);
 
 
+        dump($request->all());
+        die();
+
         if ($validator->fails()) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, $this->error_processor($validator)), 400);
         }

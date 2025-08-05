@@ -125,8 +125,6 @@ class PaymentController extends Controller
 
         $redirectLink = $this->getCustomerPaymentRequest($request, $orderAdditionalData);
 
-        dump($redirectLink);
-        die();
 
         if (in_array($request['payment_request_from'], ['app'])) {
             return response()->json([
