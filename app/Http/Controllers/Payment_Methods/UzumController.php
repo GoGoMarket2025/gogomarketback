@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderTransaction;
 use App\Models\PaymentRequest;
 use App\Models\ShippingAddress;
+use App\Models\User;
 use App\Traits\Processor;
 use App\Utils\CartManager;
 use App\Utils\Helpers;
@@ -59,7 +60,8 @@ class UzumController extends Controller
         }
 
         $data = digital_creat_order($payment_data);
-        dump($data);
+        $user = User::find($payment_data['customer_id']);
+        dump($user);
         die();
 
 
