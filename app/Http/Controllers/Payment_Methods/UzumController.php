@@ -59,8 +59,9 @@ class UzumController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
         }
 
-        $data = digital_creat_order($payment_data["payer_id"]);
-        dump($data);
+//        $data = digital_creat_order($payment_data);
+        $user = User::find($payment_data['payer_id']);
+        dump($user);
         die();
 
 
