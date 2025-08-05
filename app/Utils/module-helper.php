@@ -85,7 +85,7 @@ if (!function_exists('digital_payment_success')) {
             foreach ($cartGroupIds as $cartGroupId) {
                 $data += [
                     'payment_method' => $paymentData['payment_method'],
-                    'order_status' => 'confirmed',
+                    'order_status' => 'pending',
                     'payment_status' => 'unpaid',
                     'transaction_ref' => $paymentData['transaction_id'],
                     'order_group_id' => $generateUniqueId,
