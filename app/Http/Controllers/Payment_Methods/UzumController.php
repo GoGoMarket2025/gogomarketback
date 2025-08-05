@@ -48,8 +48,6 @@ class UzumController extends Controller
         ]);
 
 
-
-
         if ($validator->fails()) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, $this->error_processor($validator)), 400);
         }
@@ -112,6 +110,7 @@ class UzumController extends Controller
 
         $additionalData = json_decode($payment_data->additional_data, true);
         $additionalData['uzum_order_id'] = $uzumOrderId;
+        $additionalData['order_group_id'] = $data["uniqueId"];
         $payment_data->additional_data = json_encode($additionalData);
         $payment_data->save();
         return redirect()->away($uzumUrl);
@@ -122,10 +121,14 @@ class UzumController extends Controller
 
         $data = $request->all();
         Log::warning('Uzum Handle request:', $data);
+        Log::debug('Uzum Handle request:', $data);
 
+        $payment_data = $this->payment::where('is_paid', 0)
+            ->whereJsonContains('additional_data->uzum_order_id', $data["orderId"])
+            ->first();
 
         return response()->json([
-            'data' => true
+            'data' => $payment_data
         ]);
     }
 
