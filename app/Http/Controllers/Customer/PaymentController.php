@@ -42,6 +42,7 @@ class PaymentController extends Controller
             'payment_platform' => 'required',
         ]);
 
+
         $validator->sometimes('customer_id', 'required', function ($input) {
             return in_array($input->payment_request_from, ['app']);
         });
@@ -123,6 +124,7 @@ class PaymentController extends Controller
 
         $redirectLink = $this->getCustomerPaymentRequest($request, $orderAdditionalData);
 
+
         if (in_array($request['payment_request_from'], ['app'])) {
             return response()->json([
                 'redirect_link' => $redirectLink,
@@ -202,7 +204,7 @@ class PaymentController extends Controller
 
     public function web_payment_success(Request $request)
     {
-        if($request->flag == 'success') {
+        if ($request->flag == 'success') {
             if (session()->has('payment_mode') && session('payment_mode') == 'app') {
                 return response()->json(['message' => 'Payment succeeded'], 200);
             } else {
@@ -211,11 +213,11 @@ class PaymentController extends Controller
                 session()->forget('newCustomerRegister');
                 return view(VIEW_FILE_NAMES['order_complete'], compact('isNewCustomerInSession'));
             }
-        }else{
-            if(session()->has('payment_mode') && session('payment_mode') == 'app'){
+        } else {
+            if (session()->has('payment_mode') && session('payment_mode') == 'app') {
                 return response()->json(['message' => 'Payment failed'], 403);
-            }else{
-                Toastr::error(translate('Payment_failed').'!');
+            } else {
+                Toastr::error(translate('Payment_failed') . '!');
                 return redirect(url('/'));
             }
         }
@@ -226,7 +228,7 @@ class PaymentController extends Controller
     {
         $additionalData = [
             'business_name' => getWebConfig(name: 'company_name'),
-            'business_logo' => getStorageImages(path: getWebConfig('company_web_logo'), type:'shop'),
+            'business_logo' => getStorageImages(path: getWebConfig('company_web_logo'), type: 'shop'),
             'payment_mode' => $request->has('payment_platform') ? $request['payment_platform'] : 'web',
         ];
 
