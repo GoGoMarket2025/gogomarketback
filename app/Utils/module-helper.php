@@ -86,7 +86,7 @@ if (!function_exists('digital_payment_success')) {
                 $data += [
                     'payment_method' => $paymentData['payment_method'],
                     'order_status' => 'confirmed',
-                    'payment_status' => 'paid',
+                    'payment_status' => 'unpaid',
                     'transaction_ref' => $paymentData['transaction_id'],
                     'order_group_id' => $generateUniqueId,
                     'new_customer_id' => $addCustomer ? $addCustomer['id'] : ($additionalData['new_customer_id'] ?? null),
@@ -118,7 +118,6 @@ if (!function_exists('digital_creat_order')) {
         $generateUniqueId = OrderManager::generateUniqueOrderID();
         $orderIds = [];
 
-        $user = [];
         $additionalData = json_decode($paymentData['additional_data'], true);
 
         $addCustomer = null;
