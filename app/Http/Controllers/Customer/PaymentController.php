@@ -42,6 +42,9 @@ class PaymentController extends Controller
             'payment_platform' => 'required',
         ]);
 
+        dump($user);
+        die();
+
         $validator->sometimes('customer_id', 'required', function ($input) {
             return in_array($input->payment_request_from, ['app']);
         });
