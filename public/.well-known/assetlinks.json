@@ -1,0 +1,12 @@
+[
+    {
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.gogomarket",
+            "sha256_cert_fingerprints": [
+                "A3:CA:D3:AF:1B:5A:3E:08:A5:3E:07:8F:35:95:50:4B:8D:43:5F:21:80:44:BC:A1:2A:9B:53:52:15:FB:97:25"
+            ]
+        }
+    }
+]
