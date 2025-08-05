@@ -12,102 +12,100 @@ use Illuminate\Support\Facades\DB;
 if (!function_exists('digital_payment_success')) {
     function digital_payment_success($paymentData)
     {
-        if (isset($paymentData) && $paymentData['is_paid'] == 1) {
-            $generateUniqueId = OrderManager::generateUniqueOrderID();
-            $orderIds = [];
+        $generateUniqueId = OrderManager::generateUniqueOrderID();
+        $orderIds = [];
 
-            $additionalData = json_decode($paymentData['additional_data'], true);
+        $additionalData = json_decode($paymentData['additional_data'], true);
 
-            $addCustomer = null;
-            $newCustomerInfo = $additionalData['new_customer_info'] ?? null;
+        $addCustomer = null;
+        $newCustomerInfo = $additionalData['new_customer_info'] ?? null;
 
-            if ($newCustomerInfo) {
-                $checkCustomer = User::where(['email' => $newCustomerInfo['email']])->orWhere(['phone' => $newCustomerInfo['phone']])->first();
-                if (!$checkCustomer) {
-                    $addCustomer = User::create([
-                        'name' => $newCustomerInfo['name'],
-                        'f_name' => $newCustomerInfo['name'],
-                        'l_name' => $newCustomerInfo['l_name'],
-                        'email' => $newCustomerInfo['email'],
-                        'phone' => $newCustomerInfo['phone'],
-                        'is_active' => 1,
-                        'password' => bcrypt($newCustomerInfo['password']),
-                        'referral_code' => $newCustomerInfo['referral_code'],
-                    ]);
-                } else {
-                    $addCustomer = $checkCustomer;
-                }
-                session()->put('newRegisterCustomerInfo', $addCustomer);
-
-                if ($additionalData['is_guest']) {
-                    $addressId = $additionalData['address_id'] ?? null;
-                    $billingAddressId = $additionalData['billing_address_id'] ?? null;
-                    ShippingAddress::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'id' => $addressId])
-                        ->update(['customer_id' => $addCustomer['id'], 'is_guest' => 0]);
-                    ShippingAddress::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'id' => $billingAddressId])
-                        ->update(['customer_id' => $addCustomer['id'], 'is_guest' => 0]);
-                }
+        if ($newCustomerInfo) {
+            $checkCustomer = User::where(['email' => $newCustomerInfo['email']])->orWhere(['phone' => $newCustomerInfo['phone']])->first();
+            if (!$checkCustomer) {
+                $addCustomer = User::create([
+                    'name' => $newCustomerInfo['name'],
+                    'f_name' => $newCustomerInfo['name'],
+                    'l_name' => $newCustomerInfo['l_name'],
+                    'email' => $newCustomerInfo['email'],
+                    'phone' => $newCustomerInfo['phone'],
+                    'is_active' => 1,
+                    'password' => bcrypt($newCustomerInfo['password']),
+                    'referral_code' => $newCustomerInfo['referral_code'],
+                ]);
+            } else {
+                $addCustomer = $checkCustomer;
             }
+            session()->put('newRegisterCustomerInfo', $addCustomer);
 
-            $isGuestUserInOrder = $additionalData['is_guest_in_order'];
-            $data = [
-                'request' => [
-                    'customer_id' => $additionalData['customer_id'],
-                    'is_guest' => $isGuestUserInOrder ?? 0,
-                    'guest_id' => $isGuestUserInOrder ? $additionalData['customer_id'] : null,
-                    'order_note' => $additionalData['order_note'],
-                    'coupon_code' => $additionalData['coupon_code'] ?? null,
-                    'coupon_discount' => $additionalData['coupon_discount'] ?? null,
-                    'address_id' => $additionalData['address_id'] ?? null,
-                    'billing_address_id' => $additionalData['billing_address_id'] ?? null,
-                    'payment_request_from' => $additionalData['payment_request_from'],
-                ],
+            if ($additionalData['is_guest']) {
+                $addressId = $additionalData['address_id'] ?? null;
+                $billingAddressId = $additionalData['billing_address_id'] ?? null;
+                ShippingAddress::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'id' => $addressId])
+                    ->update(['customer_id' => $addCustomer['id'], 'is_guest' => 0]);
+                ShippingAddress::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'id' => $billingAddressId])
+                    ->update(['customer_id' => $addCustomer['id'], 'is_guest' => 0]);
+            }
+        }
+
+        $isGuestUserInOrder = $additionalData['is_guest_in_order'];
+        $data = [
+            'request' => [
+                'customer_id' => $additionalData['customer_id'],
+                'is_guest' => $isGuestUserInOrder ?? 0,
+                'guest_id' => $isGuestUserInOrder ? $additionalData['customer_id'] : null,
+                'order_note' => $additionalData['order_note'],
+                'coupon_code' => $additionalData['coupon_code'] ?? null,
+                'coupon_discount' => $additionalData['coupon_discount'] ?? null,
+                'address_id' => $additionalData['address_id'] ?? null,
+                'billing_address_id' => $additionalData['billing_address_id'] ?? null,
+                'payment_request_from' => $additionalData['payment_request_from'],
+            ],
+        ];
+
+        if (isset($additionalData['payment_request_from']) && in_array($additionalData['payment_request_from'], ['app'])) {
+            if ($additionalData['is_guest']) {
+                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+            } else {
+                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+            }
+        } elseif (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
+            if ($additionalData['is_guest']) {
+                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+            } else {
+                $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
+            }
+        } else {
+            $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
+        }
+
+        session()->put('payment_mode', isset($additionalData['payment_mode']) ? $additionalData['payment_mode'] : 'web');
+
+        foreach ($cartGroupIds as $cartGroupId) {
+            $data += [
+                'payment_method' => $paymentData['payment_method'],
+                'order_status' => 'confirmed',
+                'payment_status' => 'paid',
+                'transaction_ref' => $paymentData['transaction_id'],
+                'order_group_id' => $generateUniqueId,
+                'new_customer_id' => $addCustomer ? $addCustomer['id'] : ($additionalData['new_customer_id'] ?? null),
+                'cart_group_id' => $cartGroupId,
+                'newCustomerRegister' => $addCustomer,
             ];
+            $orderId = OrderManager::generate_order($data);
+            unset($data['payment_method']);
+            unset($data['cart_group_id']);
+            $orderIds[] = $orderId;
+        }
 
-            if (isset($additionalData['payment_request_from']) && in_array($additionalData['payment_request_from'], ['app'])) {
-                if ($additionalData['is_guest']) {
-                    $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-                } else {
-                    $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-                }
-            } elseif (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
-                if ($additionalData['is_guest']) {
-                    $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => 1, 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-                } else {
-                    $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-                }
-            } else {
-                $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
-            }
+        foreach ($orderIds as $orderId) {
+            OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
+        }
 
-            session()->put('payment_mode', isset($additionalData['payment_mode']) ? $additionalData['payment_mode'] : 'web');
-
-            foreach ($cartGroupIds as $cartGroupId) {
-                $data += [
-                    'payment_method' => $paymentData['payment_method'],
-                    'order_status' => 'confirmed',
-                    'payment_status' => 'paid',
-                    'transaction_ref' => $paymentData['transaction_id'],
-                    'order_group_id' => $generateUniqueId,
-                    'new_customer_id' => $addCustomer ? $addCustomer['id'] : ($additionalData['new_customer_id'] ?? null),
-                    'cart_group_id' => $cartGroupId,
-                    'newCustomerRegister' => $addCustomer,
-                ];
-                $orderId = OrderManager::generate_order($data);
-                unset($data['payment_method']);
-                unset($data['cart_group_id']);
-                $orderIds[] = $orderId;
-            }
-
-            foreach ($orderIds as $orderId) {
-                OrderManager::generateReferBonusForFirstOrder(orderId: $orderId);
-            }
-
-            if (isset($additionalData['payment_request_from']) && in_array($additionalData['payment_request_from'], ['app'])) {
-                CartManager::cart_clean_for_api_digital_payment($data);
-            } else {
-                count($cartGroupIds) > 0 ? CartManager::cartCleanByCartGroupIds(cartGroupIDs: $cartGroupIds) : CartManager::cart_clean();
-            }
+        if (isset($additionalData['payment_request_from']) && in_array($additionalData['payment_request_from'], ['app'])) {
+            CartManager::cart_clean_for_api_digital_payment($data);
+        } else {
+            count($cartGroupIds) > 0 ? CartManager::cartCleanByCartGroupIds(cartGroupIDs: $cartGroupIds) : CartManager::cart_clean();
         }
     }
 }
