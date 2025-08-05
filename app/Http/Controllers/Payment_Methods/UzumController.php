@@ -121,12 +121,16 @@ class UzumController extends Controller
     {
 
         $data = $request->all();
-        Log::warning('Uzum Handle request:', $data);
-        Log::debug('Uzum Handle request:', $data);
 
         $payment_data = $this->payment::where('is_paid', 0)
             ->whereJsonContains('additional_data->uzum_order_id', $data["orderId"])
             ->first();
+
+        if ($payment_data){
+            return response()->json([
+                "data" => $payment_data
+            ]);
+        }
 
         return response()->json([
             'data' => $payment_data
