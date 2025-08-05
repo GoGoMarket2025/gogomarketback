@@ -56,9 +56,7 @@ class UzumController extends Controller
         $payment_data = $this->payment::where(['id' => $request['payment_id']])->where(['is_paid' => 0])->first();
 
 
-        if (function_exists('digital_payment_success')) {
-            digital_payment_success($payment_data);
-        }
+        digital_payment_success($payment_data);
         die();
         if (!isset($payment_data)) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
