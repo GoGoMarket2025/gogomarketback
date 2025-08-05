@@ -57,6 +57,7 @@ class UzumController extends Controller
 
 
         digital_payment_success($payment_data);
+        dump($payment_data);
         die();
         if (!isset($payment_data)) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
