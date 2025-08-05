@@ -129,7 +129,7 @@ class UzumController extends Controller
 
         if ($payment_data){
             $additionalData = json_decode($payment_data->additional_data, true);
-            $orders = Order::where('order_group_id', $additionalData->order_group_id)->get();
+            $orders = Order::where('order_group_id', $additionalData["order_group_id"])->get();
 
 
             return response()->json([
