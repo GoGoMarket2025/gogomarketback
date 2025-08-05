@@ -57,6 +57,7 @@ class UzumController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
         }
         $data = digital_creat_order($payment_data);
+        $uniqueId = $data['uniqueId'];
         $user = User::find($payment_data['payer_id']);
 
         $checkOutUrl = $this->config_values->checkout_url;
@@ -110,7 +111,7 @@ class UzumController extends Controller
 
         $additionalData = json_decode($payment_data->additional_data, true);
         $additionalData['uzum_order_id'] = $uzumOrderId;
-        $additionalData['order_group_id'] = $data["uniqueId"];
+        $additionalData['order_group_id'] = $uniqueId;
         $payment_data->additional_data = json_encode($additionalData);
         $payment_data->save();
         return redirect()->away($uzumUrl);
