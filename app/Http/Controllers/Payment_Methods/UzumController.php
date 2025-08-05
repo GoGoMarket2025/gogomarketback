@@ -61,15 +61,10 @@ class UzumController extends Controller
 
 //        $data = digital_creat_order($payment_data);
         $user = User::find($payment_data['payer_id']);
+        dump($user->id);
         dump($user);
         die();
 
-
-
-        $user = Helpers::getCustomerInformation($request);
-        dump($user);
-
-        die();
 
         $checkOutUrl = $this->config_values->checkout_url;
         $terminalId = $this->config_values->terminal_id;
