@@ -42,8 +42,7 @@ class PaymentController extends Controller
             'payment_platform' => 'required',
         ]);
 
-        dump($user);
-        die();
+
 
         $validator->sometimes('customer_id', 'required', function ($input) {
             return in_array($input->payment_request_from, ['app']);
@@ -125,6 +124,9 @@ class PaymentController extends Controller
         }
 
         $redirectLink = $this->getCustomerPaymentRequest($request, $orderAdditionalData);
+
+        dump($redirectLink);
+        die();
 
         if (in_array($request['payment_request_from'], ['app'])) {
             return response()->json([
