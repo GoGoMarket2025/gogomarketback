@@ -140,7 +140,7 @@ if (!function_exists('digital_creat_order')) {
             } else {
                 $addCustomer = $checkCustomer;
             }
-            $user = $addCustomer;
+            return $checkCustomer;
             session()->put('newRegisterCustomerInfo', $addCustomer);
 
             if ($additionalData['is_guest']) {
