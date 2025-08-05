@@ -54,33 +54,14 @@ class UzumController extends Controller
         }
 
         $payment_data = $this->payment::where(['id' => $request['payment_id']])->where(['is_paid' => 0])->first();
-
-
-        digital_payment_success($payment_data);
-        dump($payment_data->order);
-        die();
         if (!isset($payment_data)) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_204), 200);
         }
 
-        // Create order based on payment data
-        $additionalData = json_decode($payment_data->additional_data, true);
-        if (!$additionalData) {
-            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'Invalid payment data']), 400);
-        }
+        $data = digital_creat_order($payment_data);
+        dump($data);
+        die();
 
-        // Get cart group IDs
-        $cartGroupIds = [];
-        if (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
-            $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])
-                ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-        } else {
-            $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
-        }
-
-        if (empty($cartGroupIds)) {
-            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'No items in cart']), 400);
-        }
 
 
         $user = Helpers::getCustomerInformation($request);
