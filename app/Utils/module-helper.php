@@ -213,7 +213,7 @@ if (!function_exists('digital_creat_order')) {
         return array(
             "uniqueId" => $generateUniqueId,
             "orderId" => $orderId,
-            "customer" => $addCustomer
+            "customer" => $newCustomerInfo
         );
     }
 }
