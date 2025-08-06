@@ -82,11 +82,11 @@ class UzumController extends Controller
             'currency' => 860,
             'paymentDetails' => "Оплата за заказ № {$data["uniqueId"]}",
             'paymentParams' => [
-                'payType' => 'REDIRECT',
+                'payType' => 'ONE_STEP',
                 'force3ds' => false,
                 'phoneNumber' => (string)$user->phone,
             ],
-            'viewType' => 'IFRAME',
+            'viewType' => 'REDIRECT',
             'sessionTimeoutSecs' => 1800,
             'successUrl' => 'https://gogomarket.uz',
             'failureUrl' => 'https://gogomarket.uz',
@@ -114,10 +114,6 @@ class UzumController extends Controller
         $additionalData['order_group_id'] = $uniqueId;
         $payment_data->additional_data = json_encode($additionalData);
         $payment_data->save();
-
-        dump($responseData);
-        dump($uzumUrl);
-        die();
         return redirect()->away($uzumUrl);
     }
 
