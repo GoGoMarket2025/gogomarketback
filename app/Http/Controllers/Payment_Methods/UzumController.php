@@ -114,6 +114,10 @@ class UzumController extends Controller
         $additionalData['order_group_id'] = $uniqueId;
         $payment_data->additional_data = json_encode($additionalData);
         $payment_data->save();
+
+        dump($responseData);
+        dump($uzumUrl);
+        die();
         return redirect()->away($uzumUrl);
     }
 
