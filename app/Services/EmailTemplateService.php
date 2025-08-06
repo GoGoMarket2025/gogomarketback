@@ -117,24 +117,91 @@ class EmailTemplateService
             'delivery-man' => '{deliveryManName}',
         };
 
-        $bodyData =  [
-            EmailTemplateKey::REGISTRATION=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Congratulation! Your registration request has been send to admin successfully! Please wait until admin reviewal. </div><div><br></div><div>meanwhile click here to visit the '.getWebConfig('company_name').' Shop Website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::REGISTRATION_VERIFICATION=>'<p><b>Hi '.$userType.',</b></p><p>Your verification code is</p>',
-            EmailTemplateKey::REGISTRATION_FROM_POS=>'<p><b>Hi '.$userType.',</b></p><p>Thank you for joining '.getWebConfig('company_name').' Shop.If you want to become a registered customer then reset your password below by using this email. Then you’ll be able to explore the website and app as a registered customer.</p>',
-            EmailTemplateKey::REGISTRATION_APPROVED=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Your registration request has been approved by admin. Now you can complete your store setting and start selling your product on '.getWebConfig('company_name').' Shop. </div><div><br></div><div>Meanwhile, click here to visit the'.getWebConfig('company_name').' shop website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::REGISTRATION_DENIED=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Your registration request has been denied by admin. Please contact with admin or support center if you have any queries.</div><div><br></div><div>Meanwhile, click here to visit the'.getWebConfig('company_name').' shop website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::ACCOUNT_ACTIVATION=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Your account suspension has been revoked by admin. From now you can access your app and panel again Please contact us for any queries we’re always happy to help.</div><div><br></div><div>Meanwhile, click here to visit the'.getWebConfig('company_name').' shop website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::ACCOUNT_SUSPENDED=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Your account access has been suspended by admin.From now you can access your app and panel again Please contact us for any queries we’re always happy to help.</div><div><br></div><div>Meanwhile, click here to visit the'.getWebConfig('company_name').' shop website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::ACCOUNT_UNBLOCK=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Your account has been successfully unblocked. We appreciate your cooperation in resolving this issue. Thank you for your understanding and patience. </div><div><br></div><div>Meanwhile, click here to visit the'.getWebConfig('company_name').' shop website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::ACCOUNT_BLOCK=>'<div><b>Hi '.$userType.',</b></div><div><b><br></b></div><div>Your account has been blocked due to suspicious activity by the admin .To resolve this issue please contact with admin or support center. We apologize for any inconvenience caused.</div><div><br></div><div>Meanwhile, click here to visit the'.getWebConfig('company_name').'shop website</div><div><font color="#0000ff"> <a href="'.url('/').'" target="_blank">'.url('/').'</a></font></div>',
-            EmailTemplateKey::DIGITAL_PRODUCT_DOWNLOAD=>'<p>Thank you for choosing '.getWebConfig('company_name') .' shop! Your digital product is ready for download. To download your product use your email <b>{emailId}</b> and order # {orderId} below.</b><br></p>',
-            EmailTemplateKey::DIGITAL_PRODUCT_OTP=>'<p><b>Hi '.$userType.',</b></p><p>Your verification code is</p>',
-            EmailTemplateKey::ORDER_PLACE=>'<p><b>Hi '.$userType.',</b></p><p>Your order from {shopName} has been placed to know the current status of your order click track order</p>',
-            EmailTemplateKey::FORGET_PASSWORD=>'<p><b>Hi '.$userType.',</b></p><p>Please click the link below to change your password.</p>',
-            EmailTemplateKey::ORDER_RECEIVED=> '<p><b>Hi '.$userType.',</b></p><p>We have sent you this email to notify that you have a new order.You will be able to see your orders after login to your panel.</p>',
-            EmailTemplateKey::ADD_FUND_TO_WALLET=>'<div style="text-align: center; ">Amount successfully credited to your wallet .</div><div style="text-align: center; "><br></div>',
-            EmailTemplateKey::RESET_PASSWORD_VERIFICATION=>'<p><b>Hi '.$userType.',</b></p><p>Your verification code is</p>',
+        $bodyData = [
+            EmailTemplateKey::REGISTRATION =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . str_replace(':company', getWebConfig('company_name'), translate('email_registration_body')) . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::REGISTRATION_VERIFICATION =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . translate('email_verification_code') . '</p>',
+        
+            EmailTemplateKey::REGISTRATION_FROM_POS =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . str_replace(':company', getWebConfig('company_name'), translate('email_registration_from_pos')) . '</p>',
+        
+            EmailTemplateKey::REGISTRATION_APPROVED =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . str_replace(':company', getWebConfig('company_name'), translate('email_registration_approved_body')) . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::REGISTRATION_DENIED =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . translate('email_registration_denied_body') . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::ACCOUNT_ACTIVATION =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . translate('email_account_activated') . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::ACCOUNT_SUSPENDED =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . translate('email_account_suspended_body') . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::ACCOUNT_UNBLOCK =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . translate('email_account_unblocked_body') . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::ACCOUNT_BLOCK =>
+                '<div><b>' . translate('hi') . ' ' . $userType . ',</b></div>
+                 <div><br></div>
+                 <div>' . translate('email_account_blocked_body') . '</div>
+                 <div><br></div>
+                 <div><font color="#0000ff"><a href="' . url('/') . '" target="_blank">' . url('/') . '</a></font></div>',
+        
+            EmailTemplateKey::DIGITAL_PRODUCT_DOWNLOAD =>
+                '<p>' . str_replace(':company', getWebConfig('company_name'), translate('email_digital_product_download')) . ' <b>{emailId}</b> ' . translate('and_order') . ' # {orderId}</p>',
+        
+            EmailTemplateKey::DIGITAL_PRODUCT_OTP =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . translate('email_digital_product_otp') . '</p>',
+        
+            EmailTemplateKey::ORDER_PLACE =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . translate('email_order_placed') . '</p>',
+        
+            EmailTemplateKey::FORGET_PASSWORD =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . translate('email_forgot_password') . '</p>',
+        
+            EmailTemplateKey::ORDER_RECEIVED =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . translate('email_order_received_notice') . '</p>',
+        
+            EmailTemplateKey::ADD_FUND_TO_WALLET =>
+                '<div style="text-align: center;">' . translate('email_wallet_credit') . '</div><div style="text-align: center;"><br></div>',
+        
+            EmailTemplateKey::RESET_PASSWORD_VERIFICATION =>
+                '<p><b>' . translate('hi') . ' ' . $userType . ',</b></p>
+                 <p>' . translate('email_password_reset_otp') . '</p>',
         ];
+              
         return $bodyData[$templateName];
     }
 }
