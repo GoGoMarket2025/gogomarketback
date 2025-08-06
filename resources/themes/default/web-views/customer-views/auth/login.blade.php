@@ -67,7 +67,7 @@
                                     method="post" id="customer-login-form">
                                     @csrf
                                     <input type="hidden" name="login_type" value="manual-login">
-                                    @include("web-views.customer-views.auth.partials._email")
+                                    @include("web-views.customer-views.auth.partials._phone")
                                     @include("web-views.customer-views.auth.partials._password")
                                     @include("web-views.customer-views.auth.partials._remember-me", ['forgotPassword' => true])
                                     @include("web-views.customer-views.auth.partials._recaptcha")
@@ -132,7 +132,7 @@
                                         <input type="hidden" name="login_type" class="auth-login-type-input" value="manual-login">
 
                                         <div class="manual-login-items">
-                                            @include("web-views.customer-views.auth.partials._email")
+                                            @include("web-views.customer-views.auth.partials._phone")
                                             @include("web-views.customer-views.auth.partials._password")
                                             @include("web-views.customer-views.auth.partials._remember-me", ['forgotPassword' => true])
                                         </div>
