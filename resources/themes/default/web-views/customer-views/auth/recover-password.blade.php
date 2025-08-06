@@ -1,3 +1,12 @@
+@push('css_or_js')
+    <link rel="stylesheet" href="{{ theme_asset('public/assets/front-end/plugin/intl-tel-input/css/intlTelInput.css') }}">
+@endpush
+
+@push('script')
+    <script src="{{ theme_asset('public/assets/front-end/plugin/intl-tel-input/js/intlTelInput.js') }}"></script>
+    <script src="{{ theme_asset('public/assets/front-end/js/country-picker-init.js') }}"></script>
+@endpush
+
 @extends('layouts.front-end.app')
 
 @section('title', translate('forgot_Password'))
@@ -12,15 +21,15 @@
                 </p>
                 <ol class="list-unstyled font-size-md p-0">
                     <li>
-                        <span class="text-primary mr-2">{{ translate('1')}}.</span>
+                        <span class="text-primary mr-2">1.</span>
                         {{ translate('use_your_registered_phone.')}}
                     </li>
                     <li>
-                        <span class="text-primary mr-2">{{ translate('2')}}.</span>
+                        <span class="text-primary mr-2">2.</span>
                         {{ translate('we_will_send_you_a_temporary_OTP_in_your_phone') }}.
                     </li>
                     <li>
-                        <span class="text-primary mr-2">{{ translate('3')}}.</span>
+                        <span class="text-primary mr-2">3.</span>
                         {{ translate('use_the_OTP_code_to_change_your_password_on_our_secure_website.')}}
                     </li>
                 </ol>
@@ -30,12 +39,15 @@
                           method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="recover-email">
+                            <label for="recover-phone">
                                 {{ translate('Phone') }}
                             </label>
-                            <input class="form-control clean-phone-input-value" type="text" name="identity" required
-                                   placeholder="{{ translate('enter_your_phone_number') }}">
-                            <span class="fs-12 text-muted">* {{ translate('must_use_country_code_before_phone_number') }}</span>
+                            <div class="position-relative d-flex align-items-center">
+                                <input class="form-control phone-input-with-country-picker" id="recover-phone" type="text"
+                                    placeholder="{{ translate('enter_phone_number') }}" required>
+
+                                <input type="hidden" class="country-picker-phone-number" name="identity">
+                            </div>
                             <div class="invalid-feedback">
                                 {{ translate('please_provide_valid_phone_number')}}
                             </div>
