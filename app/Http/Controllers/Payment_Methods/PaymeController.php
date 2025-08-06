@@ -59,67 +59,17 @@ class PaymeController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'Invalid payment data']), 400);
         }
 
-        // Get cart group IDs
-        $cartGroupIds = [];
-        if (isset($additionalData['customer_id']) && isset($additionalData['is_guest'])) {
-            $cartGroupIds = Cart::where(['customer_id' => $additionalData['customer_id'], 'is_guest' => '0', 'is_checked' => 1])
-                ->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
-        } else {
-            $cartGroupIds = CartManager::get_cart_group_ids(type: 'checked');
-        }
-
-        if (empty($cartGroupIds)) {
-            return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'No items in cart']), 400);
-        }
-
-        // Create orders for each cart group
-        $newCustomerRegister = isset($additionalData['new_customer_info']) ? session('newRegisterCustomerInfo') : null;
-        $currency_model = getWebConfig(name: 'currency_model');
-        if ($currency_model == 'multi_currency') {
-            $currencyCode = $request->current_currency_code ?? Currency::find(getWebConfig(name: 'system_default_currency'))->code;
-        } else {
-            $currencyCode = Currency::find(getWebConfig(name: 'system_default_currency'))->code;
-        }
-
-        $getUniqueId = OrderManager::generateUniqueOrderID();
-
-        $orderIds = [];
-        foreach ($cartGroupIds as $groupId) {
-            $data = [
-                'payment_method' => 'payme_method',
-                'order_status' => 'pending',
-                'payment_status' => 'unpaid',
-                'transaction_ref' => '',
-                'order_group_id' => $getUniqueId,
-                'cart_group_id' => $groupId,
-                'request' => $request,
-                'newCustomerRegister' => $newCustomerRegister,
-                'bring_change_amount' => $request['bring_change_amount'] ?? 0,
-                'bring_change_amount_currency' => $currencyCode,
-            ];
-
-            $orderId = OrderManager::generate_order($data);
-
-            $order = Order::find($orderId);
-            $order->billing_address = ($request['billing_address_id'] != null) ? $request['billing_address_id'] : $order['billing_address'];
-            $order->billing_address_data = ($request['billing_address_id'] != null) ? ShippingAddress::find($request['billing_address_id']) : $order['billing_address_data'];
-            $order->order_note = ($request['order_note'] != null) ? $request['order_note'] : $order['order_note'];
-            $order->save();
-
-            $orderIds[] = $orderId;
-        }
-
-        CartManager::cart_clean($request);
+        $data = digital_creat_order($payment_data);
+        $uniqueId = $data['uniqueId'];
 
         // Update payment data with order information
-        $additionalData['payme_order_reference'] = $getUniqueId;
-        $additionalData['order_ids'] = $orderIds;
+        $additionalData['payme_order_reference'] = $uniqueId;
         $payment_data->additional_data = json_encode($additionalData);
         $payment_data->save();
 
         // Continue with payment gateway redirection
         $amount = round($payment_data->payment_amount * 100);
-        $payload = "m={$this->config_values->merchant_id};ac.order_id={$getUniqueId};a={$amount}";
+        $payload = "m={$this->config_values->merchant_id};ac.order_id={$uniqueId};a={$amount}";
         $encoded = rtrim(base64_encode($payload), '=');
         $payme_url = "https://checkout.paycom.uz/{$encoded}";
 
@@ -293,11 +243,6 @@ class PaymeController extends Controller
             $paymentRequest->payment_method = 'payme';
             $paymentRequest->transaction_id = $transactionId;
             $paymentRequest->save();
-
-            // Call success hook to create orders
-            if (function_exists('digital_payment_success')) {
-                digital_payment_success($paymentRequest);
-            }
         }
 
         // Find transaction
@@ -320,12 +265,11 @@ class PaymeController extends Controller
         $transaction->status = 'success';
         $transaction->save();
 
-        // Update order payment status
-        $order = \App\Models\Order::find($transaction->order_id);
-        if ($order) {
-            $order->payment_status = 'paid';
-            $order->save();
-        }
+        Order::where('order_group_id', $transactionId)
+            ->update([
+                'order_status' => 'confirmed',
+                'payment_status' => 'paid',
+            ]);
 
         return response()->json([
             'result' => [

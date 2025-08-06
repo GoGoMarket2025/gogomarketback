@@ -146,7 +146,6 @@ class ClickController extends Controller
 
         Log::warning($order);
 
-
         if (!$order) {
             return $this->clickError(-5, 'Order does not exist');
         }
