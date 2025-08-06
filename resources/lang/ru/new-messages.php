@@ -5259,7 +5259,7 @@ return [
 	"forget_password" => "Забудьте пароль",
 	"please_provide_valid_identity" => "Пожалуйста, предоставьте действительную личность",
 	"back_again" => "Назад снова",
-	"verify" => "Проверять",
+	"verify" => "Проверить",
 	"No_such_user_found" => "Такого пользователя не найдено",
 	"something_went_wrong." => "Что -то пошло не так.",
 	"please_try_again_after_sometime" => "Пожалуйста, попробуйте еще раз через некоторое время",

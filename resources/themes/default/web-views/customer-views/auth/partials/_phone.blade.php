@@ -1,4 +1,4 @@
-<div class="form-group m-0">
+<div class="form-group">
     <label class="form-label font-semibold">
         {{ translate('phone_number') }}
         <span class="input-required-icon">*</span>

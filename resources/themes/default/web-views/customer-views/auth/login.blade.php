@@ -87,7 +87,7 @@
                                     method="post" id="customer-login-form">
                                     @csrf
                                     <input type="hidden" name="login_type" value="manual-login">
-                                    @include("web-views.customer-views.auth.partials._email")
+                                    @include("web-views.customer-views.auth.partials._phone")
                                     @include("web-views.customer-views.auth.partials._password")
                                     @include("web-views.customer-views.auth.partials._remember-me", ['forgotPassword' => true])
                                     @include("web-views.customer-views.auth.partials._recaptcha")
