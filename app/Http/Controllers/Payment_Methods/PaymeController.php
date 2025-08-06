@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class PaymeController extends Controller
@@ -265,6 +266,9 @@ class PaymeController extends Controller
         // Update transaction status
         $transaction->status = 'success';
         $transaction->save();
+
+        Log::warning($orderGroupId);
+
 
         Order::where('order_group_id', $orderGroupId)
             ->update([
