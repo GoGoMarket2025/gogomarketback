@@ -82,7 +82,7 @@ class UzumController extends Controller
             'currency' => 860,
             'paymentDetails' => "Оплата за заказ № {$data["uniqueId"]}",
             'paymentParams' => [
-                'payType' => 'ONE_STEP',
+                'payType' => 'REDIRECT',
                 'force3ds' => false,
                 'phoneNumber' => (string)$user->phone,
             ],
