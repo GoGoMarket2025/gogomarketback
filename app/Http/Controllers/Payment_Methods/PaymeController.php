@@ -227,6 +227,7 @@ class PaymeController extends Controller
     {
         $params = $data['params'] ?? [];
         $transactionId = $params['id'] ?? null;
+        $orderGroupId = $params['id'] ?? null;
 
         if (!$transactionId) {
             return $this->error(-31050, 'Transaction ID not provided');
@@ -265,7 +266,7 @@ class PaymeController extends Controller
         $transaction->status = 'success';
         $transaction->save();
 
-        Order::where('order_group_id', $transactionId)
+        Order::where('order_group_id', $orderGroupId)
             ->update([
                 'order_status' => 'confirmed',
                 'payment_status' => 'paid',
