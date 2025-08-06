@@ -86,7 +86,7 @@ class UzumController extends Controller
                 'force3ds' => false,
                 'phoneNumber' => (string)$user->phone,
             ],
-            'viewType' => 'IFRAME',
+            'viewType' => 'REDIRECT',
             'sessionTimeoutSecs' => 1800,
             'successUrl' => 'https://gogomarket.uz',
             'failureUrl' => 'https://gogomarket.uz',
