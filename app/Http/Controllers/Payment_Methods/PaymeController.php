@@ -14,7 +14,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class PaymeController extends Controller
@@ -228,7 +227,6 @@ class PaymeController extends Controller
     {
         $params = $data['params'] ?? [];
         $transactionId = $params['id'] ?? null;
-        $orderGroupId = $params['id'] ?? null;
 
         if (!$transactionId) {
             return $this->error(-31050, 'Transaction ID not provided');
@@ -267,14 +265,15 @@ class PaymeController extends Controller
         $transaction->status = 'success';
         $transaction->save();
 
-        Log::warning($orderGroupId);
-
-
-        Order::where('order_group_id', $orderGroupId)
-            ->update([
-                'order_status' => 'confirmed',
-                'payment_status' => 'paid',
-            ]);
+        // Update order payment status
+        $order = \App\Models\Order::find($transaction->order_id);
+        if ($order) {
+            Order::where('order_group_id', $order->order_group_id)
+                ->update([
+                    'order_status' => 'confirmed',
+                    'payment_status' => 'paid',
+                ]);
+        }
 
         return response()->json([
             'result' => [
