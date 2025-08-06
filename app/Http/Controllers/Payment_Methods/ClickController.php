@@ -62,7 +62,6 @@ class ClickController extends Controller
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, ['message' => 'Invalid payment data']), 400);
         }
 
-
         $data = digital_creat_order($payment_data);
         $uniqueId = $data['uniqueId'];
 
@@ -141,24 +140,23 @@ class ClickController extends Controller
         $amount = $request->get('amount');
         $status = $request->get('error') == 0;
 
-        $payment_data = $this->payment::where('is_paid', 0)
+        $order = $this->payment::where('is_paid', 0)
             ->whereJsonContains('additional_data->click_order_reference', $orderId)
             ->first();
 
-        Log::warning($payment_data);
+        Log::warning($order);
 
 
-        if (!$payment_data) {
+        if (!$order) {
             return $this->clickError(-5, 'Order does not exist');
         }
 
-        if (intval($amount) !== intval($payment_data->payment_amount)) {
+        if (intval($amount) !== intval($order->payment_amount)) {
             Log::warning('Incorrect amount');
             return $this->clickError(-2, 'Incorrect parameter amount');
         }
 
-        $additionalData = json_decode($payment_data->additional_data, true);
-        Order::where('order_group_id', $additionalData["order_group_id"])
+        Order::where('order_group_id', $orderId)
             ->update([
                 'order_status' => 'confirmed',
                 'payment_status' => 'paid',
