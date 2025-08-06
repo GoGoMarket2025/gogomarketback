@@ -89,22 +89,22 @@ class EmailTemplateService
     public function getTitleData(string $userType,$templateName):string
     {
         $titleData =  [
-            EmailTemplateKey::REGISTRATION=>'Registration Complete',
-            EmailTemplateKey::REGISTRATION_VERIFICATION=>'Registration Verification',
-            EmailTemplateKey::REGISTRATION_FROM_POS=>'Registration Complete',
-            EmailTemplateKey::REGISTRATION_APPROVED=>'Registration Approved',
-            EmailTemplateKey::REGISTRATION_DENIED=>'Registration Denied',
-            EmailTemplateKey::ACCOUNT_ACTIVATION=>'Account Activation',
-            EmailTemplateKey::ACCOUNT_SUSPENDED=>'Account Suspended',
-            EmailTemplateKey::ACCOUNT_UNBLOCK=>'Account Unblocked',
-            EmailTemplateKey::ACCOUNT_BLOCK=>'Account Blocked',
-            EmailTemplateKey::DIGITAL_PRODUCT_DOWNLOAD=>'Congratulations',
-            EmailTemplateKey::DIGITAL_PRODUCT_OTP=>'Digital Product Download OTP Verification',
-            EmailTemplateKey::ORDER_PLACE=>'Order'.' # '.'{orderId}'.' Has Been Placed Successfully!',
-            EmailTemplateKey::FORGET_PASSWORD=>'Change Password Request',
-            EmailTemplateKey::ORDER_RECEIVED=>'New Order Received',
-            EmailTemplateKey::ADD_FUND_TO_WALLET=>'Transaction Successful',
-            EmailTemplateKey::RESET_PASSWORD_VERIFICATION=>'OTP Verification For Password Reset',
+            EmailTemplateKey::REGISTRATION=>translate('registration_complete'),
+            EmailTemplateKey::REGISTRATION_VERIFICATION=>translate('registration_verification'),
+            EmailTemplateKey::REGISTRATION_FROM_POS=>translate('registration_complete'),
+            EmailTemplateKey::REGISTRATION_APPROVED=>translate('registration_approved'),
+            EmailTemplateKey::REGISTRATION_DENIED=>translate('registration_denied'),
+            EmailTemplateKey::ACCOUNT_ACTIVATION=>translate('account_activation'),
+            EmailTemplateKey::ACCOUNT_SUSPENDED=>translate('account_suspended'),
+            EmailTemplateKey::ACCOUNT_UNBLOCK=>translate('account_unblocked'),
+            EmailTemplateKey::ACCOUNT_BLOCK=>translate('account_blocked'),
+            EmailTemplateKey::DIGITAL_PRODUCT_DOWNLOAD=>translate('congratulations'),
+            EmailTemplateKey::DIGITAL_PRODUCT_OTP=>translate('digital_product_download_otp_Verification'),
+            EmailTemplateKey::ORDER_PLACE=>translate('order').' # '.'{orderId}'.translate('has_been_placed_successfully'),
+            EmailTemplateKey::FORGET_PASSWORD=>translate('change_password_request'),
+            EmailTemplateKey::ORDER_RECEIVED=>translate('new_order_received'),
+            EmailTemplateKey::ADD_FUND_TO_WALLET=>translate('transaction_successful'),
+            EmailTemplateKey::RESET_PASSWORD_VERIFICATION=>translate('otp_verification_for_password_reset'),
         ];
         return $titleData[$templateName];
     }
