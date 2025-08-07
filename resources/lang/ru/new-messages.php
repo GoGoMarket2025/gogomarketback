@@ -5364,4 +5364,6 @@ return [
 	"email_password_reset_otp" => "Ваш код подтверждения:",
 	"and_order" => "и номер заказа",
 	"OTP_sent_successfully" => "OTP sent successfully",
+	"pay_via_online" => "Оплата онлайн",
+	"The_phone_number_must_be_at_least_4_characters" => "The phone number must be at least 4 characters",
 ];
