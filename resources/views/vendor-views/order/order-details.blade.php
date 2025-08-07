@@ -111,12 +111,6 @@
                                             </span>
                                         @endif
                                     </div>
-
-                                    @if(getWebConfig(name: 'order_verification'))
-                                        <span>
-                                            {{translate('order_verification_code')}} : <strong>{{$order['verification_code']}}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                             </div>
                         </div>
