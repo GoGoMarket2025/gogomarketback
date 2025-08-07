@@ -34,13 +34,13 @@ trait  Processor
     public function translate($key)
     {
         try {
-            App::setLocale('en');
-            $lang_array = include(base_path('resources/lang/' . 'en' . '/lang.php'));
+            App::setLocale('ru');
+            $lang_array = include(base_path('resources/lang/' . 'ru' . '/lang.php'));
             $processed_key = ucfirst(str_replace('_', ' ', str_ireplace(['\'', '"', ',', ';', '<', '>', '?'], ' ', $key)));
             if (!array_key_exists($key, $lang_array)) {
                 $lang_array[$key] = $processed_key;
                 $str = "<?php return " . var_export($lang_array, true) . ";";
-                file_put_contents(base_path('resources/lang/' . 'en' . '/lang.php'), $str);
+                file_put_contents(base_path('resources/lang/' . 'ru' . '/lang.php'), $str);
                 $result = $processed_key;
             } else {
                 $result = __('lang.' . $key);
