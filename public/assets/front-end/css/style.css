@@ -852,9 +852,16 @@ a {
     max-width: 180px;
 }
 
+.footer-header {
+    text-align: start;
+}
+
 @media (max-width: 767px) {
     .page-footer .store-contents {
         margin-bottom: 20px;
+    }
+    .footer-header {
+        text-align: center;
     }
 }
 ::-moz-selection {

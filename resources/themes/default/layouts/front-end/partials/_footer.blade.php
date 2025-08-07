@@ -13,7 +13,7 @@
                         </a>
                         @if((isset($web_config['ios']['status']) && $web_config['ios']['status']) || (isset($web_config['android']['status']) &&  $web_config['android']['status']))
                             <div class="mt-4 pt-lg-4">
-                                <h6 class="text-uppercase font-weight-bold footer-header align-items-center text-start">
+                                <h6 class="text-uppercase font-weight-bold footer-header align-items-center">
                                     {{ translate('download_our_app') }}
                                 </h6>
                             </div>
