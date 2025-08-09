@@ -1239,11 +1239,11 @@ a {
 .__cate-item .__img {
     height: 100px;
     aspect-ratio: 1;
-    border-radius: 50%;
+    border-radius: 18px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.0509803922);
 }
 .__cate-item .__img .temporary-closed {
-    border-radius: 50%;
+    border-radius: 18px;
 }
 
 .__cate-item .__img img {
@@ -1251,13 +1251,13 @@ a {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 18px;
 }
 
 .__cate-item .__img.circle {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    border-radius: 18px;
 }
 
 .__img-20 {
