@@ -91,7 +91,7 @@ return [
 	"discounted_products" => "Товары со скидкой",
 	"clearance_Sale" => "Распродажа",
 	"all_vendors" => "Все продавцы",
-	"vendor_zone" => "Зона продавцов",
+	"vendor_zone" => "Продавцам",
 	"become_a_vendor" => "Стать продавцом",
 	"vendor_login" => "Вход для продавцов",
 	"View_All" => "Смотреть все",
