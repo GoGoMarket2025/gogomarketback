@@ -2914,7 +2914,7 @@ return [
 	"orders_Served" => "Заказы отбывают",
 	"john_doe" => "Джон доу",
 	"dhaka" => "Дакка",
-	"zip" => "Молния",
+	"zip" => "Индекс",
 	"best_product,_highly_recommended" => "Лучший продукт очень рекомендуется",
 	"have_thoughts_to_share" => "Есть мысли поделиться",
 	"rate_the_quality" => "Оцените качество",

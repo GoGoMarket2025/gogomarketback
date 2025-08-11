@@ -111,7 +111,7 @@
                                                                     <br>
                                                                     <span class="text-capitalize">
                                                                         <span class="min-w-60px">
-                                                                            {{ translate('city') }} / {{translate('zip')}}
+                                                                            {{ translate('city') }}
                                                                         </span> :&nbsp; {{$shipping->city}}, {{$shipping->zip}}
                                                                     </span>
                                                                     <br>
@@ -148,7 +148,7 @@
                                                                     <br>
                                                                     <span class="text-capitalize">
                                                                         <span class="min-w-60px">
-                                                                            {{ translate('city') }} / {{translate('zip')}}
+                                                                            {{ translate('city') }}
                                                                         </span> :&nbsp; {{$billing->city}}, {{$billing->zip}}
                                                                     </span>
                                                                     <br>
