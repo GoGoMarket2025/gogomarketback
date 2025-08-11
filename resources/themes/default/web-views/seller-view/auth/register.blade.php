@@ -20,7 +20,21 @@
                         <div class="create-an-account p-3 p-sm-4">
                             <img src="{{theme_asset('assets/img/media/form-bg.png')}}" alt="" class="create-an-accout-bg-img">
                             <div class="row">
-                                @include('web-views.seller-view.auth.partial.header')
+                                <div class="col-lg-4">
+                                    <div class="">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="ext-center">
+                                                <h3 class="mb-2 text-capitalize">{{translate('vendor_registration')}}</h3>
+                                                <p>{{translate('create_your_own_store').'. '.translate('already_have_store').'?'}}
+                                                    <a class="text-primary fw-bold" href="{{route('vendor.auth.login')}}">{{translate('login')}}</a>
+                                                </p>
+                                                <div class="my-4 text-center">
+                                                    <img width="308" src="{{ !empty($vendorRegistrationHeader?->image)  ? getStorageImages(path:imagePathProcessing(imageData: $vendorRegistrationHeader?->image, path: 'vendor-registration-setting'),type: 'product') : theme_asset('public/assets/front-end/img/media/seller-registration.png')}}" alt="" class="dark-support">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-lg-8">
                                     <div class="bg-white p-3 p-sm-4 rounded">
                                         <h4 class="mb-4 text text-capitalize">{{translate('create_an_account')}}</h4>
