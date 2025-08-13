@@ -239,7 +239,7 @@
             <div class="outgoing_msg">
                 <div class="send_msg d-flex flex-column align-items-end gap-2" data-toggle="tooltip"
                      @if($message->created_at->diffInDays() > 6)
-                         title="{{ $message->created_at->format('M-d-Y h:i A') }}"
+                         title="{{ $message->created_at->format('d.m.Y H:i') }}"
                      @elseif($message->created_at->isYesterday())
                          title="Yesterday {{ $message->created_at->format('h:i A') }}"
                      @elseif($message->created_at->isToday())
