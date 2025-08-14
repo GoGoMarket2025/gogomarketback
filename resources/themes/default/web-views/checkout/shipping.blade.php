@@ -133,7 +133,7 @@
                                                                     </select>
                                                                 @else
                                                                 <input type="text" class="form-control"
-                                                                       name="zip" id="zip" {{$shippingAddresses->count()==0?'required':''}}>
+                                                                       name="zip" id="zip" {{$shippingAddresses->count()==0?'':''}}>
                                                                 @endif
                                                             </div>
                                                         </div>
