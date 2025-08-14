@@ -134,7 +134,7 @@ class UzumController extends Controller
             $additionalData = json_decode($payment_data->additional_data, true);
             Order::where('order_group_id', $additionalData["order_group_id"])
                 ->update([
-                    'order_status' => 'confirmed',
+                    'order_status' => 'pending',
                     'payment_status' => 'paid',
                 ]);
             return response()->json([
