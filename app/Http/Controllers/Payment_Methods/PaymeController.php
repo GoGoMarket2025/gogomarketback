@@ -270,7 +270,7 @@ class PaymeController extends Controller
         if ($order) {
             Order::where('order_group_id', $order->order_group_id)
                 ->update([
-                    'order_status' => 'confirmed',
+                    'order_status' => 'pending',
                     'payment_status' => 'paid',
                 ]);
         }

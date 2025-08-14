@@ -64,7 +64,7 @@
             @php($shopName=\App\Models\Shop::where('seller_id', $order['seller_id'])->first())
         @endif
         <div class="date fs-12 font-semibold text-secondary-50 text-body mb-3 mt-2">
-            {{ date('d M, Y h:i A', strtotime($order['created_at'])) }}
+            {{ date('d.m.Y H:i', strtotime($order['created_at'])) }}
         </div>
     </div>
 

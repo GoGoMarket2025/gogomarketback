@@ -157,7 +157,7 @@ class ClickController extends Controller
 
         Order::where('order_group_id', $orderId)
             ->update([
-                'order_status' => 'confirmed',
+                'order_status' => 'pending',
                 'payment_status' => 'paid',
             ]);
 
