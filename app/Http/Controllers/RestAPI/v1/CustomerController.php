@@ -251,7 +251,7 @@ class CustomerController extends Controller
             'address_type' => 'required',
             'address' => 'required',
             'city' => 'required',
-            'zip' => 'string',
+            'zip' => 'nullable|string',
             'country' => 'required',
             'phone' => 'required',
             'latitude' => 'required',
