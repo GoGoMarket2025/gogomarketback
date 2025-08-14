@@ -91,15 +91,15 @@
                                                                 </div>
                                                             </div>
                                                         @endif
-{{--                                                        <div class="form-group">--}}
-{{--                                                            <label>{{ translate('address_type')}}</label>--}}
-{{--                                                            <select class="form-control" name="address_type" id="address_type">--}}
-{{--                                                                <option value="permanent">{{ translate('permanent')}}</option>--}}
-{{--                                                                <option value="home">{{ translate('home')}}</option>--}}
-{{--                                                                <option value="others">{{ translate('others')}}</option>--}}
-{{--                                                            </select>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div><div class="col-12">--}}
+                                                        <div class="form-group">
+                                                            <label>{{ translate('address_type')}}</label>
+                                                            <select class="form-control" name="address_type" id="address_type">
+                                                                <option value="permanent">{{ translate('permanent')}}</option>
+                                                                <option value="home">{{ translate('home')}}</option>
+                                                                <option value="others">{{ translate('others')}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div><div class="col-12">
 
                                                         <div class="col-12">
                                                             <div class="form-group">
