@@ -122,8 +122,7 @@
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label>{{ translate('zip_code')}}
-                                                                    <span class="text-danger">*</span></label>
+                                                                <label>{{ translate('zip_code')}}</label>
                                                                 @if($zip_restrict_status == 1)
                                                                     <select name="zip" class="form-control selectpicker" data-live-search="true" id="select2-zip-container" required>
                                                                         @forelse($zip_codes as $code)
