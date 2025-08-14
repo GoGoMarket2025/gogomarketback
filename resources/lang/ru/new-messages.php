@@ -5367,5 +5367,6 @@ return [
 	"pay_via_online" => "Оплата онлайн",
 	"The_phone_number_must_be_at_least_4_characters" => "The phone number must be at least 4 characters",
 	"create_your_own_store" => "Создайте свой собственный магазин",
-	"already_have_store" => "Уже есть магазин"
+	"already_have_store" => "Уже есть магазин",
+	"Send_Message_to_Deliveryman" => "Отправить сообщение курьеру",
 ];
