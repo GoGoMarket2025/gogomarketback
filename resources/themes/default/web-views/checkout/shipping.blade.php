@@ -107,7 +107,10 @@
                                                                     <span class="text-danger">*</span></label>
                                                                 <select name="country" id="country" class="form-control selectpicker" data-live-search="true" required>
                                                                     @forelse($countries as $country)
-                                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}</option>
+                                                                        <option value="{{ $country['name'] }}"
+                                                                            {{ count($countries) === 1 ? 'selected' : '' }}>
+                                                                            {{ $country['name'] }}
+                                                                        </option>
                                                                     @empty
                                                                         <option value="">{{ translate('no_country_to_deliver') }}</option>
                                                                     @endforelse
