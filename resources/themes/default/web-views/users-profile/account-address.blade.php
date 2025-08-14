@@ -196,7 +196,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"
                                              fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M7 9.81219C7 9.41419 6.842 9.03269 6.5605 8.75169C6.2795 8.47019 5.898 8.31219 5.5 8.31219C4.507 8.31219 2.993 8.31219 2 8.31219C1.602 8.31219 1.2205 8.47019 0.939499 8.75169C0.657999 9.03269 0.5 9.41419 0.5 9.81219V13.3122C0.5 13.7102 0.657999 14.0917 0.939499 14.3727C1.2205 14.6542 1.602 14.8122 2 14.8122H5.5C5.898 14.8122 6.2795 14.6542 6.5605 14.3727C6.842 14.0917 7 13.7102 7 13.3122V9.81219ZM14.5 9.81219C14.5 9.41419 14.342 9.03269 14.0605 8.75169C13.7795 8.47019 13.398 8.31219 13 8.31219C12.007 8.31219 10.493 8.31219 9.5 8.31219C9.102 8.31219 8.7205 8.47019 8.4395 8.75169C8.158 9.03269 8 9.41419 8 9.81219V13.3122C8 13.7102 8.158 14.0917 8.4395 14.3727C8.7205 14.6542 9.102 14.8122 9.5 14.8122H13C13.398 14.8122 13.7795 14.6542 14.0605 14.3727C14.342 14.0917 14.5 13.7102 14.5 13.3122V9.81219ZM12.3105 7.20869L14.3965 5.12269C14.982 4.53719 14.982 3.58719 14.3965 3.00169L12.3105 0.915687C11.725 0.330188 10.775 0.330188 10.1895 0.915687L8.1035 3.00169C7.518 3.58719 7.518 4.53719 8.1035 5.12269L10.1895 7.20869C10.775 7.79419 11.725 7.79419 12.3105 7.20869ZM7 2.31219C7 1.91419 6.842 1.53269 6.5605 1.25169C6.2795 0.970186 5.898 0.812187 5.5 0.812187C4.507 0.812187 2.993 0.812187 2 0.812187C1.602 0.812187 1.2205 0.970186 0.939499 1.25169C0.657999 1.53269 0.5 1.91419 0.5 2.31219V5.81219C0.5 6.21019 0.657999 6.59169 0.939499 6.87269C1.2205 7.15419 1.602 7.31219 2 7.31219H5.5C5.898 7.31219 6.2795 7.15419 6.5605 6.87269C6.842 6.59169 7 6.21019 7 5.81219V2.31219Z"
+                                                  d="M7 9.81219C7 9.41419 6.842 9.03269 6.5605 8.75169C6.2795 8.47019 5.898 8.31219 5.5 8.31219C4.507 8.31219 2.993 8.31219 2 8.31219C1.602 8.31219 1.2205 8.47019 0.939499 8.75169C0.657999 9.03269 0.5 9.41419 0.5 9.81219V13.3122C0.5 13.7102 0.657999 14.0917 0.939499 14.3727C1.2205 14.6542 1.602 14.8122 2 14.8122H5.5C5.898 14.8122 6.2795 14.6542 6.5605 14.3727C6.842 14.0917 7 13.7102 7 13.3122V9.81219ZM14.5 9.81219C14.5 9.41419 14.342 9.03269 14.0605 8.75169C13.7795 8.47019 13.398 8.31219 13 8.31219C12.007 8.31219 10.493 8.31219 9.5 8.31219C9.102 8.31219 8.7205 8.47019 8.4395 8.75169C8.158 9.03269 8 9.41419 8 9.81219V13.3122C8 13.7102 8.158 14.0917 8.4395 14.3727C8.7205 14.6542 9.102 14.8122 9.5 14.8122H13C13.398 14.8122 13.7795 14.6542 14.0605 14.3727C14.342 14.0917 14.5 13.7102 14.5 13.3122V9.81219ZM12.3105 7.20869Л14.3965 5.12269C14.982 4.53719 14.982 3.58719 14.3965 3.00169L12.3105 0.915687C11.725 0.330188 10.775 0.330188 10.1895 0.915687L8.1035 3.00169C7.518 3.58719 7.518 4.53719 8.1035 5.12269L10.1895 7.20869C10.775 7.79419 11.725 7.79419 12.3105 7.20869ZM7 2.31219C7 1.91419 6.842 1.53269 6.5605 1.25169C6.2795 0.970186 5.898 0.812187 5.5 0.812187C4.507 0.812187 2.993 0.812187 2 0.812187C1.602 0.812187 1.2205 0.970186 0.939499 1.25169C0.657999 1.53269 0.5 1.91419 0.5 2.31219V5.81219C0.5 6.21019 0.657999 6.59169 0.939499 6.87269C1.2205 7.15419 1.602 7.31219 2 7.31219H5.5C5.898 7.31219 6.2795 7.15419 6.5605 6.87269C6.842 6.59169 7 6.21019 7 5.81219V2.31219Z"
                                                   fill="white"/>
                                         </svg>
                                     </button>
@@ -315,9 +315,6 @@
         const deliveryRestrictedCountries = @json($countriesCode);
         function deliveryRestrictedCountriesCheck(countryOrCode, elementSelector, inputElement) {
             const foundIndex = deliveryRestrictedCountries.findIndex(countryCode => countryCode.toLowerCase() === countryOrCode.toLowerCase());
-            console.log(countryOrCode);
-            console.log(deliveryRestrictedCountries);
-            console.log(foundIndex)
             if (foundIndex !== -1) {
                 $(elementSelector).removeClass('map-area-alert-danger');
                 $(inputElement).parent().find('.map-address-alert').removeClass('opacity-100').addClass('opacity-0')
@@ -330,253 +327,192 @@
     </script>
     <script src="{{ theme_asset(path: 'public/assets/front-end/plugin/intl-tel-input/js/intlTelInput.js') }}"></script>
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/country-picker-init.js') }}"></script>
+
     @if(getWebConfig('map_api_status') ==1 )
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key={{getWebConfig('map_api_key')}}&callback=callBackFunction&loading=async&libraries=places&v=3.56" defer>
-        </script>
+        {{-- Яндекс.Карты вместо Google Maps --}}
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=ee4968dc-1434-49e5-8a95-a63813385c14" defer></script>
         <script>
             "use strict";
-            async function initAutocomplete() {
-            var myLatLng = {
-                lat: {{$default_location?$default_location['lat']:'-33.8688'}},
-                lng: {{$default_location?$default_location['lng']:'151.2195'}}
-            };
 
-            const { Map } = await google.maps.importLibrary("maps");
-            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+            // Глобальные переменные карты и маркера
+            let ymap, yPlacemark, ySuggest;
 
-            const map = new google.maps.Map(document.getElementById("location_map_canvas"), {
-                center: myLatLng,
-                zoom: 13,
-                mapId: 'roadmap'
-            });
-
-            const marker = new AdvancedMarkerElement({
-                map,
-                position: myLatLng
-            });
-
-            marker.setMap(map);
-
-            // Глобальные переменные
-            window.gmap = map;
-            window.gmapMainMarker = marker;
-
-            const geocoder = new google.maps.Geocoder();
-
-            google.maps.event.addListener(map, 'click', function (mapsMouseEvent) {
-                const coordinates = mapsMouseEvent.latLng.toJSON();
-                const latlng = new google.maps.LatLng(coordinates.lat, coordinates.lng);
-
-                marker.position = coordinates;
-                map.panTo(latlng);
-
-                document.getElementById('latitude').value = coordinates.lat;
-                document.getElementById('longitude').value = coordinates.lng;
-
-                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                    function extractAddressInfo(components) {
-                        const get = (type) =>
-                            components.find((c) => c.types.includes(type))?.long_name || '';
-
-                        const raw = {
-                            region: get('administrative_area_level_1'),
-                            district: get('district'),
-                            street: get('route'),
-                            streetNumber: get('street_number'),
-                        };
-
-                        return {
-                            ...raw,
-                            country: raw.country,
-                        };
-                    }
-                if (status === google.maps.GeocoderStatus.OK && results[0]) {
-                    const address = results.find(x => x.types.includes('street_address'));
-                    if (address) {
-                        const parsed = extractAddressInfo(address.address_components);
-                        console.log(parsed);
-                        function buildAddressString(address) {
-                            const {
-                                street,
-                                streetNumber,
-                                district,
-                                region,
-                                country,
-                                countryCode
-                            } = address;
-
-                            const parts = [
-                                region,
-                                district,
-                                [streetNumber, street].filter(Boolean).join(' '),
-                                country || countryCode // fallback to countryCode if country is undefined
-                            ];
-
-                            return parts.filter(Boolean).join(', ');
-                        }
-                        document.getElementById('address').value = buildAddressString(parsed);
-                    }
-
-                    let systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
-                    if (systemCountryRestrictStatus) {
-                    const countryObject = findCountryObject(results[0].address_components);
-                    console.log(countryObject)
-                    deliveryRestrictedCountriesCheck(countryObject.short_name, '.location-map-address-canvas-area', '#address');
-                    }
-                }
-                });
-            });
-
-            const input = document.getElementById("pac-input");
-            const searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
-
-            map.addListener("bounds_changed", () => {
-                searchBox.setBounds(map.getBounds());
-            });
-
-            let markers = [];
-
-            searchBox.addListener("places_changed", () => {
-                const places = searchBox.getPlaces();
-                if (places.length === 0) return;
-
-                markers.forEach((m) => m.setMap(null));
-                markers = [];
-
-                const bounds = new google.maps.LatLngBounds();
-
-                places.forEach((place) => {
-                if (!place.geometry || !place.geometry.location) return;
-
-                const mrkr = new AdvancedMarkerElement({
-                    map,
-                    title: place.name,
-                    position: place.geometry.location,
-                });
-
-                google.maps.event.addListener(mrkr, "click", function () {
-                    document.getElementById('latitude').value = this.position.lat();
-                    document.getElementById('longitude').value = this.position.lng();
-                });
-
-                markers.push(mrkr);
-
-                if (place.geometry.viewport) {
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
-                });
-
-                map.fitBounds(bounds);
-            });
-            }
-
-            // 📍 Функция "Найти меня"
-            function locateMe() {
-            if (!navigator.geolocation) {
-                alert("Ваш браузер не поддерживает геолокацию.");
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                const userLatLng = { lat, lng };
-
-                const map = window.gmap;
-                const marker = window.gmapMainMarker;
-                if (!map || !marker) {
-                    alert("Карта или маркер не инициализированы.");
-                    return;
-                }
-
-                marker.position = userLatLng;
-                map.setCenter(userLatLng);
-                map.setZoom(15);
-
+            // Хэлпер: запись координат в скрытые поля
+            function updateCoordinates(lat, lng) {
                 document.getElementById('latitude').value = lat;
                 document.getElementById('longitude').value = lng;
+            }
 
-                const geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ location: userLatLng }, (results, status) => {
-                    function extractAddressInfo(components) {
-                        const get = (type) =>
-                            components.find((c) => c.types.includes(type))?.long_name || '';
+            // Хэлпер: достаем страну/код страны из geoObject
+            function extractCountryInfo(geoObject) {
+                // addressComponents содержит массив {kind, name}
+                const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
+                const country = comps.find(c => c.kind === 'country')?.name || '';
+                // country_code можно взять из metaDataProperty
+                const meta = geoObject.getMetaDataProperty && geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
+                const code = meta && meta.Address && meta.Address.country_code ? meta.Address.country_code : '';
+                return { country, code };
+            }
 
-                        const raw = {
-                            region: get('administrative_area_level_1'),
-                            district: get('district'),
-                            street: get('route'),
-                            streetNumber: get('street_number'),
-                        };
+            // Хэлпер: достаем части адреса и собираем похожую строку как раньше
+            function buildAddressFromGeoObject(geoObject) {
+                const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
 
-                        return {
-                            ...raw,
-                            country: raw.country,
-                        };
-                    }
+                const get = (kind) => comps.find(c => c.kind === kind)?.name || '';
 
-                    console.log(results);
+                const region = get('province') || get('area');
+                const district = get('district');
+                const street = get('street');
+                const streetNumber = get('house');
 
-                    console.log(extractAddressInfo(results));
+                const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
+                const country = (meta && meta.Address && meta.Address.country_name) || '';
+                const countryCode = (meta && meta.Address && meta.Address.country_code) || '';
 
+                const parts = [
+                    region,
+                    district,
+                    [streetNumber, street].filter(Boolean).join(' '),
+                    country || countryCode
+                ].filter(Boolean);
 
-                    if (status === "OK" && results[0]) {
+                return parts.join(', ');
+            }
 
-                    const address = results.find(x => x.types.includes('street_address'));
-                    if (address) {
-                        const parsed = extractAddressInfo(address.address_components);
-                        console.log(parsed);
-                        function buildAddressString(address) {
-                            const {
-                                street,
-                                streetNumber,
-                                district,
-                                region,
-                                country,
-                                countryCode
-                            } = address;
+            // Основной реверс-геокодинг и проверки
+            function resolveAndFillAddress(coords) {
+                ymaps.geocode(coords).then(function (res) {
+                    const first = res.geoObjects.get(0);
+                    if (!first) return;
 
-                            const parts = [
-                                region,
-                                district,
-                                [streetNumber, street].filter(Boolean).join(' '),
-                                country || countryCode // fallback to countryCode if country is undefined
-                            ];
+                    // Адресная строка (собираем вручную, чтобы соответствовало прежней логике)
+                    const addr = buildAddressFromGeoObject(first);
+                    document.getElementById('address').value = addr;
 
-                            return parts.filter(Boolean).join(', ');
-                        }
-                        document.getElementById('address').value = buildAddressString(parsed);
-                    }
-
+                    // Проверка страны
                     const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
                     if (systemCountryRestrictStatus) {
-                        const countryObject = findCountryObject(results[0].address_components);
-                        console.log(countryObject);
-                        deliveryRestrictedCountriesCheck(countryObject.short_name, '.location-map-address-canvas-area', '#address');
-                    }
+                        const { code } = extractCountryInfo(first);
+                        if (code) {
+                            deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
+                        }
                     }
                 });
-                },
-                (err) => {
-                alert("Ошибка геолокации: " + err.message);
+            }
+
+            // Инициализация карты
+            function initYMap() {
+                const lat = {{$default_location ? $default_location['lat'] : '55.751244'}};
+                const lng = {{$default_location ? $default_location['lng'] : '37.618423'}};
+
+                ymap = new ymaps.Map('location_map_canvas', {
+                    center: [lat, lng],
+                    zoom: 13,
+                    controls: ['zoomControl']
+                });
+
+                yPlacemark = new ymaps.Placemark([lat, lng], {}, { draggable: true });
+                ymap.geoObjects.add(yPlacemark);
+
+                // Перетаскивание маркера
+                yPlacemark.events.add('dragend', function () {
+                    const coords = yPlacemark.geometry.getCoordinates();
+                    updateCoordinates(coords[0], coords[1]);
+                    resolveAndFillAddress(coords);
+                });
+
+                // Клик по карте
+                ymap.events.add('click', function (e) {
+                    const coords = e.get('coords');
+                    yPlacemark.geometry.setCoordinates(coords);
+                    updateCoordinates(coords[0], coords[1]);
+                    resolveAndFillAddress(coords);
+                });
+
+                // Suggest на наш инпут #pac-input
+                const input = document.getElementById('pac-input');
+                if (input) {
+                    ySuggest = new ymaps.SuggestView('pac-input');
+                    // По Enter сразу геокодим выбранный текст
+                    input.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            const query = input.value.trim();
+                            if (!query) return;
+                            ymaps.geocode(query).then(function (res) {
+                                const first = res.geoObjects.get(0);
+                                if (!first) return;
+                                const coords = first.geometry.getCoordinates();
+                                ymap.setBounds(res.geoObjects.getBounds(), { checkZoomRange: true }).then(() => {
+                                    ymap.setCenter(coords);
+                                    yPlacemark.geometry.setCoordinates(coords);
+                                    updateCoordinates(coords[0], coords[1]);
+                                    resolveAndFillAddress(coords);
+                                });
+                            });
+                        }
+                    });
+                    // При клике по подсказке
+                    ySuggest.events.add('select', function (e) {
+                        const value = e.get('item').value;
+                        ymaps.geocode(value).then(function (res) {
+                            const first = res.geoObjects.get(0);
+                            if (!first) return;
+                            const coords = first.geometry.getCoordinates();
+                            ymap.setBounds(res.geoObjects.getBounds(), { checkZoomRange: true }).then(() => {
+                                ymap.setCenter(coords);
+                                yPlacemark.geometry.setCoordinates(coords);
+                                updateCoordinates(coords[0], coords[1]);
+                                resolveAndFillAddress(coords);
+                            });
+                        });
+                    });
                 }
-            );
+
+                // Начальные координаты в инпуты
+                updateCoordinates(lat, lng);
             }
 
-            function callBackFunction() {
-                initAutocomplete();
+            // 📍 «Найти меня» — аналог твоей функции
+            function locateMeImpl() {
+                if (!navigator.geolocation) {
+                    alert("Ваш браузер не поддерживает геолокацию.");
+                    return;
+                }
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const coords = [pos.coords.latitude, pos.coords.longitude];
+                        if (!ymap || !yPlacemark) {
+                            alert("Карта или маркер не инициализированы.");
+                            return;
+                        }
+                        yPlacemark.geometry.setCoordinates(coords);
+                        ymap.setCenter(coords, 15);
+                        updateCoordinates(coords[0], coords[1]);
+                        resolveAndFillAddress(coords);
+                    },
+                    (err) => {
+                        alert("Ошибка геолокации: " + err.message);
+                    }
+                );
             }
 
+            // Делаем функцию доступной глобально, как у тебя
+            window.locateMe = locateMeImpl;
+
+            // Инициализация после готовности API
+            (function waitYmapsReady() {
+                if (window.ymaps && ymaps.ready) {
+                    ymaps.ready(initYMap);
+                } else {
+                    setTimeout(waitYmapsReady, 50);
+                }
+            })();
+
+            // Блокируем Enter в input-ах формы (как у тебя)
             $(document).on("keydown", "input", function (e) {
                 if (e.which === 13) e.preventDefault();
             });
         </script>
-
-
     @endif
 @endpush
