@@ -329,190 +329,187 @@
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/country-picker-init.js') }}"></script>
 
     @if(getWebConfig('map_api_status') ==1 )
-        {{-- Яндекс.Карты вместо Google Maps --}}
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=ee4968dc-1434-49e5-8a95-a63813385c14" defer></script>
-        <script>
-            "use strict";
+    {{-- Яндекс.Карты --}}
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey={{ getWebConfig('yandex_map_api_key') }}" defer></script>
+<script>
+"use strict";
 
-            // Глобальные переменные карты и маркера
-            let ymap, yPlacemark, ySuggest;
+// Глобальные
+let ymap, yPlacemark, ySuggest;
 
-            // Хэлпер: запись координат в скрытые поля
-            function updateCoordinates(lat, lng) {
-                document.getElementById('latitude').value = lat;
-                document.getElementById('longitude').value = lng;
-            }
+// ===== Хэлперы =====
+function updateCoordinates(lat, lng) {
+  document.getElementById('latitude').value = lat;
+  document.getElementById('longitude').value = lng;
+}
 
-            // Хэлпер: достаем страну/код страны из geoObject
-            function extractCountryInfo(geoObject) {
-                // addressComponents содержит массив {kind, name}
-                const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
-                const country = comps.find(c => c.kind === 'country')?.name || '';
-                // country_code можно взять из metaDataProperty
-                const meta = geoObject.getMetaDataProperty && geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
-                const code = meta && meta.Address && meta.Address.country_code ? meta.Address.country_code : '';
-                return { country, code };
-            }
+function extractCountryCode(geoObject) {
+  const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
+  return (meta && meta.Address && meta.Address.country_code) ? meta.Address.country_code : '';
+}
 
-            // Хэлпер: достаем части адреса и собираем похожую строку как раньше
-            function buildAddressFromGeoObject(geoObject) {
-                const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
+// Собираем строку адреса (как «регион, район, дом + улица, страна/код»)
+function buildAddressFromGeoObject(geoObject) {
+  const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
+  const get = (kind) => comps.find(c => c.kind === kind)?.name || '';
 
-                const get = (kind) => comps.find(c => c.kind === kind)?.name || '';
+  const region = get('province') || get('area');
+  const district = get('district');
+  const street = get('street');
+  const house = get('house');
 
-                const region = get('province') || get('area');
-                const district = get('district');
-                const street = get('street');
-                const streetNumber = get('house');
+  const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
+  const country = (meta && meta.Address && meta.Address.country_name) || '';
+  const countryCode = (meta && meta.Address && meta.Address.country_code) || '';
 
-                const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
-                const country = (meta && meta.Address && meta.Address.country_name) || '';
-                const countryCode = (meta && meta.Address && meta.Address.country_code) || '';
+  const parts = [
+    region,
+    district,
+    [house, street].filter(Boolean).join(' '),
+    country || countryCode,
+  ].filter(Boolean);
 
-                const parts = [
-                    region,
-                    district,
-                    [streetNumber, street].filter(Boolean).join(' '),
-                    country || countryCode
-                ].filter(Boolean);
+  return parts.join(', ');
+}
 
-                return parts.join(', ');
-            }
+// Общая функция: реверс-геокодим координаты, заполняем textarea, проверяем страну
+function resolveAndFillAddress(coords) {
+  ymaps.geocode(coords, { results: 1 }).then((res) => {
+    const first = res.geoObjects.get(0);
+    if (!first) return;
 
-            // Основной реверс-геокодинг и проверки
-            function resolveAndFillAddress(coords) {
-                ymaps.geocode(coords).then(function (res) {
-                    const first = res.geoObjects.get(0);
-                    if (!first) return;
+    const addressLine = buildAddressFromGeoObject(first);
+    document.getElementById('address').value = addressLine;
 
-                    // Адресная строка (собираем вручную, чтобы соответствовало прежней логике)
-                    const addr = buildAddressFromGeoObject(first);
-                    document.getElementById('address').value = addr;
+    const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
+    if (systemCountryRestrictStatus) {
+      const code = extractCountryCode(first);
+      if (code) deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
+    }
+  });
+}
 
-                    // Проверка страны
-                    const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
-                    if (systemCountryRestrictStatus) {
-                        const { code } = extractCountryInfo(first);
-                        if (code) {
-                            deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
-                        }
-                    }
-                });
-            }
+// Геокод по тексту из input (поиск)
+function geocodeAddressFromInput() {
+  const input = document.getElementById('pac-input');
+  const query = input ? input.value.trim() : '';
+  if (!query) return;
 
-            // Инициализация карты
-            function initYMap() {
-                const lat = {{$default_location ? $default_location['lat'] : '55.751244'}};
-                const lng = {{$default_location ? $default_location['lng'] : '37.618423'}};
+  ymaps.geocode(query).then((res) => {
+    if (!res || res.geoObjects.getLength() === 0) return;
+    const first = res.geoObjects.get(0);
+    const coords = first.geometry.getCoordinates();
 
-                ymap = new ymaps.Map('location_map_canvas', {
-                    center: [lat, lng],
-                    zoom: 13,
-                    controls: ['zoomControl']
-                });
+    // Перемещаем карту и маркер
+    yPlacemark.geometry.setCoordinates(coords);
+    ymap.setBounds(res.geoObjects.getBounds(), { checkZoomRange: true }).then(() => {
+      ymap.setCenter(coords);
+    });
 
-                yPlacemark = new ymaps.Placemark([lat, lng], {}, { draggable: true });
-                ymap.geoObjects.add(yPlacemark);
+    updateCoordinates(coords[0], coords[1]);
+    // ВАЖНО: заполняем textarea адресом словами
+    const addressLine = buildAddressFromGeoObject(first);
+    document.getElementById('address').value = addressLine;
 
-                // Перетаскивание маркера
-                yPlacemark.events.add('dragend', function () {
-                    const coords = yPlacemark.geometry.getCoordinates();
-                    updateCoordinates(coords[0], coords[1]);
-                    resolveAndFillAddress(coords);
-                });
+    // Проверка страны
+    const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
+    if (systemCountryRestrictStatus) {
+      const code = extractCountryCode(first);
+      if (code) deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
+    }
+  });
+}
 
-                // Клик по карте
-                ymap.events.add('click', function (e) {
-                    const coords = e.get('coords');
-                    yPlacemark.geometry.setCoordinates(coords);
-                    updateCoordinates(coords[0], coords[1]);
-                    resolveAndFillAddress(coords);
-                });
+// ===== Инициализация карты =====
+function initYMap() {
+  const lat = {{$default_location ? $default_location['lat'] : '55.751244'}};
+  const lng = {{$default_location ? $default_location['lng'] : '37.618423'}};
 
-                // Suggest на наш инпут #pac-input
-                const input = document.getElementById('pac-input');
-                if (input) {
-                    ySuggest = new ymaps.SuggestView('pac-input');
-                    // По Enter сразу геокодим выбранный текст
-                    input.addEventListener('keydown', function (e) {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            const query = input.value.trim();
-                            if (!query) return;
-                            ymaps.geocode(query).then(function (res) {
-                                const first = res.geoObjects.get(0);
-                                if (!first) return;
-                                const coords = first.geometry.getCoordinates();
-                                ymap.setBounds(res.geoObjects.getBounds(), { checkZoomRange: true }).then(() => {
-                                    ymap.setCenter(coords);
-                                    yPlacemark.geometry.setCoordinates(coords);
-                                    updateCoordinates(coords[0], coords[1]);
-                                    resolveAndFillAddress(coords);
-                                });
-                            });
-                        }
-                    });
-                    // При клике по подсказке
-                    ySuggest.events.add('select', function (e) {
-                        const value = e.get('item').value;
-                        ymaps.geocode(value).then(function (res) {
-                            const first = res.geoObjects.get(0);
-                            if (!first) return;
-                            const coords = first.geometry.getCoordinates();
-                            ymap.setBounds(res.geoObjects.getBounds(), { checkZoomRange: true }).then(() => {
-                                ymap.setCenter(coords);
-                                yPlacemark.geometry.setCoordinates(coords);
-                                updateCoordinates(coords[0], coords[1]);
-                                resolveAndFillAddress(coords);
-                            });
-                        });
-                    });
-                }
+  ymap = new ymaps.Map('location_map_canvas', {
+    center: [lat, lng],
+    zoom: 13,
+    controls: ['zoomControl']
+  });
 
-                // Начальные координаты в инпуты
-                updateCoordinates(lat, lng);
-            }
+  yPlacemark = new ymaps.Placemark([lat, lng], {}, { draggable: true });
+  ymap.geoObjects.add(yPlacemark);
+  updateCoordinates(lat, lng);
 
-            // 📍 «Найти меня» — аналог твоей функции
-            function locateMeImpl() {
-                if (!navigator.geolocation) {
-                    alert("Ваш браузер не поддерживает геолокацию.");
-                    return;
-                }
-                navigator.geolocation.getCurrentPosition(
-                    (pos) => {
-                        const coords = [pos.coords.latitude, pos.coords.longitude];
-                        if (!ymap || !yPlacemark) {
-                            alert("Карта или маркер не инициализированы.");
-                            return;
-                        }
-                        yPlacemark.geometry.setCoordinates(coords);
-                        ymap.setCenter(coords, 15);
-                        updateCoordinates(coords[0], coords[1]);
-                        resolveAndFillAddress(coords);
-                    },
-                    (err) => {
-                        alert("Ошибка геолокации: " + err.message);
-                    }
-                );
-            }
+  // Перетаскивание маркера
+  yPlacemark.events.add('dragend', () => {
+    const coords = yPlacemark.geometry.getCoordinates();
+    updateCoordinates(coords[0], coords[1]);
+    resolveAndFillAddress(coords);
+  });
 
-            // Делаем функцию доступной глобально, как у тебя
-            window.locateMe = locateMeImpl;
+  // Клик по карте
+  ymap.events.add('click', (e) => {
+    const coords = e.get('coords');
+    yPlacemark.geometry.setCoordinates(coords);
+    updateCoordinates(coords[0], coords[1]);
+    resolveAndFillAddress(coords);
+  });
 
-            // Инициализация после готовности API
-            (function waitYmapsReady() {
-                if (window.ymaps && ymaps.ready) {
-                    ymaps.ready(initYMap);
-                } else {
-                    setTimeout(waitYmapsReady, 50);
-                }
-            })();
+  // SuggestView на наш #pac-input
+  const input = document.getElementById('pac-input');
+  if (input) {
+    ySuggest = new ymaps.SuggestView('pac-input');
 
-            // Блокируем Enter в input-ах формы (как у тебя)
-            $(document).on("keydown", "input", function (e) {
-                if (e.which === 13) e.preventDefault();
-            });
-        </script>
+    // Выбор подсказки мышкой/клавиатурой — ищем и заполняем адрес
+    ySuggest.events.add('select', () => geocodeAddressFromInput());
+
+    // Нажатие Enter именно в поле поиска — тоже запускаем геокод
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();   // глобальный запрет Enter у тебя остаётся, но мы всё равно дергаем геокод вручную
+        geocodeAddressFromInput();
+      }
+    });
+
+    // На blur — чтобы не зависело от Enter
+    input.addEventListener('blur', () => geocodeAddressFromInput());
+  }
+
+  // Фикс рендера карты в Bootstrap-модалке
+  $('#exampleModal').on('shown.bs.modal', function () {
+    if (ymap) {
+      ymap.container.fitToViewport();
+    }
+  });
+}
+
+// 📍 «Найти меня»
+function locateMeImpl() {
+  if (!navigator.geolocation) {
+    alert("Ваш браузер не поддерживает геолокацию.");
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const coords = [pos.coords.latitude, pos.coords.longitude];
+      if (!ymap || !yPlacemark) {
+        alert("Карта или маркер не инициализированы.");
+        return;
+      }
+      yPlacemark.geometry.setCoordinates(coords);
+      ymap.setCenter(coords, 15);
+      updateCoordinates(coords[0], coords[1]);
+      resolveAndFillAddress(coords); // ← сразу пишем человекочитаемый адрес в textarea
+    },
+    (err) => alert("Ошибка геолокации: " + err.message)
+  );
+}
+window.locateMe = locateMeImpl;
+
+// Ждём загрузки API
+(function waitYmapsReady() {
+  if (window.ymaps && ymaps.ready) {
+    ymaps.ready(initYMap);
+  } else {
+    setTimeout(waitYmapsReady, 50);
+  }
+})();
+</script>
+
     @endif
 @endpush
