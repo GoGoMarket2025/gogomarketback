@@ -35,15 +35,13 @@
                                             <label for="a50" class="component">{{translate('home')}}</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="a75" name="addressAs" value="office"
-                                                   checked="checked"/>
+                                            <input type="radio" id="a75" name="addressAs" value="office" checked="checked"/>
                                             <label for="a75" class="component">{{translate('office')}}</label>
                                         </li>
                                     </ul>
                                 </div>
 
                                 <div class="col-md-6 d-flex">
-
                                     <ul class="donate-now d-flex gap-2 flex-wrap">
                                         <li>
                                             <input type="radio" name="is_billing" id="b25" value="0" checked/>
@@ -62,15 +60,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="name">
-                                                {{translate('contact_person_name')}}
-                                                <span class="text-danger">*</span>
+                                                {{translate('contact_person_name')}} <span class="text-danger">*</span>
                                             </label>
                                             <input class="form-control" type="text" id="name" name="name" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="firstName">
-                                                {{translate('phone')}}
-                                                <span class="text-danger">*</span>
+                                                {{translate('phone')}} <span class="text-danger">*</span>
                                             </label>
 
                                             <input class="form-control phone-input-with-country-picker" id="phone" type="text"
@@ -78,25 +74,20 @@
                                             <input type="hidden" class="country-picker-phone-number w-50" name="phone" readonly>
                                         </div>
                                     </div>
+
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="address-city">
-                                                {{translate('city')}}
-                                                <span class="text-danger">*</span>
+                                                {{translate('city')}} <span class="text-danger">*</span>
                                             </label>
-                                            <input class="form-control" type="text" id="address-city" name="city"
-                                                   required>
+                                            <input class="form-control" type="text" id="address-city" name="city" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="zip">
-                                                {{translate('zip_code')}}
-                                            </label>
+                                            <label for="zip">{{translate('zip_code')}}</label>
                                             @if($zip_restrict_status)
-                                                <select name="zip" id="" class="form-control selectpicker"
-                                                        data-live-search="true">
+                                                <select name="zip" class="form-control selectpicker" data-live-search="true">
                                                     @foreach($zip_codes as $code)
-                                                        <option
-                                                            value="{{ $code->zipcode }}">{{ $code->zipcode }}</option>
+                                                        <option value="{{ $code->zipcode }}">{{ $code->zipcode }}</option>
                                                     @endforeach
                                                 </select>
                                             @else
@@ -104,14 +95,13 @@
                                             @endif
                                         </div>
                                     </div>
+
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="address-city">
-                                                {{translate('country')}}
-                                                <span class="text-danger">*</span>
+                                                {{translate('country')}} <span class="text-danger">*</span>
                                             </label>
-                                            <select name="country" id="" class="form-control selectpicker"
-                                                    data-live-search="true">
+                                            <select name="country" class="form-control selectpicker" data-live-search="true">
                                                 @foreach($countries as $d)
                                                     <option value="{{ $d['name'] }}">{{ $d['name'] }}</option>
                                                 @endforeach
@@ -123,12 +113,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group mb-1">
                                                 <label for="address">
-                                                    {{translate('address')}}
-                                                    <span class="text-danger">*</span>
+                                                    {{translate('address')}} <span class="text-danger">*</span>
                                                 </label>
-
-                                                <textarea class="form-control" id="address" type="text" name="address"
-                                                          required></textarea>
+                                                <textarea class="form-control" id="address" name="address" required></textarea>
 
                                                 <span class="fs-14 text-danger font-semi-bold opacity-0 map-address-alert">
                                                     {{ translate('note') }}: {{ translate('you_need_to_select_address_from_your_selected_country') }}
@@ -137,35 +124,30 @@
                                         </div>
 
                                         @php($default_location=getWebConfig(name: 'default_location'))
-                                        @if(getWebConfig('map_api_status') ==1 )
+                                        @if(getWebConfig('map_api_status') == 1)
                                             <div class="col-md-12">
                                                 <div class="form-group map-area-alert-border location-map-address-canvas-area">
-                                                    <input id="pac-input" class="controls rounded __inline-46 location-search-input-field"
-                                                           title="{{translate('search_your_location_here')}}" type="text"
-                                                           placeholder="{{translate('search_here')}}"/>
+                                                    {{-- Встроенные контролы поиска и геолокации на самой карте --}}
                                                     <div class="__h-200px" id="location_map_canvas"></div>
-                                                    <button onclick="locateMe()" type="button" class="btn btn--primary mt-3" style="width: 100%">
-                                                        📍 Найти меня
-                                                    </button>
                                                 </div>
                                             </div>
                                         @endif
-
                                     </div>
                                 </div>
-                                <input type="hidden" id="latitude"
-                                       name="latitude" class="form-control d-inline"
+
+                                <input type="hidden" id="latitude" name="latitude"
+                                       class="form-control d-inline"
                                        placeholder="{{ translate('ex')}} : -94.22213"
-                                       value="{{$default_location?$default_location['lat']:0}}" required readonly>
-                                <input type="hidden"
-                                       name="longitude" class="form-control"
-                                       placeholder="{{ translate('ex')}} : 103.344322" id="longitude"
-                                       value="{{$default_location?$default_location['lng']:0}}" required readonly>
+                                       value="{{ $default_location ? $default_location['lat'] : 0 }}" required readonly>
+
+                                <input type="hidden" id="longitude" name="longitude"
+                                       class="form-control"
+                                       placeholder="{{ translate('ex')}} : 103.344322"
+                                       value="{{ $default_location ? $default_location['lng'] : 0 }}" required readonly>
+
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">{{translate('close')}}</button>
-                                    <button type="submit"
-                                            class="btn btn--primary">{{translate('add_information')}}  </button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{translate('close')}}</button>
+                                    <button type="submit" class="btn btn--primary">{{translate('add_information')}}</button>
                                 </div>
                             </div>
                         </form>
@@ -184,17 +166,15 @@
                         <div class="d-flex justify-content-between align-items-center mb-3 gap-2">
                             <h5 class="font-bold m-0 fs-16">{{translate('my_Address')}}</h5>
                             <div class="d-flex justify-content-end align-items-center mb-3 gap-2">
-                                <button type="submit" class="btn btn--primary text-capitalize btn-sm d-flex align-items-center gap-1" data-toggle="modal"
-                                        data-target="#exampleModal" id="add_new_address">
-                                    <img src="{{ theme_asset(path: 'public/assets/front-end/img/add-address-icon.png')}}" class=""
-                                         alt="">
+                                <button type="submit" class="btn btn--primary text-capitalize btn-sm d-flex align-items-center gap-1"
+                                        data-toggle="modal" data-target="#exampleModal" id="add_new_address">
+                                    <img src="{{ theme_asset(path: 'public/assets/front-end/img/add-address-icon.png')}}" alt="">
                                     {{translate('add_address')}}
                                 </button>
 
                                 <div class="d-flex justify-content-end d-lg-none">
                                     <button class="profile-aside-btn btn btn--primary px-2 rounded px-2 py-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"
-                                             fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                   d="M7 9.81219C7 9.41419 6.842 9.03269 6.5605 8.75169C6.2795 8.47019 5.898 8.31219 5.5 8.31219C4.507 8.31219 2.993 8.31219 2 8.31219C1.602 8.31219 1.2205 8.47019 0.939499 8.75169C0.657999 9.03269 0.5 9.41419 0.5 9.81219V13.3122C0.5 13.7102 0.657999 14.0917 0.939499 14.3727C1.2205 14.6542 1.602 14.8122 2 14.8122H5.5C5.898 14.8122 6.2795 14.6542 6.5605 14.3727C6.842 14.0917 7 13.7102 7 13.3122V9.81219ZM14.5 9.81219C14.5 9.41419 14.342 9.03269 14.0605 8.75169C13.7795 8.47019 13.398 8.31219 13 8.31219C12.007 8.31219 10.493 8.31219 9.5 8.31219C9.102 8.31219 8.7205 8.47019 8.4395 8.75169C8.158 9.03269 8 9.41419 8 9.81219V13.3122C8 13.7102 8.158 14.0917 8.4395 14.3727C8.7205 14.6542 9.102 14.8122 9.5 14.8122H13C13.398 14.8122 13.7795 14.6542 14.0605 14.3727C14.342 14.0917 14.5 13.7102 14.5 13.3122V9.81219ZM12.3105 7.20869Л14.3965 5.12269C14.982 4.53719 14.982 3.58719 14.3965 3.00169L12.3105 0.915687C11.725 0.330188 10.775 0.330188 10.1895 0.915687L8.1035 3.00169C7.518 3.58719 7.518 4.53719 8.1035 5.12269L10.1895 7.20869C10.775 7.79419 11.725 7.79419 12.3105 7.20869ZM7 2.31219C7 1.91419 6.842 1.53269 6.5605 1.25169C6.2795 0.970186 5.898 0.812187 5.5 0.812187C4.507 0.812187 2.993 0.812187 2 0.812187C1.602 0.812187 1.2205 0.970186 0.939499 1.25169C0.657999 1.53269 0.5 1.91419 0.5 2.31219V5.81219C0.5 6.21019 0.657999 6.59169 0.939499 6.87269C1.2205 7.15419 1.602 7.31219 2 7.31219H5.5C5.898 7.31219 6.2795 7.15419 6.5605 6.87269C6.842 6.59169 7 6.21019 7 5.81219V2.31219Z"
                                                   fill="white"/>
@@ -202,22 +182,20 @@
                                     </button>
                                 </div>
                             </div>
-
                         </div>
-                        @if ($shippingAddresses->count() ==0)
+
+                        @if ($shippingAddresses->count() == 0)
                             <div class="text-center text-capitalize pb-5 pt-5">
-                                <img class="mb-4" src="{{theme_asset(path: 'public/assets/front-end/img/icons/address.svg')}}"
-                                     alt="" width="70">
+                                <img class="mb-4" src="{{theme_asset(path: 'public/assets/front-end/img/icons/address.svg')}}" width="70" alt="">
                                 <h5 class="fs-14">{{translate('no_address_found')}}!</h5>
                             </div>
                         @endif
-                        <div class="row g-3">
 
+                        <div class="row g-3">
                             @foreach($shippingAddresses as $shippingAddress)
                                 <section class="col-lg-6 col-md-6">
                                     <div class="card __shadow h-100">
-                                        <div
-                                            class="card-header d-flex justify-content-between d-flex align-items-center bg-aliceblue border-0">
+                                        <div class="card-header d-flex justify-content-between d-flex align-items-center bg-aliceblue border-0">
                                             <div class="w-0 flex-grow-1">
                                                 <h6 class="mb-0 fw-semibold">
                                                     {{translate($shippingAddress['address_type'])}}
@@ -225,13 +203,9 @@
                                                 </h6>
                                             </div>
                                             <div class="d-flex justify-content-between gap-2 align-items-center">
-                                                <a class="" title="Edit Address" id="edit"
-                                                   href="{{route('address-edit',$shippingAddress->id)}}">
-                                                    <img
-                                                        src="{{theme_asset(path: 'public/assets/front-end/img/address-edit-icon.png')}}"
-                                                        width="19" alt="">
+                                                <a class="" title="Edit Address" id="edit" href="{{route('address-edit',$shippingAddress->id)}}">
+                                                    <img src="{{theme_asset(path: 'public/assets/front-end/img/address-edit-icon.png')}}" width="19" alt="">
                                                 </a>
-
                                                 <button class="no-gutter remove-address-by-modal"
                                                         data-link="{{ route('address-delete',['id'=>$shippingAddress->id])}}">
                                                     <i class="fa fa-trash fa-lg"></i>
@@ -242,58 +216,46 @@
                                         <div class="card-body">
                                             <div>
                                                 <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('Name')}} </span>
+                                                    <span class="fw-semibold min-w-60px">{{translate('Name')}}</span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['contact_person_name']}}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('phone')}}
-                                                    </span>
+                                                    <span class="fw-semibold min-w-60px">{{translate('phone')}}</span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['phone']}}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('city')}}
-                                                    </span>
+                                                    <span class="fw-semibold min-w-60px">{{translate('city')}}</span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['city']}}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('zip_code')}}
-                                                    </span>
+                                                    <span class="fw-semibold min-w-60px">{{translate('zip_code')}}</span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['zip']}}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('address')}}
-                                                    </span>
+                                                    <span class="fw-semibold min-w-60px">{{translate('address')}}</span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['address']}}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('country')}}
-                                                    </span>
+                                                    <span class="fw-semibold min-w-60px">{{translate('country')}}</span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['country']}}
                                                 </span>
                                             </div>
-
                                         </div>
                                     </div>
                                 </section>
@@ -317,199 +279,204 @@
             const foundIndex = deliveryRestrictedCountries.findIndex(countryCode => countryCode.toLowerCase() === countryOrCode.toLowerCase());
             if (foundIndex !== -1) {
                 $(elementSelector).removeClass('map-area-alert-danger');
-                $(inputElement).parent().find('.map-address-alert').removeClass('opacity-100').addClass('opacity-0')
+                $(inputElement).parent().find('.map-address-alert').removeClass('opacity-100').addClass('opacity-0');
             } else {
                 $(elementSelector).addClass('map-area-alert-danger');
-                $(inputElement).val('')
-                $(inputElement).parent().find('.map-address-alert').removeClass('opacity-0').addClass('opacity-100')
+                $(inputElement).val('');
+                $(inputElement).parent().find('.map-address-alert').removeClass('opacity-0').addClass('opacity-100');
             }
         }
     </script>
     <script src="{{ theme_asset(path: 'public/assets/front-end/plugin/intl-tel-input/js/intlTelInput.js') }}"></script>
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/country-picker-init.js') }}"></script>
 
-    @if(getWebConfig('map_api_status') ==1 )
-    {{-- Яндекс.Карты --}}
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey={{ getWebConfig('yandex_map_api_key') }}" defer></script>
-<script>
-"use strict";
+    @if(getWebConfig('map_api_status') == 1)
+        {{-- Яндекс.Карты 2.1 с встроенными контролами поиска и геолокации --}}
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey={{ getWebConfig('yandex_map_api_key') }}" defer></script>
+        <script>
+        "use strict";
 
-// Глобальные
-let ymap, yPlacemark, ySuggest;
+        let ymap, yPlacemark, searchControl, geoControl;
 
-// ===== Хэлперы =====
-function updateCoordinates(lat, lng) {
-  document.getElementById('latitude').value = lat;
-  document.getElementById('longitude').value = lng;
-}
+        // ===== helpers =====
+        function updateCoordinates(lat, lng) {
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
+        }
 
-function extractCountryCode(geoObject) {
-  const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
-  return (meta && meta.Address && meta.Address.country_code) ? meta.Address.country_code : '';
-}
+        function extractCountryCode(geoObject) {
+            const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
+            return (meta && meta.Address && meta.Address.country_code) ? meta.Address.country_code : '';
+        }
 
-// Собираем строку адреса (как «регион, район, дом + улица, страна/код»)
-function buildAddressFromGeoObject(geoObject) {
-  const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
-  const get = (kind) => comps.find(c => c.kind === kind)?.name || '';
+        function buildAddressFromGeoObject(geoObject) {
+            const comps = geoObject.getAddressComponents ? geoObject.getAddressComponents() : [];
+            const get = (kind) => comps.find(c => c.kind === kind)?.name || '';
 
-  const region = get('province') || get('area');
-  const district = get('district');
-  const street = get('street');
-  const house = get('house');
+            const region = get('province') || get('area');
+            const district = get('district');
+            const street = get('street');
+            const house = get('house');
 
-  const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
-  const country = (meta && meta.Address && meta.Address.country_name) || '';
-  const countryCode = (meta && meta.Address && meta.Address.country_code) || '';
+            const meta = geoObject.getMetaDataProperty('metaDataProperty.GeocoderMetaData');
+            const country = (meta && meta.Address && meta.Address.country_name) || '';
+            const countryCode = (meta && meta.Address && meta.Address.country_code) || '';
 
-  const parts = [
-    region,
-    district,
-    [house, street].filter(Boolean).join(' '),
-    country || countryCode,
-  ].filter(Boolean);
+            const parts = [
+                region,
+                district,
+                [house, street].filter(Boolean).join(' '),
+                country || countryCode
+            ].filter(Boolean);
 
-  return parts.join(', ');
-}
+            return parts.join(', ');
+        }
 
-// Общая функция: реверс-геокодим координаты, заполняем textarea, проверяем страну
-function resolveAndFillAddress(coords) {
-  ymaps.geocode(coords, { results: 1 }).then((res) => {
-    const first = res.geoObjects.get(0);
-    if (!first) return;
+        function resolveAndFillAddress(coords) {
+            ymaps.geocode(coords, { results: 1 }).then((res) => {
+                const first = res.geoObjects.get(0);
+                if (!first) return;
 
-    const addressLine = buildAddressFromGeoObject(first);
-    document.getElementById('address').value = addressLine;
+                const addressLine = buildAddressFromGeoObject(first);
+                document.getElementById('address').value = addressLine;
 
-    const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
-    if (systemCountryRestrictStatus) {
-      const code = extractCountryCode(first);
-      if (code) deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
-    }
-  });
-}
+                const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
+                if (systemCountryRestrictStatus) {
+                    const code = extractCountryCode(first);
+                    if (code) deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
+                }
+            });
+        }
 
-// Геокод по тексту из input (поиск)
-function geocodeAddressFromInput() {
-  const input = document.getElementById('pac-input');
-  const query = input ? input.value.trim() : '';
-  if (!query) return;
+        // ===== init map =====
+        function initYMap() {
+            const lat = {{ $default_location ? $default_location['lat'] : '55.751244' }};
+            const lng = {{ $default_location ? $default_location['lng'] : '37.618423' }};
 
-  ymaps.geocode(query).then((res) => {
-    if (!res || res.geoObjects.getLength() === 0) return;
-    const first = res.geoObjects.get(0);
-    const coords = first.geometry.getCoordinates();
+            ymap = new ymaps.Map('location_map_canvas', {
+                center: [lat, lng],
+                zoom: 13,
+                controls: []
+            });
 
-    // Перемещаем карту и маркер
-    yPlacemark.geometry.setCoordinates(coords);
-    ymap.setBounds(res.geoObjects.getBounds(), { checkZoomRange: true }).then(() => {
-      ymap.setCenter(coords);
-    });
+            // Встроенный поиск (без автоплейсмарка)
+            searchControl = new ymaps.control.SearchControl({
+                options: {
+                    noPlacemark: true,
+                    placeholderContent: "{{ translate('search_here') }}",
+                    size: 'large',
+                    useMapBounds: true
+                }
+            });
 
-    updateCoordinates(coords[0], coords[1]);
-    // ВАЖНО: заполняем textarea адресом словами
-    const addressLine = buildAddressFromGeoObject(first);
-    document.getElementById('address').value = addressLine;
+            // Встроенная геолокация
+            geoControl = new ymaps.control.GeolocationControl({ options: { position: { right: 10, top: 10 } } });
 
-    // Проверка страны
-    const systemCountryRestrictStatus = $('#system-country-restrict-status').data('value');
-    if (systemCountryRestrictStatus) {
-      const code = extractCountryCode(first);
-      if (code) deliveryRestrictedCountriesCheck(code, '.location-map-address-canvas-area', '#address');
-    }
-  });
-}
+            // Зум-контрол
+            const zoomControl = new ymaps.control.ZoomControl({ options: { size: 'small' } });
 
-// ===== Инициализация карты =====
-function initYMap() {
-  const lat = {{$default_location ? $default_location['lat'] : '55.751244'}};
-  const lng = {{$default_location ? $default_location['lng'] : '37.618423'}};
+            ymap.controls.add(searchControl, { float: 'right' });
+            ymap.controls.add(geoControl, { float: 'left' });
+            ymap.controls.add(zoomControl, { float: 'left' });
 
-  ymap = new ymaps.Map('location_map_canvas', {
-    center: [lat, lng],
-    zoom: 13,
-    controls: ['zoomControl']
-  });
+            // Наш маркер
+            yPlacemark = new ymaps.Placemark([lat, lng], {}, { draggable: true });
+            ymap.geoObjects.add(yPlacemark);
+            updateCoordinates(lat, lng);
 
-  yPlacemark = new ymaps.Placemark([lat, lng], {}, { draggable: true });
-  ymap.geoObjects.add(yPlacemark);
-  updateCoordinates(lat, lng);
+            // Первичная подгрузка адреса по умолчанию (необязательно, но удобно)
+            resolveAndFillAddress([lat, lng]);
 
-  // Перетаскивание маркера
-  yPlacemark.events.add('dragend', () => {
-    const coords = yPlacemark.geometry.getCoordinates();
-    updateCoordinates(coords[0], coords[1]);
-    resolveAndFillAddress(coords);
-  });
+            // События карты и маркера
+            yPlacemark.events.add('dragend', () => {
+                const coords = yPlacemark.geometry.getCoordinates();
+                updateCoordinates(coords[0], coords[1]);
+                resolveAndFillAddress(coords);
+            });
 
-  // Клик по карте
-  ymap.events.add('click', (e) => {
-    const coords = e.get('coords');
-    yPlacemark.geometry.setCoordinates(coords);
-    updateCoordinates(coords[0], coords[1]);
-    resolveAndFillAddress(coords);
-  });
+            ymap.events.add('click', (e) => {
+                const coords = e.get('coords');
+                yPlacemark.geometry.setCoordinates(coords);
+                updateCoordinates(coords[0], coords[1]);
+                resolveAndFillAddress(coords);
+            });
 
-  // SuggestView на наш #pac-input
-  const input = document.getElementById('pac-input');
-  if (input) {
-    ySuggest = new ymaps.SuggestView('pac-input');
+            // Поиск: выбор результата
+            searchControl.events.add('resultselect', (e) => {
+                const index = e.get('index');
+                const results = searchControl.getResultsArray();
+                const selected = results && results[index];
+                if (!selected) return;
 
-    // Выбор подсказки мышкой/клавиатурой — ищем и заполняем адрес
-    ySuggest.events.add('select', () => geocodeAddressFromInput());
+                const coords = selected.geometry.getCoordinates();
+                yPlacemark.geometry.setCoordinates(coords);
+                updateCoordinates(coords[0], coords[1]);
 
-    // Нажатие Enter именно в поле поиска — тоже запускаем геокод
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();   // глобальный запрет Enter у тебя остаётся, но мы всё равно дергаем геокод вручную
-        geocodeAddressFromInput();
-      }
-    });
+                // Центрируемся на выбранном результате
+                const bounds = selected.properties.get('boundedBy');
+                if (bounds) {
+                    ymap.setBounds(bounds, { checkZoomRange: true }).then(() => {
+                        ymap.setCenter(coords);
+                    });
+                } else {
+                    ymap.setCenter(coords, 16);
+                }
 
-    // На blur — чтобы не зависело от Enter
-    input.addEventListener('blur', () => geocodeAddressFromInput());
-  }
+                // Заполняем адрес словами
+                resolveAndFillAddress(coords);
+            });
 
-  // Фикс рендера карты в Bootstrap-модалке
-  $('#exampleModal').on('shown.bs.modal', function () {
-    if (ymap) {
-      ymap.container.fitToViewport();
-    }
-  });
-}
+            // Поиск: когда показали конкретный результат (напр., по Enter)
+            searchControl.events.add('resultshow', (e) => {
+                const index = e.get('index');
+                const results = searchControl.getResultsArray();
+                const shown = results && results[index];
+                if (!shown) return;
 
-// 📍 «Найти меня»
-function locateMeImpl() {
-  if (!navigator.geolocation) {
-    alert("Ваш браузер не поддерживает геолокацию.");
-    return;
-  }
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      const coords = [pos.coords.latitude, pos.coords.longitude];
-      if (!ymap || !yPlacemark) {
-        alert("Карта или маркер не инициализированы.");
-        return;
-      }
-      yPlacemark.geometry.setCoordinates(coords);
-      ymap.setCenter(coords, 15);
-      updateCoordinates(coords[0], coords[1]);
-      resolveAndFillAddress(coords); // ← сразу пишем человекочитаемый адрес в textarea
-    },
-    (err) => alert("Ошибка геолокации: " + err.message)
-  );
-}
-window.locateMe = locateMeImpl;
+                const coords = shown.geometry.getCoordinates();
+                yPlacemark.geometry.setCoordinates(coords);
+                updateCoordinates(coords[0], coords[1]);
+                resolveAndFillAddress(coords);
+            });
 
-// Ждём загрузки API
-(function waitYmapsReady() {
-  if (window.ymaps && ymaps.ready) {
-    ymaps.ready(initYMap);
-  } else {
-    setTimeout(waitYmapsReady, 50);
-  }
-})();
-</script>
+            // Геолокация: по клику запускаем определение местоположения и синхронизируем маркер/адрес
+            geoControl.events.add('click', () => {
+                ymaps.geolocation.get({ provider: 'browser', mapStateAutoApply: false }).then((res) => {
+                    // Может вернуть коллекцию GeoObject-ов
+                    const geoObject = res.geoObjects.get(0);
+                    if (!geoObject) return;
 
+                    const coords = geoObject.geometry.getCoordinates();
+                    ymap.setCenter(coords, 15);
+                    yPlacemark.geometry.setCoordinates(coords);
+                    updateCoordinates(coords[0], coords[1]);
+                    resolveAndFillAddress(coords);
+                }, (err) => {
+                    alert("Ошибка геолокации");
+                });
+            });
+
+            // Фикс рендера в Bootstrap-модалке
+            $('#exampleModal').on('shown.bs.modal', function () {
+                if (ymap) {
+                    ymap.container.fitToViewport();
+                }
+            });
+        }
+
+        // Глобальный запрет сабмита по Enter на инпутах формы (как у тебя было)
+        $(document).on("keydown", "input", function (e) {
+            if (e.which === 13) e.preventDefault();
+        });
+
+        // Ждём готовности API
+        (function waitYmapsReady() {
+            if (window.ymaps && ymaps.ready) {
+                ymaps.ready(initYMap);
+            } else {
+                setTimeout(waitYmapsReady, 50);
+            }
+        })();
+        </script>
     @endif
 @endpush
