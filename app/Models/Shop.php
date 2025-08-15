@@ -61,6 +61,10 @@ class Shop extends Model
         'temporary_close',
         'banner',
         'banner_storage_type',
+        'latitude',
+        'longitude',
+        'vat_percent',
+        'identification_number',
     ];
 
     /**

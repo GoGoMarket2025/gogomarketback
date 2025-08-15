@@ -155,7 +155,7 @@
 
                         <div class="col-lg-6 form-group">
                             <label for="latitude"
-                                   class="mb-2 d-flex gap-1 align-items-center">{{ translate('latitude') }}</label>
+                                   class="mb-2 d-flex gap-1 align-items-center">Широта</label>
                             <input type="text" class="form-control form-control-user" id="latitude" name="latitude"
                                    placeholder="{{ translate('ex').':'.translate('широта -90..90') }}"
                                    value="{{ old('latitude') }}"
@@ -164,7 +164,7 @@
 
                         <div class="col-lg-6 form-group">
                             <label for="longitude"
-                                   class="mb-2 d-flex gap-1 align-items-center">{{ translate('longitude') }}</label>
+                                   class="mb-2 d-flex gap-1 align-items-center">Долгота</label>
                             <input type="text" class="form-control form-control-user" id="longitude" name="longitude"
                                    placeholder="{{ translate('ex').':'.translate('долгота -180..180') }}"
                                    value="{{ old('longitude') }}"
@@ -173,7 +173,7 @@
 
                         <div class="col-lg-6 form-group">
                             <label for="vat_percent"
-                                   class="mb-2 d-flex gap-1 align-items-center">{{ translate('vat_percent') }}</label>
+                                   class="mb-2 d-flex gap-1 align-items-center">Ставка НДС</label>
                             <input type="text" class="form-control form-control-user" id="vat_percent"
                                    name="vat_percent"
                                    placeholder="{{ translate('ex').': 0 или 12' }}" value="{{ old('vat_percent') }}"
@@ -182,7 +182,7 @@
 
                         <div class="col-lg-6 form-group">
                             <label for="identification_number"
-                                   class="mb-2 d-flex gap-1 align-items-center">{{ translate('identification_number') }}</label>
+                                   class="mb-2 d-flex gap-1 align-items-center">ИНН / ПИНФЛ</label>
                             <input type="text" class="form-control form-control-user" id="identification_number"
                                    name="identification_number"
                                    placeholder="{{ translate('ex').': ИНН или ПИНФЛ' }}"
