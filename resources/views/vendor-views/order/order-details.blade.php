@@ -387,24 +387,24 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center gap-10 form-control flex-wrap h-100">
-                            <span class="title-color">
-                                {{translate('payment_status')}}
-                            </span>
-                            <div class="d-flex justify-content-end min-w-100 align-items-center gap-2">
-                                <span
-                                    class="text--primary font-weight-bold">{{ $order->payment_status=='paid' ? translate('paid'):translate('unpaid')}}</span>
-                                <label class="switcher payment-status-text {{$order['payment_status'] == 'paid' ? 'payment-status-alert' : ''}}">
-                                    <input class="switcher_input payment-status" type="checkbox" name="status"
-                                           data-id="{{$order->id}}"
-                                           value="{{$order->payment_status}}"
-                                        {{ $order->payment_status=='paid' ? 'disabled' : ''}}
-                                        {{ $order->payment_status=='paid' ? 'checked':''}} >
-                                    <span class="switcher_control switcher_control_add
-                                        {{ $order->payment_status=='paid' ? 'checked':'unchecked'}}"></span>
-                                </label>
-                            </div>
-                        </div>
+{{--                        <div class="d-flex justify-content-between align-items-center gap-10 form-control flex-wrap h-100">--}}
+{{--                            <span class="title-color">--}}
+{{--                                {{translate('payment_status')}}--}}
+{{--                            </span>--}}
+{{--                            <div class="d-flex justify-content-end min-w-100 align-items-center gap-2">--}}
+{{--                                <span--}}
+{{--                                    class="text--primary font-weight-bold">{{ $order->payment_status=='paid' ? translate('paid'):translate('unpaid')}}</span>--}}
+{{--                                <label class="switcher payment-status-text {{$order['payment_status'] == 'paid' ? 'payment-status-alert' : ''}}">--}}
+{{--                                    <input class="switcher_input payment-status" type="checkbox" name="status"--}}
+{{--                                           data-id="{{$order->id}}"--}}
+{{--                                           value="{{$order->payment_status}}"--}}
+{{--                                        {{ $order->payment_status=='paid' ? 'disabled' : ''}}--}}
+{{--                                        {{ $order->payment_status=='paid' ? 'checked':''}} >--}}
+{{--                                    <span class="switcher_control switcher_control_add--}}
+{{--                                        {{ $order->payment_status=='paid' ? 'checked':'unchecked'}}"></span>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         @if($physicalProduct)
                             <ul class="list-unstyled">
                                 @if ($order->shipping_type == 'order_wise')

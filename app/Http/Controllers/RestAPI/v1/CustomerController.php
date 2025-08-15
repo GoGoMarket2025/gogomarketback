@@ -248,10 +248,10 @@ class CustomerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'contact_person_name' => 'required',
-            'address_type' => 'required',
+            'address_type' => 'nullable|string|max:255',
             'address' => 'required',
             'city' => 'required',
-            'zip' => 'required',
+            'zip' => 'nullable|string|max:20',
             'country' => 'required',
             'phone' => 'required',
             'latitude' => 'required',

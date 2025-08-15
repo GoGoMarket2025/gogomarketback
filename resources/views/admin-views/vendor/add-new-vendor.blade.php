@@ -6,7 +6,8 @@
     <div class="content container-fluid main-card {{Session::get('direction') }}">
         <div class="mb-4">
             <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
-                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png') }}" class="mb-1" alt="">
+                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png') }}" class="mb-1"
+                     alt="">
                 {{ translate('add_new_Vendor') }}
             </h2>
         </div>
@@ -29,14 +30,16 @@
                                 <label for="exampleFirstName"
                                        class="mb-2 d-flex gap-1 align-items-center">{{ translate('first_name') }}</label>
                                 <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                       name="f_name" value="{{ old('f_name') }}" placeholder="{{ translate('ex') }}: Jhone"
+                                       name="f_name" value="{{ old('f_name') }}"
+                                       placeholder="{{ translate('ex') }}: Jhone"
                                        required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleLastName"
                                        class="mb-2 d-flex gap-1 align-items-center">{{ translate('last_name') }}</label>
                                 <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                       name="l_name" value="{{ old('l_name') }}" placeholder="{{ translate('ex') }}: Doe"
+                                       name="l_name" value="{{ old('l_name') }}"
+                                       placeholder="{{ translate('ex') }}: Doe"
                                        required>
                             </div>
                             <div class="form-group mb-3">
@@ -139,7 +142,8 @@
                             <label for="shop_name"
                                    class="mb-2 d-flex gap-1 align-items-center">{{ translate('shop_name') }}</label>
                             <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name"
-                                   placeholder="{{ translate('ex').':'.translate('Jhon') }}" value="{{ old('shop_name') }}"
+                                   placeholder="{{ translate('ex').':'.translate('Jhon') }}"
+                                   value="{{ old('shop_name') }}"
                                    required>
                         </div>
                         <div class="col-lg-6 form-group">
@@ -148,6 +152,44 @@
                             <textarea name="shop_address" class="form-control text-area-max" id="shop_address" rows="1"
                                       placeholder="{{ translate('ex').':'.translate('doe') }}">{{ old('shop_address') }}</textarea>
                         </div>
+
+                        <div class="col-lg-6 form-group">
+                            <label for="latitude"
+                                   class="mb-2 d-flex gap-1 align-items-center">Широта</label>
+                            <input type="text" class="form-control form-control-user" id="latitude" name="latitude"
+                                   placeholder="{{ translate('ex').':'.translate('широта -90..90') }}"
+                                   value="{{ old('latitude') }}"
+                                   required>
+                        </div>
+
+                        <div class="col-lg-6 form-group">
+                            <label for="longitude"
+                                   class="mb-2 d-flex gap-1 align-items-center">Долгота</label>
+                            <input type="text" class="form-control form-control-user" id="longitude" name="longitude"
+                                   placeholder="{{ translate('ex').':'.translate('долгота -180..180') }}"
+                                   value="{{ old('longitude') }}"
+                                   required>
+                        </div>
+
+                        <div class="col-lg-6 form-group">
+                            <label for="vat_percent"
+                                   class="mb-2 d-flex gap-1 align-items-center">Ставка НДС</label>
+                            <input type="text" class="form-control form-control-user" id="vat_percent"
+                                   name="vat_percent"
+                                   placeholder="{{ translate('ex').': 0 или 12' }}" value="{{ old('vat_percent') }}"
+                                   required>
+                        </div>
+
+                        <div class="col-lg-6 form-group">
+                            <label for="identification_number"
+                                   class="mb-2 d-flex gap-1 align-items-center">ИНН / ПИНФЛ</label>
+                            <input type="text" class="form-control form-control-user" id="identification_number"
+                                   name="identification_number"
+                                   placeholder="{{ translate('ex').': ИНН или ПИНФЛ' }}"
+                                   value="{{ old('identification_number') }}"
+                                   required>
+                        </div>
+
                         <div class="col-lg-6 form-group">
                             <div class="d-flex justify-content-center">
                                 <img class="upload-img-view" id="viewerLogo"

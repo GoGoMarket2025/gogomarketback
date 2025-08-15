@@ -69,6 +69,10 @@ class ShopService
         return [
             'seller_id' => $vendorId,
             'name' => $request['shop_name'],
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
+            'vat_percent' => $request['vat_percent'],
+            'identification_number' => $request['identification_number'],
             'slug' => Str::slug($request['shop_name'], '-') . '-' . Str::random(6),
             'address'=>$request['shop_address'],
             'contact' => $request['phone'],
