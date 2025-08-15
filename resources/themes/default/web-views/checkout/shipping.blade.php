@@ -150,15 +150,15 @@
                                                                        id="city" {{$shippingAddresses->count()==0?'required':''}}>
                                                             </div>
                                                         </div>
-{{--                                                        <div class="col-6">--}}
-{{--                                                            <div class="form-group">--}}
-{{--                                                                <label>{{ translate('zip_code')}}</label>--}}
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>{{ translate('zip_code')}}</label>
 
-{{--                                                                    <input type="text" class="form-control"--}}
-{{--                                                                           name="zip"--}}
-{{--                                                                           id="zip">--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
+                                                                    <input type="text" class="form-control"
+                                                                           name="zip"
+                                                                           id="zip">
+                                                            </div>
+                                                        </div>
                                                         <div class="col-12">
                                                             <div class="form-group mb-1">
                                                                 <label>{{ translate('address')}}<span
