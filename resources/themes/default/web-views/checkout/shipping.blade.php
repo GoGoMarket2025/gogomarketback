@@ -446,8 +446,7 @@
                                                             </div>
                                                             <div class="col-6">
                                                                 <div class="form-group">
-                                                                    <label>{{ translate('zip_code')}}
-                                                                        <span class="text-danger">*</span></label>
+                                                                    <label>{{ translate('zip_code')}}</label>
 
                                                                     <input type="text" class="form-control"
                                                                            id="billing_zip"
