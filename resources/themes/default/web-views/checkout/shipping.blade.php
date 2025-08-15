@@ -112,7 +112,7 @@
                                                                 </div>
                                                             </div>
                                                         @endif
-                                                        <div class="col-12">
+                                                        <div class="col-12" style="display: none;">
                                                             <div class="form-group">
                                                                 <label>{{ translate('address_type')}}</label>
                                                                 <select class="form-control" name="address_type"
@@ -150,7 +150,7 @@
                                                                        id="city" {{$shippingAddresses->count()==0?'required':''}}>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
+                                                        <div class="col-6" style="display: none;">
                                                             <div class="form-group">
                                                                 <label>{{ translate('zip_code')}}</label>
 
