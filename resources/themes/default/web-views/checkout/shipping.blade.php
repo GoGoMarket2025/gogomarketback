@@ -153,23 +153,10 @@
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label>{{ translate('zip_code')}}</label>
-                                                                @if($zip_restrict_status == 1)
-                                                                    <select name="zip" class="form-control selectpicker"
-                                                                            data-live-search="true"
-                                                                            id="select2-zip-container" required>
-                                                                        @forelse($zip_codes as $code)
-                                                                            <option
-                                                                                value="{{ $code->zipcode }}">{{ $code->zipcode }}</option>
-                                                                        @empty
-                                                                            <option
-                                                                                value="">{{ translate('no_zip_to_deliver') }}</option>
-                                                                        @endforelse
-                                                                    </select>
-                                                                @else
+
                                                                     <input type="text" class="form-control"
                                                                            name="zip"
-                                                                           id="zip" {{$shippingAddresses->count()==0?'required':''}}>
-                                                                @endif
+                                                                           id="zip">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
