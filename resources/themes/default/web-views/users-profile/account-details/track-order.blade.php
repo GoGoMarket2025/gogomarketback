@@ -81,7 +81,7 @@
                                                             <img width="14" alt=""
                                                                  src="{{theme_asset(path: 'public/assets/front-end/img/track-order/clock.png') }}">
                                                             <span class="text-muted fs-12">
-                                                                {{date('h:i A, d M Y',strtotime(\App\Utils\order_status_history($orderDetails['id'],'confirmed')))}}
+                                                                {{date('d.m.Y H:i',strtotime(\App\Utils\order_status_history($orderDetails['id'],'confirmed')))}}
                                                             </span>
                                                         </div>
                                                     @endif
