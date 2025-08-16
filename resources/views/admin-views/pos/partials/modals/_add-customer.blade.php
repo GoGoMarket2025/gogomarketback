@@ -63,22 +63,6 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="form-group">
-                                <label class="form-label mb-1">{{ translate('zip_code') }}</label>
-                                @if($zipCodes)
-                                    <select name="zip" class="form-control js-select2-custom" data-live-search="true">
-                                        @foreach($zipCodes as $code)
-                                            <option
-                                                value="{{ $code->zipcode }}">{{ $code->zipcode }}</option>
-                                        @endforeach
-                                    </select>
-                                @else
-                                    <input type="text" name="zip_code" class="form-control"
-                                           value="{{ old('zip_code') }}" placeholder="{{ translate('zip_code') }}">
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-group">
                                 <label class="form-label mb-1">{{ translate('address') }}</label>
                                 <input type="text" name="address" class="form-control" value="{{ old('address') }}"
                                        placeholder="{{ translate('address') }}">
