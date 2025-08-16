@@ -644,10 +644,6 @@
                                         <span>{{translate('city')}} :</span>
                                         <span class="fw-semibold">{{$shippingAddress->city}}</span>
                                     </div>
-                                    <div>
-                                        <span>{{translate('zip_code')}} :</span>
-                                        <span class="fw-semibold">{{$shippingAddress->zip}}</span>
-                                    </div>
                                     <div class="d-flex align-items-start gap-2">
                                         <img src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/location.png')}}"
                                              alt="">
@@ -706,10 +702,6 @@
                                 <div>
                                     <span>{{translate('city')}} :</span>
                                     <span class="fw-semibold">{{$billing->city}}</span>
-                                </div>
-                                <div>
-                                    <span>{{translate('zip_code')}} :</span>
-                                    <span class="fw-semibold">{{$billing->zip}}</span>
                                 </div>
                                 <div class="d-flex align-items-start gap-2">
                                     <img src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/location.png')}}" alt="">

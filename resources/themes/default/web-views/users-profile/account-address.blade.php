@@ -88,24 +88,6 @@
                                                    required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="zip">
-                                                {{translate('zip_code')}}
-                                            </label>
-                                            @if($zip_restrict_status)
-                                                <select name="zip" id="" class="form-control selectpicker"
-                                                        data-live-search="true">
-                                                    @foreach($zip_codes as $code)
-                                                        <option
-                                                            value="{{ $code->zipcode }}">{{ $code->zipcode }}</option>
-                                                    @endforeach
-                                                </select>
-                                            @else
-                                                <input class="form-control" type="text" id="zip" name="zip">
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
                                             <label for="address-city">
                                                 {{translate('country')}}
                                                 <span class="text-danger">*</span>
@@ -118,7 +100,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-1">
@@ -264,15 +245,6 @@
                                                     </span>
                                                     <span class="px-1">:</span>
                                                     {{$shippingAddress['city']}}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span class="font-nameA">
-                                                    <span class="fw-semibold min-w-60px">
-                                                        {{translate('zip_code')}}
-                                                    </span>
-                                                    <span class="px-1">:</span>
-                                                    {{$shippingAddress['zip']}}
                                                 </span>
                                             </div>
                                             <div>

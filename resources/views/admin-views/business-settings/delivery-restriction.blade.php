@@ -240,7 +240,6 @@
                                                 <thead class="text-capitalize">
                                                     <tr>
                                                         <th>{{ translate('sl') }}</th>
-                                                        <th class="text-center">{{ translate('zip_code') }}</th>
                                                         <th class="text-center">{{ translate('action') }}</th>
                                                     </tr>
                                                 </thead>

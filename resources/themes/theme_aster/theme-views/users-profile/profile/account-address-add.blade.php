@@ -77,22 +77,6 @@
                                                 <input class="form-control" type="text" id="address-city" name="city"
                                                        required>
                                             </div>
-
-                                            <div class="form-group">
-                                                <label for="zip-code">{{translate('zip_code')}}</label>
-                                                @if($zip_restrict_status)
-                                                    <select name="zip" class="form-control select2 select_picker"
-                                                            data-live-search="true" required>
-                                                        @foreach($zip_codes as $code)
-                                                            <option
-                                                                value="{{ $code->zipcode }}">{{ $code->zipcode }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                @else
-                                                    <input class="form-control" type="text" id="zip" name="zip"
-                                                           required>
-                                                @endif
-                                            </div>
                                         </div>
                                         <div class="col-md-6 mt-5 mt-md-0">
                                             <div class="d-flex justify-content-end mb-5">
