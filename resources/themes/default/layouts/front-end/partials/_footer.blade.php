@@ -22,7 +22,7 @@
                         <div class="store-contents d-flex justify-content-center pr-lg-4">
                             @if(isset($web_config['ios']['status']) && $web_config['ios']['status'])
                                 <div class="me-2 mb-2">
-                                    <a class="" href="{{ $web_config['ios']['link'] }}" role="button">
+                                    <a class="" href="https://apps.apple.com/uz/app/gogo-market/id6743006189" target="_blank" role="button">
                                         <img width="100"
                                              src="{{ theme_asset(path: "public/assets/front-end/png/apple_app.png")}}"
                                              alt="">
@@ -32,7 +32,7 @@
 
                             @if(isset($web_config['android']['status']) && $web_config['android']['status'])
                                 <div class="me-2 mb-2">
-                                    <a href="{{ $web_config['android']['link'] }}" role="button">
+                                    <a href="https://play.google.com/store/apps/details?id=com.gogomarket&pcampaignid=web_share" target="_blank" role="button">
                                         <img width="100"
                                              src="{{ theme_asset(path: "public/assets/front-end/png/google_app.png")}}"
                                              alt="">
