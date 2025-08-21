@@ -54,7 +54,7 @@
                                 <textarea class="form-control" name="shop_address" id="shop_address" rows="4" placeholder="{{translate('shop_address')}}" required></textarea>
                             </div>
 
-                            <div class="border p-3 p-xl-4 rounded mb-4">
+                            <div class="d-flex justify-content-between border p-3 p-xl-4 rounded mb-4">
                                 <div class="d-flex flex-column gap-3 align-items-center">
                                     <div class="upload-file">
                                         <input type="file" class="upload-file__input" name="logo" accept="image/*" required>
@@ -75,9 +75,6 @@
                                         <div class="text-muted text-capitalize fs-12">{{translate('Image Size : Max 2 MB')}}</div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="border p-3 p-xl-4 rounded">
                                 <div class="d-flex flex-column gap-3 align-items-center">
                                     <div class="upload-file">
                                         <input type="file" class="upload-file__input" name="banner" accept="image/*" required>

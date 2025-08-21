@@ -2906,7 +2906,7 @@ return [
 	"shipping_Method" => "Метод доставки",
 	"order wise shipping" => "Заказывать мудрую доставку",
 	"choose_delivery_type" => "Выберите тип доставки",
-	"by_self_delivery_man" => "Самоуправлением",
+	"by_self_delivery_man" => "Назначить курьера",
 	"by_third_party_delivery_service" => "Сторонней службой доставки",
 	"not_assign_yet" => "Еще не назначить",
 	"track_ID" => "Идентификатор трека",

@@ -2906,7 +2906,7 @@ return [
 	"shipping_Method" => "Yetkazib berish usuli",
 	"order wise shipping" => "Aqlli etkazib berish",
 	"choose_delivery_type" => "Yetkazib berish turini tanlang",
-	"by_self_delivery_man" => "O'z-o'zini boshqarish",
+	"by_self_delivery_man" => "Kurerni tayinlash",
 	"by_third_party_delivery_service" => "Uchinchi dasturlar etkazib berish xizmati",
 	"not_assign_yet" => "Uni hali tayinlamang",
 	"track_ID" => "Trax idenxencher",
