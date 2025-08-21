@@ -448,7 +448,7 @@ return [
 	"pending" => "Оформлен",
 	"confirmed" => "Упаковывается",
 	"packaging" => "Ожидает курьера",
-	"out_for_delivery" => "Передан курьеру",
+	"out_for_delivery" => "В пути",
 	"delivered" => "Доставлен",
 	"returned" => "Возвращен",
 	"failed" => "Не выполнен",
