@@ -4549,7 +4549,7 @@ return [
 	"shipping_id_is_required" => "Yetkazib berish identifikatori talab qilinadi",
 	"tax_incl." => "Soliq",
 	"Доставка от продавца" => "Sotuvchidan etkazib berish",
-	"Packaging" => "Paket",
+	"Packaging" => "Kuryer kutmoqda",
 	"Delivery_man_removed" => "Yetkazib berish olib tashlandi",
 	"no_delivery_man_found" => "Yetkazib berish odam topilmadi",
 	"add_new_delivery_man" => "Yangi etkazib berishni qo'shing",
