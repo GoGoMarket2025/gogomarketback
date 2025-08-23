@@ -49,7 +49,7 @@
                                 <img class="mr-2" width="20"
                                      src="{{theme_asset(path: 'public/assets/front-end/img/flags/'.$data['code'].'.png')}}"
                                      alt="{{$data['name']}}">
-                                {{$data['name']}}
+                                {{translate($data['name'])}}
                             @endif
                         @endforeach
                     </a>
