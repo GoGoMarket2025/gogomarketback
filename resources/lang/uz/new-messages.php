@@ -446,7 +446,7 @@ return [
 	"order_management" => "Buyurtmani boshqarish",
 	"orders" => "Buyruqlar",
 	"pending" => "Bezatilgan",
-	"confirmed" => "Paketlangan",
+	"confirmed" => "Qadoqlanmoqda",
 	"packaging" => "Kuryer kutmoqda",
 	"out_for_delivery" => "Yo'lda",
 	"delivered" => "Yetkazib berilgan",
