@@ -1453,7 +1453,7 @@ return [
 	"new_product_request" => "Yangi mahsulot uchun so'rov",
 	"denied_product_request" => "Tovarlar uchun so'rovni rad etdi",
 	"product_Reviews" => "Tovarlar haqida sharhlar",
-	"coupons" => "Cochons",
+	"coupons" => "Kupon",
 	"reports_&_analytics" => "Hisobotlar va tahlillar",
 	"transactions_Report" => "Bitim to'g'risidagi hisobot",
 	"product_report" => "Tovarlar haqida hisobot",
