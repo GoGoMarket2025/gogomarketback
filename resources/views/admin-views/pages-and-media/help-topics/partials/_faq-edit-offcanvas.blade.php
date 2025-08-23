@@ -78,7 +78,7 @@
                         <button type="button" class="btn btn-secondary max-w-120 flex-grow-1"
                                 data-bs-dismiss="modal">{{ translate('No') }}</button>
                         <button type="submit" class="btn btn-danger max-w-120 flex-grow-1"
-                                data-bs-dismiss="modal">{{ translate('Yes_Delete') }}</button>
+                                data-bs-dismiss="modal">{{ translate('yes_delete_it') }}</button>
                     </div>
                 </div>
             </div>
