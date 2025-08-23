@@ -32,7 +32,7 @@
             @elseif($order['order_status'] == 'processing' ? 'badge-soft-primary':'')
                 <span
                     class="fs-12 font-semibold rounded badge __badge badge-soft-primary border-soft-primary">
-                    {{ translate('out_for_delivery') }}
+                    {{ translate('packaging') }}
                 </span>
             @elseif($order['order_status'] == 'canceled' ? 'badge-soft-danger':'')
                 <span
