@@ -1623,7 +1623,7 @@ return [
 	"Wishlist" => "Istalganlarning ro'yxati",
 	"user_profile" => "Asosiy Foydalanuvchining profili",
 	"my_Profile" => "Mening profilim",
-	"my_Order" => "Mening buyrug'im",
+	"my_Order" => "Mening buyrtmalarim",
 	"hello" => "Salom",
 	"search_by_name" => "Ism bo'yicha qidirish",
 	"top_rated" => "Eng yaxshi baholar",
