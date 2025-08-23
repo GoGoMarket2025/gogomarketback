@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
                 {{translate('withdraw')}}
             </h2>
@@ -14,8 +14,8 @@
             <div class="col-md-12 mb-3">
                 <div class="card">
                     <div class="card-body text-start">
-                        <div class="text-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-2 mb-4">
-                            <h3 class="text-capitalize">
+                        <div class="text-non-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-2 mb-4">
+                            <h3 class="text-non-capitalize">
                                 {{translate('vendor_withdraw_information')}}
                             </h3>
                             <i class="fi fi-rr-wallet fs-3"></i>
@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-md-4 mb-2 mb-md-0">
                                 <div class="d-flex gap-1 flex-wrap">
-                                    <h5 class="text-capitalize">{{translate('amount').':'.' '}}</h5>
+                                    <h5 class="text-non-capitalize">{{translate('amount').':'.' '}}</h5>
                                     <h5>
                                         {{ setCurrencySymbol(amount: usdToDefaultCurrency(amount: $withdrawRequest->amount), currencyCode: getCurrencyCode(type: 'default')) }}
                                     </h5>
@@ -62,7 +62,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <div class="text-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
+                            <div class="text-non-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
                                 <h3 class="h3 mb-0">{{ $withdrawalMethod['method_name'].' '.' '.translate('info')}} </h3>
                                 <i class="fi fi-rr-usd-circle fs-5"></i>
                             </div>
@@ -81,7 +81,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body text-start">
-                            <div class="text-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
+                            <div class="text-non-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
                                 <h3 class="h3 mb-0">{{translate('my_bank_info')}} </h3>
                                 <i class="fi fi-rr-usd-circle fs-5"></i>
                             </div>
@@ -113,7 +113,7 @@
                     <div class="card h-100">
                         <div class="card-body text-start">
 
-                            <div class="text-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
+                            <div class="text-non-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
                                 <h3 class="h3 mb-0">{{translate('shop_info')}} </h3>
                                 <i class="fi fi-rr-shop fs-5"></i>
                             </div>
@@ -139,7 +139,7 @@
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body text-start">
-                        <div class="text-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
+                        <div class="text-non-capitalize d-flex align-items-center justify-content-between gap-2 border-bottom pb-3 mb-4">
                             <h3 class="h3 mb-0">{{translate('vendor_info')}} </h3>
                             <i class="fi fi-sr-user fs-5"></i>
                         </div>

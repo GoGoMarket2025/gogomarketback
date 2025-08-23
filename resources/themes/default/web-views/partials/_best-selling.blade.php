@@ -8,7 +8,7 @@
                     <h2 class="font-bold pl-1 mb-0 fs-16">{{ translate('best_sellings')}}</h2>
                 </div>
                 <div>
-                    <a class="text-capitalize view-all-text web-text-primary"
+                    <a class="text-non-capitalize view-all-text web-text-primary"
                        href="{{route('products',['data_from'=>'best-selling','page'=>1])}}">{{ translate('view_all')}}
                         <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>
                     </a>

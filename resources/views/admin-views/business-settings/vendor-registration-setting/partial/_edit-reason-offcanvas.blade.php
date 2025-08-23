@@ -3,7 +3,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasReasonEdit-{{$vendorRegistrationReason['id']}}" aria-labelledby="offcanvasFaqEditLabel">
         <div class="offcanvas-header bg-body">
             <div>
-                <h2 class="mb-1 text-capitalize">{{ translate('edit_reason') }}</h2>
+                <h2 class="mb-1 text-non-capitalize">{{ translate('edit_reason') }}</h2>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label text-capitalize" for="">{{ translate('short_Description') }}    <span class="text-danger">*</span>
+                        <label class="form-label text-non-capitalize" for="">{{ translate('short_Description') }}    <span class="text-danger">*</span>
                             <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Add Reason Description" data-bs-title="Add Reason Description">
                                 <i class="fi fi-sr-info"></i>
                             </span>

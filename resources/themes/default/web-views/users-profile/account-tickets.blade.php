@@ -115,7 +115,7 @@
                         <div class="">
                             <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                                 <h5 class="mb-0 fs-16 font-bold">{{ translate('support_ticket') }}</h5>
-                                <button type="submit" class="btn btn--primary btn-sm font-semibold float-end text-capitalize" data-toggle="modal" data-target="#open-ticket">
+                                <button type="submit" class="btn btn--primary btn-sm font-semibold float-end text-non-capitalize" data-toggle="modal" data-target="#open-ticket">
                                     {{ translate('add_new_ticket') }}
                                 </button>
                             </div>
@@ -195,7 +195,7 @@
 
                         @if ($supportTickets->count() <=0)
                             <div class="d-flex justify-content-center align-items-center h-75">
-                                <div class="text-center pt-3 text-capitalize">
+                                <div class="text-center pt-3 text-non-capitalize">
                                     <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}" alt="" width="70">
                                     <h5 class="fs-14 mt-4">{{translate('no_ticket_found')}}!</h5>
                                 </div>
@@ -253,7 +253,7 @@
 
             @if ($supportTickets->count() <=0)
                 <div class="d-flex justify-content-center align-items-center h-100">
-                    <div class="text-center pt-3 text-capitalize">
+                    <div class="text-center pt-3 text-non-capitalize">
                         <img src="{{ theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg') }}" alt="" width="70">
                         <h5 class="fs-14 mt-4">{{ translate('no_ticket_found') }}!</h5>
                     </div>

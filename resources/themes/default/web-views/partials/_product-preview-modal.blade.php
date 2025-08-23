@@ -44,7 +44,7 @@
                             <h4 class="mt-2">{{ translate('Download_Preview_File.') }}</h4>
                             <span class="text-muted text-sm">{{ $product->preview_file }}</span>
                             <span class="text-sm">{{ $previewFileInfo['sizeReadable'] }}</span>
-                            <a class="btn btn-primary text-capitalize mt-3"
+                            <a class="btn btn-primary text-non-capitalize mt-3"
                                href="{{ $product->preview_file_full_url['path'] }}" download
                             >
                                 {{ translate('Download_Now') }}

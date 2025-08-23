@@ -7,7 +7,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse_sale.png')}}" alt="">
                 {{translate('inhouse_sale')}}
             </h2>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-borderless table-thead-bordered table-align-middle card-table w-100">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}} </th>
                             <th>

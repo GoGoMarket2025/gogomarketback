@@ -34,7 +34,7 @@
                     <img width="310" src="{{ getStorageImages(path: $eCommerceLogo, type:'backend-logo') }}" alt="Logo">
                 </a>
                 <h2 class="title">{{translate('Make Your Business')}} <span
-                        class="font-weight-bold c1 d-block text-capitalize">{{translate('Profitable...')}}</span></h2>
+                        class="font-weight-bold c1 d-block text-non-capitalize">{{translate('Profitable...')}}</span></h2>
             </div>
         </div>
         <div class="auth-wrapper-right">

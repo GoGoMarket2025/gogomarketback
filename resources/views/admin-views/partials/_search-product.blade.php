@@ -4,7 +4,7 @@
             <img class="border" width="75" src="{{ getStorageImages(path: $product->thumbnail_full_url , type: 'backend-basic') }}" alt="">
             <div class="media-body d-flex flex-column gap-1 text-start">
                 <h5 class="product-id" hidden>{{$product['id']}}</h5>
-                <h5 class="text-capitalize mb-1 product-name">{{$product['name']}}</h5>
+                <h5 class="text-non-capitalize mb-1 product-name">{{$product['name']}}</h5>
                 <div  class="fs-10">
                     <span class="me-2">{{translate('price').' '.':'.' '.setCurrencySymbol(usdToDefaultCurrency(amount: $product['unit_price']))}}</span>
                     <span class="me-2">{{translate('category').' '.':'.' '}}{{ isset($product->category) ? $product->category->name : translate('category_not_found') }}</span>

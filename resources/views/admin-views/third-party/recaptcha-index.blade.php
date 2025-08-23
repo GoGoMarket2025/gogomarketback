@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('3rd Party - Other Configurations') }}
             </h2>
         </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div>
                             <a data-bs-toggle="modal" href="#getRecaptchaCredentials"
-                               class="fs-12 text-capitalize">{{ translate('how_to_get_credential') }}</a>
+                               class="fs-12 text-non-capitalize">{{ translate('how_to_get_credential') }}</a>
                         </div>
                     </div>
                     <div class="p-12 p-sm-20 bg-section rounded">
@@ -144,7 +144,7 @@
                                     <img width="80"
                                          src="{{dynamicAsset(path: 'public/assets/new/back-end/img/modal/google-analytics.png')}}"
                                          alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{translate('google_recaptcha_instructions')}}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{translate('google_recaptcha_instructions')}}</h4>
                                     <ol class="pl-4 instructions-list">
                                         <li>
                                             {{translate('to_get_site_key_and_secret_key_Go_to_the_Credentials_page')}}

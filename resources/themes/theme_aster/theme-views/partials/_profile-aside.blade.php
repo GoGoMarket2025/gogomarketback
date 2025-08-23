@@ -46,7 +46,7 @@
                         <a href="{{ route('user-profile') }}">
                             <img width="20" src="{{ theme_asset('assets/img/icons/profile-icon.png') }}"
                                  class="dark-support" alt="">
-                            <span class="text-capitalize">{{translate('my_profile')}}</span>
+                            <span class="text-non-capitalize">{{translate('my_profile')}}</span>
                         </a>
                     </li>
                     <li class="{{Request::is('account-oder*') || Request::is('account-order-details*') || Request::is('refund-details*') || Request::is('track-order/order-wise-result-view') ? 'active' :''}}">
@@ -92,7 +92,7 @@
                             <a href="{{route('loyalty')}}">
                                 <img width="20" src="{{theme_asset('assets/img/icons/profile-icon6.png')}}"
                                      class="dark-support" alt="">
-                                <span class="text-capitalize">{{translate('loyalty_point')}}</span>
+                                <span class="text-non-capitalize">{{translate('loyalty_point')}}</span>
                             </a>
                         </li>
                     @endif
@@ -107,7 +107,7 @@
                         <a href="{{route('account-tickets')}}">
                             <img width="20" src="{{theme_asset('assets/img/icons/profile-icon8.png')}}"
                                  class="dark-support" alt="">
-                            <span class="text-capitalize">{{translate('support_ticket')}}</span>
+                            <span class="text-non-capitalize">{{translate('support_ticket')}}</span>
                         </a>
                     </li>
                     @if ($web_config['ref_earning_status'])

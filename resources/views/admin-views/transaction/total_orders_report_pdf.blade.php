@@ -57,7 +57,7 @@
                         <table>
                             <tr>
                                 <th class="bold black p-0 text-left p-3">{{translate('duration')}}</th>
-                                <td class="p-0 p-3 text-capitalize">
+                                <td class="p-0 p-3 text-non-capitalize">
                                     : {{ str_replace('_',' ', $data['date_type']) }}
                                 </td>
                             </tr>

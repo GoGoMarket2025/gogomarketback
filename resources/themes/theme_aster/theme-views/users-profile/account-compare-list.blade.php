@@ -12,11 +12,11 @@
                     <div class="card h-100">
                         <div class="card-body p-lg-4">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                <h5 class="text-capitalize">{{translate('my_compare_list')}}</h5>
+                                <h5 class="text-non-capitalize">{{translate('my_compare_list')}}</h5>
                                 <div class="d-flex gap-4 flex-wrap">
                                     @if($compareLists->count()>0)
                                         <a href="javascript:"
-                                           class="btn-link text-danger text-capitalize delete-action text-capitalize"
+                                           class="btn-link text-danger text-non-capitalize delete-action text-non-capitalize"
                                            data-action="{{route('product-compare.delete-all') }}"
                                            data-text="{{translate('want_to_clear_all_compare_list').'?'}}">
                                             {{translate('Clear_All')}}

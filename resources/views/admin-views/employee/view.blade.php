@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/employee.png')}}" width="20" alt="">
                 {{translate('employee_details')}}
             </h2>
@@ -19,7 +19,7 @@
                             <img width="250" class="rounded border"
                             src="{{getStorageImages(path: $employee->image_full_url,type:'backend-profile')}}" alt="{{translate('image_Description')}}">
                             <div class="media-body">
-                                <div class="text-capitalize mb-4">
+                                <div class="text-non-capitalize mb-4">
                                     <h3 class="mb-2">{{$employee->name}}</h3>
                                     <p>{{ isset($employee->role) ? $employee->role->name : translate('role_not_found')}}</p>
                                 </div>
@@ -56,7 +56,7 @@
                                     <div class="d-flex flex-column gap-4">
                                         <div class="d-flex gap-2 align-items-center">
                                             <i class="fi fi-rr-portrait"></i>
-                                            <h4 class="text-dark mb-0 text-capitalize">{{translate('access_available').':'.' '}}</h4>
+                                            <h4 class="text-dark mb-0 text-non-capitalize">{{translate('access_available').':'.' '}}</h4>
                                         </div>
                                         @if (isset($employee->role))
                                             <div class="tags d-flex gap-2 flex-wrap">

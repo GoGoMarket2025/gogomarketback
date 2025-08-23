@@ -10,7 +10,7 @@
                 <div class="row align-items-center gy-3">
                     <div class="col-md-9">
                         <div>
-                            <h2 class="text-capitalize">{{ translate('FAQs_Section') }}</h2>
+                            <h2 class="text-non-capitalize">{{ translate('FAQs_Section') }}</h2>
                             <p class="fs-12 mb-0">
                                 {{ translate('in_this_section_you_can_add_some_frequently_asked_questions_for_vendors') }}
                             </p>
@@ -129,7 +129,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
                                         <th>{{translate('question')}}</th>

@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/push_notification.png') }}" alt="">
                 {{translate('send_notification')}}
             </h2>
@@ -110,7 +110,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                     <tr>
                                         <th>{{translate('SL')}} </th>
                                         <th>{{translate('title')}} </th>

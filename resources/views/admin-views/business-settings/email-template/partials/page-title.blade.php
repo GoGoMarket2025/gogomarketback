@@ -2,7 +2,7 @@
     use App\Enums\EmailTemplateKey;
 @endphp
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
-    <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+    <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
         {{translate('email_template')}}
     </h2>
     <div>

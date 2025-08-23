@@ -47,7 +47,7 @@
                                                 <img width="20"
                                                      src="{{ dynamicAsset(path: 'public/assets/front-end/img/flags/'.$data['code'].'.png') }}"
                                                      alt="{{ $data['name']}}"/>
-                                                <span class="text-capitalize">{{ $data['name']}}</span>
+                                                <span class="text-non-capitalize">{{ $data['name']}}</span>
                                             </div>
                                             {!! $data['code'] == $local ? '<i class="fi fi-rr-check"></i>' : '' !!}
                                         </a>
@@ -78,7 +78,7 @@
                                 <button type="button" class="d-flex d-sm-none btn-close border-0 btn-circle w-20 h-20 p-1 fs-10 bg-section2 shadow-none position-absolute top-0 inset-inline-end-0 m-2" data-bs-dismiss="modal" aria-label="Close"></button>
                                 <div class="d-flex flex-wrap flex-column flex-sm-row column-gap-1 row-gap-3 justify-content-between py-2">
                                     <div class="d-flex gap-2 align-items-center">
-                                        <h4 class="text-capitalize mb-0">{{ translate('total_orders') }}</h4>
+                                        <h4 class="text-non-capitalize mb-0">{{ translate('total_orders') }}</h4>
                                         <span class="text-body-light">
                                             ({{\App\Models\Order::where('order_status','pending')->count() }})
                                         </span>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2 text-non-capitalize">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-delivery-man.png')}}" alt="">
                 {{translate('emergency_contact')}}
             </h2>
@@ -16,7 +16,7 @@
                     @csrf
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-0 page-header-title d-flex align-items-center gap-2 border-bottom pb-3 mb-3 text-capitalize">
+                            <h4 class="mb-0 page-header-title d-flex align-items-center gap-2 border-bottom pb-3 mb-3 text-non-capitalize">
                                 <i class="fi fi-sr-user"></i>
                                 {{translate('add_new_contact_information')}}
                             </h4>
@@ -52,7 +52,7 @@
                     <div class="p-3">
                         <div class="row gy-1 align-items-center justify-content-between">
                             <div class="col-auto">
-                                <h4 class="text-capitalize">
+                                <h4 class="text-non-capitalize">
                                     {{translate('contact_information_table')}}
                                     <span class="badge text-dark bg-body-secondary fw-semibold rounded-50">{{ $contacts->count() }}</span>
                                 </h4>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-hover table-borderless align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th class="text-center">{{translate('name')}}</th>
@@ -75,7 +75,7 @@
                             @foreach($contacts as $contact)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td class="text-center text-capitalize">{{ $contact['name'] }}</td>
+                                <td class="text-center text-non-capitalize">{{ $contact['name'] }}</td>
                                 <td class="text-center"><a class="text-dark text-hover-primary" href="tel:{{$contact['country_code'].$contact['phone']}}">{{$contact['country_code'].$contact['phone']}}</a></td>
                                 <td>
                                     <div class="d-flex justify-content-center">

@@ -15,7 +15,7 @@
                                      src="{{ dynamicAsset(path: 'public/assets/back-end/img/modal/instruction.png') }}"
                                      loading="lazy" alt="">
                                 <div>
-                                    <h3 class="lh-md mb-3 text-capitalize text-start">{{ translate('step_by_step_guide') }}
+                                    <h3 class="lh-md mb-3 text-non-capitalize text-start">{{ translate('step_by_step_guide') }}
                                     </h3>
                                     <ol class="d-flex flex-column px-4 gap-2 mb-4">
                                         <li> {{ translate('open_the_advertising_manager_or_platform_you_want_to_integrate_(e.g.,_meta_ads,_snapchat_ads,_google_analytics).') }}

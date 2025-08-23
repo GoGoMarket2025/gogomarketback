@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/system-setting.png') }}" alt="">
                 {{ translate('system_setup') }}
             </h2>
@@ -145,7 +145,7 @@
                 <div class="table-responsive pb-3">
                     <table
                         class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{ translate('SL') }}</th>
                             <th>{{ translate('language') }}</th>
@@ -159,7 +159,7 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>
-                                    <div class="d-flex align-items-center gap-2 text-capitalize">
+                                    <div class="d-flex align-items-center gap-2 text-non-capitalize">
                                         {{ $language['name'] }} ({{ $language['direction'] ?? 'ltr' }})
                                         @if (array_key_exists('default', $language) && $language['default'])
                                             <span class="badge text-bg-info badge-info badge-sm">

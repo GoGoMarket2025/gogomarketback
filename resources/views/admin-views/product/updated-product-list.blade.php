@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 text-capitalize mb-1 d-flex gap-2 align-items-center">
+            <h2 class="h1 text-non-capitalize mb-1 d-flex gap-2 align-items-center">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
                 {{ translate('update_product') }}
             </h2>
@@ -44,7 +44,7 @@
                     <div class="table-responsive">
                         <table id="datatable"
                                class="table table-hover table-borderless table-thead-bordered align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('product Name') }}</th>

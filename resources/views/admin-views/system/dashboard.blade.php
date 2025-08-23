@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="row flex-between align-items-center g-2 mb-3">
                         <div class="col-sm-6">
-                            <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+                            <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
                                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/business_analytics.png') }}"
                                     alt="">{{ translate('business_analytics') }}
                             </h4>
@@ -49,7 +49,7 @@
 
             <div class="card mb-3 remove-card-shadow">
                 <div class="card-body">
-                    <h4 class="d-flex align-items-center text-capitalize gap-10 mb-3">
+                    <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-3">
                         <img width="20" class="mb-1"
                             src="{{ dynamicAsset(path: 'public/assets/back-end/img/admin-wallet.png') }}" alt="">
                         {{ translate('admin_wallet') }}
@@ -68,7 +68,7 @@
                 <div class="col-lg-4">
                     <div class="card remove-card-shadow h-100">
                         <div class="card-header">
-                            <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0 ">
+                            <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0 ">
                                 {{ translate('user_overview') }}
                             </h4>
                         </div>
@@ -79,21 +79,21 @@
                                     <div class="total--orders">
                                         <h3 class="fw-bold">{{ $data['getTotalCustomerCount'] + $data['getTotalVendorCount'] + $data['getTotalDeliveryManCount'] }}
                                         </h3>
-                                        <span class="text-capitalize">{{ translate('total_User') }}</span>
+                                        <span class="text-non-capitalize">{{ translate('total_User') }}</span>
                                     </div>
                                 </div>
                                 <div class="apex-legends flex-column">
                                     <div data-color="#7bc4ff">
-                                        <span class="text-capitalize">{{ translate('total_customer') . ' ' . '(' . $data['getTotalCustomerCount'] . ')' }}
+                                        <span class="text-non-capitalize">{{ translate('total_customer') . ' ' . '(' . $data['getTotalCustomerCount'] . ')' }}
                                         </span>
                                     </div>
                                     <div data-color="#f9b530">
                                         <span
-                                            class="text-capitalize">{{ translate('total_vendor') . ' ' . '(' . $data['getTotalVendorCount'] . ')' }}</span>
+                                            class="text-non-capitalize">{{ translate('total_vendor') . ' ' . '(' . $data['getTotalVendorCount'] . ')' }}</span>
                                     </div>
                                     <div data-color="#1c1a93">
                                         <span
-                                            class="text-capitalize">{{ translate('total_delivery_man') . ' ' . '(' . $data['getTotalDeliveryManCount'] . ')' }}</span>
+                                            class="text-non-capitalize">{{ translate('total_delivery_man') . ' ' . '(' . $data['getTotalDeliveryManCount'] . ')' }}</span>
                                     </div>
                                 </div>
                             </div>

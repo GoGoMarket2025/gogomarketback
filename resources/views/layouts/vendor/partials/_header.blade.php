@@ -52,7 +52,7 @@
                                 @php( $local = session()->has('local')?session('local'):'en')
                                 @php($lang = \App\Models\BusinessSetting::where('type', 'language')->first())
                                 <div
-                                    class="topbar-text dropdown disable-autohide {{$direction === "rtl" ? 'ml-3' : 'm-1'}} text-capitalize">
+                                    class="topbar-text dropdown disable-autohide {{$direction === "rtl" ? 'ml-3' : 'm-1'}} text-non-capitalize">
                                     <a class="topbar-link dropdown-toggle text-black d-flex align-items-center title-color"
                                        href="javascript:" data-toggle="dropdown"
                                     >
@@ -77,7 +77,7 @@
                                                              width="20"
                                                              src="{{dynamicAsset(path: 'public/assets/front-end/img/flags/'.$data['code'].'.png')}}"
                                                              alt="{{$data['name']}}"/>
-                                                        <span class="text-capitalize">{{$data['name']}}</span>
+                                                        <span class="text-non-capitalize">{{$data['name']}}</span>
                                                     </a>
                                                 </li>
                                             @endif
@@ -311,7 +311,7 @@
             <div class="p-3">
                 <div class="bg-white p-1 rounded">
                     <div
-                        class="topbar-text dropdown disable-autohide {{$direction === "rtl" ? 'ml-3' : 'm-1'}} text-capitalize">
+                        class="topbar-text dropdown disable-autohide {{$direction === "rtl" ? 'ml-3' : 'm-1'}} text-non-capitalize">
                         <a class="topbar-link dropdown-toggle title-color d-flex align-items-center" href="#"
                            data-toggle="dropdown">
                             @foreach(json_decode($lang['value'],true) as $data)
@@ -332,7 +332,7 @@
                                             <img class="{{$direction === "rtl" ? 'ml-2' : 'mr-2'}}" width="20"
                                                  src="{{dynamicAsset(path: 'public/assets/front-end').'/img/flags/'.$data['code']}}.png"
                                                  alt="{{$data['name']}}"/>
-                                            <span class="text-capitalize">{{$data['name']}}</span>
+                                            <span class="text-non-capitalize">{{$data['name']}}</span>
                                         </a>
                                     </li>
                                 @endif

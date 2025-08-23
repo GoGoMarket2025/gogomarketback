@@ -6,7 +6,7 @@
     <div class="content container-fluid">
 
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/inhouse-product-list.png') }}" alt="">
                 @if($type == 'in_house')
                     {{ translate('in_House_Product_List') }}
@@ -170,7 +170,7 @@
                     <div class="table-responsive">
                         <table id="datatable"
                                class="table table-hover table-borderless table-thead-bordered align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('product Name') }}</th>

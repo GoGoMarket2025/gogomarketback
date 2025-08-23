@@ -42,7 +42,7 @@
                     @if($productDetails['product_type'] == 'digital' && $productDetails['digital_product_file_types'] && count($productDetails['digital_product_file_types']) > 0 && $productDetails['digital_product_extensions'])
                         @foreach($productDetails['digital_product_extensions'] as $extensionKey => $extensionGroup)
                         <div>
-                            <h6 class="fs-14 mb-2 text-capitalize">
+                            <h6 class="fs-14 mb-2 text-non-capitalize">
                                 {{ translate($extensionKey) }}
                             </h6>
 
@@ -72,7 +72,7 @@
 
                     @foreach (json_decode($productDetails->choice_options) as $key => $choice)
                     <div>
-                        <h6 class="fs-14 mb-2 text-capitalize">
+                        <h6 class="fs-14 mb-2 text-non-capitalize">
                             {{ $choice->title }}
                         </h6>
                         <div class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-0 flex-start ps-0 overflow-x-auto flex-nowrap overflow-y-hidden scrollbar-none">
@@ -109,7 +109,7 @@
                             <input type="hidden" value="" class="product-exist-in-cart-list form-control w-50" name="key">
                         </div>
                         <div class="d-flex flex-wrap align-items-center mb-2 pro">
-                            <span class="fs-12 text-muted line--limit-1 text-capitalize product-generated-variation-text"></span>
+                            <span class="fs-12 text-muted line--limit-1 text-non-capitalize product-generated-variation-text"></span>
                             <div class="d-none d-sm-flex flex-wrap align-items-center">
                                 <span class="{{ count(json_decode($productDetails->variation, true)) > 0 ? '__inline-25' : '' }} {{ count(json_decode($productDetails->variation, true)) > 0 ? 'mx-2' : '' }} mt-0"></span>
 

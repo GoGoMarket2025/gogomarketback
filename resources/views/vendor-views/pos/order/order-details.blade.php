@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-wrap gap-10 flex-md-nowrap justify-content-between mb-4">
                             <div class="d-flex flex-column gap-10">
-                                <h4 class="text-capitalize">
+                                <h4 class="text-non-capitalize">
                                     {{ translate('order_ID') }} #{{$order['id']}}
                                     @if($order['order_type'] == 'POS')
                                         <span>({{ 'POS' }})</span>
@@ -38,7 +38,7 @@
                                     </a>
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3">
-                                    <div class="order-status d-flex justify-content-sm-end gap-10 text-capitalize">
+                                    <div class="order-status d-flex justify-content-sm-end gap-10 text-non-capitalize">
                                         <span class="title-color">{{ translate('status') }}: </span>
                                         @if($order['order_status']=='pending')
                                             <span
@@ -68,13 +68,13 @@
                                         @endif
                                     </div>
 
-                                    <div class="payment-method d-flex justify-content-sm-end gap-10 text-capitalize">
+                                    <div class="payment-method d-flex justify-content-sm-end gap-10 text-non-capitalize">
                                         <span class="title-color">{{ translate('payment_Method') }} :</span>
                                         <strong>  {{ translate(str_replace('_',' ',$order['payment_method'])) }}</strong>
                                     </div>
                                     @if(isset($order['transaction_ref']) && $order->payment_method != 'cash_on_delivery' && $order->payment_method != 'pay_by_wallet' && !isset($order->offline_payments))
                                         <div
-                                            class="reference-code d-flex justify-content-sm-end gap-10 text-capitalize">
+                                            class="reference-code d-flex justify-content-sm-end gap-10 text-non-capitalize">
                                             <span class="title-color">{{ translate('reference_Code') }} :</span>
                                             <strong>{{ translate(str_replace('_',' ',$order['transaction_ref'])) }} {{ $order->payment_method == 'offline_payment' ? '('.$order->payment_by.')':'' }}</strong>
                                         </div>
@@ -105,7 +105,7 @@
                         <div class="table-responsive datatable-custom">
                             <table
                                 class="table fs-12 table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
-                                <thead class="thead-light thead-50 text-capitalize">
+                                <thead class="thead-light thead-50 text-non-capitalize">
                                 <tr>
                                     <th>{{ translate('SL') }}</th>
                                     <th>{{ translate('item_details') }}</th>
@@ -272,7 +272,7 @@
                                     <dd class="col-6 title-color">
                                         <strong>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount:  $orderTotalPriceSummary['itemPrice']), currencyCode: getCurrencyCode()) }}</strong>
                                     </dd>
-                                    <dt class="col-5 text-capitalize">{{ translate('item_discount') }}</dt>
+                                    <dt class="col-5 text-non-capitalize">{{ translate('item_discount') }}</dt>
                                     <dd class="col-6 title-color">
                                         -
                                         <strong>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount:  $orderTotalPriceSummary['itemDiscount']), currencyCode: getCurrencyCode()) }}</strong>
@@ -281,7 +281,7 @@
                                     <dd class="col-sm-6 title-color">
                                         <strong>- {{setCurrencySymbol(amount: usdToDefaultCurrency(amount:  $orderTotalPriceSummary['extraDiscount']), currencyCode: getCurrencyCode()) }}</strong>
                                     </dd>
-                                    <dt class="col-5 text-capitalize">{{ translate('sub_total') }}</dt>
+                                    <dt class="col-5 text-non-capitalize">{{ translate('sub_total') }}</dt>
                                     <dd class="col-6 title-color">
                                         <strong>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount:  $orderTotalPriceSummary['subTotal']), currencyCode: getCurrencyCode()) }}</strong>
                                     </dd>
@@ -331,7 +331,7 @@
                                          alt="{{translate('image')}}">
                                 </div>
                                 <div class="media-body d-flex flex-column gap-1">
-                                    <span class="title-color hover-c1 text-capitalize"><strong>{{$order->customer['f_name'].' '.$order->customer['l_name']}}</strong></span>
+                                    <span class="title-color hover-c1 text-non-capitalize"><strong>{{$order->customer['f_name'].' '.$order->customer['l_name']}}</strong></span>
                                     @if($order->customer->id != 0)
                                         <span
                                             class="title-color break-all"><strong>{{$order->customer['phone']}}</strong></span>

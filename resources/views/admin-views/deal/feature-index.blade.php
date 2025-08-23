@@ -9,7 +9,7 @@
     @php($direction = Session::get('direction'))
     <div class="content container-fluid">
         <div class="d-flex justify-content-between gap-2 mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/featured_deal.png') }}" alt="">
                 {{ translate('feature_deal') }}
             </h2>
@@ -93,7 +93,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="px-3 py-4 d-flex justify-content-between align-items-center gap-20 flex-wrap">
-                        <h3 class="mb-0 text-capitalize d-flex gap-2">
+                        <h3 class="mb-0 text-non-capitalize d-flex gap-2">
                             {{ translate('feature_deal_table') }}
                             <span
                                 class="badge text-dark bg-body-secondary fw-semibold rounded-50">{{ $flashDeals->total() }}</span>
@@ -118,7 +118,7 @@
                         <table id="datatable"
                                style="text-align: {{$direction === "rtl" ? 'right' : 'left' }};"
                                class="table table-hover table-borderless align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('title') }}</th>
@@ -206,7 +206,7 @@
                     @csrf
                     <div class="modal-body px-sm-4 mb-sm-3">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h4 class="modal-title flex-grow-1 text-center text-capitalize" id="prioritySetModalLabel">{{ translate('priority_settings') }}</h4>
+                            <h4 class="modal-title flex-grow-1 text-center text-non-capitalize" id="prioritySetModalLabel">{{ translate('priority_settings') }}</h4>
                             <button type="button" class="btn-close border-0 btn-circle bg-section2 shadow-none"
                                 data-bs-dismiss="modal" aria-label="Close">
                             </button>
@@ -214,7 +214,7 @@
                         <div class="d-flex gap-4 flex-column feature-deal">
                             <div class="d-flex gap-2 justify-content-between pb-3 border-bottom">
                                 <div class="d-flex flex-column">
-                                    <h4 class="text-capitalize">{{ translate('use_default_sorting_list') }}</h4>
+                                    <h4 class="text-non-capitalize">{{ translate('use_default_sorting_list') }}</h4>
                                     <div class="d-flex gap-2 align-items-center">
                                         <img width="14" src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}" alt="">
                                         <span class="text-dark fs-12">{{ translate('currently_sorting_this_section_based_on_latest_add') }}</span>
@@ -229,7 +229,7 @@
                             <div class="">
                                 <div class="d-flex gap-2 justify-content-between">
                                     <div class="d-flex flex-column">
-                                        <h4 class="text-capitalize">{{ translate('use_custom_sorting_list') }}</h4>
+                                        <h4 class="text-non-capitalize">{{ translate('use_custom_sorting_list') }}</h4>
                                         <div class="d-flex gap-2 align-items-center">
                                             <img width="14" src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}" alt="">
                                             <span class="text-dark fs-12">{{ translate('you_can_sorting_this_section_by_others_way') }}</span>
@@ -287,7 +287,7 @@
                                         <div class="d-flex gap-2 align-items-center">
                                             <input type="radio" class="show form-check-input radio--input" name="sort_by" value="a_to_z" id="feature-deal-sort-alphabetic-order"
                                                 {{ isset($featureDealPriority?->sort_by) && $featureDealPriority?->sort_by == 'a_to_z' ? 'checked' : '' }}>
-                                            <label class="mb-0 cursor-pointer text-capitalize" for="feature-deal-sort-alphabetic-order">
+                                            <label class="mb-0 cursor-pointer text-non-capitalize" for="feature-deal-sort-alphabetic-order">
                                                 {{ translate('sort_by_Alphabetical') }} ({{'A '.translate('to').' Z' }})
                                             </label>
                                         </div>
@@ -295,7 +295,7 @@
                                         <div class="d-flex gap-2 align-items-center">
                                             <input type="radio" class="show form-check-input radio--input" name="sort_by" value="z_to_a" id="feature-deal-sort-alphabetic-order-reverse"
                                                 {{ isset($featureDealPriority?->sort_by) && $featureDealPriority?->sort_by == 'z_to_a' ? 'checked' : '' }}>
-                                            <label class="mb-0 cursor-pointer text-capitalize" for="feature-deal-sort-alphabetic-order-reverse">
+                                            <label class="mb-0 cursor-pointer text-non-capitalize" for="feature-deal-sort-alphabetic-order-reverse">
                                                 {{ translate('sort_by_Alphabetical') }} ({{'Z '.translate('to').' A' }})
                                             </label>
                                         </div>

@@ -50,7 +50,7 @@
                     </div>
                 @endif
                 <h3 class="mb-1 letter-spacing-0">
-                    <a href="{{route('product',$product->slug)}}" class="text-capitalize fw-semibold">
+                    <a href="{{route('product',$product->slug)}}" class="text-non-capitalize fw-semibold">
                         {{ $product['name'] }}
                     </a>
                 </h3>

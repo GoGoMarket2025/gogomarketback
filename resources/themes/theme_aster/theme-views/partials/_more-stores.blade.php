@@ -6,7 +6,7 @@
     <div class="container">
         @if(auth('customer')->check() && count($order_again)>0)
             <div class="bg-primary-light rounded p-3 d-sm-none mb-4">
-                <h3 class="text-primary mb-3 mt-2 text-capitalize">{{ translate('order_again') }}</h3>
+                <h3 class="text-primary mb-3 mt-2 text-non-capitalize">{{ translate('order_again') }}</h3>
                 <p>{{ translate('want_to_order_your_usuals') }}
                     ? {{ translate('just_reorder_from_your_previous_orders').'.' }}</p>
                 <div class="d-flex flex-wrap gap-3 custom-scrollbar height-26-5-rem">

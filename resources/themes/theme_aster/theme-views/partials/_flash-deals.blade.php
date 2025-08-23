@@ -26,7 +26,7 @@
                 </a>
                 <div class="swiper-container">
                     <div class="mb-2 w-100 px-lg-4 text-end">
-                        <a href="{{route('flash-deals', ['id' => $flashDeal['flashDeal']['id'] ])}}" class="font-medium text-primary text-capitalize">{{ translate('View_all') }}</a>
+                        <a href="{{route('flash-deals', ['id' => $flashDeal['flashDeal']['id'] ])}}" class="font-medium text-primary text-non-capitalize">{{ translate('View_all') }}</a>
                     </div>
                     <div class="auto-item-width position-relative">
                         <div class="swiper flash-deals-swiper" data-swiper-loop="false" data-swiper-items="auto" data-swiper-margin="20" data-swiper-pagination-el="null" data-swiper-navigation-next=".swiper-button-next--flash-deal" data-swiper-navigation-prev=".swiper-button-prev--flash-deal">

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="">
             <div class="py-4">
-                <div class="d-flex flex-wrap justify-content-between gap-3 mb-3 mb-sm-4 text-capitalize">
+                <div class="d-flex flex-wrap justify-content-between gap-3 mb-3 mb-sm-4 text-non-capitalize">
                     <h2>{{ translate('featured_deals') }}</h2>
                     <div class="swiper-nav d-flex gap-2 align-items-center">
                         <div class="swiper-button-prev top-rated-nav-prev position-static rounded-10"></div>

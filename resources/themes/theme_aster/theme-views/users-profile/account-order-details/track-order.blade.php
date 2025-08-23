@@ -113,7 +113,7 @@
                                                                         <i class="bi bi-check"></i>
                                                                     </div>
                                                                     <div
-                                                                        class="state-text text-capitalize">{{translate('order_delivered')}}</div>
+                                                                        class="state-text text-non-capitalize">{{translate('order_delivered')}}</div>
                                                                     @if($orderDetails['order_status']=='delivered')
                                                                         <div class="mt-2 fs-12">
                                                                             @if(order_status_history($orderDetails['id'], 'delivered'))
@@ -210,7 +210,7 @@
                                                              class="dark-support" alt="">
                                                         <div class="media-body">
                                                             <div
-                                                                class="mb-2 fw-bold fs-16 text-capitalize">{{translate('shipping_address')}}</div>
+                                                                class="mb-2 fw-bold fs-16 text-non-capitalize">{{translate('shipping_address')}}</div>
                                                             <p>
                                                                 {{$shipping->address}},<br>
                                                                 {{$shipping->city}}
@@ -235,7 +235,7 @@
                                                              class="dark-support" alt="">
                                                         <div class="media-body">
                                                             <div
-                                                                class="mb-2  fw-bold fs-16 text-capitalize">{{translate('billing_address')}}</div>
+                                                                class="mb-2  fw-bold fs-16 text-non-capitalize">{{translate('billing_address')}}</div>
 
                                                             <p>
                                                                 @if($billing)

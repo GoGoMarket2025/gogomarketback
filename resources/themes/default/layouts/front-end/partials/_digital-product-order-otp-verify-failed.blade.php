@@ -3,7 +3,7 @@
         <img src="{{ theme_asset(path: "public/assets/front-end/img/media/OTP-Verification-fail.png")}}" alt="{{ translate('logo') }}" class="img-fluid" width="220">
     </a>
 </div>
-<h3 class="title text-center my-3 text-capitalize">{{ translate('something_went_wrong') }} !</h3>
+<h3 class="title text-center my-3 text-non-capitalize">{{ translate('something_went_wrong') }} !</h3>
 <p class="text-center text-muted">
     {{ translate('sorry_the_number_and_email_you_provided_during_order_is_incorrect').' '.translate('We_cannot_send_any_verification_code').' '.translate('please_contact_with_admin_or_your_vendor') }}
 </p>

@@ -76,7 +76,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="temporary_close_sorting" value="desc" data-parent-class="searched-product-list" id="searched-product-list-temporary-close-last"
                                         {{isset($searchedProductListPriority?->temporary_close_sorting) && $searchedProductListPriority?->temporary_close_sorting == 'desc' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="searched-product-list-temporary-close-last">
+                                    <label class="form-check-label text-non-capitalize" for="searched-product-list-temporary-close-last">
                                         {{ translate('show_product_in_the_last_is_store_is_temporarily_off') }}
                                     </label>
                                 </div>
@@ -84,13 +84,13 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="temporary_close_sorting" value="hide" data-parent-class="searched-product-list" id="searched-product-list-temporary-close-remove"
                                         {{isset($searchedProductListPriority?->temporary_close_sorting) ? ($searchedProductListPriority?->temporary_close_sorting == 'hide' ? 'checked' : '') :'checked'}}>
-                                    <label class="form-check-label text-capitalize" for="searched-product-list-temporary-close-remove">
+                                    <label class="form-check-label text-non-capitalize" for="searched-product-list-temporary-close-remove">
                                         {{ translate('remove_product_from_the_list_if_store_is_temporarily_off') }}
                                     </label>
                                 </div>
 
                                 <div class="form-check d-flex gap-1">
-                                    <input type="radio" class="form-check-input radio--input show text-capitalize"  name="temporary_close_sorting" value="default" data-parent-class="searched-product-list" id="searched-product-list-temporary-close-default"
+                                    <input type="radio" class="form-check-input radio--input show text-non-capitalize"  name="temporary_close_sorting" value="default" data-parent-class="searched-product-list" id="searched-product-list-temporary-close-default"
                                         {{isset($searchedProductListPriority?->temporary_close_sorting) ?( $searchedProductListPriority?->temporary_close_sorting == 'default' ? 'checked' : '' ) : 'checked'}}>
                                     <label class="form-check-label" for="searched-product-list-temporary-close-default">
                                         {{ translate('none') }}

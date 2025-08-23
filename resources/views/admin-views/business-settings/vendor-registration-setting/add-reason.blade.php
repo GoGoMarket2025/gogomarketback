@@ -12,7 +12,7 @@
                     <div class="row g-3 mb-4">
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label text-capitalize" for="">{{ translate('reason_title') }}
+                                <label class="form-label text-non-capitalize" for="">{{ translate('reason_title') }}
                                     <span class="text-danger">*</span>
                                     <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top"
                                           aria-label="Add Title" data-bs-title="Add Title">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-label text-capitalize" for="">{{ translate('Reason_Description') }}
+                                <label class="form-label text-non-capitalize" for="">{{ translate('Reason_Description') }}
                                     <span class="text-danger">*</span>
                                     <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top"
                                           aria-label="Add Reason Description" data-bs-title="Add Reason Description">
@@ -90,7 +90,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('title')}}</th>

@@ -631,7 +631,7 @@ img {
     gap: 3rem !important;
 }
 
-.text-capitalize {
+.text-non-capitalize {
     /* text-transform: capitalize !important; */
 }
 

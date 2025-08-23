@@ -5,7 +5,7 @@
 @section('content')
 <div class="content container-fluid">
     <div class="mb-3">
-        <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+        <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2">
             <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/most-demanded.png') }}" alt="">
             {{ translate('most_demanded') }}
         </h2>
@@ -111,7 +111,7 @@
             <div class="table-responsive">
                 <table id="columnSearchDatatable"
                     class="table table-hover table-borderless align-middle">
-                    <thead class="text-capitalize">
+                    <thead class="text-non-capitalize">
                     <tr>
                         <th class="pl-xl-5">{{ translate('SL') }}</th>
                         <th>{{ translate('banner') }}</th>

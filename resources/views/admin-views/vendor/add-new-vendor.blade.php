@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid main-card {{Session::get('direction') }}">
         <div class="mb-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png') }}" class="mb-1"
                      alt="">
                 {{ translate('add_new_Vendor') }}
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <input type="hidden" name="status" value="approved">
-                    <h3 class="mb-0 text-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-4 pl-4">
+                    <h3 class="mb-0 text-non-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-4 pl-4">
                         <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/vendor-information.png') }}"
                              class="mb-1" alt="">
                         {{ translate('vendor_information') }}
@@ -78,7 +78,7 @@
             <div class="card mt-3">
                 <div class="card-body">
                     <input type="hidden" name="status" value="approved">
-                    <h3 class="mb-0 text-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-4 pl-4">
+                    <h3 class="mb-0 text-non-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-4 pl-4">
                         <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/vendor-information.png') }}"
                              class="mb-1" alt="">
                         {{ translate('account_information') }}
@@ -131,7 +131,7 @@
 
             <div class="card mt-3">
                 <div class="card-body">
-                    <h3 class="mb-0 text-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-4 pl-4">
+                    <h3 class="mb-0 text-non-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-4 pl-4">
                         <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/vendor-information.png') }}"
                              class="mb-1" alt="">
                         {{ translate('shop_information') }}
@@ -231,7 +231,7 @@
                                            class="custom-file-input image-input"
                                            data-image-id="viewerBanner"
                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                    <label class="custom-file-label text-capitalize"
+                                    <label class="custom-file-label text-non-capitalize"
                                            for="banner-upload">{{ translate('upload_Banner') }}</label>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
                                                class="custom-file-input image-input"
                                                data-image-id="viewerBottomBanner"
                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label text-capitalize"
+                                        <label class="custom-file-label text-non-capitalize"
                                                for="bottom-banner-upload">{{ translate('upload_bottom_banner') }}</label>
                                     </div>
                                 </div>

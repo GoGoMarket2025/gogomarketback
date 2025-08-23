@@ -4,12 +4,12 @@
             <div class="card-body">
                 <div class="row d-flex justify-content-between">
                     <div class="seller-list-title">
-                        <h2 class="font-bold m-0 text-capitalize h5">
+                        <h2 class="font-bold m-0 text-non-capitalize h5">
                             {{ translate('top_sellers')}}
                         </h2>
                     </div>
                     <div class="seller-list-view-all">
-                        <a class="text-capitalize view-all-text web-text-primary"
+                        <a class="text-non-capitalize view-all-text web-text-primary"
                             href="{{ route('vendors', ['filter'=>'top-vendors']) }}">
                             {{ translate('view_all')}}
                             <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>
@@ -21,7 +21,7 @@
                     <div class="others-store-slider owl-theme owl-carousel">
 
                         @foreach ($topVendorsList as $vendorData)
-                            <a href="{{route('shopView',['id'=> $vendorData['id']])}}" class="others-store-card text-capitalize">
+                            <a href="{{route('shopView',['id'=> $vendorData['id']])}}" class="others-store-card text-non-capitalize">
                                 <div class="overflow-hidden other-store-banner">
                                     <img class="w-100 h-100 object-cover" alt=""
                                          src="{{ getStorageImages(path: $vendorData->banner_full_url, type: 'shop-banner') }}">

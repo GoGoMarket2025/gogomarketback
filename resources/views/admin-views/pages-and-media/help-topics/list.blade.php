@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/new/back-end/img/Pages.png')}}" width="20" alt="">
                 {{translate('pages')}}
             </h2>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-borderless">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('question')}}</th>

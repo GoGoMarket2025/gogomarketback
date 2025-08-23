@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('3rd Party - Other Configurations') }}
             </h2>
         </div>
@@ -158,10 +158,10 @@
                                 <div class="view-details-container">
                                     <div class="d-flex justify-content-between align-items-center gap-3">
                                         <div>
-                                            <h3 class="mb-1 text-capitalize">
+                                            <h3 class="mb-1 text-non-capitalize">
                                                 {{ str_replace('_', ' ', $smsConfig['key_name'])}}
                                             </h3>
-                                            <p class="mb-0 fs-12 text-capitalize">
+                                            <p class="mb-0 fs-12 text-non-capitalize">
                                                 {{ translate('setup') }} {{ str_replace('_', ' ', $smsConfig['key_name'])}} {{ translate('_as_sms_gateway') }}
                                             </p>
                                         </div>

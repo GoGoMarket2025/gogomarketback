@@ -42,7 +42,7 @@
                                                             {{ ($item->discount_type == 'percentage')? $item->discount.'%'.translate('off') : webCurrencyConverter($item->discount)}}
                                                         @endif
                                                     </h2>
-                                                    <p class="text-capitalize">
+                                                    <p class="text-non-capitalize">
                                                         {{ translate('on') }}
                                                         @if($item->seller_id == '0')
                                                             {{ translate('all_shops') }}

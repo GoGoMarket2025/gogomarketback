@@ -4,7 +4,7 @@
 <div class="card remove-card-shadow h-100">
     <div class="card-body p-3 p-sm-4">
         <div class="row g-2 d-flex align-items-center justify-content-between">
-            <h3 class="text-capitalize">
+            <h3 class="text-non-capitalize">
                 {{translate($title)}}
             </h3>
             @isset($average)

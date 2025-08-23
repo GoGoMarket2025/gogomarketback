@@ -14,7 +14,7 @@
                     <div class="row align-items-center gy-3 mb-3 mb-sm-20">
                         <div class="col-md-9">
                             <div>
-                                <h2 class="text-capitalize">{{ translate('business_process') }}</h2>
+                                <h2 class="text-non-capitalize">{{ translate('business_process') }}</h2>
                                 <p class="fs-12 mb-0">
                                     {{ translate('here_you_can_show_vendors_how_your_business_are_working_to_attract_them_sell_in_your_system') }}.
                                 </p>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize">
+                                    <label class="form-label text-non-capitalize">
                                         {{translate('sub_title')}}
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="add sub title" data-bs-title="add sub title">
                                             <i class="fi fi-sr-info"></i>

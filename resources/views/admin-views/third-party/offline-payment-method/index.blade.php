@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/3rd-party.png')}}" alt="">
                 {{translate('payment_methods_setup')}}
             </h2>
@@ -53,7 +53,7 @@
 
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless table-thead-bordered table-nowrap align-middle card-table w-100">
-                                <thead class="thead-light thead-50 text-capitalize">
+                                <thead class="thead-light thead-50 text-non-capitalize">
                                     <tr>
                                         <th>{{ translate('SL') }}</th>
                                         <th>{{ translate('payment_Method_Name') }}</th>

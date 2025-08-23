@@ -7,7 +7,7 @@
         <div class="text-center">
             <h6 class="title" id="title">{{ $coupon->title }}</h6>
             <h6 class="subtitle">{{translate('code')}} : <span id="coupon_code">{{ $coupon->code }}</span></h6>
-            <div class="text-capitalize">
+            <div class="text-non-capitalize">
                 <span>{{translate(str_replace('_',' ',$coupon->coupon_type))}}</span>
             </div>
         </div>

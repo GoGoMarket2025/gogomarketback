@@ -62,26 +62,26 @@
                                             <input id="files" name="image" hidden type="file" accept="image/*">
                                         </label>
                                     </div>
-                                    <h5 class="text-capitalize fs-16 font-bold">
+                                    <h5 class="text-non-capitalize fs-16 font-bold">
                                         {{ $customerDetail['f_name']. ' '.$customerDetail['l_name'] }}
                                     </h5>
                                 </div>
                                 <div class="row g-3">
                                     <div class="form-group col-md-6 mb-0">
                                         <label for="firstName"
-                                               class="mb-2 text-capitalize">{{translate('first_name')}} </label>
+                                               class="mb-2 text-non-capitalize">{{translate('first_name')}} </label>
                                         <input type="text" class="form-control" id="f_name" name="f_name"
                                                value="{{$customerDetail['f_name']}}" required>
                                     </div>
                                     <div class="form-group col-md-6 mb-0">
                                         <label for="lastName"
-                                               class="mb-2 text-capitalize"> {{translate('last_name')}} </label>
+                                               class="mb-2 text-non-capitalize"> {{translate('last_name')}} </label>
                                         <input type="text" class="form-control" id="l_name" name="l_name"
                                                value="{{$customerDetail['l_name']}}">
                                     </div>
 
                                     <div class="form-group col-md-6 mb-0">
-                                        <label for="phone" class="mb-2 text-capitalize">
+                                        <label for="phone" class="mb-2 text-non-capitalize">
                                             {{ translate('phone_number') }}
                                         </label>
                                         <div class="position-relative d-flex align-items-center">
@@ -116,7 +116,7 @@
 
                                     <div class="form-group col-md-6 mb-0">
                                         <label for="inputEmail4"
-                                               class="mb-2 text-capitalize">{{translate('email')}} </label>
+                                               class="mb-2 text-non-capitalize">{{translate('email')}} </label>
                                         <div class="position-relative d-flex align-items-center">
                                             <input type="email" class="form-control" id="account-email" name="email" value="{{$customerDetail['email']}}">
                                             @if($customerDetail['email'] && getLoginConfig(key: 'email_verification'))
@@ -139,7 +139,7 @@
                                     </div>
                                     <div class="form-group col-md-6 mb-0">
                                         <label for="si-password"
-                                               class="mb-2 text-capitalize">{{translate('new_password')}}</label>
+                                               class="mb-2 text-non-capitalize">{{translate('new_password')}}</label>
                                         <div class="password-toggle rtl">
                                             <input class="form-control" name="password" type="password"
                                                    placeholder="{{translate('minimum_8_characters_long')}}"
@@ -155,7 +155,7 @@
 
                                     <div class="form-group col-md-6 mb-0">
                                         <label for="newPass"
-                                               class="mb-2 text-capitalize">{{translate('confirm_password')}} </label>
+                                               class="mb-2 text-non-capitalize">{{translate('confirm_password')}} </label>
                                         <div class="password-toggle rtl">
                                             <input class="form-control" name="confirm_password" type="password"
                                                    placeholder="{{translate('minimum_8_characters_long')}}"

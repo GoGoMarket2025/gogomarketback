@@ -37,7 +37,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group mb-4">
-                                    <label class="text-capitalize" for="f_name"> {{ translate('first_name') }}</label>
+                                    <label class="text-non-capitalize" for="f_name"> {{ translate('first_name') }}</label>
                                     <input
                                         type="text"
                                         id="f_name"
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-4">
-                                    <label class="text-capitalize" for="l_name">{{ translate('last_name') }}</label>
+                                    <label class="text-non-capitalize" for="l_name">{{ translate('last_name') }}</label>
                                     <input
                                         type="text"
                                         id="l_name"
@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-4">
-                                    <label class="text-capitalize"
+                                    <label class="text-non-capitalize"
                                            for="confirm_password">{{ translate('confirm_password') }}</label>
                                     <div class="input-inner-end-ele">
                                         <input
@@ -133,7 +133,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-4">
                                         <div class="form-group">
-                                            <label class="form-label form--label text-capitalize"
+                                            <label class="form-label form--label text-non-capitalize"
                                                    for="referral_code">{{ translate('refer_code') }} <small
                                                     class="text-muted">({{ translate('optional') }})</small></label>
                                             <input type="text" id="referral_code" class="form-control"
@@ -175,13 +175,13 @@
                                 <input type="checkbox" id="input-checked" required/>
                                 {{ translate('i_agree_with_the') }}
                                 <a href="{{ route('business-page.view', ['slug' => 'terms-and-conditions']) }}"
-                                   class="text-info text-capitalize">{{ translate('terms_&_conditions') }}</a>
+                                   class="text-info text-non-capitalize">{{ translate('terms_&_conditions') }}</a>
                             </label>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-center mt-4 mb-3">
-                        <button type="submit" id="sign-up" class="btn btn-primary px-5 text-capitalize"
+                        <button type="submit" id="sign-up" class="btn btn-primary px-5 text-non-capitalize"
                                 disabled>{{ translate('sign_up') }}</button>
                     </div>
                 </form>

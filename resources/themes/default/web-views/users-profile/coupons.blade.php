@@ -71,7 +71,7 @@
 
                             @if(count($coupons) == 0)
                                 <div class="col-12">
-                                    <div class="text-center py-5 text-capitalize">
+                                    <div class="text-center py-5 text-non-capitalize">
                                         <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/coupon.svg')}}" alt="" class="mb-4" width="70">
                                         <h5 class="fs-14">{{translate('no_coupon_found')}}!</h5>
                                     </div>

@@ -11,7 +11,7 @@
     <div class="content container-fluid">
 
         <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/profile_setting.png') }}" alt="">
                 {{ translate('Profile_Information') }}
             </h2>

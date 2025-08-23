@@ -8,7 +8,7 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-borderless align-middle">
-                <thead class="thead-light thead-50 text-capitalize">
+                <thead class="thead-light thead-50 text-non-capitalize">
                 <tr>
                     <th class="text-center">{{ translate('SL') }}</th>
                     <th class="text-center">{{ translate('Product_Variation') }}</th>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
                 {{translate('withdraw')}}
             </h2>
@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="row gy-1 align-items-center justify-content-between mb-4">
                             <div class="col-auto">
-                                <h3 class="text-capitalize">
+                                <h3 class="text-non-capitalize">
                                 {{ translate('withdraw_request_table')}}
                                     <span class="badge badge-info text-bg-info">{{ $withdrawRequests->total() }}</span>
                                 </h3>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="table-responsive">
                             <table id="datatable" class="table table-hover table-borderless table-nowrap align-middle">
-                                <thead class="thead-light thead-50 text-capitalize">
+                                <thead class="thead-light thead-50 text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('amount')}}</th>

@@ -6,7 +6,7 @@
     <div class="content container-fluid">
         <div class="container">
             <div class="mb-3">
-                <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                     <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/message.png')}}" alt="">
                     {{translate('message_view')}}
                 </h2>
@@ -16,7 +16,7 @@
                 <div class="col-lg-6">
                     <div class="card mb-3">
                         <div class="card-header d-flex gap-2 flex-wrap align-items-center justify-content-between">
-                            <h4 class="mb-0 text-capitalize d-flex gap-2 align-items-center text-capitalize">
+                            <h4 class="mb-0 text-non-capitalize d-flex gap-2 align-items-center text-non-capitalize">
                                 <i class="fi fi-sr-user"></i>
                                 {{translate('user_details')}}
                             </h4>
@@ -28,7 +28,7 @@
                                             <i class="fi fi-rr-check-circle"></i> {{translate('check')}}
                                         </button>
                                     @else
-                                        <button type="button" class="btn btn-info text-capitalize" disabled>
+                                        <button type="button" class="btn btn-info text-non-capitalize" disabled>
                                             <i class="fi fi-rr-check-circle"></i> {{translate('already_check')}}
                                         </button>
                                     @endif
@@ -41,7 +41,7 @@
                                 @if($contact->seen==1)
                                     <label class="badge text-bg-info badge-info mb-0">{{translate('seen')}}</label>
                                 @else
-                                    <label class="badge badge-soft-info mb-0 text-capitalize">{{translate('not_seen_yet')}}</label>
+                                    <label class="badge badge-soft-info mb-0 text-non-capitalize">{{translate('not_seen_yet')}}</label>
                                 @endif
                             </div>
                             <table class="table table-sm table-user-information table-borderless mb-0">
@@ -64,7 +64,7 @@
                     </div>
                     <div class="card mb-3">
                         <div class="card-header justify-content-center">
-                            <h4 class="mb-0 text-capitalize text-center">
+                            <h4 class="mb-0 text-non-capitalize text-center">
                                 {{translate('message_Log')}}
                             </h4>
                         </div>

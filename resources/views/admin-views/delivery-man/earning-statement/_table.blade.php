@@ -2,13 +2,13 @@
     <div class="card">
         <div class="table-responsive datatable-custom">
             <table class="table table-hover table-borderless align-middle">
-                <thead class="text-capitalize table-nowrap">
+                <thead class="text-non-capitalize table-nowrap">
                 <tr>
                     <th>{{ translate('SL') }}</th>
                     <th>{{ translate('order_no') }}</th>
                     <th>{{ translate('earning') }}</th>
-                    <th class="text-center text-capitalize">{{ translate('earning_status') }}</th>
-                    <th class="text-center text-capitalize">{{ translate('payment_method') }}</th>
+                    <th class="text-center text-non-capitalize">{{ translate('earning_status') }}</th>
+                    <th class="text-center text-non-capitalize">{{ translate('payment_method') }}</th>
                     <th class="text-center">{{ translate('status') }}</th>
                 </tr>
                 </thead>
@@ -30,7 +30,7 @@
                                 <div class="media-body">{{ setCurrencySymbol(amount: usdToDefaultCurrency(amount: $order->deliveryman_charge), currencyCode: getCurrencyCode()) }}</div>
                             </div>
                         </td>
-                        <td class="text-center text-capitalize">
+                        <td class="text-center text-non-capitalize">
                             @if($order['order_status'] == 'delivered' && $order['payment_status']=='paid')
                                 <span class="badge badge-success text-bg-success">
                                         {{translate('received')}}
@@ -46,7 +46,7 @@
                                 {{translate($order['payment_method'])}}
                             </div>
                         </td>
-                        <td class="text-center text-capitalize">
+                        <td class="text-center text-non-capitalize">
                             @if($order['order_status']=='pending')
                                 <span class="badge badge-info text-bg-info fs-12">
                                         {{translate($order['order_status'])}}

@@ -7,7 +7,7 @@
         <div class="business-pages-banner-section mt-4 {{ empty($businessPage?->description) ? 'mb-4' : '' }}"
              data-bg-img="{{ getStorageImages(path: $businessPage?->banner_full_url, type: 'business-page') }}">
             <div class="container">
-                <h1 class="text-center text-capitalize font-semi-bold fs-24">{{ $businessPage?->title }}</h1>
+                <h1 class="text-center text-non-capitalize font-semi-bold fs-24">{{ $businessPage?->title }}</h1>
             </div>
         </div>
 

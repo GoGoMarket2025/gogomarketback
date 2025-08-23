@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('business_Setup') }}
             </h2>
         </div>
@@ -75,7 +75,7 @@
                         <div class="row g-4 align-items-end">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize" for="">
+                                    <label class="form-label text-non-capitalize" for="">
                                         {{ translate('Choose_Business_Identity') }}
                                     </label>
                                     <div
@@ -123,7 +123,7 @@
                 <div class="card-body p-20">
                     <div class="mb-3 mb-sm-4 d-flex justify-content-between align-items-center gap-3">
                         <div>
-                            <h3 class="text-capitalize">{{ translate('logo_on_invoice') }}</h3>
+                            <h3 class="text-non-capitalize">{{ translate('logo_on_invoice') }}</h3>
                             <p class="mb-0 fs-12">
                                 {{ translate('enable_the_option_to_update_the_logo_that_appears_on_invoices') }}
                             </p>
@@ -153,7 +153,7 @@
                         <div class="row align-items-center g-4 flex-wrap mb-3 mb-sm-4">
                             <div class="col-xxl-8 col-lg-6">
                                 <div>
-                                    <h3 class="text-capitalize">{{ translate('choose_how_to_display_the_logo') }}</h3>
+                                    <h3 class="text-non-capitalize">{{ translate('choose_how_to_display_the_logo') }}</h3>
                                     <p class="mb-0 fs-12">
                                         {{ translate('select_invoice_logo_option_from_the_available_alternatives') }}
                                     </p>
@@ -176,7 +176,7 @@
                                                    class="form-check-input radio--input"
                                                    value="default" {{ !isset($invoiceLogoStatus['invoice_logo_type']) || $invoiceLogoStatus['invoice_logo_type'] == "default" ? 'checked' : '' }}>
                                             <span
-                                                class="form-check-label text-capitalize">{{ translate('use_current_logo') }}</span>
+                                                class="form-check-label text-non-capitalize">{{ translate('use_current_logo') }}</span>
                                         </label>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                                              alt="image upload">
                                                         <h6 class="mt-1 fw-medium lh-base text-center">
                                                             <span
-                                                                class="text-info text-capitalize">{{ translate('click_to_upload') }}</span>
+                                                                class="text-info text-non-capitalize">{{ translate('click_to_upload') }}</span>
                                                             <br>
                                                             {{ translate('or_drag_and_drop') }}
                                                         </h6>
@@ -259,7 +259,7 @@
                                                              alt="image upload">
                                                         <h6 class="mt-1 fw-medium lh-base text-center">
                                                             <span
-                                                                class="text-info text-capitalize">{{ translate('click_to_upload') }}</span>
+                                                                class="text-info text-non-capitalize">{{ translate('click_to_upload') }}</span>
                                                             <br>
                                                             {{ translate('or_drag_and_drop') }}
                                                         </h6>

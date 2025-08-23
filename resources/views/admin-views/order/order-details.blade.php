@@ -6,7 +6,7 @@
     @php($shippingAddress = $order['shipping_address_data'] ?? null)
     <div class="content container-fluid">
         <div class="mb-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/all-orders.png') }}" alt="">
                 {{translate('order_Details')}}
             </h2>
@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-wrap flex-md-nowrap gap-10 justify-content-between mb-4">
                             <div class="d-flex flex-column gap-10">
-                                <h4 class="text-capitalize">
+                                <h4 class="text-non-capitalize">
                                     {{ translate('Order_ID') }} #{{ $order['id'] }}
                                     @if($order['order_type'] == 'POS')
                                         <span>({{ 'POS' }})</span>
@@ -81,7 +81,7 @@
                                     </a>
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3">
-                                    <div class="order-status d-flex justify-content-sm-end gap-10 text-capitalize">
+                                    <div class="order-status d-flex justify-content-sm-end gap-10 text-non-capitalize">
                                         <span class="text-dark">{{translate('status')}}: </span>
                                         @if($order['order_status']=='pending')
                                             <span
@@ -108,14 +108,14 @@
                                         @endif
                                     </div>
 
-                                    <div class="payment-method d-flex justify-content-sm-end gap-10 text-capitalize">
+                                    <div class="payment-method d-flex justify-content-sm-end gap-10 text-non-capitalize">
                                         <span class="text-dark">{{translate('payment_Method')}} :</span>
                                         <strong>{{translate($order['payment_method'])}}</strong>
                                     </div>
 
                                     @if($order->payment_method != 'cash_on_delivery' && $order->payment_method != 'pay_by_wallet' && !isset($order->offlinePayments))
                                         <div
-                                            class="reference-code d-flex justify-content-sm-end gap-10 text-capitalize">
+                                            class="reference-code d-flex justify-content-sm-end gap-10 text-non-capitalize">
                                             <span class="text-dark">{{translate('reference_Code')}} :</span>
                                             <strong>{{str_replace('_',' ',$order['transaction_ref'])}} {{ $order->payment_method == 'offline_payment' ? '('.$order->payment_by.')':'' }}</strong>
                                         </div>
@@ -156,7 +156,7 @@
                         <div class="table-responsive">
                             <table
                                 class="table fs-12 table-hover table-borderless align-middl">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('item_details')}}</th>
@@ -311,11 +311,11 @@
                                     <dd class="col-6 text-dark">
                                         <strong>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $orderTotalPriceSummary['itemPrice']), currencyCode: getCurrencyCode())}}</strong>
                                     </dd>
-                                    <dt class="col-5 text-capitalize">{{translate('item_discount')}}</dt>
+                                    <dt class="col-5 text-non-capitalize">{{translate('item_discount')}}</dt>
                                     <dd class="col-6 text-dark">
                                         <strong>-{{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $orderTotalPriceSummary['itemDiscount']), currencyCode: getCurrencyCode())}}</strong>
                                     </dd>
-                                    <dt class="col-5 text-capitalize">{{translate('sub_total')}}</dt>
+                                    <dt class="col-5 text-non-capitalize">{{translate('sub_total')}}</dt>
                                     <dd class="col-6 text-dark">
                                         <strong>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $orderTotalPriceSummary['subTotal']), currencyCode: getCurrencyCode())}}</strong>
                                     </dd>
@@ -331,7 +331,7 @@
                                     <dd class="col-6 text-dark">
                                         <strong>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $orderTotalPriceSummary['taxTotal']), currencyCode: getCurrencyCode())}}</strong>
                                     </dd>
-                                    <dt class="col-5 text-capitalize">
+                                    <dt class="col-5 text-non-capitalize">
                                         {{translate('shipping_fee')}}
                                         <br>
                                         {{ ($order['is_shipping_free'] ? '('.translate('expense_bearer_').($order['free_delivery_bearer'] == 'seller' ? 'vendor' : $order['free_delivery_bearer']).')': '' )}}
@@ -395,7 +395,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-body text-capitalize d-flex flex-column gap-4">
+                    <div class="card-body text-non-capitalize d-flex flex-column gap-4">
                         <div class="d-flex flex-column align-items-center gap-2">
                             <h2 class="mb-0 text-center">{{translate('order_&_Shipping_Info')}}</h2>
                         </div>
@@ -412,7 +412,7 @@
                                     value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{translate('confirmed')}}</option>
                                 <option
                                     value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{translate('packaging')}} </option>
-                                <option class="text-capitalize"
+                                <option class="text-non-capitalize"
                                         value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{translate('out_for_delivery')}} </option>
                                 <option
                                     value="delivered" {{$order->order_status == 'delivered'?'selected':''}} >{{translate('delivered')}} </option>
@@ -1064,7 +1064,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-sm-center text-start">
-                                                        <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('order_placed') }}</h6>
+                                                        <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('order_placed') }}</h6>
                                                     </div>
                                                     <div
                                                         class="d-flex align-items-center justify-content-sm-center gap-1 mt-2">
@@ -1091,7 +1091,7 @@
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="text-sm-center text-start">
-                                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('order_confirmed') }}</h6>
+                                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('order_confirmed') }}</h6>
                                                             </div>
                                                             @if(($order['order_status']=='confirmed') || ($order['order_status']=='processing') || ($order['order_status']=='processed') || ($order['order_status']=='out_for_delivery') || ($order['order_status']=='delivered') && \App\Utils\order_status_history($order['id'],'confirmed'))
                                                                 <div class="d-flex align-items-center justify-content-sm-center mt-2 gap-1">
@@ -1114,7 +1114,7 @@
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="text-sm-center text-start">
-                                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                                     {{ translate('preparing_shipment') }}
                                                                 </h6>
                                                             </div>
@@ -1199,7 +1199,7 @@
                                                         </div>
                                                         <div class="media-body">
                                                             <div class="text-sm-center text-start">
-                                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                                     {{ translate('processing') }}
                                                                 </h6>
                                                             </div>
@@ -1251,7 +1251,7 @@
                                                     </div>
                                                     <div class="media-body">
                                                         <div class="text-sm-center text-start">
-                                                            <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                            <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                                 {{ translate('order') }} {{ translate($order['order_status']) }}
                                                             </h6>
                                                         </div>
@@ -1278,7 +1278,7 @@
                                                     </div>
                                                     <div class="media-body">
                                                         <div class="text-sm-center text-start">
-                                                            <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('Failed_to_Deliver') }}</h6>
+                                                            <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('Failed_to_Deliver') }}</h6>
                                                         </div>
                                                         <div
                                                             class="d-flex align-items-center justify-content-sm-center gap-1 mt-2">

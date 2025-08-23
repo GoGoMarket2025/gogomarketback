@@ -6,7 +6,7 @@
 
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/earning_statictics.png')}}" alt="">
                 {{translate('collect_Cash')}}
             </h2>
@@ -57,7 +57,7 @@
                 <div class="card">
                     <div class="table-responsive datatable-custom">
                         <table class="table table-hover table-borderless table-thead-bordered table-align-middle card-table {{ Session::get('direction') === 'rtl' ? 'text-right' : 'text-left' }}">
-                            <thead class="thead-light thead-50 text-capitalize table-nowrap">
+                            <thead class="thead-light thead-50 text-non-capitalize table-nowrap">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('name')}}</th>

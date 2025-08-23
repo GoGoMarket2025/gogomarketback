@@ -6,7 +6,7 @@
     <div class="content container-fluid">
 
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
                 {{ translate('Request_Restock_List') }}
                 <span class="badge badge-soft-dark radius-50 fz-14 ml-1">{{ $totalRestockProducts }}</span>
@@ -25,7 +25,7 @@
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="form-group">
                                     <label class="title-color" for="store">{{ translate('store') }}</label>
-                                    <select name="seller_id" class="form-control text-capitalize">
+                                    <select name="seller_id" class="form-control text-non-capitalize">
                                         <option value="" selected>{{ translate('all_store') }}</option>
                                         @foreach ($sellers as $seller)
                                             <option value="{{ $seller->id}}"{{request('seller_id')==$seller->id ? 'selected' :''}}>
@@ -79,7 +79,7 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="title-color" for="store">{{ translate('brand') }}</label>
-                                <select name="brand_id" class="js-select2-custom form-control text-capitalize">
+                                <select name="brand_id" class="js-select2-custom form-control text-non-capitalize">
                                     <option value="" selected>{{ translate('select_brand') }}</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{ $brand->id}}" {{request('brand_id')==$brand->id ? 'selected' :''}}>{{ $brand->default_name }}</option>
@@ -139,7 +139,7 @@
                     <div class="table-responsive">
                         <table id="datatable"
                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('product_name') }}</th>

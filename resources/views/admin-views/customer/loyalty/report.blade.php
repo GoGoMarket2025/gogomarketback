@@ -5,13 +5,13 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/loyalty_point.png')}}" alt="">
                 {{translate('customer_loyalty_point_report')}}
             </h2>
         </div>
         <div class="card">
-            <div class="card-header text-capitalize">
+            <div class="card-header text-non-capitalize">
                 <h3 class="mb-0">{{translate('filter_options')}}</h3>
             </div>
             <div class="card-body">
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="card mt-3">
-            <div class="card-header text-capitalize">
+            <div class="card-header text-non-capitalize">
                 <h3 class="mb-0">{{translate('summary')}}</h3>
             </div>
             <div class="card-body">
@@ -111,7 +111,7 @@
 
         <div class="card mt-3">
             <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center text-capitalize gap-2 mb-4">
+                <div class="d-flex justify-content-between align-items-center text-non-capitalize gap-2 mb-4">
                     <h3 class="mb-0 text-nowrap ">
                         {{translate('transactions')}}
                         <span class="badge badge-info text-bg-info">{{$transactions->total()}}</span>
@@ -125,7 +125,7 @@
                 <div class="table-responsive">
                     <table id="datatable"
                         class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table {{Session::get('direction') === "rtl" ? 'text-right' : 'text-left'}}">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('transaction_ID')}}</th>

@@ -9,7 +9,7 @@
                     <div class="card h-100">
                         <div class="card-body p-lg-4">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                <h5 class="text-capitalize">{{translate('refer_&_earn')}}</h5>
+                                <h5 class="text-non-capitalize">{{translate('refer_&_earn')}}</h5>
                             </div>
                             <div class="mt-4">
                                 <div class="refer_and_earn_section">
@@ -38,7 +38,7 @@
                                                     </span>
                                                 </div>
 
-                                                <h4 class="share-icons-heading mt-3 text-capitalize">{{ translate('share_via') }}</h4>
+                                                <h4 class="share-icons-heading mt-3 text-non-capitalize">{{ translate('share_via') }}</h4>
                                                 <div class="d-flex justify-content-center align-items-center share-on-social">
                                                     @php
                                                         $text = translate("Greetings").', '.$web_config['company_name'].' '.translate('is_the_best_ecommerce_platform_in_the_country.if_you_are_new_to_this_website_dont_forget_to_use').' '. $customer_detail->referral_code . ' ' .translate('as_the_referral_code_while_sign_up_into.').' '.$web_config['company_name'];

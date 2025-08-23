@@ -4,18 +4,18 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="mb-4 text-capitalize">{{translate('create_an_account')}}</h3>
+                        <h3 class="mb-4 text-non-capitalize">{{translate('create_an_account')}}</h3>
                         <div class="border p-3 p-xl-4 rounded">
-                            <h4 class="mb-3 text-capitalize">{{translate('vendor_information')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('vendor_information')}}</h4>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group mb-4">
-                                        <label class="mb-2 text-capitalize" for="f_name">{{translate('first_name')}} <span class="text-danger">*</span></label>
+                                        <label class="mb-2 text-non-capitalize" for="f_name">{{translate('first_name')}} <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" name="f_name" placeholder="{{translate('ex').': John'}}" required>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="mb-2 text-capitalize" for="l_name">{{translate('last_name')}} <span class="text-danger">*</span></label>
+                                        <label class="mb-2 text-non-capitalize" for="l_name">{{translate('last_name')}} <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" name="l_name" placeholder="{{translate('ex').': Doe'}}" required>
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                                     <div class="temp-img-box">
                                                         <div class="d-flex align-items-center flex-column gap-2">
                                                             <i class="bi bi-upload fs-30"></i>
-                                                            <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                            <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                         </div>
                                                     </div>
                                                     <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -37,7 +37,7 @@
 
                                             <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                                 <h6 class="text-uppercase mb-1">{{translate('vendor_image')}}</h6>
-                                                <div class="text-muted text-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
+                                                <div class="text-muted text-non-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -46,13 +46,13 @@
                         </div>
 
                         <div class="border p-3 p-xl-4 rounded mt-4">
-                            <h4 class="mb-3 text-capitalize">{{translate('shop_information')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('shop_information')}}</h4>
                             <div class="form-group mb-4">
-                                <label class="mb-2 text-capitalize" for="store_name">{{translate('store_name')}} <span class="text-danger">*</span></label>
+                                <label class="mb-2 text-non-capitalize" for="store_name">{{translate('store_name')}} <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" name="shop_name" placeholder="{{translate('ex').': XYZ store'}}" required>
                             </div>
                             <div class="form-group mb-4">
-                                <label class="mb-2 text-capitalize" for="store_address">{{translate('store_address')}} <span class="text-danger">*</span></label>
+                                <label class="mb-2 text-non-capitalize" for="store_address">{{translate('store_address')}} <span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="shop_address" rows="4" placeholder="{{translate('store_address')}}" required></textarea>
                             </div>
 
@@ -64,7 +64,7 @@
                                             <div class="temp-img-box">
                                                 <div class="d-flex align-items-center flex-column gap-2">
                                                     <i class="bi bi-upload fs-30"></i>
-                                                    <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                    <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                 </div>
                                             </div>
                                             <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -73,8 +73,8 @@
 
                                     <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                         <h6 class="text-uppercase mb-1">{{translate('store_image')}}</h6>
-                                        <div class="text-muted text-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
-                                        <div class="text-muted text-capitalize">{{translate('Image Size : Max 2 MB')}}</div>
+                                        <div class="text-muted text-non-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
+                                        <div class="text-muted text-non-capitalize">{{translate('Image Size : Max 2 MB')}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                             <div class="temp-img-box">
                                                 <div class="d-flex align-items-center flex-column gap-2">
                                                     <i class="bi bi-upload fs-30"></i>
-                                                    <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                    <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                 </div>
                                             </div>
                                             <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -95,8 +95,8 @@
                                     </div>
                                     <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                         <h6 class="text-uppercase mb-1">{{translate('store_banner')}}</h6>
-                                        <div class="text-muted text-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
-                                        <div class="text-muted text-capitalize">{{translate('Image Size : Max 2 MB')}}</div>
+                                        <div class="text-muted text-non-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
+                                        <div class="text-muted text-non-capitalize">{{translate('Image Size : Max 2 MB')}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                             <div class="temp-img-box">
                                                 <div class="d-flex align-items-center flex-column gap-2">
                                                     <i class="bi bi-upload fs-30"></i>
-                                                    <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                    <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                 </div>
                                             </div>
                                             <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -116,8 +116,8 @@
                                     </div>
                                     <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                         <h6 class="text-uppercase mb-1">{{translate('store_secondary_banner')}}</h6>
-                                        <div class="text-muted text-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
-                                        <div class="text-muted text-capitalize">{{translate('Image Size : Max 2 MB')}}</div>
+                                        <div class="text-muted text-non-capitalize">{{translate('image_ratio').' '.'1:1'}}</div>
+                                        <div class="text-muted text-non-capitalize">{{translate('Image Size : Max 2 MB')}}</div>
                                     </div>
                                 </div>
                             </div>

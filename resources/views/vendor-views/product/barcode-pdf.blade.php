@@ -18,7 +18,7 @@
     @endif
     <div align="center" class="col-xs-4" style="border: 1px dotted #CCC; margin: 5px; width: 27%;">
         <span
-            class="text-capitalize text-bold">{{ getWebConfig(name: 'company_name') }}</span>
+            class="text-non-capitalize text-bold">{{ getWebConfig(name: 'company_name') }}</span>
         <span class="product-name" style="display: block">{{ Str::limit($product->name, 30) }}</span>
         <span class="currency">
             {{ $product['selling_price'] . ' ' . setCurrencySymbol(amount: usdToDefaultCurrency(amount: $product->unit_price), currencyCode: getCurrencyCode())  }}</span>

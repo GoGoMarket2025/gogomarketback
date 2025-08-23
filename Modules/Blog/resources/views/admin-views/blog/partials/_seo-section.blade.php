@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="border-bottom d-flex align-items-center gap-2 my-3 py-3">
             <i class="fi fi-sr-user"></i>
-            <h3 class="text-capitalize mb-0">
+            <h3 class="text-non-capitalize mb-0">
                 {{ translate('seo_section') }}
             </h3>
             <span class="tooltip-icon cursor-pointer" data-bs-toggle="tooltip"

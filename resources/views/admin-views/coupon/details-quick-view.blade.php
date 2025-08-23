@@ -8,7 +8,7 @@
         <div class="text-center">
             <h3 class="fw-bold mb-2" id="title">{{ $coupon->title }}</h3>
             <h4 class="fw-bold mb-2">{{translate('code') }} : <span id="coupon_code">{{ $coupon->code }}</span></h4>
-            <div class="text-capitalize">
+            <div class="text-non-capitalize">
                 <span>{{translate(str_replace('_',' ',$coupon->coupon_type)) }}</span>
             </div>
         </div>

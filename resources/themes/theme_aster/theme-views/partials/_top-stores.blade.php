@@ -11,7 +11,7 @@
                         <h2><span class="text-primary">{{ translate('top') }}</span> {{ translate('stores') }}</h2>
                     </div>
                     <div class="swiper-nav d-flex gap-2 align-items-center">
-                        <a href="{{ route('vendors', ['filter'=>'top-vendors']) }}" class="btn-link text-primary text-capitalize">{{ translate('view_all') }}</a>
+                        <a href="{{ route('vendors', ['filter'=>'top-vendors']) }}" class="btn-link text-primary text-non-capitalize">{{ translate('view_all') }}</a>
                         <div class="swiper-button-prev top-stores-nav-prev position-static rounded-10"></div>
                         <div class="swiper-button-next top-stores-nav-next position-static rounded-10"></div>
                     </div>

@@ -42,7 +42,7 @@
                     </div>
                 @endif
 
-                <div class="topbar-text dropdown disable-autohide  __language-bar text-capitalize">
+                <div class="topbar-text dropdown disable-autohide  __language-bar text-non-capitalize">
                     <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                         @foreach($web_config['language'] as $data)
                             @if($data['code'] == getDefaultLanguage())
@@ -62,7 +62,7 @@
                                              width="20"
                                              src="{{theme_asset(path: 'public/assets/front-end/img/flags/'.$data['code'].'.png')}}"
                                              alt="{{$data['name']}}"/>
-                                        <span class="text-capitalize">{{$data['name']}}</span>
+                                        <span class="text-non-capitalize">{{$data['name']}}</span>
                                     </a>
                                 </li>
                             @endif
@@ -355,7 +355,7 @@
                             count(getFeaturedDealsProductList()) > 0 &&
                             !(($web_config['flash_deals'] || count($web_config['flash_deals_products']) > 0) || $web_config['discount_product'] > 0 || $web_config['clearance_sale_product_count'] > 0))
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-capitalize"
+                                <a class="nav-link text-non-capitalize"
                                    href="{{ route('products',['offer_type'=>'featured_deal']) }}">
                                     {{ translate('featured_Deal')}}
                                 </a>
@@ -365,7 +365,7 @@
                             !(count(getFeaturedDealsProductList()) > 0 || $web_config['discount_product'] > 0 || $web_config['clearance_sale_product_count'] > 0)
                             )
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-capitalize"
+                                <a class="nav-link text-non-capitalize"
                                    href="{{ route('flash-deals', [$web_config['flash_deals']['id'] ?? 0]) }}">
                                     {{ translate('flash_deal')}}
                                 </a>
@@ -375,7 +375,7 @@
                             !(count(getFeaturedDealsProductList()) > 0 || ($web_config['flash_deals'] && count($web_config['flash_deals_products']) > 0) || $web_config['clearance_sale_product_count'] > 0)
                             )
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-capitalize"
+                                <a class="nav-link text-non-capitalize"
                                    href="{{ route('products', ['offer_type' => 'discounted', 'page' => 1]) }}">
                                     {{ translate('discounted_products')}}
                                 </a>
@@ -385,7 +385,7 @@
                             !(count(getFeaturedDealsProductList()) > 0 || ($web_config['flash_deals'] || count($web_config['flash_deals_products']) > 0) || $web_config['discount_product'] > 0)
                             )
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-capitalize"
+                                <a class="nav-link text-non-capitalize"
                                    href="{{ route('products', ['offer_type' => 'clearance_sale', 'page' => 1]) }}">
                                     {{ translate('clearance_Sale')}}
                                 </a>
@@ -393,7 +393,7 @@
                         @elseif(count(getFeaturedDealsProductList()) > 0 || ($web_config['flash_deals'] && count($web_config['flash_deals_products']) > 0) || $web_config['discount_product'] > 0 || $web_config['clearance_sale_product_count'] > 0)
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <button class="btn dropdown-toggle text-white text-max-md-dark text-capitalize ps-2"
+                                    <button class="btn dropdown-toggle text-white text-max-md-dark text-non-capitalize ps-2"
                                             type="button" id="dropdownMenuButton"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ translate('offers')}}
@@ -401,7 +401,7 @@
                                     <div class="dropdown-menu __dropdown-menu-3 __min-w-165px text-align-direction"
                                          aria-labelledby="dropdownMenuButton">
                                         @if(count(getFeaturedDealsProductList()) > 0)
-                                            <a class="dropdown-item text-nowrap text-capitalize" href="{{ route('products',['offer_type'=>'featured_deal']) }}">
+                                            <a class="dropdown-item text-nowrap text-non-capitalize" href="{{ route('products',['offer_type'=>'featured_deal']) }}">
                                                 {{ translate('featured_Deal')}}
                                             </a>
                                         @endif
@@ -410,14 +410,14 @@
                                             @if(count(getFeaturedDealsProductList()) > 0)
                                                 <div class="dropdown-divider"></div>
                                             @endif
-                                            <a class="dropdown-item text-nowrap text-capitalize" href="{{ route('flash-deals',[ $web_config['flash_deals']['id'] ?? 0]) }}">
+                                            <a class="dropdown-item text-nowrap text-non-capitalize" href="{{ route('flash-deals',[ $web_config['flash_deals']['id'] ?? 0]) }}">
                                                 {{ translate('flash_deal')}}
                                             </a>
                                         @endif
 
                                         @if($web_config['discount_product'] > 0)
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-nowrap text-capitalize" href="{{ route('products', ['offer_type' => 'discounted', 'page' => 1]) }}">
+                                            <a class="dropdown-item text-nowrap text-non-capitalize" href="{{ route('products', ['offer_type' => 'discounted', 'page' => 1]) }}">
                                                 {{ translate('discounted_products')}}
                                             </a>
                                         @endif
@@ -480,14 +480,14 @@
                         @php($businessMode = getWebConfig(name: 'business_mode'))
                         @if ($businessMode == 'multi')
                             <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
-                                <a class="nav-link text-capitalize"
+                                <a class="nav-link text-non-capitalize"
                                    href="{{route('vendors')}}">{{ translate('all_vendors')}}</a>
                             </li>
                         @endif
 
                         @if(auth('customer')->check())
                             <li class="nav-item d-md-none">
-                                <a href="{{route('user-account')}}" class="nav-link text-capitalize">
+                                <a href="{{route('user-account')}}" class="nav-link text-non-capitalize">
                                     {{ translate('user_profile')}}
                                 </a>
                             </li>
@@ -513,14 +513,14 @@
                             @if(getWebConfig(name: 'seller_registration'))
                                 <li class="nav-item">
                                     <div class="dropdown">
-                                        <button class="btn dropdown-toggle text-white text-max-md-dark text-capitalize ps-2"
+                                        <button class="btn dropdown-toggle text-white text-max-md-dark text-non-capitalize ps-2"
                                                 type="button" id="dropdownMenuButton"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ translate('vendor_zone')}}
                                         </button>
                                         <div class="dropdown-menu __dropdown-menu-3 __min-w-165px text-align-direction"
                                              aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item text-nowrap text-capitalize" href="{{route('vendor.auth.registration.index')}}">
+                                            <a class="dropdown-item text-nowrap text-non-capitalize" href="{{route('vendor.auth.registration.index')}}">
                                                 {{ translate('become_a_vendor')}}
                                             </a>
                                             <div class="dropdown-divider"></div>

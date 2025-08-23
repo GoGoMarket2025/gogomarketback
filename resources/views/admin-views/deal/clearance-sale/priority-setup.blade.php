@@ -9,7 +9,7 @@
     @php($direction = Session::get('direction'))
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/note.png') }}" alt="">
                 {{ translate('clearance_sale') }}
             </h2>
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="">
-                            <h3 class="mb-3 text-capitalize">{{ translate('Stock_Clearance_Product') }}</h3>
+                            <h3 class="mb-3 text-non-capitalize">{{ translate('Stock_Clearance_Product') }}</h3>
                             <p class="max-w-400">{{ translate('stock_clearance_products_are_items_specifically_selected_and_listed_to_be_sold_at_discounted_prices_to_customers.') }}</p>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                             <div class="border rounded p-3 d-flex gap-4 flex-column">
                                 <div class="d-flex gap-2 justify-content-between pb-3 border-bottom">
                                     <div class="d-flex flex-column">
-                                        <h4 class="text-capitalize">{{ translate('use_default_sorting_list') }}</h4>
+                                        <h4 class="text-non-capitalize">{{ translate('use_default_sorting_list') }}</h4>
                                         <div class="d-flex gap-2 align-items-center">
                                             <img width="14"
                                                  src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}"
@@ -51,7 +51,7 @@
                                 <div class="">
                                     <div class="d-flex gap-2 justify-content-between">
                                         <div class="d-flex flex-column">
-                                            <h4 class="text-capitalize">{{ translate('use_custom_sorting_list') }}</h4>
+                                            <h4 class="text-non-capitalize">{{ translate('use_custom_sorting_list') }}</h4>
                                             <div class="d-flex gap-2 align-items-center">
                                                 <img width="14"
                                                      src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}"
@@ -205,7 +205,7 @@
                                         <div class="border rounded p-3 d-flex gap-4 flex-column mt-20 user-select-none">
                                             <div class="d-flex gap-2 justify-content-between mb-20">
                                                 <div class="d-flex flex-column">
-                                                    <h4 class="text-capitalize text-start">{{ translate('Vendor_Priorities') }}
+                                                    <h4 class="text-non-capitalize text-start">{{ translate('Vendor_Priorities') }}
                                                     </h4>
                                                     <div class="d-flex gap-2 align-items-center">
                                                         <img width="14"

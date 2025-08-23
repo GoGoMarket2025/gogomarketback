@@ -47,7 +47,7 @@
                         <div class="col-lg-8">
                             <div class="p-12 p-sm-20 bg-section rounded h-100">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize">
+                                    <label class="form-label text-non-capitalize">
                                         {{translate('section_title')}} (EN)
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="add title" data-bs-title="add title">
                                             <i class="fi fi-sr-info"></i>
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize">
+                                    <label class="form-label text-non-capitalize">
                                         {{translate('sub_title')}}
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="add sub title" data-bs-title="add sub title">
                                             <i class="fi fi-sr-info"></i>
@@ -76,7 +76,7 @@
                             <div class="p-12 p-sm-20 bg-section rounded h-100">
                                 <div class="d-flex flex-column gap-20">
                                     <div>
-                                        <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                        <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                             {{ translate('section_Image') }}
                                             <span class="text-danger">*</span>
                                         </label>

@@ -10,7 +10,7 @@
                     <div class="card-body py-5 px-lg-5">
                         <div class="row align-items-center pb-5">
                             <div class="col-lg-6 mb-5 mb-lg-0">
-                                <h2 class="text-center mb-2 text-capitalize">{{ translate('OTP_verification') }}</h2>
+                                <h2 class="text-center mb-2 text-non-capitalize">{{ translate('OTP_verification') }}</h2>
                                 <p class="text-center mb-5 text-muted">{{ translate('please_Verify_that_its_you').'.' }}</p>
                                 <div class="d-flex justify-content-center">
                                     <img width="283" class="dark-support"
@@ -100,7 +100,7 @@
                                     <div class="text-center d-flex flex-column align-items-center gap-3">
                                         <img width="46" src="{{theme_asset('assets/img/icons/check.png')}}" class="dark-support"
                                              alt="{{translate('image')}}">
-                                        <h3 class="text-capitalize">{{translate('verification_successfully_completed')}}</h3>
+                                        <h3 class="text-non-capitalize">{{translate('verification_successfully_completed')}}</h3>
                                         <p class="text-muted">
                                             {{ translate('thank_you_for_your_verification').'!'.translate('now_you_can_login_your_account_is_ready_to_use')}}</p>
                                         <div class="d-flex flex-wrap justify-content-center gap-3">

@@ -6,7 +6,7 @@
     <div class="content container-fluid ">
         <!-- Page Title -->
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/order_report.png')}}" alt="">
                 {{translate('transaction_report')}}
             </h2>
@@ -48,7 +48,7 @@
                 <form action="#" id="form-data" method="GET">
                     <div class="row gx-2">
                         <div class="col-12">
-                            <h5 class="text-capitalize mb-2">{{translate('search_data')}}</h5>
+                            <h5 class="text-non-capitalize mb-2">{{translate('search_data')}}</h5>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
@@ -79,13 +79,13 @@
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
-                                <label for="start_date" class="title-color text-capitalize d-flex">{{translate('start_date')}}</label>
+                                <label for="start_date" class="title-color text-non-capitalize d-flex">{{translate('start_date')}}</label>
                                 <input type="date" name="start_date" id="start_date" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
-                                <label for="end_date" class="title-color text-capitalize d-flex">{{translate('end_date')}}</label>
+                                <label for="end_date" class="title-color text-non-capitalize d-flex">{{translate('end_date')}}</label>
                                 <input type="date" name="end_date" id="end_date" class="form-control" required>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
             </div>
         </div>
 
-        <h4 class="mt-4 text-capitalize d-flex">{{translate('total_transactions')}}</h4>
+        <h4 class="mt-4 text-non-capitalize d-flex">{{translate('total_transactions')}}</h4>
         <div class="card mt-2">
             <div class="px-3 py-4">
                 <div class="row align-items-center">
@@ -150,7 +150,7 @@
 
             <div class="table-responsive">
                 <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                    <thead class="thead-light thead-50 text-capitalize">
+                    <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('transaction_ID')}}</th>

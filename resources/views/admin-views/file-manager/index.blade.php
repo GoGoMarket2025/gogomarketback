@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="content container-fluid">
-        <h2 class="mb-3 h1 mb-0 text-capitalize"> {{ translate('file_manager') }} </h2>
+        <h2 class="mb-3 h1 mb-0 text-non-capitalize"> {{ translate('file_manager') }} </h2>
 
         <ul class="nav nav-pills nav--tab mb-4">
             <li class="nav-item">
@@ -72,13 +72,13 @@
                         <button type="button" class="btn btn-sm btn-primary text-nowrap modalTrigger"
                                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasImageUpload">
                             <i class="fi fi-sr-picture"></i>
-                            <span class="text text-capitalize">{{ translate('add_Image') }}</span>
+                            <span class="text text-non-capitalize">{{ translate('add_Image') }}</span>
                         </button>
 
                         <button type="button" class="btn btn-sm btn-primary text-nowrap modalTrigger"
                                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasZipUpload">
                             <i class="fi fi-sr-file-zipper"></i>
-                            <span class="text text-capitalize">{{ translate('add_ZIP') }}</span>
+                            <span class="text text-non-capitalize">{{ translate('add_ZIP') }}</span>
                         </button>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-borderless align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th class="text-center">{{ translate('Icon') }}</th>

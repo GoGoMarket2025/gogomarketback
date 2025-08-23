@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid ">
         <div class="mb-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/order_report.png')}}" alt="">
                 {{translate('transaction_report')}}
             </h2>
@@ -26,9 +26,9 @@
                                         <option class="text-center" value="0" disabled>
                                             {{'---'.translate('select_status').'---'}}
                                         </option>
-                                        <option class="text-capitalize" value="all" {{ $status == 'all'? 'selected' : '' }} >{{translate('all_status')}} </option>
-                                        <option class="text-capitalize" value="disburse" {{ $status == 'disburse'? 'selected' : '' }} >{{translate('disburse')}} </option>
-                                        <option class="text-capitalize" value="hold" {{ $status == 'hold'? 'selected' : '' }}>{{translate('hold')}}</option>
+                                        <option class="text-non-capitalize" value="all" {{ $status == 'all'? 'selected' : '' }} >{{translate('all_status')}} </option>
+                                        <option class="text-non-capitalize" value="disburse" {{ $status == 'disburse'? 'selected' : '' }} >{{translate('disburse')}} </option>
+                                        <option class="text-non-capitalize" value="hold" {{ $status == 'hold'? 'selected' : '' }}>{{translate('hold')}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                         {{translate('inhouse')}}
                                     </option>
                                     @foreach($sellers as $seller)
-                                        <option class="text-left text-capitalize"
+                                        <option class="text-left text-non-capitalize"
                                                 value="{{ $seller->id }}" {{ $seller->id == $seller_id ? 'selected' : '' }}>
                                             {{ $seller->f_name.' '.$seller->l_name }}
                                         </option>
@@ -62,7 +62,7 @@
                                         {{translate('all_customer')}}
                                     </option>
                                     @foreach($customers as $customer)
-                                        <option class="text-left text-capitalize"
+                                        <option class="text-left text-non-capitalize"
                                                 value="{{ $customer->id }}" {{ $customer->id == $customer_id ? 'selected' : '' }}>
                                             {{ $customer->f_name.' '.$customer->l_name }}
                                         </option>
@@ -253,7 +253,7 @@
                 <div class="table-responsive">
                     <table id="datatable"
                         class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 __table">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('order_id')}}</th>

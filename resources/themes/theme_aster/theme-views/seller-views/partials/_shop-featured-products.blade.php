@@ -4,7 +4,7 @@
             <div class="">
                 <div class="py-4">
                     <div class="d-flex flex-wrap justify-content-between gap-3 mb-3 mb-sm-4">
-                        <h2 class="text-capitalize">{{translate('featured_products')}}</h2>
+                        <h2 class="text-non-capitalize">{{translate('featured_products')}}</h2>
                         <div class="swiper-nav d-flex gap-2 align-items-center">
                             <div class="swiper-button-prev top-rated-nav-prev position-static rounded-10"></div>
                             <div class="swiper-button-next top-rated-nav-next position-static rounded-10"></div>

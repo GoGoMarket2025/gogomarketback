@@ -56,7 +56,7 @@
                         @if($product->reviews_count > 0)
                             <div class="d-flex align-items-center gap-2 mb-3">
                                 <i class="tio-star text-warning"></i>
-                                <span class="text-muted text-capitalize">({{$product->reviews_count.' '.translate('customer_review')}})</span>
+                                <span class="text-muted text-non-capitalize">({{$product->reviews_count.' '.translate('customer_review')}})</span>
                             </div>
                         @endif
 

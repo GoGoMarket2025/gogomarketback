@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <a href="{{ route('admin.blog.view') }}">
                     <i class="tio-arrow-backward"></i>
                 </a>
@@ -108,7 +108,7 @@
                     <div class="__bg-FAFAFA rounded p-4">
                         <ul class="nav nav-tabs w-fit-content mb-4">
                             @foreach($languages as $lang)
-                                <li class="nav-item text-capitalize {{$lang == $defaultLanguage ? 'active':''}}">
+                                <li class="nav-item text-non-capitalize {{$lang == $defaultLanguage ? 'active':''}}">
                                     <a class="nav-link lang-link form-system-language-tab {{$lang == $defaultLanguage ? 'active':''}}" href="javascript:" id="{{$lang}}-link">{{getLanguageName($lang).'('.strtoupper($lang).')'}}</a>
                                 </li>
                             @endforeach
@@ -132,7 +132,7 @@
                                 <div class="{{$lang != $defaultLanguage ? 'd-none':''}} form-system-language-form" id="{{$lang}}-form">
                                     <div class="form-group">
                                         <label for="name"
-                                               class="title-color font-weight-medium text-capitalize">{{ translate('title')}}
+                                               class="title-color font-weight-medium text-non-capitalize">{{ translate('title')}}
                                             ({{strtoupper($lang)}})
                                             <span class="input-required-icon">*</span>
                                         </label>

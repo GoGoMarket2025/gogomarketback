@@ -5,7 +5,7 @@
 @section('content')
 <div class="content container-fluid">
     <div class="mb-3">
-        <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+        <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
             <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/coupon_setup.png') }}" alt="">
             {{translate('coupon_update') }}
         </h2>
@@ -37,7 +37,7 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="d-flex justify-content-between">
                                     <label for="name"
-                                           class="form-label text-capitalize">{{translate('coupon_code')}}</label>
+                                           class="form-label text-non-capitalize">{{translate('coupon_code')}}</label>
                                     <a href="javascript:" class="text-primary fs-12" id="generateCode">{{translate('generate_code')}}</a>
                                 </div>
                                 <input type="text" name="code" value="{{$coupon['code'] }}"

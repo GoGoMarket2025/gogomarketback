@@ -51,11 +51,11 @@
 <div class="border rounded bg-white">
     <div class="p-3 fs-12 d-flex flex-column gap-2">
         <div class="d-flex justify-content-between gap-2">
-            <div class="text-muted text-capitalize">{{translate('total_price')}}</div>
+            <div class="text-muted text-non-capitalize">{{translate('total_price')}}</div>
             <div>{{ webCurrencyConverter(amount: $order_details->price) }}</div>
         </div>
         <div class="d-flex justify-content-between gap-2">
-            <div class="text-muted text-capitalize">{{translate('product_discount')}}</div>
+            <div class="text-muted text-non-capitalize">{{translate('product_discount')}}</div>
             <div>-{{ webCurrencyConverter(amount: $order_details->discount) }}</div>
         </div>
         <div class="d-flex justify-content-between gap-2">
@@ -77,39 +77,39 @@
         ?>
 
         <div class="d-flex justify-content-between gap-2">
-            <div class="text-muted text-capitalize">{{translate('sub_total')}}</div>
+            <div class="text-muted text-non-capitalize">{{translate('sub_total')}}</div>
             <div>{{ webCurrencyConverter(amount: $subtotal) }}</div>
         </div>
         <div class="d-flex justify-content-between gap-2">
-            <div class="text-muted text-capitalize">{{translate('coupon_discount')}}</div>
+            <div class="text-muted text-non-capitalize">{{translate('coupon_discount')}}</div>
             <div> -{{ webCurrencyConverter(amount: $coupon_discount) }}</div>
         </div>
     </div>
 
     <div class="d-flex justify-content-between gap-2 border-top py-2 px-3 fs-12">
-        <div class="text-muted font-weight-bold text-capitalize">{{translate($refund->status == 'refunded' ? 'total_refunded_amount' : 'total_refundable_amount')}}</div>
+        <div class="text-muted font-weight-bold text-non-capitalize">{{translate($refund->status == 'refunded' ? 'total_refunded_amount' : 'total_refundable_amount')}}</div>
         <div class="font-weight-bold">{{ webCurrencyConverter(amount: $refund_amount) }}</div>
     </div>
 
 </div>
 <div class="border rounded bg-white">
     <div class="d-flex gap-2 border-top py-2 px-3 fs-12">
-        <div class="text-muted font-weight-bold text-capitalize">{{translate('refund_status')}} :</div>
+        <div class="text-muted font-weight-bold text-non-capitalize">{{translate('refund_status')}} :</div>
         <p class="font-weight-bold">
             @if ($refund->status == 'pending')
-                <span class="text-capitalize __color-coral"> {{translate($refund->status)}}</span>
+                <span class="text-non-capitalize __color-coral"> {{translate($refund->status)}}</span>
             @elseif($refund->status == 'approved')
-                <span class="text-capitalize __color-1573ff"> {{translate($refund->status)}}</span>
+                <span class="text-non-capitalize __color-1573ff"> {{translate($refund->status)}}</span>
             @elseif($refund->status == 'refunded')
-                <span class="text-capitalize __color-01ff2cfa"> {{translate($refund->status)}}</span>
+                <span class="text-non-capitalize __color-01ff2cfa"> {{translate($refund->status)}}</span>
             @elseif($refund->status == 'rejected')
-                <span class="text-capitalize __color-ff2a05fa"> {{translate($refund->status)}}</span>
+                <span class="text-non-capitalize __color-ff2a05fa"> {{translate($refund->status)}}</span>
             @endif
         </p>
 
     </div>
     <div class="d-flex gap-2 px-3 fs-12">
-        <div class="text-muted font-weight-bold text-capitalize text-nowrap">{{translate('refund_reason')}} :</div>
+        <div class="text-muted font-weight-bold text-non-capitalize text-nowrap">{{translate('refund_reason')}} :</div>
         <p class="font-weight-bold text-justify">{{$refund->refund_reason}}</p>
     </div>
 

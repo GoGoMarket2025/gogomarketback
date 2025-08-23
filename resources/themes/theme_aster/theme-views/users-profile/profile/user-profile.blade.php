@@ -59,7 +59,7 @@
                                                 <img width="16"
                                                      src="{{theme_asset('assets/img/icons/profile-icon6.png')}}"
                                                      class="dark-support" alt="">
-                                                <span class="text-capitalize">{{translate('loyalty_point')}}</span>
+                                                <span class="text-non-capitalize">{{translate('loyalty_point')}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                     <h5>{{translate('Personal_Details')}}</h5>
                                     <a href="{{route('user-account')}}"
                                        class="btn btn-outline-secondary rounded-pill px-3 px-sm-4"><span
-                                            class="d-none d-sm-inline-block text-capitalize">{{ translate('edit_profile') }}</span> <i
+                                            class="d-none d-sm-inline-block text-non-capitalize">{{ translate('edit_profile') }}</span> <i
                                             class="bi bi-pencil-square"></i></a>
                                 </div>
 
@@ -78,10 +78,10 @@
                                     <div class="row text-dark">
                                         <div class="col-md-6 col-xl-6 col-lg-6">
                                             <dl class="mb-0 flexible-grid width--7rem">
-                                                <dt class="pe-1 text-capitalize">{{translate('first_name')}}</dt>
+                                                <dt class="pe-1 text-non-capitalize">{{translate('first_name')}}</dt>
                                                 <dd>{{$customer_detail['f_name']}}</dd>
 
-                                                <dt class="pe-1 text-capitalize">{{translate('last_name')}}</dt>
+                                                <dt class="pe-1 text-non-capitalize">{{translate('last_name')}}</dt>
                                                 <dd>{{$customer_detail['l_name']}}</dd>
                                             </dl>
                                         </div>
@@ -141,10 +141,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                <h5 class="text-capitalize">{{translate('my_addresses')}}</h5>
+                                <h5 class="text-non-capitalize">{{translate('my_addresses')}}</h5>
                                 <a href="{{route('account-address-add')}}"
                                    class="btn btn-outline-secondary rounded-pill px-3 px-sm-4">
-                                    <span class="d-none d-sm-inline-block text-capitalize">{{translate('add_address')}}</span>
+                                    <span class="d-none d-sm-inline-block text-non-capitalize">{{translate('add_address')}}</span>
                                         <i class="bi bi-geo-alt-fill"></i>
                                 </a>
                             </div>

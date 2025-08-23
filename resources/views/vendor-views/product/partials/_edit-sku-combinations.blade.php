@@ -1,6 +1,6 @@
 @if(count($combinations) > 0)
     <table class="table physical_product_show table-borderless">
-        <thead class="thead-light thead-50 text-capitalize">
+        <thead class="thead-light thead-50 text-non-capitalize">
         <tr>
             <th class="text-center">
                 <label for="" class="control-label">

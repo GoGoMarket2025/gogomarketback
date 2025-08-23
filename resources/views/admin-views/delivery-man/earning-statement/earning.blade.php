@@ -8,7 +8,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('earning_statement')}}
             </h2>
@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="row justify-content-between align-items-center g-2 mb-3">
                     <div class="col-sm-6">
-                        <h3 class="d-flex align-items-center text-capitalize gap-2 mb-0">
+                        <h3 class="d-flex align-items-center text-non-capitalize gap-2 mb-0">
                             {{ translate('earning') }}
                         </h3>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="card h-100 d-flex justify-content-center align-items-center py-xl-4">
                             <div class="card-body d-flex flex-column gap-2 align-items-center justify-content-center">
                                 <img src="{{ dynamicAsset('public/assets/back-end/img/aw.png') }}" width="48" class="mb-2" alt="">
-                                <h4 class="text-capitalize mb-2">{{ translate('total_earning') }}</h4>
+                                <h4 class="text-non-capitalize mb-2">{{ translate('total_earning') }}</h4>
                                 <h2 class="business-analytics__title h1 fw-bold">{{ $totalEarn ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $totalEarn), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode()) }}</h2>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             </span>
                             <div class="card-body d-flex flex-column gap-2 align-items-center justify-content-center">
                                 <img src="{{ dynamicAsset('public/assets/back-end/img/pw.png') }}" width="40" class="mb-2" alt="">
-                                <h4 class="text-capitalize mb-2">{{ translate('withdrawable_balance') }}</h4>
+                                <h4 class="text-non-capitalize mb-2">{{ translate('withdrawable_balance') }}</h4>
                                 <h2 class="business-analytics__title h1 fw-bold">{{ $withdrawalableBalance <= 0 ? setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: usdToDefaultCurrency(amount: $withdrawalableBalance), currencyCode: getCurrencyCode()) }}</h2>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             </span>
                             <div class="card-body d-flex flex-column gap-2 align-items-center justify-content-center">
                                 <img src="{{ dynamicAsset('public/assets/back-end/img/withdraw.png') }}" width="40" class="mb-2" alt="">
-                                <h4 class="text-capitalize mb-2">{{ translate('already_withdrawn') }}</h4>
+                                <h4 class="text-non-capitalize mb-2">{{ translate('already_withdrawn') }}</h4>
                                 <h2 class="business-analytics__title h1 fw-bold">{{ $deliveryMan->wallet? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $deliveryMan->wallet->total_withdraw), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode()) }}</h2>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             </span>
                             <div class="card-body d-flex flex-column gap-2 align-items-center justify-content-center">
                                 <img src="{{ asset('public/assets/back-end/img/cash-in-hand.png') }}" width="40" class="mb-2" alt="">
-                                <h4 class="text-capitalize mb-2">{{ translate('cash_in_hand') }}</h4>
+                                <h4 class="text-non-capitalize mb-2">{{ translate('cash_in_hand') }}</h4>
                                 <h2 class="business-analytics__title h1 fw-bold">{{ $deliveryMan->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $deliveryMan->wallet->cash_in_hand), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode()) }}</h2>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                 <div class="px-3 py-4">
                     <div class="row gy-3 align-items-center">
                         <div class="col-md-4">
-                            <h3 class="d-flex align-items-center text-capitalize gap-2 mb-0">
+                            <h3 class="d-flex align-items-center text-non-capitalize gap-2 mb-0">
                                 {{ translate('earning_history') }}
                                 <span class="badge text-dark bg-body-secondary fw-semibold rounded-50" id="row-count">{{ $orders->total() }}</span>
                             </h3>
@@ -116,7 +116,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="#payment" data-bs-toggle="tab" class="nav-link py-2 px-0 text-capitalize">
+                                                <a href="#payment" data-bs-toggle="tab" class="nav-link py-2 px-0 text-non-capitalize">
                                                     {{translate('payment_method')}}
                                                 </a>
                                             </li>
@@ -145,13 +145,13 @@
                                                     <li>
                                                         <label class="custom-control-group">
                                                             <input type="checkbox" class="input" value="out_for_delivery">
-                                                            <span class="label text-capitalize">{{translate('out_for_delivery')}}</span>
+                                                            <span class="label text-non-capitalize">{{translate('out_for_delivery')}}</span>
                                                         </label>
                                                     </li>
                                                     <li>
                                                         <label class="custom-control-group">
                                                             <input type="checkbox" class="input" value="delivered">
-                                                            <span class="label text-capitalize">{{translate('delivered')}}</span>
+                                                            <span class="label text-non-capitalize">{{translate('delivered')}}</span>
                                                         </label>
                                                     </li>
                                                     <li>
@@ -197,7 +197,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item px-0" role="presentation">
-                                                    <a href="#payment" data-bs-toggle="pill" role="tab" class="nav-link py-2 px-0 text-capitalize">
+                                                    <a href="#payment" data-bs-toggle="pill" role="tab" class="nav-link py-2 px-0 text-non-capitalize">
                                                         {{translate('payment_method')}}
                                                     </a>
                                                 </li>
@@ -227,13 +227,13 @@
                                                     <li>
                                                         <label class="custom-control-group">
                                                             <input type="checkbox" class="input" value="out_for_delivery">
-                                                            <span class="label text-capitalize">{{translate('out_for_delivery')}}</span>
+                                                            <span class="label text-non-capitalize">{{translate('out_for_delivery')}}</span>
                                                         </label>
                                                     </li>
                                                     <li>
                                                         <label class="custom-control-group">
                                                             <input type="checkbox" class="input" value="delivered">
-                                                            <span class="label text-capitalize">{{translate('delivered')}}</span>
+                                                            <span class="label text-non-capitalize">{{translate('delivered')}}</span>
                                                         </label>
                                                     </li>
                                                     <li>

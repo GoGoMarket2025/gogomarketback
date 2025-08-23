@@ -4,7 +4,7 @@
             <form action="{{route('admin.pages-and-media.vendor-registration-reason.add')}}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title flex-grow-1 text-center text-capitalize" id="reasonEditModalLabel">{{translate('why_sell_with_us')}}</h5>
+                    <h5 class="modal-title flex-grow-1 text-center text-non-capitalize" id="reasonEditModalLabel">{{translate('why_sell_with_us')}}</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -15,7 +15,7 @@
                         <input type="text" name="title" class="form-control" placeholder="{{translate('enter_title')}}" required="">
                     </div>
                     <div class="form-group">
-                        <label class="title-color text-capitalize">{{translate('short_description')}}</label>
+                        <label class="title-color text-non-capitalize">{{translate('short_description')}}</label>
                         <textarea class="form-control" name="description" rows="4" placeholder="{{translate('write_description').'...'}}"></textarea>
                     </div>
                     <div class="form-group">

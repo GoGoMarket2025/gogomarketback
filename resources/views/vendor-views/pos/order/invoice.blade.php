@@ -22,7 +22,7 @@ $orderTotalPriceSummary = \App\Utils\OrderManager::getOrderTotalPriceSummary(ord
         </div>
         @if($order->customer)
             <div class="col-12">
-                <h5 class="text-capitalize">{{ translate('customer_name') }} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}</h5>
+                <h5 class="text-non-capitalize">{{ translate('customer_name') }} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}</h5>
                 @if ($order->customer->id !=0)
                     <h5>{{ translate('phone') }} : {{$order->customer['phone']}}</h5>
                 @endif

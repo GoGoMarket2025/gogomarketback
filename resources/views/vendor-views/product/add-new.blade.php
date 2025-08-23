@@ -25,12 +25,12 @@
                     <ul class="nav nav-tabs w-fit-content mb-4">
                         @foreach ($languages as $lang)
                             <li class="nav-item">
-                                <span class="nav-link text-capitalize form-system-language-tab {{ $lang == $defaultLanguage ? 'active' : '' }} cursor-pointer"
+                                <span class="nav-link text-non-capitalize form-system-language-tab {{ $lang == $defaultLanguage ? 'active' : '' }} cursor-pointer"
                                       id="{{ $lang }}-link">{{ getLanguageName($lang) . '(' . strtoupper($lang) . ')' }}</span>
                             </li>
                         @endforeach
                     </ul>
-                    <a class="btn btn--primary btn-sm text-capitalize h-100" href="{{route('vendor.products.product-gallery') }}">
+                    <a class="btn btn--primary btn-sm text-non-capitalize h-100" href="{{route('vendor.products.product-gallery') }}">
                         {{translate('add_info_from_gallery')}}
                     </a>
                 </div>
@@ -424,7 +424,7 @@
                                 <div
                                     class="form-control h-auto min-form-control-height d-flex align-items-center flex-wrap justify-content-between gap-2">
                                     <div class="d-flex gap-2">
-                                        <label class="title-color text-capitalize"
+                                        <label class="title-color text-non-capitalize"
                                                for="shipping_cost">{{ translate('shipping_cost_multiply_with_quantity') }}</label>
 
                                         <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
@@ -534,7 +534,7 @@
                                 <div class="form-group">
                                     <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                                         <div>
-                                            <label for="name" class="title-color text-capitalize font-weight-bold mb-0">
+                                            <label for="name" class="title-color text-non-capitalize font-weight-bold mb-0">
                                                 {{ translate('product_thumbnail') }}
                                                 <span class="input-required-icon">*</span>
                                             </label>
@@ -590,7 +590,7 @@
                                     <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
                                         <div>
                                             <label for="name"
-                                                   class="title-color text-capitalize font-weight-bold mb-0">{{ translate('colour_wise_product_image') }}</label>
+                                                   class="title-color text-non-capitalize font-weight-bold mb-0">{{ translate('colour_wise_product_image') }}</label>
                                             <span
                                                 class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
@@ -618,7 +618,7 @@
                                 <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
                                     <div>
                                         <label for="name"
-                                               class="title-color text-capitalize font-weight-bold mb-0">{{ translate('upload_additional_image') }}</label>
+                                               class="title-color text-non-capitalize font-weight-bold mb-0">{{ translate('upload_additional_image') }}</label>
                                         <span
                                             class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
                                         <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
@@ -671,7 +671,7 @@
                                 <div class="form-group">
                                     <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
                                         <div>
-                                            <label for="name" class="title-color text-capitalize font-weight-bold mb-0">{{ translate('Product_Preview_File') }}</label>
+                                            <label for="name" class="title-color text-non-capitalize font-weight-bold mb-0">{{ translate('Product_Preview_File') }}</label>
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                                   title="{{ translate('upload_a_suitable_file_for_a_short_product_preview.') }} {{ translate('this_preview_will_be_common_for_all_variations.') }}">
                                                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">

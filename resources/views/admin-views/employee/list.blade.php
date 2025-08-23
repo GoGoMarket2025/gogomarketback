@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/employee.png')}}" width="20" alt="">
                 {{translate('employee_list')}}
             </h2>
@@ -13,7 +13,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
-                    <h3 class="mb-0 text-capitalize gap-2">
+                    <h3 class="mb-0 text-non-capitalize gap-2">
                         {{translate('employee_table')}}
                         <span class="badge badge-info text-bg-info">{{$employees->total()}}</span>
                     </h3>
@@ -69,7 +69,7 @@
 
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-borderless align-middle card-table w-100">
-                        <thead class="thead-light text-capitalize table-nowrap">
+                        <thead class="thead-light text-non-capitalize table-nowrap">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('name')}}</th>
@@ -84,7 +84,7 @@
                         @foreach($employees as $key => $employee)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td class="text-capitalize">
+                                <td class="text-non-capitalize">
                                     <div class="media align-items-center gap-10">
                                         <img class="rounded-circle ratio-1 object-fit-cover" width="50" alt="" src="{{getStorageImages(path: $employee->image_full_url,type:'backend-profile')}}">
                                         <div class="media-body">

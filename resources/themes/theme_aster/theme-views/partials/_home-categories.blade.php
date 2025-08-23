@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <div class="border-bottom gap-3 d-flex align-items-start justify-content-between mb-30">
                         <h3 class="styled-title">{{Str::limit($category['name'],18)}}</h3>
-                            <a href="{{route('products',['category_id'=> $category['id'],'data_from'=>'category','page'=>1])}}" class="btn-link text-capitalize">{{translate('view_all')}}
+                            <a href="{{route('products',['category_id'=> $category['id'],'data_from'=>'category','page'=>1])}}" class="btn-link text-non-capitalize">{{translate('view_all')}}
                                 <i class="bi bi-chevron-right text-primary"></i></a>
                     </div>
                     <div class="swiper-container auto-item-width position-relative">

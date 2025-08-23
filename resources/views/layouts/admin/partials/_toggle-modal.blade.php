@@ -75,7 +75,7 @@
                     <button type="button" class="btn bg-light text-dark min-w-120 border-0"
                         data-bs-dismiss="modal">{{ translate('Not_Now') }}</button>
                     <button type="button"
-                        class="btn btn-primary min-w-120 text-capitalize toggle-status-custom-modal-button-text"
+                        class="btn btn-primary min-w-120 text-non-capitalize toggle-status-custom-modal-button-text"
                         id="toggle-status-custom-modal-ok-button"
                         data-bs-dismiss="modal">{{ translate('Yes_on') }}</button>
                 </div>

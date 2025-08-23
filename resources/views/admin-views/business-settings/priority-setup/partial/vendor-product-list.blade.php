@@ -1,7 +1,7 @@
 <div class="card mt-2 vendor-product-list">
     <div class="card-body">
         <div class="mb-3 mb-sm-20">
-            <h3 class="text-capitalize">{{ translate('vendor_product_list') }}</h3>
+            <h3 class="text-non-capitalize">{{ translate('vendor_product_list') }}</h3>
             <p class="mb-0 fs-12">
                 {{ translate('the_vendor_product_list_is_for_displaying_the_products_which_are_mostly_ordered').', '.translate('_have_good_reviews_&_sorted_alphabetically') }}
             </p>
@@ -48,7 +48,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="sort_by" value="most_order" id="vendor-list-sort-by-most-order"
                                         {{ isset($vendorProductListPriority?->sort_by) ? ($vendorProductListPriority?->sort_by == 'most_order' ? 'checked' : '') : 'checked'}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-sort-by-most-order">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-sort-by-most-order">
                                         {{ translate('sort_by_most_order') }}
                                     </label>
                                 </div>
@@ -56,7 +56,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="sort_by" id="vendor-list-sort-by-reviews-count" value="reviews_count"
                                         {{ isset($vendorProductListPriority?->sort_by) && $vendorProductListPriority?->sort_by == 'reviews_count' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-sort-by-reviews-count">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-sort-by-reviews-count">
                                         {{ translate('sort_by_reviews_count') }}
                                     </label>
                                 </div>
@@ -64,7 +64,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="sort_by" id="vendor-list-sort-by-ratings" value="rating"
                                         {{isset($vendorProductListPriority?->sort_by) && $vendorProductListPriority?->sort_by == 'rating' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-sort-by-ratings">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-sort-by-ratings">
                                         {{ translate('sort_by_average_ratings') }}
                                     </label>
                                 </div>
@@ -72,7 +72,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="sort_by" value="a_to_z" id="vendor-list-alphabetic-order"
                                         {{isset($vendorProductListPriority?->sort_by) && $vendorProductListPriority?->sort_by == 'a_to_z' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-alphabetic-order">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-alphabetic-order">
                                         {{ translate('sort_by_Alphabetical') }}
                                         ({{ 'A ' . translate('to') . ' Z' }})
                                     </label>
@@ -80,7 +80,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="sort_by" value="z_to_a" id="vendor-list-alphabetic-order-reverse"
                                         {{isset($vendorProductListPriority?->sort_by) && $vendorProductListPriority?->sort_by == 'z_to_a' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-alphabetic-order-reverse">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-alphabetic-order-reverse">
                                         {{ translate('sort_by_Alphabetical') }}
                                         ({{ 'Z ' . translate('to') . ' A' }})
                                     </label>
@@ -92,7 +92,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="out_of_stock_product" value="desc" data-parent-class="vendor-product-list" id="vendor-list-stock-out-remove"
                                         {{isset($vendorProductListPriority?->out_of_stock_product) && $vendorProductListPriority?->out_of_stock_product == 'desc' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-stock-out-remove">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-stock-out-remove">
                                         {{ translate('show_stock_out_products_in_the_last') }}
                                     </label>
                                 </div>
@@ -100,7 +100,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="out_of_stock_product" value="hide" data-parent-class="vendor-product-list" id="vendor-list-stock-out-show"
                                         {{isset($vendorProductListPriority?->out_of_stock_product) && $vendorProductListPriority?->out_of_stock_product == 'hide' ? 'checked' : ''}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-stock-out-show">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-stock-out-show">
                                         {{ translate('remove_stock_out_products_from_the_list') }}
                                     </label>
                                 </div>
@@ -108,7 +108,7 @@
                                 <div class="form-check d-flex gap-1">
                                     <input type="radio" class="form-check-input radio--input show" name="out_of_stock_product" value="default" data-parent-class="vendor-product-list" id="vendor-list-stock-out-none"
                                         {{isset($vendorProductListPriority?->out_of_stock_product) ? ($vendorProductListPriority?->out_of_stock_product == 'default' ? 'checked' : '') :'checked'}}>
-                                    <label class="form-check-label text-capitalize" for="vendor-list-stock-out-none">
+                                    <label class="form-check-label text-non-capitalize" for="vendor-list-stock-out-none">
                                         {{ translate('none') }}
                                     </label>
                                 </div>

@@ -10,7 +10,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2 text-non-capitalize">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/all-orders.png')}}" alt="">
                 {{translate('order_details')}}
             </h2>
@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-wrap gap-2 flex-md-nowrap justify-content-between mb-4">
                             <div class="d-flex flex-column gap-2">
-                                <h3 class="text-capitalize">{{translate('order_details')}} #{{$order['id']}}</h3>
+                                <h3 class="text-non-capitalize">{{translate('order_details')}} #{{$order['id']}}</h3>
                                 <div class="">
                                     {{date('d M, Y , h:i A',strtotime($order['created_at']))}}
                                 </div>
@@ -40,7 +40,7 @@
                                 <div class="mt-2 mb-5">
                                     @if ($order->order_note !=null)
                                         <div class="d-flex align-items-center gap-2">
-                                            <strong class="c1 bg-soft--primary text-capitalize py-1 px-2">
+                                            <strong class="c1 bg-soft--primary text-non-capitalize py-1 px-2">
                                                  {{'#'.translate('note').':'}}
                                             </strong>
                                             <div>{{$order->order_note}}</div>
@@ -79,7 +79,7 @@
                                     </a>
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3">
-                                    <div class="order-status d-flex justify-content-sm-end gap-2 text-capitalize">
+                                    <div class="order-status d-flex justify-content-sm-end gap-2 text-non-capitalize">
                                         <span class="text-dark">{{translate('status')}}: </span>
                                         @if($order['order_status']=='pending')
                                             <span
@@ -105,13 +105,13 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <div class="payment-method d-flex justify-content-sm-end gap-2 text-capitalize">
+                                    <div class="payment-method d-flex justify-content-sm-end gap-2 text-non-capitalize">
                                         <span class="text-dark">{{translate('payment_Method').':'}}</span>
                                         <strong>{{translate($order['payment_method'])}}</strong>
                                     </div>
                                     @if($order->payment_method != 'cash_on_delivery' && $order->payment_method != 'pay_by_wallet' && !isset($order->offline_payments))
                                         <div
-                                            class="reference-code d-flex justify-content-sm-end gap-2 text-capitalize">
+                                            class="reference-code d-flex justify-content-sm-end gap-2 text-non-capitalize">
                                             <span class="text-dark">{{translate('reference_Code')}} :</span>
                                             <strong>{{str_replace('_',' ',$order['transaction_ref'])}} {{ $order->payment_method == 'offline_payment' ? '('.$order->payment_by.')':'' }}</strong>
                                         </div>
@@ -119,7 +119,7 @@
                                     @if($order->payment_method == 'offline_payment' && isset($order->offline_payments))
                                         @foreach (json_decode($order->offline_payments->payment_info) as $key=>$item)
                                             @if (isset($item) && $key != 'method_id')
-                                                <div class="d-flex justify-content-sm-end gap-2 text-capitalize">
+                                                <div class="d-flex justify-content-sm-end gap-2 text-non-capitalize">
                                                     <span class="text-dark">{{translate($key)}} :</span>
                                                     <strong>{{ $item }}</strong>
                                                 </div>
@@ -162,7 +162,7 @@
                         <div class="table-responsive datatable-custom">
                             <table
                                 class="table fs-12 table-hover table-borderless align-middle w-100">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('item Details')}}</th>
@@ -362,7 +362,7 @@
 
             <div class="col-lg-4 col-xl-3 d-flex flex-column gap-3">
                 <div class="card">
-                    <div class="card-body text-capitalize d-flex flex-column gap-4">
+                    <div class="card-body text-non-capitalize d-flex flex-column gap-4">
                         <div class="d-flex flex-column align-items-center gap-2">
                             <h2 class="mb-0 text-center">{{translate('order_&_shipping_info')}}</h2>
                         </div>
@@ -378,7 +378,7 @@
                                         value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{translate('confirmed')}}</option>
                                     <option
                                         value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{translate('packaging')}} </option>
-                                    <option class="text-capitalize"
+                                    <option class="text-non-capitalize"
                                             value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{translate('out_for_delivery')}} </option>
                                     <option
                                         value="delivered" {{$order->order_status == 'delivered'?'selected':''}} >{{translate('delivered')}} </option>
@@ -418,7 +418,7 @@
                                         </label>
                                     @endif
                                     <div class="select-wrapper">
-                                        <select class="form-select text-capitalize" name="delivery_type"
+                                        <select class="form-select text-non-capitalize" name="delivery_type"
                                             id="choose_delivery_type">
                                             <option value="0"> {{translate('choose_delivery_type')}} </option>
 
@@ -644,7 +644,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="d-flex gap-2 mb-4 text-capitalize">
+                        <h4 class="d-flex gap-2 mb-4 text-non-capitalize">
                             <img src="{{dynamicAsset(path: 'public/assets/back-end/img/shop-information.png')}}" alt="">
                             {{translate('shop_information')}}
                         </h4>

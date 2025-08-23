@@ -4,7 +4,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('earning_statement')}}
             </h2>
@@ -17,7 +17,7 @@
                     <div class="row g-4 align-items-center">
                         <div class="col-md-4 col-lg-6 mb-2 mb-md-0">
 
-                            <h3 class="d-flex align-items-center text-capitalize gap-2 mb-0">
+                            <h3 class="d-flex align-items-center text-non-capitalize gap-2 mb-0">
                                 {{ translate('order_list') }}
                                 <span class="badge text-dark bg-body-secondary fw-semibold rounded-50">{{ $orders->total() }}</span>
                             </h3>
@@ -53,7 +53,7 @@
                         <div class="card">
                             <div class="table-responsive datatable-custom br-inherit">
                                 <table class="table table-hover table-borderless align-middle">
-                                    <thead class="text-capitalize table-nowrap">
+                                    <thead class="text-non-capitalize table-nowrap">
                                     <tr>
                                         <th>{{ translate('SL') }}</th>
                                         <th>{{ translate('order_no') }}</th>
@@ -74,7 +74,7 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td class="text-center text-capitalize">
+                                            <td class="text-center text-non-capitalize">
                                                 @if($order['order_status']=='pending')
                                                     <span class="badge badge-info text-bg-info fs-12">
                                                         {{translate($order['order_status'])}}

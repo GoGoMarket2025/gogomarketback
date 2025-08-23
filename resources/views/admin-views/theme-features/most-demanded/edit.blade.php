@@ -6,7 +6,7 @@
     <div class="content container-fluid">
 
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2 text-non-capitalize">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/most-demanded.png') }}" alt="">
                 {{ translate('edit_most_demanded') }}
             </h2>

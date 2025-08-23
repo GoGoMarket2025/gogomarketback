@@ -111,7 +111,7 @@
                                 <ul class="d-flex flex-column gap-3">
                                     @if($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                                         <li>
-                                            <a class="text-capitalize" href="{{ route('vendor.auth.registration.index') }}">
+                                            <a class="text-non-capitalize" href="{{ route('vendor.auth.registration.index') }}">
                                                 {{ translate('open_your_store') }}
                                             </a>
                                         </li>
@@ -127,22 +127,22 @@
                                         @endif
                                     </li>
                                     <li>
-                                        <a class="text-capitalize" href="{{ route('track-order.index') }}">
+                                        <a class="text-non-capitalize" href="{{ route('track-order.index') }}">
                                             {{ translate('track_order') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="text-capitalize" href="{{ route('contacts') }}">
+                                        <a class="text-non-capitalize" href="{{ route('contacts') }}">
                                             {{ translate('help_&_support') }}
                                         </a>
                                     </li>
                                     <li>
                                         @if(auth('customer')->check())
-                                            <a class="text-capitalize" href="{{ route('account-tickets') }}">
+                                            <a class="text-non-capitalize" href="{{ route('account-tickets') }}">
                                                 {{ translate('support_ticket') }}
                                             </a>
                                         @else
-                                            <button class="bg-transparent border-0 p-0 text-capitalize"
+                                            <button class="bg-transparent border-0 p-0 text-non-capitalize"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#loginModal">
                                                 {{ translate('support_ticket') }}
@@ -154,27 +154,27 @@
                         </div>
                         <div class="col-sm-4 col-6">
                             <div class="widget widget--nav absolute-white">
-                                <h4 class="widget__title text-capitalize">{{ translate('quick_links') }}</h4>
+                                <h4 class="widget__title text-non-capitalize">{{ translate('quick_links') }}</h4>
                                 <ul class="d-flex flex-column gap-3">
                                     @if($web_config['flash_deals'] && count($web_config['flash_deals_products']) > 0)
                                         <li>
-                                            <a class="text-capitalize"
+                                            <a class="text-non-capitalize"
                                                href="{{ route('flash-deals',[$web_config['flash_deals']['id']])}}">{{ translate('flash_deals') }}</a>
                                         </li>
                                     @endif
                                     <li>
-                                        <a class="text-capitalize"
+                                        <a class="text-non-capitalize"
                                            href="{{ route('products',['data_from'=>'featured','page'=>1])}}">{{ translate('featured_products') }}</a>
                                     </li>
                                     @if($web_config['business_mode'] == 'multi')
                                         <li>
-                                            <a class="text-capitalize" href="{{ route('vendors') }}">
+                                            <a class="text-non-capitalize" href="{{ route('vendors') }}">
                                                 {{ translate('top_stores') }}
                                             </a>
                                         </li>
                                     @endif
                                     <li>
-                                        <a class="text-capitalize"
+                                        <a class="text-non-capitalize"
                                            href="{{ route('products',['data_from'=>'latest']) }}">
                                             {{ translate('latest_products') }}
                                         </a>
@@ -195,7 +195,7 @@
                                 <ul class="d-flex flex-column gap-3">
                                     @foreach($web_config['business_pages']->where('default_status', 1) as $businessPage)
                                         <li>
-                                            <a class="text-capitalize"
+                                            <a class="text-non-capitalize"
                                                href="{{ route('business-page.view', ['slug' => $businessPage['slug']]) }}">
                                                 {{ Str::limit($businessPage['title'], 25, '...') }}
                                             </a>

@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="row gy-2 align-items-center">
                         <div class="col-md-6">
-                            <h3 class="mb-1 text-capitalize">{{ translate('all_brands') }}</h3>
+                            <h3 class="mb-1 text-non-capitalize">{{ translate('all_brands') }}</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb fs-12 mb-0">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ translate('home') }}</a></li>

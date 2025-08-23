@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/product-review.png')}}" class="mb-1 mr-1"
                      alt="">
                 {{translate('product_reviews')}}
@@ -14,7 +14,7 @@
         <div class="card card-body">
             <div class="row border-bottom pb-3 align-items-center mb-20">
                 <div class="col-sm-4 col-md-6 col-lg-8 mb-2 mb-sm-0">
-                    <h5 class="text-capitalize mb-0 d-flex gap-1">
+                    <h5 class="text-non-capitalize mb-0 d-flex gap-1">
                         {{ translate('review_table') }}
                         <span class="badge badge-soft-dark radius-50 fs-12">{{ $reviews->total() }}</span>
                     </h5>
@@ -131,7 +131,7 @@
             @php($vendorReviewReplyStatus = getWebConfig('vendor_review_reply_status') ?? 0)
             <div class="table-responsive datatable-custom">
                 <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table text-start">
-                    <thead class="thead-light thead-50 text-capitalize">
+                    <thead class="thead-light thead-50 text-non-capitalize">
                     <tr>
                         <th>{{ translate('SL') }}</th>
                         <th>{{ translate('Review_ID') }}</th>

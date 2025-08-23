@@ -10,7 +10,7 @@
     <div class="container py-4 __inline-7 text-align-direction">
         <div class="login-card">
             <div class="mx-auto __max-w-760">
-                <h2 class="text-center h4 mb-4 font-bold text-capitalize fs-18-mobile">{{ translate('sign_up')}}</h2>
+                <h2 class="text-center h4 mb-4 font-bold text-non-capitalize fs-18-mobile">{{ translate('sign_up')}}</h2>
                 <form class="needs-validation_" id="customer-register-form" action="{{ route('customer.auth.sign-up')}}"
                         method="post">
                     @csrf

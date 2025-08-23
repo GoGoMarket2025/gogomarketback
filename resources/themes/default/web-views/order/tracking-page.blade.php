@@ -25,7 +25,7 @@
                     </a>
                 </h6>
                 <div class="mw-1000 mx-auto">
-                    <h3 class="text-center text-capitalize font-bold fs-25">{{translate('track_order')}}</h3>
+                    <h3 class="text-center text-non-capitalize font-bold fs-25">{{translate('track_order')}}</h3>
                     <form action="{{ route('track-order.result') }}" type="submit" method="post" class="p-3">
                         @csrf
 

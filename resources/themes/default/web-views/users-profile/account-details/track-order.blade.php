@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="media-body">
                                             <div class="text-sm-center">
-                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('order_placed') }}</h6>
+                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('order_placed') }}</h6>
                                             </div>
                                             <div
                                                 class="d-flex align-items-center justify-content-sm-center gap-1 mt-2">
@@ -73,7 +73,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-sm-center">
-                                                        <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('order_confirmed') }}</h6>
+                                                        <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('order_confirmed') }}</h6>
                                                     </div>
                                                     @if(($orderDetails['order_status']=='confirmed') || ($orderDetails['order_status']=='processing') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered') && \App\Utils\order_status_history($orderDetails['id'],'confirmed'))
                                                         <div
@@ -99,7 +99,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-sm-center">
-                                                        <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                        <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                             {{ translate('preparing_shipment') }}
                                                         </h6>
                                                     </div>
@@ -194,7 +194,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-sm-center">
-                                                        <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                        <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                             {{ translate('Processing') }}
                                                         </h6>
                                                     </div>
@@ -252,7 +252,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <div class="text-sm-center">
-                                                    <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                    <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                         {{ translate('order') }} {{ translate($orderDetails['order_status']) }}
                                                     </h6>
                                                 </div>
@@ -281,7 +281,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <div class="text-sm-center">
-                                                    <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('Failed_to_Deliver') }}</h6>
+                                                    <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('Failed_to_Deliver') }}</h6>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-sm-center gap-1 mt-2">
                                                     <span class="text-muted fs-12">

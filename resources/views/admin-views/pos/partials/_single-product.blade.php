@@ -18,7 +18,7 @@
         </div>
         <div class="pos-product-item_hover-content">
             <div class="d-flex flex-wrap gap-2">
-                <span class="fz-22 text-capitalize">
+                <span class="fz-22 text-non-capitalize">
                     {{ $product['product_type'] == 'physical' ? ($product['current_stock'] >0 ? $product['current_stock'].' '.$product['unit'].($product['current_stock']>1?'s':'') : translate('out_of_stock').'.') : translate('click_for_details').'.' }}
                 </span>
             </div>

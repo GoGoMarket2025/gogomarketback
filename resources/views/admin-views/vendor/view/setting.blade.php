@@ -9,7 +9,7 @@
     @php($direction =Session::get('direction'))
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('vendor_details')}}
             </h2>
@@ -90,7 +90,7 @@
                     @csrf
                     <div class="card">
                         <div class="card-header d-flex justify-content-between gap-2">
-                            <h4 class="mb-0 text-capitalize"> {{translate('sales_commission').' '.':'}} </h4>
+                            <h4 class="mb-0 text-non-capitalize"> {{translate('sales_commission').' '.':'}} </h4>
                             <label class="switcher" for="commission-status">
                                 <input
                                     class="switcher_input custom-modal-plugin"
@@ -173,7 +173,7 @@
                             <input type="hidden" name="seller_pos_update" value="1">
                             <div class="form-group">
                                 <div class="d-flex justify-content-between align-items-center gap-10 form-control">
-                                    <span class="title-color text-capitalize">
+                                    <span class="title-color text-non-capitalize">
                                         {{translate('vendor_POS_permission')}}
                                         <span class="input-label-secondary cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="right" title="{{translate('if_enabled_this_vendor_can_access_POS_from_the_website_and_vendor_app') }}">
                                             <img width="16" src="{{dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg')}}" alt="">

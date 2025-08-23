@@ -165,7 +165,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3 gap-2">
                             <h5 class="font-bold m-0 fs-16">{{translate('my_Address')}}</h5>
                             <div class="d-flex justify-content-end align-items-center mb-3 gap-2">
-                                <button type="submit" class="btn btn--primary text-capitalize btn-sm d-flex align-items-center gap-1" data-toggle="modal"
+                                <button type="submit" class="btn btn--primary text-non-capitalize btn-sm d-flex align-items-center gap-1" data-toggle="modal"
                                         data-target="#exampleModal" id="add_new_address">
                                     <img src="{{ theme_asset(path: 'public/assets/front-end/img/add-address-icon.png')}}" class=""
                                          alt="">
@@ -186,7 +186,7 @@
 
                         </div>
                         @if ($shippingAddresses->count() ==0)
-                            <div class="text-center text-capitalize pb-5 pt-5">
+                            <div class="text-center text-non-capitalize pb-5 pt-5">
                                 <img class="mb-4" src="{{theme_asset(path: 'public/assets/front-end/img/icons/address.svg')}}"
                                      alt="" width="70">
                                 <h5 class="fs-14">{{translate('no_address_found')}}!</h5>

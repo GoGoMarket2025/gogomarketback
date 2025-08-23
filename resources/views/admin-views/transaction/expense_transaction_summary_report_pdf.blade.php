@@ -57,7 +57,7 @@
                 <tr>
                     <td class="p-0 text-left">
                         <span class="bold black p-0 text-left">{{translate('duration')}}</span> :
-                        <span class="p-0 p-3 text-capitalize">{{ $data['duration'] }}</span>
+                        <span class="p-0 p-3 text-non-capitalize">{{ $data['duration'] }}</span>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

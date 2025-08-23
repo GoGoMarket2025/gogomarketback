@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-faded-info">
-                <h6 class="modal-title text-capitalize" id="exampleModalLongTitle">
+                <h6 class="modal-title text-non-capitalize" id="exampleModalLongTitle">
                     @if(isset($seller) && isset($user_type) && $user_type == 'admin')
                         {{ translate('send_message_to') }} {{ getWebConfig(name: 'company_name') }}
                     @elseif(isset($seller) && isset($user_type) && $user_type == 'seller')

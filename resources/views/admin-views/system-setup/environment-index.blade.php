@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('system_Setup') }}
             </h2>
         </div>
@@ -49,7 +49,7 @@
                                 <div class="row g-4">
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('app_name') }}
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('app_name') }}
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                     data-bs-placement="right"
                                                     aria-label="{{ translate('app_name') }}"
@@ -69,7 +69,7 @@
 
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('app_debug') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('app_debug') }}</label>
                                             <select name="app_debug" class="custom-select"
                                                     data-placeholder="Select_from_dropdown">
                                                 <option></option>
@@ -85,7 +85,7 @@
 
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('app_mode') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('app_mode') }}</label>
                                             <select name="app_mode" class="custom-select"
                                                     data-placeholder="Select_from_dropdown">
                                                 <option></option>
@@ -102,7 +102,7 @@
 
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">
+                                            <label class="form-label text-non-capitalize" for="">
                                                 {{ translate('app_url') }}
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                     data-bs-placement="right"
@@ -124,7 +124,7 @@
 
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('DB_connection') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('DB_connection') }}</label>
                                             <input type="text"
                                                 value="{{ env('APP_MODE') != 'demo' ? env('DB_CONNECTION') : '---' }}"
                                                 name="db_connection" class="form-control"
@@ -139,7 +139,7 @@
                                     </div>
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('DB_host') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('DB_host') }}</label>
                                             <input type="text" value="{{ env('APP_MODE') != 'demo' ? env('DB_HOST') : '---' }}"
                                                 name="db_host" class="form-control"
                                                 placeholder="{{ translate('ex').':'.'http://localhost/' }}" required
@@ -153,7 +153,7 @@
                                     </div>
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('DB_port') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('DB_port') }}</label>
                                             <input type="text" value="{{ env('APP_MODE') != 'demo' ? env('DB_PORT') : '---' }}"
                                                 name="db_port" class="form-control"
                                                 placeholder="{{ translate('ex').':'.'3306' }}" required
@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('DB_database') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('DB_database') }}</label>
                                             <input type="text"
                                                 value="{{ env('APP_MODE') != 'demo' ? env('DB_DATABASE') : '---' }}"
                                                 name="db_database" class="form-control"
@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('DB_username') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('DB_username') }}</label>
                                             <input type="text"
                                                 value="{{ env('APP_MODE') != 'demo' ? env('DB_USERNAME') : '---' }}"
                                                 name="db_username" class="form-control"
@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('DB_password') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('DB_password') }}</label>
                                             <input type="password"
                                                 value="{{ env('APP_MODE') != 'demo' ? env('DB_PASSWORD') : '---' }}"
                                                 name="db_password" class="form-control"
@@ -213,7 +213,7 @@
 
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('buyer_username') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('buyer_username') }}</label>
                                             <input type="text" value="{{ env('BUYER_USERNAME') }}" class="form-control"
                                                 placeholder="{{ translate('6valley-admin-demo-jhisdfhisufjifjfijqw5467') }}"
                                                 readonly
@@ -226,7 +226,7 @@
                                     </div>
                                     <div class="col-xl-4 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="">{{ translate('purchase_code') }}</label>
+                                            <label class="form-label text-non-capitalize" for="">{{ translate('purchase_code') }}</label>
                                             <div class="input-icons">
                                                 <input type="password" value="{{ env('PURCHASE_CODE') }}" class="form-control"
                                                     id="purchase_code" placeholder="{{ translate('00000000000000') }}"
@@ -261,7 +261,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="border-bottom px-4 py-3">
-                                <h5 class="mb-0 text-capitalize d-flex align-items-center gap-2">
+                                <h5 class="mb-0 text-non-capitalize d-flex align-items-center gap-2">
                                     <img width="20"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/environment.png') }}" alt="">
                                     {{ translate('Force_HTTPS') }}
@@ -296,7 +296,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="border-bottom px-4 py-3">
-                                <h5 class="mb-0 text-capitalize d-flex align-items-center gap-2">
+                                <h5 class="mb-0 text-non-capitalize d-flex align-items-center gap-2">
                                     <img width="20"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/environment.png') }}" alt="">
                                     {{ translate('Optimize_System') }}
@@ -330,7 +330,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="border-bottom px-4 py-3">
-                                <h5 class="mb-0 text-capitalize d-flex align-items-center gap-2">
+                                <h5 class="mb-0 text-non-capitalize d-flex align-items-center gap-2">
                                     <img width="20"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/environment.png') }}" alt="">
                                     {{ translate('Install_Passport') }}

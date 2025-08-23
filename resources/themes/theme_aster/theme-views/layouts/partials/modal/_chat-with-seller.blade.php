@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header px-sm-5 pb-1">
-                <h5 class="text-capitalize" id="contact_sellerModalLabel">
+                <h5 class="text-non-capitalize" id="contact_sellerModalLabel">
                     @if(isset($shop) && isset($user_type) && $user_type == 'admin')
                         {{ translate('contact_with') }} {{ getWebConfig(name: 'company_name') }}
                     @elseif(isset($shop) && isset($user_type) && $user_type == 'seller')
@@ -25,7 +25,7 @@
                             <a href="{{route('chat', ['type' => 'vendor'])}}"
                             class="text-primary btn-link">{{ translate('go_to_chatbox') }}</a>
                         </div>
-                        <button class="btn btn-primary text-capitalize">
+                        <button class="btn btn-primary text-non-capitalize">
                             {{ translate('send') }}
                         </button>
                     </div>

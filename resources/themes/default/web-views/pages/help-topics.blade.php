@@ -7,7 +7,7 @@
         <div class="container rtl">
             <div class="row">
                 <div class="col-md-12 sidebar_heading text-center mb-2">
-                    <h1 class="text-center pt-4 fs-24 font-semi-bold text-capitalize">{{ translate('frequently_asked_question') }}</h1>
+                    <h1 class="text-center pt-4 fs-24 font-semi-bold text-non-capitalize">{{ translate('frequently_asked_question') }}</h1>
                 </div>
             </div>
             <hr>

@@ -6,7 +6,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('vendor_List')}}
                 <span class="badge badge-info text-bg-info">{{ $vendors->total() }}</span>
@@ -44,7 +44,7 @@
 
                 <div class="table-responsive">
                     <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('shop_name')}}</th>

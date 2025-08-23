@@ -4,12 +4,12 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 d-flex justify-content-between flex-wrap gap-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/admin-wallet.png')}}" alt="">
                 {{translate('wallet')}}
             </h2>
             @if($customerStatus == 1)
-                <button type="button" class="btn btn-primary text-capitalize" data-bs-toggle="modal" data-bs-target="#add-fund-modal">
+                <button type="button" class="btn btn-primary text-non-capitalize" data-bs-toggle="modal" data-bs-target="#add-fund-modal">
                     {{translate('add_fund')}}
                 </button>
             @endif
@@ -19,7 +19,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between border-0">
-                        <h3 class="modal-title text-capitalize" id="exampleModalLongTitle">{{translate('add_fund')}}</h3>
+                        <h3 class="modal-title text-non-capitalize" id="exampleModalLongTitle">{{translate('add_fund')}}</h3>
                         <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="card mt-3">
-            <div class="card-header text-capitalize">
+            <div class="card-header text-non-capitalize">
                 <h3 class="mb-0">{{translate('filter_options')}}</h3>
             </div>
             <div class="card-body">
@@ -117,7 +117,7 @@
 
         </div>
         <div class="card mt-3">
-            <div class="card-header text-capitalize">
+            <div class="card-header text-non-capitalize">
                 <h3 class="mb-0">{{translate('summary')}}</h3>
             </div>
             <div class="card-body">
@@ -161,7 +161,7 @@
         <div class="card mt-3">
             <div class="card-body">
                 <div class="d-flex justify-content-between gap-3 align-items-center mb-4">
-                    <h3 class="mb-0 text-nowrap text-capitalize d-flex gap-1 align-items-center">
+                    <h3 class="mb-0 text-nowrap text-non-capitalize d-flex gap-1 align-items-center">
                         {{translate('transactions')}}
                         <span class="badge badge-info text-bg-info">{{ $transactions->total() }}</span>
                     </h3>
@@ -174,7 +174,7 @@
 
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table {{Session::get('direction') === "rtl" ? 'text-right' : 'text-left'}}">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('transaction_ID')}}</th>

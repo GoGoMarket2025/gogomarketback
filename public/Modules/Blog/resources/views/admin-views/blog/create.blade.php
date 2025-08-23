@@ -12,7 +12,7 @@
         <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data" id="blog-ajax-form">
             @csrf
             <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-                <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                     <a href="{{ route('admin.blog.view') }}">
                         <i class="fi fi-rr-arrow-left"></i>
                     </a>
@@ -116,7 +116,7 @@
                         <div class="position-relative nav--tab-wrapper">
                             <ul class="nav nav-pills nav--tab lang_tab gap-3 mb-4">
                                 @foreach($languages as $lang)
-                                    <li class="nav-item text-capitalize px-0">
+                                    <li class="nav-item text-non-capitalize px-0">
                                         <a class="nav-link lang-link form-system-language-tab px-2 {{$lang == $defaultLanguage ? 'active':''}}" href="javascript:" id="{{$lang}}-link">{{getLanguageName($lang).'('.strtoupper($lang).')'}}</a>
                                     </li>
                                 @endforeach

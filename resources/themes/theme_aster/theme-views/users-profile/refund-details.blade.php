@@ -12,7 +12,7 @@
                     <div class="card h-100">
                         <div class="card-body p-lg-5">
                             <div class="mb-4">
-                                <h1 class="modal-title fs-5 text-capitalize"
+                                <h1 class="modal-title fs-5 text-non-capitalize"
                                     id="refundModalLabel">{{translate('refund_details')}}</h1>
                             </div>
                             <div class="modal-body">

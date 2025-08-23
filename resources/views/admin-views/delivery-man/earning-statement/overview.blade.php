@@ -4,7 +4,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('earning_statement')}}
             </h2>
@@ -16,7 +16,7 @@
 
                 <div class="row justify-content-between align-items-center g-2 mb-3">
                     <div class="col-sm-6">
-                        <h3 class="d-flex align-items-center text-capitalize gap-2 mb-0">
+                        <h3 class="d-flex align-items-center text-non-capitalize gap-2 mb-0">
                             <img width="20" class="mb-1" src="{{dynamicAsset(path: 'public/assets/back-end/img/admin-wallet.png')}}" alt="">
                             {{translate('deliveryman_Wallet')}}
                         </h3>
@@ -29,7 +29,7 @@
                             <div class="card-body d-flex flex-column gap-2 align-items-center justify-content-center">
                                 <img width="48" src="{{dynamicAsset(path: 'public/assets/back-end/img/cc.png')}}" alt="">
                                 <h3 class="for-card-count mb-0 h1">{{ $deliveryMan->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $deliveryMan->wallet->cash_in_hand), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode()) }}</h3>
-                                <div class="fw-bold text-capitalize mb-30">
+                                <div class="fw-bold text-non-capitalize mb-30">
                                     {{translate('cash_in_hand')}}
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                     <div class="d-flex gap-2 justify-content-between align-items-center">
                                         <div class="d-flex flex-column align-items-start">
                                             <h3 class="mb-1 h1">{{ $deliveryMan->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $deliveryMan->wallet->current_balance), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode())}}</h3>
-                                            <div class="text-capitalize mb-0">{{translate('current_balance')}}</div>
+                                            <div class="text-non-capitalize mb-0">{{translate('current_balance')}}</div>
                                         </div>
                                         <div>
                                             <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
@@ -56,7 +56,7 @@
                                     <div class="d-flex gap-2 justify-content-between align-items-center">
                                         <div class="d-flex flex-column align-items-start">
                                             <h3 class="mb-1 h1">{{ $deliveryMan->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $deliveryMan->wallet->total_withdraw), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode())}}</h3>
-                                            <div class="text-capitalize mb-0">{{translate('total_withdrawn')}}</div>
+                                            <div class="text-non-capitalize mb-0">{{translate('total_withdrawn')}}</div>
                                         </div>
                                         <div>
                                             <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/aw.png')}}" alt="">
@@ -69,7 +69,7 @@
                                     <div class="d-flex gap-2 justify-content-between align-items-center">
                                         <div class="d-flex flex-column align-items-start">
                                             <h3 class="mb-1 h1">{{$deliveryMan->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $deliveryMan->wallet->pending_withdraw), currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode())}}</h3>
-                                            <div class="text-capitalize mb-0">{{translate('pending_withdraw')}}</div>
+                                            <div class="text-non-capitalize mb-0">{{translate('pending_withdraw')}}</div>
                                         </div>
                                         <div>
                                             <img width="40" class="mb-2" src="{{dynamicAsset(path: 'public/assets/back-end/img/pw.png')}}" alt="">
@@ -84,7 +84,7 @@
                                             <h3 class="mb-1 h1">
                                                 {{ $withdrawalableBalance <= 0 ? setCurrencySymbol(amount: 0, currencyCode: getCurrencyCode()) : setCurrencySymbol(amount: usdToDefaultCurrency(amount: $withdrawalableBalance), currencyCode: getCurrencyCode()) }}
                                             </h3>
-                                            <div class="text-capitalize mb-0">{{translate('withdrawable_balance')}}</div>
+                                            <div class="text-non-capitalize mb-0">{{translate('withdrawable_balance')}}</div>
                                         </div>
                                         <div>
                                             <img width="40" class="mb-2" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw.png')}}" alt="">
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="col-md-6 mt-3">
                 <div class="card">
-                    <div class="card-header text-capitalize">
+                    <div class="card-header text-non-capitalize">
                         <h4 class="mb-0">{{translate('delivery_Man_Account')}}</h4>
                     </div>
                     <div class="card-body">

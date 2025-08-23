@@ -385,7 +385,7 @@
                         </li>
                         @if (getWebConfig(name: 'product_wise_shipping_cost_approval')==1)
                             <li class="nav-item">
-                                <a class="nav-link text-capitalize {{ Request::is('admin/products/updated-product-list') ? 'active' : '' }}"
+                                <a class="nav-link text-non-capitalize {{ Request::is('admin/products/updated-product-list') ? 'active' : '' }}"
                                    title="{{ translate('product_update_requests') }}"
                                    href="{{ route('admin.products.updated-product-list') }}">
                                     <span class="flex-grow-1 text-truncate">
@@ -521,16 +521,16 @@
                             <a class="nav-link {{!Request::is('admin/notification/push') && Request::is('admin/notification/*') ? 'active' : '' }}"
                                href="{{ route('admin.notification.index') }}"
                                title="{{ translate('send_notification') }}">
-                                <span class="text-truncate text-capitalize">
+                                <span class="text-truncate text-non-capitalize">
                                     {{ translate('send_notification') }}
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link text-capitalize {{ Request::is('admin/push-notification/index*') ? 'active' : '' }}"
+                            <a class="nav-link text-non-capitalize {{ Request::is('admin/push-notification/index*') ? 'active' : '' }}"
                                href="{{ route('admin.push-notification.index') }}"
                                title="{{ translate('push_notifications_setup') }}">
-                                <span class="text-truncate text-capitalize">
+                                <span class="text-truncate text-non-capitalize">
                                     {{ translate('push_notifications_setup') }}
                                 </span>
                             </a>
@@ -684,7 +684,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/report/vendor-report') ? 'active' : '' }}"
                                href="{{ route('admin.report.vendor-report') }}" title="{{ translate('vendor_Sales') }}">
-                                <span class="text-truncate text-capitalize">
+                                <span class="text-truncate text-non-capitalize">
                                     {{ translate('vendor_Sales') }}
                                 </span>
                             </a>
@@ -874,7 +874,7 @@
                 </li>
 
                 <li class="{{ Request::is('admin/delivery-man*') ? 'sub-menu-opened' : '' }}">
-                    <a class="nav-link nav-link-toggle text-capitalize {{ Request::is('admin/delivery-man*') ? 'active' : '' }}"
+                    <a class="nav-link nav-link-toggle text-non-capitalize {{ Request::is('admin/delivery-man*') ? 'active' : '' }}"
                        href="javascript:"
                        title="{{ translate('delivery_men') }}">
                         <i class="fi fi-sr-person-carry-box"></i>

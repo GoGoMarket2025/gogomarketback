@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('vendor_details')}}
             </h2>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="row gy-3 flex-grow-1 w-100">
                         <div class="col-sm-6 col-xxl-3">
-                            <h4 class="mb-3 text-capitalize">{{translate('shop_information')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('shop_information')}}</h4>
 
                             <div class="pair-list">
                                 <div>
@@ -222,13 +222,13 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-xxl-3">
-                            <h4 class="mb-3 text-capitalize">{{translate('vendor_information')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('vendor_information')}}</h4>
 
                             <div class="pair-list">
                                 <div>
                                     <span class="key">{{translate('name')}}</span>
                                     <span>:</span>
-                                    <span class="value text-capitalize">{{$seller['f_name'].' '.$seller['l_name']}}</span>
+                                    <span class="value text-non-capitalize">{{$seller['f_name'].' '.$seller['l_name']}}</span>
                                 </div>
 
                                 <div>
@@ -247,7 +247,7 @@
                         @if ($seller['status']!="pending")
                             <div class="col-xxl-6">
                                 <div class="bg-light p-3 border border-primary-light rounded">
-                                    <h4 class="mb-3 text-capitalize">{{translate('bank_information')}}</h4>
+                                    <h4 class="mb-3 text-non-capitalize">{{translate('bank_information')}}</h4>
 
                                     <div class="d-flex flex-wrap flex-sm-nowrap gap-4 gap-sm-5">
                                         <div class="pair-list">
@@ -289,7 +289,7 @@
                 <div class="card-body">
                     <div class="row justify-content-between align-items-center g-2 mb-3">
                         <div class="col-sm-6">
-                            <h3 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+                            <h3 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
                                 <img width="20" class="mb-1"
                                      src="{{dynamicAsset(path: 'public/assets/back-end/img/admin-wallet.png')}}" alt="">
                                 {{translate('vendor_Wallet')}}
@@ -304,7 +304,7 @@
                                     <img width="48" class="mb-2"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw.png')}}" alt="">
                                     <h3 class="for-card-count mb-0 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->total_earning)) : 0 }}</h3>
-                                    <div class="font-weight-bold text-capitalize mb-30">
+                                    <div class="font-weight-bold text-non-capitalize mb-30">
                                         {{translate('withdrawable_balance')}}
                                     </div>
                                 </div>
@@ -317,7 +317,7 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->pending_withdraw)) : 0}}</h3>
-                                                <div class="text-capitalize mb-0">{{translate('pending_Withdraw')}}</div>
+                                                <div class="text-non-capitalize mb-0">{{translate('pending_Withdraw')}}</div>
                                             </div>
                                             <div>
                                                 <img width="40" class="mb-2"
@@ -331,7 +331,7 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->commission_given)) : 0}}</h3>
-                                                <div class="text-capitalize mb-0">{{translate('total_Commission_given')}}</div>
+                                                <div class="text-non-capitalize mb-0">{{translate('total_Commission_given')}}</div>
                                             </div>
                                             <div>
                                                 <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/tcg.png')}}"
@@ -345,7 +345,7 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{$seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->withdrawn)) : 0}}</h3>
-                                                <div class="text-capitalize mb-0">
+                                                <div class="text-non-capitalize mb-0">
                                                     {{ translate('already_Withdrawn') }}
                                                 </div>
                                             </div>
@@ -361,7 +361,7 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->delivery_charge_earned)) : 0}}</h3>
-                                                <div class="text-capitalize mb-0">{{translate('total_delivery_charge_earned')}}</div>
+                                                <div class="text-non-capitalize mb-0">{{translate('total_delivery_charge_earned')}}</div>
                                             </div>
                                             <div>
                                                 <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/tdce.png')}}"
@@ -375,7 +375,7 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->total_tax_collected)) : 0}}</h3>
-                                                <div class="text-capitalize mb-0">{{translate('total_tax_given')}}</div>
+                                                <div class="text-non-capitalize mb-0">{{translate('total_tax_given')}}</div>
                                             </div>
                                             <div>
                                                 <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/ttg.png')}}"
@@ -389,7 +389,7 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->collected_cash)) : 0}}</h3>
-                                                <div class="text-capitalize mb-0">{{translate('collected_cash')}}</div>
+                                                <div class="text-non-capitalize mb-0">{{translate('collected_cash')}}</div>
                                             </div>
                                             <div>
                                                 <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/cc.png')}}" alt="">

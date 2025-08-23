@@ -445,7 +445,7 @@
                 color: #222222;
             }
 
-            .text-capitalize {
+            .text-non-capitalize {
                 /* text-transform: capitalize; */
             }
 
@@ -585,12 +585,12 @@
                     <tr>
                         <td colspan="1" class="vertical-align-top {{$direction === "rtl" ? 'border-left' : ''}}" style="padding:8px 16px;">
                             <div class="fz-11">{{ translate('payment')}}</div>
-                            <div class="font-medium fs-10 mb-2 text-capitalize">
+                            <div class="font-medium fs-10 mb-2 text-non-capitalize">
                                 <span class="font-bold">{{ str_replace('_',' ',$order->payment_method) }}</span></div>
                             @if(!empty($order->transaction_ref))
                                 <br>
                                 <div class="fz-11">{{ translate('reference_ID')}}</div>
-                                <div class="font-medium fs-10 mb-2 text-capitalize">
+                                <div class="font-medium fs-10 mb-2 text-non-capitalize">
                                     <span class="font-bold">{{ $order->transaction_ref }}</span>
                                 </div>
                             @endif
@@ -599,7 +599,7 @@
                                 @foreach ($order->offlinePayments?->payment_info as $key=>$item)
                                     @if (isset($item) && $key != 'method_id')
                                         <div class="fz-11">{{ str_replace('_',' ',$key)}}</div>
-                                        <div class="font-medium fs-10 mb-2 text-capitalize"><strong>{{ $item }}</strong></div>
+                                        <div class="font-medium fs-10 mb-2 text-non-capitalize"><strong>{{ $item }}</strong></div>
                                     @endif
                                 @endforeach
                             @endif

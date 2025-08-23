@@ -18,7 +18,7 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between gap-2">
-                                        <h5 class="mb-4 flex-grow-1 text-capitalize">{{ translate('my_wallet') }}</h5>
+                                        <h5 class="mb-4 flex-grow-1 text-non-capitalize">{{ translate('my_wallet') }}</h5>
                                         <span class="text-dark d-md-none" data-bs-toggle="modal"
                                               data-bs-target="#instructionModal"><i
                                                 class="bi bi-info-circle"></i></span>
@@ -36,7 +36,7 @@
                                                             data-bs-toggle="modal" data-bs-target="#addFundToWallet">
                                                         <i class="bi bi-plus-circle-fill text--primary fs-18"></i>
                                                         <strong
-                                                            class="text--primary text-capitalize">{{ translate('add_fund') }}</strong>
+                                                            class="text--primary text-non-capitalize">{{ translate('add_fund') }}</strong>
                                                     </button>
                                                 @endif
                                             </div>
@@ -52,7 +52,7 @@
                                                 @endif
                                             </h2>
 
-                                            <p class="text-capitalize">{{ translate('total_balance') }}</p>
+                                            <p class="text-non-capitalize">{{ translate('total_balance') }}</p>
                                         </div>
                                     </div>
 
@@ -106,7 +106,7 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="d-flex flex-column flex-md-row gap-2 justify-content-between mb-4 align-items-md-center">
-                                        <h5 class="text-capitalize">{{ translate('transaction_history') }}</h5>
+                                        <h5 class="text-non-capitalize">{{ translate('transaction_history') }}</h5>
 
                                         <div class="dropdown">
                                             <button type="button"
@@ -373,7 +373,7 @@
                                 </div>
 
                                 <div id="add-fund-list-area d-none">
-                                    <h5 class="mb-4 text-capitalize">{{ translate('payment_methods') }}
+                                    <h5 class="mb-4 text-non-capitalize">{{ translate('payment_methods') }}
                                         <small>({{ translate('faster_&_secure_way_to_pay_bill') }})</small></h5>
                                     <div class="gatways_list">
                                         @forelse ($paymentGatewayList as $gateway)
@@ -403,7 +403,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center pt-2 pb-3">
-                                    <button type="submit" class="btn btn-primary w-75 mx-3 text-capitalize"
+                                    <button type="submit" class="btn btn-primary w-75 mx-3 text-non-capitalize"
                                             id="add-fund-to-wallet-form-btn">
                                         {{ translate('add_fund') }}
                                     </button>

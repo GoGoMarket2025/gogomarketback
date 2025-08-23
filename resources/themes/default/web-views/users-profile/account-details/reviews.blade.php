@@ -38,7 +38,7 @@
                                         <div class="media-body">
                                             <div>
                                                 <a href="{{ $order_details?->product?->slug ? route('product', $order_details?->product?->slug) : 'javascript:' }}">
-                                                    <h6 class="mb-1 review-item-title text-capitalize">
+                                                    <h6 class="mb-1 review-item-title text-non-capitalize">
                                                         {{ $order_details?->product?->name ? Str::limit($order_details?->product?->name, 40) : translate('Product_not_found') }}
                                                     </h6>
                                                 </a>
@@ -66,7 +66,7 @@
 
                                     <div class="mt-4">
                                         <div class="d-flex justify-content-between gap-2 mb-3">
-                                            <h6 class="d-flex gap-2 mb-0 review-item-title text-capitalize">
+                                            <h6 class="d-flex gap-2 mb-0 review-item-title text-non-capitalize">
                                                     <span>
                                                         <i class="tio-star-half text-warning"></i>
                                                     </span>
@@ -131,10 +131,10 @@
                             @endisset
                         @endforeach
                         @if ($review_count == 0)
-                            <div class="text-center pt-5 text-capitalize">
+                            <div class="text-center pt-5 text-non-capitalize">
                                 <img class="mb-3" src="{{dynamicAsset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
                                      alt="">
-                                <p class="opacity-60 mt-3 text-capitalize">{{translate('no_review_found')}}!</p>
+                                <p class="opacity-60 mt-3 text-non-capitalize">{{translate('no_review_found')}}!</p>
                             </div>
                         @endif
                     </div>

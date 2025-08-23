@@ -23,7 +23,7 @@
                     <div class="row gy-4">
                         <div class="col-md-9">
                             <div class="position-relative nav--tab-wrapper">
-                                <ul class="nav nav-pills nav--tab text-capitalize lang_tab" id="pills-tab"
+                                <ul class="nav nav-pills nav--tab text-non-capitalize lang_tab" id="pills-tab"
                                     role="tablist">
                                     @foreach ($languages as $lang)
                                         <li class="nav-item" role="presentation">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="d-flex justify-content-end">
-                                <a class="btn btn-primary btn-sm p-2 text-capitalize"
+                                <a class="btn btn-primary btn-sm p-2 text-non-capitalize"
                                    href="{{ route('admin.products.product-gallery') }}">
                                     <i class="fi fi-rr-plus-small"></i>
                                     {{ translate('add_info_from_gallery') }}
@@ -733,7 +733,7 @@
                                         <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
                                             <div>
                                                 <label for="name"
-                                                       class="form-label text-capitalize fw-bold mb-0">{{ translate('Product_Preview_File') }}</label>
+                                                       class="form-label text-non-capitalize fw-bold mb-0">{{ translate('Product_Preview_File') }}</label>
                                                 <span class="tooltip-icon cursor-pointer" data-bs-toggle="tooltip"
                                                       title="{{ translate('upload_a_suitable_file_for_a_short_product_preview.') }} {{ translate('this_preview_will_be_common_for_all_variations.') }}">
                                                     <i class="fi fi-sr-info"></i>

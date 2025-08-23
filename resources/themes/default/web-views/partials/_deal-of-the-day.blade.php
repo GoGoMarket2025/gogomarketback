@@ -151,7 +151,7 @@
                     </span>
                     </h2>
                     <div class="mr-1">
-                        <a class="text-capitalize view-all-text web-text-primary"
+                        <a class="text-non-capitalize view-all-text web-text-primary"
                            href="{{route('products',['data_from'=>'latest'])}}">
                             {{ translate('view_all')}}
                             <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid text-start">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/my-bank-info.png')}}" alt="">
                 {{translate('edit_Bank_info')}}
             </h2>
@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="mb-0 text-capitalize">{{translate('edit_bank_info')}}</h4>
+                        <h4 class="mb-0 text-non-capitalize">{{translate('edit_bank_info')}}</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{route('vendor.profile.update-bank-info',[$vendor->id])}}" method="post"

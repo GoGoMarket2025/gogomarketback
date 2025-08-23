@@ -1,5 +1,5 @@
 <div>
-    <h3 class="mb-4 view-mail-title text-capitalize">
+    <h3 class="mb-4 view-mail-title text-non-capitalize">
         {{$title}}
     </h3>
     <div class="view-mail-body">

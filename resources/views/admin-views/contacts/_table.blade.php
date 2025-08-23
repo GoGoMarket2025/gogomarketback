@@ -1,7 +1,7 @@
 <div class="table-responsive">
     <table id="datatable"
            class="table table-hover table-borderless table-nowrap align-middle card-table w-100">
-        <thead class="thead-light thead-50 text-capitalize">
+        <thead class="thead-light thead-50 text-non-capitalize">
         <tr>
             <th>{{translate('SL')}}</th>
             <th>{{translate('customer_Name')}}</th>

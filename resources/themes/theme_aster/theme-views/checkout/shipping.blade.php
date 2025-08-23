@@ -5,7 +5,7 @@
 @section('content')
     <main class="main-content d-flex flex-column gap-3 py-3 mb-5">
         <div class="container">
-            <h4 class="text-center mb-3 text-capitalize">{{ translate('shipping_details') }}</h4>
+            <h4 class="text-center mb-3 text-non-capitalize">{{ translate('shipping_details') }}</h4>
             <div class="row">
                 <div class="col-lg-8 mb-3 mb-lg-0">
                     <div class="card h-100">
@@ -15,7 +15,7 @@
                                     <li class="done cursor-pointer get-view-by-onclick"
                                         data-link="{{route('shop-cart')}}"><span><i
                                                 class="bi bi-check2"></i></span> {{ translate('cart') }}</li>
-                                    <li class="current cursor-pointer get-view-by-onclick text-capitalize"
+                                    <li class="current cursor-pointer get-view-by-onclick text-non-capitalize"
                                         data-link="{{ route('checkout-details') }}"><span><i
                                                 class="bi bi-check2"></i></span> {{ translate('shipping_details') }}
                                     </li>
@@ -28,16 +28,16 @@
                                    value="{{ $billing_input_by_customer }}">
                             @if($physical_product_view)
                                 <form method="post" id="address-form">
-                                    <h5 class="mb-3 text-capitalize">{{ translate('delivery_information_details') }}</h5>
+                                    <h5 class="mb-3 text-non-capitalize">{{ translate('delivery_information_details') }}</h5>
                                     <div class="d-flex flex-wrap justify-content-between gap-3 mb-3">
                                         <div class="d-flex flex-wrap gap-3 align-items-center">
-                                            <h6 class="text-capitalize">{{ translate('Shipping_Address') }}</h6>
+                                            <h6 class="text-non-capitalize">{{ translate('Shipping_Address') }}</h6>
                                         </div>
                                         <div class="d-flex flex-wrap gap-3 align-items-center">
                                             @if(getWebConfig('map_api_status') == 1)
                                                 <a href="javascript:" type="button" data-bs-toggle="modal"
                                                    data-bs-target="#shippingMapModal"
-                                                   class="btn-link text-primary text-capitalize">{{ translate('set_form_map') }}
+                                                   class="btn-link text-primary text-non-capitalize">{{ translate('set_form_map') }}
                                                     <i class="bi bi-geo-alt-fill"></i>
                                                 </a>
                                                 <div class="modal fade" id="shippingMapModal" tabindex="-1"
@@ -77,7 +77,7 @@
                                             @if(auth('customer')->check())
                                                 <a href="javascript:" type="button" data-bs-toggle="modal"
                                                    data-bs-target="#shippingSavedAddressModal"
-                                                   class="btn-link text-primary text-capitalize">{{ translate('select_from_saved') }}</a>
+                                                   class="btn-link text-primary text-non-capitalize">{{ translate('select_from_saved') }}</a>
                                             @endif
 
                                         </div>
@@ -89,7 +89,7 @@
                                             <div class="modal-dialog modal-dialog-centered justify-content-center">
                                                 <div class="modal-content border-0">
                                                     <div class="modal-header">
-                                                        <h5 class="text-capitalize"
+                                                        <h5 class="text-non-capitalize"
                                                             id="contact_sellerModalLabel">{{translate('saved_addresses')}}</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -188,7 +188,7 @@
                                                             class="col-sm-@if(auth('customer')->check()) '6' @else '12' @endif">
                                                             <div class="form-group mb-3">
                                                                 <label for="name"
-                                                                       class="text-capitalize">{{ translate('contact_person_name')}}</label>
+                                                                       class="text-non-capitalize">{{ translate('contact_person_name')}}</label>
                                                                 <input type="text" name="contact_person_name" id="name"
                                                                        class="form-control"
                                                                        placeholder="{{ translate('ex') }}: {{translate('Jhon_Doe')}}" {{$shipping_addresses->count()==0?'required':''}}>
@@ -217,7 +217,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group mb-3">
                                                                 <label for="address-type"
-                                                                       class="text-capitalize">{{ translate('address_type')}}</label>
+                                                                       class="text-non-capitalize">{{ translate('address_type')}}</label>
                                                                 <select name="address_type" id="address-type"
                                                                         class="form-select">
                                                                     <option
@@ -254,7 +254,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group mb-3">
                                                                 <label for="city"
-                                                                       class="text-capitalize">{{ translate('zip_code') }}</label>
+                                                                       class="text-non-capitalize">{{ translate('zip_code') }}</label>
                                                                 @if($zip_restrict_status == 1)
                                                                     <select name="zip" id="zip"
                                                                             class="form-control select2 select_picker"
@@ -353,11 +353,11 @@
                                     <div class="bg-light rounded p-3 mt-20">
                                         <div class="d-flex flex-wrap justify-content-between gap-3">
                                             <div class="d-flex gap-3 align-items-center">
-                                                <h6 class="text-capitalize">{{ translate('billing_address') }}</h6>
+                                                <h6 class="text-non-capitalize">{{ translate('billing_address') }}</h6>
                                             </div>
 
                                             @if($physical_product_view)
-                                                <label class="custom-checkbox" class="text-capitalize">
+                                                <label class="custom-checkbox" class="text-non-capitalize">
                                                     {{ translate('same_as_delivery_address') }}
                                                     <input type="checkbox" id="same-as-shipping-address"
                                                            name="same_as_shipping_address"
@@ -385,7 +385,7 @@
                                                     @if(getWebConfig('map_api_status') == 1)
                                                         <a href="javascript:" data-bs-toggle="modal"
                                                            data-bs-target="#billingMapModal"
-                                                           class="btn-link text-primary text-capitalize">
+                                                           class="btn-link text-primary text-non-capitalize">
                                                             {{ translate('set_form_map') }}
                                                             <i class="bi bi-geo-alt-fill"></i>
                                                         </a>
@@ -429,7 +429,7 @@
                                                     @if(auth('customer')->check())
                                                         <a href="javascript:" type="button" data-bs-toggle="modal"
                                                            data-bs-target="#billingSavedAddressModal"
-                                                           class="btn-link text-primary text-capitalize">{{ translate('select_from_saved') }}</a>
+                                                           class="btn-link text-primary text-non-capitalize">{{ translate('select_from_saved') }}</a>
                                                     @endif
                                                 </div>
                                             </div>
@@ -442,7 +442,7 @@
                                                         class="modal-dialog modal-lg modal-dialog-centered justify-content-center">
                                                         <div class="modal-content border-0 max-width-500">
                                                             <div class="modal-header">
-                                                                <h5 class="text-capitalize"
+                                                                <h5 class="text-non-capitalize"
                                                                     id="contact_sellerModalLabel">{{translate('saved_addresses')}}</h5>
                                                                 <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal"
@@ -543,7 +543,7 @@
                                                                     class="col-sm-@if(auth('customer')->check()) '6' @else '12' @endif">
                                                                     <div class="form-group mb-3">
                                                                         <label for="billing-contact-person-name"
-                                                                               class="text-capitalize">{{ translate('contact_person_name')}}</label>
+                                                                               class="text-non-capitalize">{{ translate('contact_person_name')}}</label>
                                                                         <input type="text"
                                                                                name="billing_contact_person_name"
                                                                                id="billing-contact-person-name"
@@ -579,7 +579,7 @@
                                                                 <div class="col-sm-6">
                                                                     <div class="form-group mb-3">
                                                                         <label for="billing_address_type"
-                                                                               class="text-capitalize">{{ translate('address_type')}}</label>
+                                                                               class="text-non-capitalize">{{ translate('address_type')}}</label>
                                                                         <select name="billing_address_type"
                                                                                 id="billing-address-type"
                                                                                 class="form-select">

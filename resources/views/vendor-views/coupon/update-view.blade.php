@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/coupon_setup.png')}}" class="mb-1 mr-1" alt="">
                 {{translate('coupon_update')}}
             </h2>
@@ -19,7 +19,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('coupon_type')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('coupon_type')}}</label>
                                     <select class="form-control" id="coupon_type" name="coupon_type" required>
                                         <option disabled selected>{{translate('select_Coupon_Type')}}</option>
                                         <option value="discount_on_purchase" {{$coupon['coupon_type']=='discount_on_purchase'?'selected':''}}>{{translate('discount_on_purchase')}}</option>
@@ -28,14 +28,14 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('coupon_title')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('coupon_title')}}</label>
                                     <input type="text" name="title" class="form-control" id="title"
                                            value="{{$coupon['title']}}"
                                            placeholder="{{translate('title')}}" required>
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('coupon_code')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('coupon_code')}}</label>
                                     <a href="javascript:" class="float-right"
                                        id="generateCode">{{translate('generate_code')}}</a>
                                     <input type="text" name="code" value="{{$coupon['code']}}"
@@ -56,14 +56,14 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="exampleFormControlInput1"
-                                           class="title-color text-capitalize">{{translate('limit_for_same_user')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('limit_for_same_user')}}</label>
                                     <input type="number" name="limit" min="0" value="{{ $coupon['limit'] }}"
                                            id="coupon_limit" class="form-control"
                                            placeholder="{{translate('ex')}}: {{translate('10')}}">
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group free_delivery">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('discount_type')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('discount_type')}}</label>
                                     <select id="discount_type" class="form-control" name="discount_type">
                                         <option value="amount" {{$coupon['discount_type']=='amount'?'selected':''}}>{{translate('amount')}}</option>
                                         <option value="percentage" {{$coupon['discount_type']=='percentage'?'selected':''}}>{{translate('percentage')}}</option>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group free_delivery">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('discount_Amount')}} <span
+                                           class="title-color text-non-capitalize">{{translate('discount_Amount')}} <span
                                                 id="discount_percent"> (%)</span></label>
                                     <input type="number" min="0" max="1000000" step=".01" name="discount"
                                            class="form-control" id="discount"
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('minimum_purchase')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('minimum_purchase')}}</label>
                                     <input type="number" min="0" max="1000000" step=".01" name="min_purchase"
                                            class="form-control" id="minimum purchase"
                                            value="{{usdToDefaultCurrency(amount:$coupon['min_purchase'])}}"
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group free_delivery" id="max-discount">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('maximum_discount')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('maximum_discount')}}</label>
                                     <input type="number" min="0" max="1000000" step=".01" name="max_discount"
                                            class="form-control" id="maximum discount"
                                            value="{{usdToDefaultCurrency(amount:$coupon['max_discount'])}}"
@@ -96,14 +96,14 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('start_date')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('start_date')}}</label>
                                     <input type="date" name="start_date" class="form-control" id="start_date"
                                            value="{{date('Y-m-d',strtotime($coupon['start_date']))}}"
                                            placeholder="{{translate('start date')}}" required>
                                 </div>
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <label for="name"
-                                           class="title-color text-capitalize">{{translate('expire_date')}}</label>
+                                           class="title-color text-non-capitalize">{{translate('expire_date')}}</label>
                                     <input type="date" name="expire_date" class="form-control" id="expire_date"
                                            value="{{date('Y-m-d',strtotime($coupon['expire_date']))}}"
                                            placeholder="{{translate('expire date')}}" required>

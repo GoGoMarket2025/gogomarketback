@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('3rd Party - Other Configurations') }}
             </h2>
         </div>
@@ -158,7 +158,7 @@
                                 <div class="row align-items-center g-3">
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
                                         <div>
-                                            <label class="form-label fw-semibold mb-2 text-capitalize" for="key-cred">
+                                            <label class="form-label fw-semibold mb-2 text-non-capitalize" for="key-cred">
                                                 {{ translate('access_key')}}
                                             </label>
                                             <p class="fs-12 mb-0">
@@ -182,7 +182,7 @@
                                 <div class="row align-items-center g-3">
                                     <div class="col-xl-3 col-lg-4 col-sm-6">
                                         <div>
-                                            <label class="form-label fw-semibold mb-2 text-capitalize"
+                                            <label class="form-label fw-semibold mb-2 text-non-capitalize"
                                                    for="key-secret-cred">
                                                 {{ translate('secret_access_key') }}
                                             </label>

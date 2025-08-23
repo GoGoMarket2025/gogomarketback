@@ -6,7 +6,7 @@
         @else
             <img class="mb-2" alt="" src="{{ dynamicAsset(path: 'public/assets/back-end/img/folder-empty.png') }}">
         @endif
-        <h4 class="text-capitalize mb-0 text-truncate px-2">
+        <h4 class="text-non-capitalize mb-0 text-truncate px-2">
             {{ Str::limit($folderItem['name'], 30) }}
         </h4>
         <p class="fs-12 mb-0 text-body-secondary">

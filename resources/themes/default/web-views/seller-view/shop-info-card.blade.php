@@ -81,7 +81,7 @@
                     @if (auth('customer')->check())
                         <div class="d-flex">
                             @if($seller_id == 0)
-                                <button class="btn btn--primary __inline-70 rounded-10 btn-sm text-capitalize chat-with-seller-button d-none d-sm-inline-block" data-toggle="modal"
+                                <button class="btn btn--primary __inline-70 rounded-10 btn-sm text-non-capitalize chat-with-seller-button d-none d-sm-inline-block" data-toggle="modal"
                                         data-target="#exampleModal"
                                         @if(($seller_id == 0 && $shopInfoArray['vacation_status'] && $shopInfoArray['current_date'] >= $shopInfoArray['vacation_start_date'] && $shopInfoArray['current_date'] <= $shopInfoArray['vacation_end_date']) ||
                             $seller_id!=0 && $shopInfoArray['vacation_status'] && $shopInfoArray['current_date'] >= $shopInfoArray['vacation_start_date'] && $shopInfoArray['current_date'] <= $shopInfoArray['vacation_end_date'])
@@ -94,14 +94,14 @@
                                     </span>
                                 </button>
 
-                                <button class="btn bg-transparent border-0 __inline-70 rounded-10  text-capitalize chat-with-seller-button d-sm-inline-block d-md-none" data-toggle="modal"
+                                <button class="btn bg-transparent border-0 __inline-70 rounded-10  text-non-capitalize chat-with-seller-button d-sm-inline-block d-md-none" data-toggle="modal"
                                         data-target="#exampleModal"
                                         @if(($seller_id == 0 && $shopInfoArray['vacation_status'] && $shopInfoArray['current_date'] >= $shopInfoArray['vacation_start_date'] && $shopInfoArray['current_date'] <= $shopInfoArray['vacation_end_date']) || $seller_id!=0 && $shopInfoArray['vacation_status'] && $shopInfoArray['current_date'] >= $shopInfoArray['vacation_start_date'] && $shopInfoArray['current_date'] <= $shopInfoArray['vacation_end_date']) disabled @endif >
                                     <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/shopview-chat-blue.svg')}}" loading="eager" class="" alt="">
                                 </button>
 
                             @else
-                                <button class="btn btn--primary __inline-70 rounded-10 btn-sm text-capitalize chat-with-seller-button d-none d-sm-inline-block" data-toggle="modal"
+                                <button class="btn btn--primary __inline-70 rounded-10 btn-sm text-non-capitalize chat-with-seller-button d-none d-sm-inline-block" data-toggle="modal"
                                         data-target="#exampleModal" {{ ($shopInfoArray['temporary_close'] || ($shopInfoArray['vacation_status'] && date('Y-m-d') >= date('Y-m-d', strtotime($shopInfoArray['vacation_start_date'])) && date('Y-m-d') <= date('Y-m-d', strtotime($shopInfoArray['vacation_end_date'])))) ? 'disabled' : '' }}>
                                     <img src="{{theme_asset(path: 'public/assets/front-end/img/shopview-chat.png')}}" loading="eager" class="" alt="">
                                     <span class="d-none d-sm-inline-block">
@@ -109,7 +109,7 @@
                                     </span>
                                 </button>
 
-                                <button class="btn bg-transparent border-0 __inline-70 rounded-10  text-capitalize chat-with-seller-button d-sm-inline-block d-md-none" data-toggle="modal"
+                                <button class="btn bg-transparent border-0 __inline-70 rounded-10  text-non-capitalize chat-with-seller-button d-sm-inline-block d-md-none" data-toggle="modal"
                                         data-target="#exampleModal" {{ ($shopInfoArray['temporary_close'] || ($shopInfoArray['vacation_status'] && date('Y-m-d') >= date('Y-m-d', strtotime($shopInfoArray['vacation_start_date'])) && date('Y-m-d') <= date('Y-m-d', strtotime($shopInfoArray['vacation_end_date'])))) ? 'disabled' : '' }}>
                                     <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/shopview-chat-blue.svg')}}" loading="eager" class="" alt="">
                                 </button>
@@ -118,7 +118,7 @@
                     @else
                         <div class="d-flex">
                             <a href="{{route('customer.auth.login')}}"
-                               class="btn btn--primary __inline-70 rounded-10 btn-sm text-capitalize chat-with-seller-button">
+                               class="btn btn--primary __inline-70 rounded-10 btn-sm text-non-capitalize chat-with-seller-button">
                                 <img src="{{theme_asset(path: 'public/assets/front-end/img/shopview-chat.png')}}" loading="eager" class="" alt="">
                                 <span class="d-none d-sm-inline-block">
                                     {{translate('chat')}}

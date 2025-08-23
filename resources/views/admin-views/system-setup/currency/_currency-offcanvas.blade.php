@@ -14,7 +14,7 @@
                     <div class="p-12 p-sm-20 bg-section rounded">
                         <div class="form-group">
                             <input type="hidden" name="id" value="{{ $currency->id }}">
-                            <label class="form-label text-capitalize" for="name-{{ $currency['code'] }}">
+                            <label class="form-label text-non-capitalize" for="name-{{ $currency['code'] }}">
                                 {{ translate('currency_name') }}
                                 <span class="text-danger">*</span>
                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label text-capitalize" for="symbol-{{ $currency['code'] }}">
+                            <label class="form-label text-non-capitalize" for="symbol-{{ $currency['code'] }}">
                                 {{ translate('currency_symbol') }}
                                  <span class="text-danger">*</span>
                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label text-capitalize"
+                            <label class="form-label text-non-capitalize"
                                    for="currency_code-{{ $currency['code'] }}">
                                 {{ translate('currency_code') }}
                                 <span class="text-danger">*</span>
@@ -65,7 +65,7 @@
 
                         @if($currencyModel['value']=='multi_currency')
                             <div class="form-group">
-                                <label class="form-label text-capitalize" for="exchange_rate">
+                                <label class="form-label text-non-capitalize" for="exchange_rate">
                                     {{ translate('exchange_rate') }}
                                     <span class="text-danger">*</span>
                                     <span class="tooltip-icon" data-bs-toggle="tooltip"

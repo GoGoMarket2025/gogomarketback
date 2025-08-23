@@ -31,7 +31,7 @@
                                 </li>
                             @endforeach
                             <li class="text-center">
-                                <a href="{{route('categories')}}" class="text-primary font-weight-bold justify-content-center text-capitalize">
+                                <a href="{{route('categories')}}" class="text-primary font-weight-bold justify-content-center text-non-capitalize">
                                     {{translate('view_all')}}
                                 </a>
                             </li>

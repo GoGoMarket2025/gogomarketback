@@ -32,7 +32,7 @@
                       method="GET">
                     <div class="row gx-2">
                         <div class="col-12">
-                            <h4 class="mb-3 text-capitalize">{{translate('filter_order')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('filter_order')}}</h4>
                         </div>
                         @if(request('delivery_man_id'))
                             <input type="hidden" name="delivery_man_id" value="{{ request('delivery_man_id') }}">
@@ -124,7 +124,7 @@
                 <div class="px-3 py-4 light-bg">
                     <div class="row g-2 align-items-center flex-grow-1">
                         <div class="col-md-4">
-                            <h5 class="text-capitalize d-flex gap-1">
+                            <h5 class="text-non-capitalize d-flex gap-1">
                                 {{translate('order_list')}}
                                 <span class="badge badge-soft-dark radius-50 fs-12">{{$orders->total()}}</span>
                             </h5>
@@ -155,17 +155,17 @@
                 <div class="table-responsive">
                     <table id="datatable"
                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
-                            <th class="text-capitalize">{{translate('SL')}}</th>
-                            <th class="text-capitalize">{{translate('order_ID')}}</th>
-                            <th class="text-capitalize">{{translate('order_Date')}}</th>
-                            <th class="text-capitalize">{{translate('customer_info')}}</th>
-                            <th class="text-capitalize">{{translate('total_amount')}}</th>
+                            <th class="text-non-capitalize">{{translate('SL')}}</th>
+                            <th class="text-non-capitalize">{{translate('order_ID')}}</th>
+                            <th class="text-non-capitalize">{{translate('order_Date')}}</th>
+                            <th class="text-non-capitalize">{{translate('customer_info')}}</th>
+                            <th class="text-non-capitalize">{{translate('total_amount')}}</th>
                             @if($status == 'all')
-                                <th class="text-capitalize">{{translate('order_Status')}} </th>
+                                <th class="text-non-capitalize">{{translate('order_Status')}} </th>
                             @else
-                                <th class="text-capitalize">{{translate('payment_method')}} </th>
+                                <th class="text-non-capitalize">{{translate('payment_method')}} </th>
                             @endif
                             <th class="text-center">{{translate('action')}}</th>
                         </tr>
@@ -191,7 +191,7 @@
                                         <strong class="title-name">{{translate('walking_customer')}}</strong>
                                     @else
                                         @if($order->customer)
-                                            <span class="text-body text-capitalize" >
+                                            <span class="text-body text-non-capitalize" >
                                                 <strong class="title-name">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</strong>
                                             </span>
                                             @if($order->customer['phone'])
@@ -217,7 +217,7 @@
                                     @endif
                                 </td>
                                 @if($status == 'all')
-                                    <td class="text-capitalize">
+                                    <td class="text-non-capitalize">
                                         @if($order->order_status=='pending')
                                             <label
                                                 class="badge badge-soft-primary">{{$order['order_status']}}</label>
@@ -240,7 +240,7 @@
                                         @endif
                                     </td>
                                 @else
-                                    <td class="text-capitalize">
+                                    <td class="text-non-capitalize">
                                         {{str_replace('_',' ',$order['payment_method'])}}
                                     </td>
                                 @endif

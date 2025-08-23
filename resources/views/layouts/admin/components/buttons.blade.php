@@ -927,7 +927,7 @@
                     <div class="col-lg-6">
                         <a href="{{route('admin.system-setup.language.index')}}" class="d-flex mt-2 gap-1 align-items-center text-decoration-none">
                             <i class="fi fi-rr-arrow-small-left mt-1 fs-5"></i>
-                            <span class="text text-capitalize">{{translate('Back to Language Setup')}}</span>
+                            <span class="text text-non-capitalize">{{translate('Back to Language Setup')}}</span>
                         </a>
                     </div>
                     <div class="col-lg-6">

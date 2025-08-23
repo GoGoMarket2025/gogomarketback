@@ -1,6 +1,6 @@
 "use strict";
 function removeThisFeatureCard() {
-    $(".remove-this-features-card").on("click", function() {
+    $(".remove-this-features-card").on("click", function () {
         const getText = $("#get-confirm-and-cancel-button-text");
         Swal.fire({
             title: getText.data("sure"),
@@ -10,19 +10,17 @@ function removeThisFeatureCard() {
             cancelButtonColor: "#dd3333",
             cancelButtonText: getText.data("cancel"),
             confirmButtonText: getText.data("confirm"),
-            reverseButtons: true
-        }).then(result => {
+            reverseButtons: true,
+        }).then((result) => {
             if (result.value) {
-                $(this)
-                    .closest(".remove-this-features-card-div")
-                    .remove();
+                $(this).closest(".remove-this-features-card-div").remove();
             }
         });
     });
 }
 removeThisFeatureCard();
 
-$("#add-this-features-card-middle").on("click", function() {
+$("#add-this-features-card-middle").on("click", function () {
     const getText = $("#get-feature-section-append-translate-text");
     let index = Math.floor(Math.random() * 100 + 1);
     let html = `<div class="col-sm-12 col-md-3 mb-4 remove-this-features-card-div">
@@ -36,7 +34,7 @@ $("#add-this-features-card-middle").on("click", function() {
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="title" class="form-label text-capitalize">${getText.data(
+                                    <label for="title" class="form-label text-non-capitalize">${getText.data(
                                         "title"
                                     )}</label>
                                     <input type="text" class="form-control" required
@@ -46,7 +44,7 @@ $("#add-this-features-card-middle").on("click", function() {
                                         )}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label text-capitalize">${getText.data(
+                                    <label for="title" class="form-label text-non-capitalize">${getText.data(
                                         "sub-title"
                                     )}</label>
                                     <textarea class="form-control" name="features_section_middle[subtitle][]" required
@@ -61,7 +59,7 @@ $("#add-this-features-card-middle").on("click", function() {
     $("#features-section-middle-row").append(html);
     removeThisFeatureCard();
 });
-$("#add-this-features-card-bottom").on("click", function() {
+$("#add-this-features-card-bottom").on("click", function () {
     let messageForOurCommitmentsFeatures = $(
         ".message-for-our-commitments-features"
     );
@@ -83,7 +81,7 @@ $("#add-this-features-card-bottom").on("click", function() {
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="title" class="form-label text-capitalize">${getText.data(
+                                    <label for="title" class="form-label text-non-capitalize">${getText.data(
                                         "title"
                                     )}</label>
                                     <input type="text" class="form-control" required
@@ -93,7 +91,7 @@ $("#add-this-features-card-bottom").on("click", function() {
                                         )}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label text-capitalize">${getText.data(
+                                    <label for="title" class="form-label text-non-capitalize">${getText.data(
                                         "sub-title"
                                     )}</label>
                                     <textarea class="form-control" name="features_section_bottom[subtitle][]" required
@@ -136,14 +134,12 @@ $("#add-this-features-card-bottom").on("click", function() {
     $("#features-Section-bottom-row").append(html);
     removeThisFeatureCard();
 
-    $(".upload-color-image").on("change", function() {
+    $(".upload-color-image").on("change", function () {
         uploadColorImage(this);
     });
     deleteInputFile();
-    $(".delete_file_input").click(function() {
-        let $parentDiv = $(this)
-            .parent()
-            .parent();
+    $(".delete_file_input").click(function () {
+        let $parentDiv = $(this).parent().parent();
         $parentDiv.find('input[type="file"]').val("");
         $parentDiv
             .find(".img_area_with_preview_new h-100 w-100 img")
@@ -152,7 +148,7 @@ $("#add-this-features-card-bottom").on("click", function() {
     });
     customUploadInputFile();
 });
-$(".remove_icon_box_with_titles").on("click", function() {
+$(".remove_icon_box_with_titles").on("click", function () {
     const getText = $("#get-confirm-and-cancel-button-text");
     Swal.fire({
         title: getText.data("sure"),
@@ -162,8 +158,8 @@ $(".remove_icon_box_with_titles").on("click", function() {
         cancelButtonColor: "#d33",
         cancelButtonText: getText.data("cancel"),
         confirmButtonText: getText.data("confirm"),
-        reverseButtons: true
-    }).then(result => {
+        reverseButtons: true,
+    }).then((result) => {
         if (result.value) {
             $.ajax({
                 url: $("#get-feature-section-icon-remove-route").data("action"),
@@ -171,18 +167,18 @@ $(".remove_icon_box_with_titles").on("click", function() {
                 data: {
                     _token: $('meta[name="_token"]').attr("content"),
                     title: $(this).data("title"),
-                    subtitle: $(this).data("subtitle")
+                    subtitle: $(this).data("subtitle"),
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data.status === "success") {
                         location.reload();
                     }
-                }
+                },
             });
         }
     });
 });
-$(".upload-color-image").on("change", function() {
+$(".upload-color-image").on("change", function () {
     uploadColorImage(this);
 });
 function uploadColorImage(thisData = null) {
@@ -196,10 +192,8 @@ function uploadColorImage(thisData = null) {
     }
 }
 function deleteInputFile() {
-    $(".delete-file-input").click(function() {
-        let $parentDiv = $(this)
-            .parent()
-            .parent();
+    $(".delete-file-input").click(function () {
+        let $parentDiv = $(this).parent().parent();
         $parentDiv.find('input[type="file"]').val("");
         $parentDiv
             .find(".img_area_with_preview_new h-100 w-100 img")
@@ -209,7 +203,7 @@ function deleteInputFile() {
 }
 deleteInputFile();
 function customUploadInputFile() {
-    $(".custom-upload-input-file").on("change", function() {
+    $(".custom-upload-input-file").on("change", function () {
         if (parseFloat($(this).prop("files").length) !== 0) {
             let $parentDiv = $(this).closest("div");
             $parentDiv.find(".delete-file-input").fadeIn();

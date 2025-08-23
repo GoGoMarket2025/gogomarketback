@@ -23,7 +23,7 @@
         @if($web_config['digital_product_setting'] && count($productPublishingHouses) > 10)
             <div class="d-flex justify-content-center">
                 <button
-                    class="btn-link text-primary btn_products_aside_brands text-capitalize">{{translate('more_publishing_house').'...'}}
+                    class="btn-link text-primary btn_products_aside_brands text-non-capitalize">{{translate('more_publishing_house').'...'}}
                 </button>
             </div>
         @endif

@@ -151,7 +151,7 @@
                         </span> {{translate('orders')}}   </span>
                     <span class="__inline-25">    </span>
                     <span
-                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-capitalize">
+                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-non-capitalize">
                         <span class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}}
                     </span>
 
@@ -161,7 +161,7 @@
                     <div class="digital-product-authors mb-2">
                         @if(count($productPublishingHouseInfo['data']) > 0)
                             <div class="d-flex align-items-center g-2 me-2">
-                                <span class="text-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
+                                <span class="text-non-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
                                 <div class="item-list">
                                     @foreach($productPublishingHouseInfo['data'] as $publishingHouseName)
                                         <a href="{{ route('products', ['publishing_house_id' => $publishingHouseName['id'], 'product_type' => 'digital', 'page'=>1]) }}"
@@ -176,7 +176,7 @@
                         @if(count($productAuthorsInfo['data']) > 0)
                             <div class="d-flex align-items-center g-2 me-2">
                                 <span
-                                    class="text-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
+                                    class="text-non-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
                                 <div class="item-list">
                                     @foreach($productAuthorsInfo['data'] as $productAuthor)
                                         <a href="{{ route('products',['author_id' => $productAuthor['id'], 'product_type' => 'digital', 'page' => 1]) }}"
@@ -239,7 +239,7 @@
 
                     @foreach (json_decode($product->choice_options) as $key => $choice)
                         <div class="flex-start">
-                            <div class="product-description-label text-dark font-bold mt-1 text-capitalize">
+                            <div class="product-description-label text-dark font-bold mt-1 text-non-capitalize">
                                 {{ $choice->title }}:
                             </div>
                             <div>
@@ -263,7 +263,7 @@
                         @foreach($product['digital_product_extensions'] as $extensionKey => $extensionGroup)
                             <div class="row flex-start mx-0 align-items-center mb-1">
                                 <div
-                                    class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-capitalize mb-2">
+                                    class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-non-capitalize mb-2">
                                     {{ translate($extensionKey) }} :
                                 </div>
                                 <div>
@@ -331,7 +331,7 @@
                             </div>
                             <div class="product-details-chosen-price-section">
                                 <div class="d-flex justify-content-start align-items-center me-2">
-                                    <div class="product-description-label text-dark font-bold text-capitalize">
+                                    <div class="product-description-label text-dark font-bold text-non-capitalize">
                                         <strong>{{translate('total_price')}}</strong> :
                                     </div>
                                     &nbsp; <strong class="text-base product-details-chosen-price-amount"></strong>

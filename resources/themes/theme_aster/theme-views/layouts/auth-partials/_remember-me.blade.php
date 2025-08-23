@@ -7,7 +7,7 @@
     </label>
 
     @if(isset($forgotPassword) && $forgotPassword)
-        <a href="{{route('customer.auth.recover-password')}}" class="text-capitalize">
+        <a href="{{route('customer.auth.recover-password')}}" class="text-non-capitalize">
             {{ translate('forgot_password').'?' }}
         </a>
     @endif

@@ -7,7 +7,7 @@
 
         <div class="d-flex justify-content-between flex-wrap gap-2 align-items-center mb-3">
             <div>
-                <h2 class="h1 mb-1 text-capitalize d-flex align-items-center gap-2">
+                <h2 class="h1 mb-1 text-non-capitalize d-flex align-items-center gap-2">
                     <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/banner.png') }}" alt="">
                     {{ translate('banner_update_form') }}
                 </h2>

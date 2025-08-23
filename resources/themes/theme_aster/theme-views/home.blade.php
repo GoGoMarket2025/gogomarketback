@@ -52,10 +52,10 @@
                          alt="" class="rounded position-absolute dark-support img-fit start-0 top-0 index-n1 flipX-in-rtl">
                     <div class="row justify-content-center">
                         <div class="col-10 py-4">
-                            <h6 class="text-primary mb-2 text-capitalize">{{ translate('do_not_miss_today`s_deal') }}!</h6>
-                            <h2 class="fs-2 mb-4 absolute-dark text-capitalize">{{ translate('let_us_shopping_today') }}</h2>
+                            <h6 class="text-primary mb-2 text-non-capitalize">{{ translate('do_not_miss_today`s_deal') }}!</h6>
+                            <h2 class="fs-2 mb-4 absolute-dark text-non-capitalize">{{ translate('let_us_shopping_today') }}</h2>
                             <div class="d-flex">
-                                <a href="{{$bannerTypeMainSectionBanner ? $bannerTypeMainSectionBanner->url:''}}" class="btn btn-primary fs-16 text-capitalize">{{ translate('shop_now') }}</a>
+                                <a href="{{$bannerTypeMainSectionBanner ? $bannerTypeMainSectionBanner->url:''}}" class="btn btn-primary fs-16 text-non-capitalize">{{ translate('shop_now') }}</a>
                             </div>
                         </div>
                     </div>

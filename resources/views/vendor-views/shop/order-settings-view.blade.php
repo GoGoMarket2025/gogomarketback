@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/shop-info.png')}}" alt="">
                 {{translate('shop_info')}}
             </h2>
@@ -19,7 +19,7 @@
                         @csrf
                         <div class="card h-100">
                             <div class="card-header">
-                                <h5 class="text-capitalize mb-0">
+                                <h5 class="text-non-capitalize mb-0">
                                     <i class="tio-dollar-outlined"></i>
                                     {{translate('minimum_order_amount')}}
                                 </h5>
@@ -59,7 +59,7 @@
                         @csrf
                         <div class="card h-100">
                             <div class="card-header">
-                                <h5 class="text-capitalize mb-0">
+                                <h5 class="text-non-capitalize mb-0">
                                     <i class="tio-dollar-outlined"></i>
                                     {{translate('free_delivery_over_amount')}}
                                 </h5>

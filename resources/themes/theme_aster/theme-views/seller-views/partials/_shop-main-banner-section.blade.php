@@ -115,7 +115,7 @@
                             <div class="text-center">
                                 <h2 class="fs-28 text-primary fw-extra-bold mb-2">
                                     {{ round($rattingStatusArray['positive']) }}%</h2>
-                                <p class="text-muted text-capitalize">{{translate("positive_review")}}</p>
+                                <p class="text-muted text-non-capitalize">{{translate("positive_review")}}</p>
                             </div>
                         </div>
                     </div>
@@ -132,13 +132,13 @@
                     @if (auth('customer')->check())
                         <button class="btn btn-primary flex-lg-down-grow-1 fs-16" data-bs-toggle="modal"
                                 data-bs-target="#contact_sellerModal">
-                            <i class="bi bi-chat-square-fill text-capitalize"></i> {{translate('chat_with_vendor')}}
+                            <i class="bi bi-chat-square-fill text-non-capitalize"></i> {{translate('chat_with_vendor')}}
                         </button>
                         @include('theme-views.layouts.partials.modal._chat-with-seller',['shop'=>$shopInfoArray, 'user_type' => ($shopInfoArray['id'] == 0 ? 'admin':'seller')])
                     @else
                         <button class="btn btn-primary flex-lg-down-grow-1 fs-16" data-bs-toggle="modal"
                                 data-bs-target="#loginModal">
-                            <i class="bi bi-chat-square-fill text-capitalize"></i> {{translate('chat_with_vendor')}}
+                            <i class="bi bi-chat-square-fill text-non-capitalize"></i> {{translate('chat_with_vendor')}}
                         </button>
                     @endif
                 </div>

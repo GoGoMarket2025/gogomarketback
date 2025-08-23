@@ -38,10 +38,10 @@
             <span class="message">
             </span>
             <div class="d-flex justify-content-between gap-3 mt-2">
-                <a href="javascript:" class="text-decoration-underline text-capitalize product-stock-alert-hide">
+                <a href="javascript:" class="text-decoration-underline text-non-capitalize product-stock-alert-hide">
                     {{ translate('do_not_show_again') }}
                 </a>
-                <a href="javascript:" class="text-decoration-underline text-capitalize product-list">
+                <a href="javascript:" class="text-decoration-underline text-non-capitalize product-list">
                     {{ translate('click_to_view') }}
                 </a>
             </div>
@@ -60,10 +60,10 @@
             <span class="message">
             </span>
             <div class="d-flex justify-content-between gap-3 mt-2">
-                <a href="javascript:" class="text-decoration-underline text-capitalize product-restock-request-alert-hide">
+                <a href="javascript:" class="text-decoration-underline text-non-capitalize product-restock-request-alert-hide">
                     {{ translate('do_not_show_again') }}
                 </a>
-                <a href="javascript:" class="text-decoration-underline text-capitalize get-view-by-onclick product-link"
+                <a href="javascript:" class="text-decoration-underline text-non-capitalize get-view-by-onclick product-link"
                    data-link="">
                     {{ translate('click_to_view') }}
                 </a>

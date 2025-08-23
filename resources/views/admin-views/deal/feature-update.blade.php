@@ -3,7 +3,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2 align-items-center">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2 align-items-center">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/featured_deal.png') }}" alt="">
                 {{ translate('update_feature_deal') }}
             </h2>

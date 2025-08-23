@@ -14,7 +14,7 @@
                     <div class="text-center">{{ translate('once_you_publish_the_blog_it_will_be_displayed_on_the_website_for_viewers') }}</div>
                 </div>
                 <div class="d-flex justify-content-center gap-3 mt-4">
-                    <button type="button" class="btn btn-primary text-capitalize publish-blog" data-bs-dismiss="modal">{{ translate('Yes') }}</button>
+                    <button type="button" class="btn btn-primary text-non-capitalize publish-blog" data-bs-dismiss="modal">{{ translate('Yes') }}</button>
                     <button type="button" class="btn bg-light text-dark border-0" data-bs-dismiss="modal">{{translate('Not_Now')}}</button>
                 </div>
             </div>

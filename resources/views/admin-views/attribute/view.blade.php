@@ -20,7 +20,7 @@
 
                             <div class="table-responsive w-auto overflow-y-hidden mb-4">
                                 <div class="position-relative nav--tab-wrapper">
-                                    <ul class="nav nav-pills nav--tab lang_tab text-capitalize" id="pills-tab"
+                                    <ul class="nav nav-pills nav--tab lang_tab text-non-capitalize" id="pills-tab"
                                         role="tablist">
                                         @foreach($language as $lang)
                                             <li class="nav-item px-0">
@@ -96,7 +96,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{ translate('SL') }}</th>
                                     <th class="text-center">{{ translate('attribute_Name') }} </th>

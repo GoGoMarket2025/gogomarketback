@@ -14,7 +14,7 @@
     @endphp
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/blog-logo.png') }}" alt="">
                 {{ translate('Blog') }}
             </h2>
@@ -67,7 +67,7 @@
                                 <div class="position-relative nav--tab-wrapper">
                                     <ul class="nav nav-pills nav--tab lang_tab gap-3 mb-4">
                                         @foreach($languages as $lang)
-                                            <li class="nav-item text-capitalize px-0">
+                                            <li class="nav-item text-non-capitalize px-0">
                                                 <span class="nav-link lang-link form-system-language-tab cursor-pointer px-2 {{ $lang == $defaultLanguage? 'active':''}}" id="{{ $lang}}-link">{{ucfirst(getLanguageName($lang)).'('.strtoupper($lang).')'}}
                                                 </span>
                                             </li>

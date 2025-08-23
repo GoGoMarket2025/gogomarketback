@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header border-0 pb-0">
-                <h6 class="text-center text-capitalize flex-grow-1 m-0">{{translate('refund_request')}}</h6>
+                <h6 class="text-center text-non-capitalize flex-grow-1 m-0">{{translate('refund_request')}}</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -71,11 +71,11 @@
                 <div class="border rounded bg-white">
                     <div class="p-3 fs-12 d-flex flex-column gap-2">
                         <div class="d-flex justify-content-between gap-2">
-                            <div class="text-muted text-capitalize">{{translate('total_price')}}</div>
+                            <div class="text-muted text-non-capitalize">{{translate('total_price')}}</div>
                             <div>{{ webCurrencyConverter(amount: $order_details->price) }}</div>
                         </div>
                         <div class="d-flex justify-content-between gap-2">
-                            <div class="text-muted text-capitalize">{{translate('product_discount')}}</div>
+                            <div class="text-muted text-non-capitalize">{{translate('product_discount')}}</div>
                             <div>-{{ webCurrencyConverter(amount: $order_details->discount) }}</div>
                         </div>
                         <div class="d-flex justify-content-between gap-2">
@@ -95,17 +95,17 @@
                         $refund_amount = $subtotal - $coupon_discount;
                         ?>
                         <div class="d-flex justify-content-between gap-2">
-                            <div class="text-muted text-capitalize">{{translate('sub_total')}}</div>
+                            <div class="text-muted text-non-capitalize">{{translate('sub_total')}}</div>
                             <div>{{ webCurrencyConverter(amount: $subtotal) }}</div>
                         </div>
                         <div class="d-flex justify-content-between gap-2">
-                            <div class="text-muted text-capitalize">{{translate('coupon_discount')}}</div>
+                            <div class="text-muted text-non-capitalize">{{translate('coupon_discount')}}</div>
                             <div> -{{ webCurrencyConverter(amount: $coupon_discount) }}</div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between gap-2 border-top py-2 px-3 fs-12">
                         <div
-                            class="text-muted font-weight-bold text-capitalize">{{translate('total_refundable_amount')}}</div>
+                            class="text-muted font-weight-bold text-non-capitalize">{{translate('total_refundable_amount')}}</div>
                         <div class="font-weight-bold">{{ webCurrencyConverter(amount: $refund_amount) }}</div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                     </div>
 
                     <div class="mt-3 d-flex justify-content-end">
-                        <button type="submit" class="btn btn--primary text-capitalize">
+                        <button type="submit" class="btn btn--primary text-non-capitalize">
                             {{translate('send_request')}}
                         </button>
                     </div>

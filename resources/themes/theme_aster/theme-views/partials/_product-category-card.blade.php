@@ -27,7 +27,7 @@
             <img alt="" loading="lazy" class="dark-support rounded aspect-1 img-fit"
                  src="{{ getStorageImages(path: $product?->thumbnail_full_url, type: 'product') }}">
         </div>
-        <a class="fs-16 text-truncate text-muted text-capitalize width--9rem"  href="{{route('product',$product->slug)}}">
+        <a class="fs-16 text-truncate text-muted text-non-capitalize width--9rem"  href="{{route('product',$product->slug)}}">
             {{ Str::limit($product['name'], 18) }}
             <div class="product__price d-flex justify-content-center align-items-center flex-wrap column-gap-2 mt-1">
                 @if(getProductPriceByType(product: $product, type: 'discount', result: 'value') > 0)

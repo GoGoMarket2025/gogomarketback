@@ -9,7 +9,7 @@
                 <div class="card-body py-5 px-lg-5">
                     <div class="row align-items-center pb-5">
                         <div class="col-lg-6 mb-5 mb-lg-0">
-                            <h2 class="text-center mb-5 text-capitalize">{{ translate('forget_password') }}</h2>
+                            <h2 class="text-center mb-5 text-non-capitalize">{{ translate('forget_password') }}</h2>
                             <div class="d-flex justify-content-center">
                                 <img width="283" class="dark-support" src="{{ theme_asset('assets/img/otp.png') }}"
                                      alt="{{translate('image')}}">

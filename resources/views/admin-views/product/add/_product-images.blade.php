@@ -148,7 +148,7 @@
                             <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
                                 <div>
                                     <label for="name"
-                                           class="form-label text-capitalize fw-bold mb-0">{{ translate('Product_Preview_File') }}</label>
+                                           class="form-label text-non-capitalize fw-bold mb-0">{{ translate('Product_Preview_File') }}</label>
                                     <span class="tooltip-icon cursor-pointer" data-bs-toggle="tooltip"
                                           title="{{ translate('upload_a_suitable_file_for_a_short_product_preview.') }} {{ translate('this_preview_will_be_common_for_all_variations.') }}">
                                                     <i class="fi fi-sr-info"></i>

@@ -6,7 +6,7 @@
     <div class="content container-fluid">
 
         <div class="mb-4">
-            <h1 class="mb-1 text-capitalize d-flex gap-2">
+            <h1 class="mb-1 text-non-capitalize d-flex gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/bulk-import.png')}}" alt="">
                 {{translate('bulk_Import')}}
             </h1>

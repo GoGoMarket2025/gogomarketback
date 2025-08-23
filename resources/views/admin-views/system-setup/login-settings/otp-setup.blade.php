@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('OTP_&_Login_Attempts') }}
             </h2>
         </div>
@@ -98,7 +98,7 @@
                         <div class="row g-4">
                             <div class="col-xl-4 col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize"
+                                    <label class="form-label text-non-capitalize"
                                            for="maximum_login_hit">{{ translate('maximum_login_hit') }}
                                         <span class="tooltip-icon"
                                               data-bs-toggle="tooltip"
@@ -116,7 +116,7 @@
                             </div>
                             <div class="col-xl-4 col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize" for="maximum_otp_hit">
+                                    <label class="form-label text-non-capitalize" for="maximum_otp_hit">
                                         {{translate('temporary_login_block_time')}} ({{translate('sec')}})
                                         <span class="tooltip-icon"
                                               data-bs-toggle="tooltip"

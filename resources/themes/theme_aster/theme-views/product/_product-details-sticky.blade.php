@@ -105,7 +105,7 @@
                         <input type="hidden" value="" class="product-exist-in-cart-list form-control w-50" name="key">
                     </div>
                     <div class="d-flex flex-wrap align-items-center mb-2 pro">
-                        <span class="fs-12 text-muted line--limit-1 text-capitalize product-generated-variation-text">
+                        <span class="fs-12 text-muted line--limit-1 text-non-capitalize product-generated-variation-text">
                         </span>
                         <div class="d-none d-sm-flex flex-wrap align-items-center">
                             <span class="__inline-25 mx-2 mt-0"></span>
@@ -166,7 +166,7 @@
                                     {{translate('buy_now')}}
                                 </button>
                                 <button type="button"
-                                        class="btn btn-primary fs-16 flex-grow-1 text-capitalize"
+                                        class="btn btn-primary fs-16 flex-grow-1 text-non-capitalize"
                                         disabled>
                                     {{translate('add_to_cart')}}
                                 </button>
@@ -179,7 +179,7 @@
                                 >
                                     {{translate('buy_now')}}
                                 </button>
-                                <button class="btn btn-primary fs-16 text-capitalize product-add-to-cart-button"
+                                <button class="btn btn-primary fs-16 text-non-capitalize product-add-to-cart-button"
                                         type="button"
                                         data-form=".add-to-cart-sticky-form"
                                         data-update="{{ translate('update_cart') }}"

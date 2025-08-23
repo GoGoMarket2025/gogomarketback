@@ -38,13 +38,13 @@
                                                         <span class="text-muted fw-semibold">{{number_format($avg_rating,1)}}</span>
                                                     </div>
                                                     <ul class="list-unstyled list-inline-dot flex-wrap fs-12">
-                                                        <li class="text-capitalize">{{$delivered_count}} {{translate('delivered_orders')}}</li>
+                                                        <li class="text-non-capitalize">{{$delivered_count}} {{translate('delivered_orders')}}</li>
                                                         <li>{{$order->deliveryMan->review_count}} {{translate('reviews')}} </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-wrap flex-md-column gap-3">
-                                                <button data-bs-toggle="modal" data-bs-target="#chatModal" class="btn btn-outline-primary flex-grow-1 text-capitalize">
+                                                <button data-bs-toggle="modal" data-bs-target="#chatModal" class="btn btn-outline-primary flex-grow-1 text-non-capitalize">
                                                     <i class="bi bi-chat-square-fill"></i>
                                                     {{translate('chat_with_delivery')}}
                                                 </button>

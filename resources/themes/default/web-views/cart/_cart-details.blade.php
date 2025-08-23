@@ -19,7 +19,7 @@
                             {{ translate('product')}}
                         </div>
                     </th>
-                    <th class="font-weight-bold pl-0 __w-15p text-capitalize">{{ translate('unit_price')}}</th>
+                    <th class="font-weight-bold pl-0 __w-15p text-non-capitalize">{{ translate('unit_price')}}</th>
                     <th class="font-weight-bold __w-15p">
                         <span class="pl-3">{{ translate('qty')}}</span>
                     </th>
@@ -154,7 +154,7 @@
                                                                         }
                                                                     }
                                                                     ?>
-                                                                <div class="flex-middle flex-nowrap fw-semibold text-dark px-2 text-capitalize">
+                                                                <div class="flex-middle flex-nowrap fw-semibold text-dark px-2 text-non-capitalize">
                                                                     <i class="fa fa-truck"></i>
                                                                     {{ translate('shipping_method') }} :
                                                                 </div>
@@ -511,7 +511,7 @@
 
                                         @if(count($shippings) > 0)
                                             <div class="d-sm-flex">
-                                                <select class="form-control fs-13 font-weight-bold text-capitalize border-aliceblue max-240px action-set-shipping-id"
+                                                <select class="form-control fs-13 font-weight-bold text-non-capitalize border-aliceblue max-240px action-set-shipping-id"
                                                         data-product-id="{{ $cartItem['cart_group_id'] }}">
                                                     <option>{{ translate('choose_shipping_method')}}</option>
                                                     @foreach($shippings as $shipping)
@@ -781,10 +781,10 @@
             <div class="card mb-4">
                 <div class="card-body py-5">
                     <div class="py-md-4">
-                        <div class="text-center text-capitalize">
+                        <div class="text-center text-non-capitalize">
                             <img class="mb-3 mw-100"
                                  src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-cart.svg')}}" alt="">
-                            <p class="text-capitalize">{{translate('Your_Cart_is_Empty')}}!</p>
+                            <p class="text-non-capitalize">{{translate('Your_Cart_is_Empty')}}!</p>
                         </div>
                     </div>
                 </div>
