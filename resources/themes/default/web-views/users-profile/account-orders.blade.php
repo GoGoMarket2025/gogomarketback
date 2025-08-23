@@ -83,7 +83,7 @@
                                             </div>
                                         </td>
                                         <td class="bodytr">
-                                            @elseif($order['order_status']=='out_for_delivery')
+                                            @if($order['order_status']=='out_for_delivery')
                                                 <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-non-capitalize">
                                                     {{ translate('out_for_delivery') }}
                                                 </span>
