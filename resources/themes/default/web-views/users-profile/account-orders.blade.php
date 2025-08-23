@@ -83,13 +83,37 @@
                                             </div>
                                         </td>
                                         <td class="bodytr">
-                                            @if($order['order_status']=='failed' || $order['order_status']=='canceled')
-                                                <span class="status-badge rounded-pill __badge badge-soft-danger fs-12 font-semibold text-non-capitalize">
-                                                    {{ translate($order['order_status'] =='failed' ? 'failed_to_deliver' : $order['order_status']) }}
+                                            @if($order['order_status']=='out_for_delivery')
+                                                <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('out_for_delivery') }}
                                                 </span>
-                                            @elseif($order['order_status']=='confirmed' || $order['order_status']=='processing' || $order['order_status']=='delivered')
+                                            @elseif($order['order_status']=='returned')
+                                                <span class="status-badge rounded-pill __badge badge-soft-danger fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('returned') }}
+                                                </span>
+                                            @elseif($order['order_status']=='processing')
+                                                <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('packaging') }}
+                                                </span>
+                                            @elseif($order['order_status']=='canceled')
+                                                <span class="status-badge rounded-pill __badge badge-soft-danger fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('failed_to_delivery') }}
+                                                </span>
+                                            @elseif($order['order_status']=='failed')
+                                                <span class="status-badge rounded-pill __badge badge-soft-danger fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('failed_to_delivery') }}
+                                                </span>
+                                            @elseif($order['order_status']=='confirmed')
                                                 <span class="status-badge rounded-pill __badge badge-soft-success fs-12 font-semibold text-non-capitalize">
-                                                    {{ translate($order['order_status']=='processing' ? 'packaging' : $order['order_status']) }}
+                                                    {{ translate('confirmed') }}
+                                                </span>
+                                            @elseif($order['order_status']=='pending')
+                                                <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('pending') }}
+                                                </span>
+                                            @elseif($order['order_status']=='delivered')
+                                                <span class="status-badge rounded-pill __badge badge-soft-success fs-12 font-semibold text-non-capitalize">
+                                                    {{ translate('delivered_by') }}
                                                 </span>
                                             @else
                                                 <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-non-capitalize">
