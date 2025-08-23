@@ -89,9 +89,9 @@
 
                                 <div class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between gap-2 gap-md-3 flex-grow-1">
                                     <div class="nav nav-nowrap gap-3 gap-xl-4 {{ $stockClearanceProducts > 0 ? 'nav--tabs' : ''}}">
-                                        <a href="{{ route('shopView',['id' => $seller_id]) }}" class="text-capitalize {{ request('offer_type') != 'clearance_sale' ? 'active' : '' }}">{{ translate('all_products') }}</a>
+                                        <a href="{{ route('shopView',['id' => $seller_id]) }}" class="text-non-capitalize {{ request('offer_type') != 'clearance_sale' ? 'active' : '' }}">{{ translate('all_products') }}</a>
                                         @if($stockClearanceSetup && $stockClearanceProducts > 0)
-                                            <a href="{{ route('shopView',['id' => $seller_id, 'offer_type' => 'clearance_sale']) }}" class="text-capitalize {{ request('offer_type') == 'clearance_sale' ? 'active' : '' }}">{{ translate('clearance_sale') }}</a>
+                                            <a href="{{ route('shopView',['id' => $seller_id, 'offer_type' => 'clearance_sale']) }}" class="text-non-capitalize {{ request('offer_type') == 'clearance_sale' ? 'active' : '' }}">{{ translate('clearance_sale') }}</a>
                                         @endif
                                     </div>
 
@@ -100,7 +100,7 @@
                                             <label>
                                                 <input type="radio" name="product_view" value="grid-view" hidden=""
                                                     {{(!session('product_view_style') || session('product_view_style') == 'grid-view' ? 'checked' : '' )}}>
-                                                <span class="py-2 d-flex align-items-center gap-2 text-capitalize"><i
+                                                <span class="py-2 d-flex align-items-center gap-2 text-non-capitalize"><i
                                                         class="bi bi-grid-fill"></i> {{translate('grid_view')}}</span>
                                             </label>
                                         </li>
@@ -108,7 +108,7 @@
                                             <label>
                                                 <input type="radio" name="product_view" value="list-view" hidden=""
                                                     {{(session('product_view_style') == 'list-view'?'checked':'')}}>
-                                                <span class="py-2 d-flex align-items-center gap-2 text-capitalize"><i
+                                                <span class="py-2 d-flex align-items-center gap-2 text-non-capitalize"><i
                                                         class="bi bi-list-ul"></i> {{translate('list_view')}}</span>
                                             </label>
                                         </li>

@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row gy-2 align-items-center">
                         <div class="col-md-8">
-                            <h3 class="mb-1 text-capitalize">
+                            <h3 class="mb-1 text-non-capitalize">
                                 {{ (request('filter') && request('filter') == 'top-vendors' ? translate('top_Stores') : translate('all_Stores')) }}
                             </h3>
                             <nav aria-label="breadcrumb">

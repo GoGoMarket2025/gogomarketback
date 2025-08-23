@@ -7,7 +7,7 @@
     @php($direction = Session::get('direction') === 'rtl' ? 'right' : 'left')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/business-setup.png') }}" alt="">
                 {{ translate('business_Setup') }}
             </h2>
@@ -19,7 +19,7 @@
             <div class="card-body">
                 <form action="{{ route('admin.business-settings.payment-method.payment-option') }}" method="post" id="payment-methods-settings-form">
                     @csrf
-                    <h5 class="mb-4 text-uppercase d-flex text-capitalize">{{ translate('payment_methods') }}</h5>
+                    <h5 class="mb-4 text-uppercase d-flex text-non-capitalize">{{ translate('payment_methods') }}</h5>
                     <div class="row">
                         @isset($cashOnDelivery)
                             <div class="col-xl-4 col-sm-6">

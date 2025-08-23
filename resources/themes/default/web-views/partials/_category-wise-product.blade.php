@@ -9,7 +9,7 @@
                     </span>
                 </h2>
                 <div class="category-product-view-all">
-                    <a class="text-capitalize view-all-text text-nowrap web-text-primary"
+                    <a class="text-non-capitalize view-all-text text-nowrap web-text-primary"
                        href="{{route('products',['category_id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                         {{ translate('view_all')}}
                         <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>

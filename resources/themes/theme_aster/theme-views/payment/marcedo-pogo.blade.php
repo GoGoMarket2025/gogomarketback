@@ -17,7 +17,7 @@
     <section class="payment-form dark">
         <div class="container__payment">
             <div class="block-heading">
-                <h2 class="text-capitalize">{{translate('card_payment')}}</h2>
+                <h2 class="text-non-capitalize">{{translate('card_payment')}}</h2>
             </div>
             <div class="form-payment">
                 <div class="products">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="payment-details">
                     <form id="form-checkout">
-                        <h3 class="title text-capitalize">{{translate('buyer_details')}}</h3>
+                        <h3 class="title text-non-capitalize">{{translate('buyer_details')}}</h3>
                         <div class="row">
                             <div class="form-group col">
                                 <input id="form-checkout__cardholderEmail" name="cardholderEmail" type="email"
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <br>
-                        <h3 class="title text-capitalize">{{translate('card_details')}}</h3>
+                        <h3 class="title text-non-capitalize">{{translate('card_details')}}</h3>
                         <div class="row">
                             <div class="form-group col-sm-8">
                                 <input id="form-checkout__cardholderName" name="cardholderName" type="text"

@@ -24,7 +24,7 @@
                                     <div class="">
                                         <div class="d-flex justify-content-center">
                                             <div class="ext-center">
-                                                <h3 class="mb-2 text-capitalize">{{translate('vendor_registration')}}</h3>
+                                                <h3 class="mb-2 text-non-capitalize">{{translate('vendor_registration')}}</h3>
                                                 <p>{{translate('create_your_own_store').'. '.translate('already_have_store').'?'}}
                                                     <a class="text-primary fw-bold" href="{{route('vendor.auth.login')}}">{{translate('login')}}</a>
                                                 </p>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="bg-white p-3 p-sm-4 rounded">
-                                        <h4 class="mb-4 text text-capitalize">{{translate('create_an_account')}}</h4>
+                                        <h4 class="mb-4 text text-non-capitalize">{{translate('create_an_account')}}</h4>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="mb-4">
@@ -83,7 +83,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="mb-4">
-                                                    <label for="password" class="text-capitalize">
+                                                    <label for="password" class="text-non-capitalize">
                                                         {{translate('confirm_password')}}
                                                         <span class="text-danger fs-12 confirm-password-error"></span>
                                                     </label>
@@ -100,7 +100,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-flex justify-content-end">
-                                                    <button type="button" class="btn btn--primary proceed-to-next-btn text-capitalize" >{{translate('proceed_to_next')}}</button>
+                                                    <button type="button" class="btn btn--primary proceed-to-next-btn text-non-capitalize" >{{translate('proceed_to_next')}}</button>
                                                 </div>
                                             </div>
                                         </div>

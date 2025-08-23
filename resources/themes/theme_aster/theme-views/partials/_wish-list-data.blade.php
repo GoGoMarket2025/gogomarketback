@@ -14,7 +14,7 @@
                             </div>
                             <div class="media-body">
                                 <a href="{{route('product',$product['slug'])}}">
-                                    <h6 class="text-truncate text-capitalize width--20ch link-hover-base">{{$product['name']}}</h6>
+                                    <h6 class="text-truncate text-non-capitalize width--20ch link-hover-base">{{$product['name']}}</h6>
                                 </a>
                             </div>
                             @if($brand_setting && $product->product_type != 'digital')
@@ -79,7 +79,7 @@
                     </div>
                     <div class="media-body d-flex flex-column gap-1">
                         <a href="{{route('product',$product['slug'])}}">
-                            <h6 class="text-truncate text-capitalize width--20ch link-hover-base">{{$product['name']}}</h6>
+                            <h6 class="text-truncate text-non-capitalize width--20ch link-hover-base">{{$product['name']}}</h6>
                         </a>
                         <div>
                             {{ translate('price') }} :

@@ -12,7 +12,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('3rd Party - Other Configurations') }}
             </h2>
         </div>
@@ -24,7 +24,7 @@
                     <h2>{{ translate('mail_configuration') }}</h2>
                     <p class="fs-12 mb-0">{{ translate('you_can_use_following_mail_sending_options_from') }} <a href="{{route('admin.system-setup.email-templates.view',['admin',EmailTemplateKey::ADMIN_EMAIL_LIST[0]])}}" target="_blank" class="fw-semibold text-info-dark">{{ translate('Email Template') }}</a> {{ translate('translate') }}.</p>
                 </div>
-                <button class="btn btn-outline-primary text-capitalize" data-bs-toggle="modal"
+                <button class="btn btn-outline-primary text-non-capitalize" data-bs-toggle="modal"
                 data-bs-target="#send-mail-confirmation-modal">
                     <i class="fi fi-sr-paper-plane"></i>
                     {{translate('send_test_mail')}}
@@ -412,7 +412,7 @@
                                     <img width="80" class="mb-3"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/smtp-server.png')}}" loading="lazy"
                                          alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{translate('find_SMTP_server_details')}}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{translate('find_SMTP_server_details')}}</h4>
                                     <ul class="d-flex flex-column px-4 gap-2 mb-4 w-100">
                                         <li>
                                             {{translate('contact_your_email_service_provider_or_IT_administrator_to_obtain_the_SMTP_server_details_such_as_hostname_port_username_and_password').'.'}}
@@ -428,7 +428,7 @@
                                     <img width="80" class="mb-3"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/config-smtp.png')}}" loading="lazy"
                                          alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{translate('configure_SMTP_settings')}}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{translate('configure_SMTP_settings')}}</h4>
                                     <ul class="d-flex flex-column px-4 gap-2 mb-4 w-100">
                                         <li>{{translate('go_to_the_SMTP_mail_setup_page_in_the_admin_panel').'.'}}</li>
                                         <li>{{translate('enter_the_obtained_SMTP_server_details,_including_the_hostname,_port,_username,_and password').'.'}}</li>
@@ -442,7 +442,7 @@
                                     <img width="80" class="mb-3"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/test-smtp.png')}}" loading="lazy"
                                          alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{translate('test_SMTP_connection')}}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{translate('test_SMTP_connection')}}</h4>
                                     <ul class="d-flex flex-column px-4 gap-2 mb-4 w-100">
                                         <li>{{translate('click_on_the').'"'.translate('send_test_mail').'"'.translate('button_to_verify_the_SMTP_connection')}}
                                         </li>
@@ -458,12 +458,12 @@
                                     <img width="80" class="mb-3"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/enable-mail-config.png')}}"
                                          loading="lazy" alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{translate('enable_mail_configuration')}}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{translate('enable_mail_configuration')}}</h4>
                                     <ul class="d-flex flex-column px-4 gap-2 mb-4 w-100">
                                         <li>{{ translate('if_the_SMTP_connection_test_is_successful') }} {{ translate('you_can_now_enable_the_mail_configuration_services_by_toggling_the_switch_to_ON')}}</li>
                                         <li>{{ translate('this_will_allow_the_system_to_send_emails_using_the_configured_SMTP_settings').'.' }}</li>
                                     </ul>
-                                    <button class="btn btn-primary px-10 mt-3 text-capitalize"
+                                    <button class="btn btn-primary px-10 mt-3 text-non-capitalize"
                                             data-bs-dismiss="modal">{{ translate('got_it') }}</button>
                                 </div>
                             </div>
@@ -486,7 +486,7 @@
                 <div class="modal-body px-20 py-0 mb-30">
                     <div class="d-flex flex-column gap-sm-20 gap-3">
                         <div>
-                            <h3 class="text-capitalize">{{ translate('send_test_mail') }}</h3>
+                            <h3 class="text-non-capitalize">{{ translate('send_test_mail') }}</h3>
                             <p class="fs-12 mb-0">{{ translate('insert_a_valid_email_addresser_to_get_mail') }}</p>
                         </div>
                         <div class="bg-info bg-opacity-10 fs-12 px-12 py-10 text-dark rounded d-flex gap-2 align-items-center">
@@ -495,7 +495,7 @@
                                 {{ translate('smtp_is_configured_for_mail_please_test_to_ensure_you_are_receiving_mail_correctly') }}.
                             </span>
                         </div>
-                        <div class="p-12 p-sm-20 bg-section rounded d-flex flex-wrap gap-sm-20 gap-3 justify-content-end align-items-end text-capitalize">
+                        <div class="p-12 p-sm-20 bg-section rounded d-flex flex-wrap gap-sm-20 gap-3 justify-content-end align-items-end text-non-capitalize">
                             <div class="flex-grow-1">
                                 <label class="form-label" for="">
                                     {{ translate('type_mail_address') }}
@@ -505,7 +505,7 @@
                                     placeholder="{{translate('ex').':'.'jhon@email.com'}}">
                             </div>
                             <button type="button" id="test-mail-send"
-                            class="btn btn-primary px-4 min-w-120 h-40 text-capitalize">{{translate('send_mail')}}</button>
+                            class="btn btn-primary px-4 min-w-120 h-40 text-non-capitalize">{{translate('send_mail')}}</button>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/message.png')}}" alt="">
                 {{translate('customer_message')}}
             </h2>
@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="row justify-content-between align-items-center flex-grow-1">
                     <div class="col-sm-4 col-md-6 col-lg-8 mb-2 mb-sm-0">
-                        <h3 class="d-flex gap-2 align-items-center text-capitalize">
+                        <h3 class="d-flex gap-2 align-items-center text-non-capitalize">
                             {{translate('customer_message_table')}}
                             <span class="badge text-bg-info badge-info fs-12" id="row-count">{{ $contacts->total() }}
                             </span>

@@ -15,7 +15,7 @@
                     <div class="card mb-md-3">
                         <div class="card-body">
                             <div class="d-flex justify-content-between gap-2">
-                                <h5 class="mb-4 text-capitalize">{{ translate('loyalty_point') }}</h5>
+                                <h5 class="mb-4 text-non-capitalize">{{ translate('loyalty_point') }}</h5>
                                 <span class="text-dark d-md-none" data-bs-toggle="modal"
                                       data-bs-target="#instructionModal"><i class="bi bi-info-circle"></i></span>
                             </div>
@@ -53,7 +53,7 @@
                         <div class="card-body">
                             <div
                                 class="d-flex flex-column flex-md-row gap-2 justify-content-between mb-4 align-items-md-center">
-                                <h5 class="text-capitalize">{{ translate('transaction_history') }}</h5>
+                                <h5 class="text-non-capitalize">{{ translate('transaction_history') }}</h5>
 
                                 <div class="dropdown">
                                     <button type="button"

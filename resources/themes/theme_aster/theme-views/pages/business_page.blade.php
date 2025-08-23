@@ -9,7 +9,7 @@
             <div class="page-title overlay py-5 __opacity-half background-custom-fit rounded-10 overflow-hidden"
                  data-bg-img="{{ getStorageImages(path: $businessPage?->banner_full_url, type: 'business-page') }}">
                 <div class="container">
-                    <h1 class="absolute-white text-center text-capitalize">{{ $businessPage?->title }}</h1>
+                    <h1 class="absolute-white text-center text-non-capitalize">{{ $businessPage?->title }}</h1>
                 </div>
             </div>
 

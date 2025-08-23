@@ -12,8 +12,8 @@
 
 <div class="d-flex align-items-start justify-content-between gap-2">
     <div>
-        <div class="d-flex align-items-center gap-2 text-capitalize">
-            <h4 class="text-capitalize mb-0 mobile-fs-14 fs-18 font-bold">{{translate('order')}} #{{$order->id}} </h4>
+        <div class="d-flex align-items-center gap-2 text-non-capitalize">
+            <h4 class="text-non-capitalize mb-0 mobile-fs-14 fs-18 font-bold">{{translate('order')}} #{{$order->id}} </h4>
             @if($order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary':'')
                 <span
                     class="fs-12 font-semibold rounded badge __badge {{$order['order_status'] == 'out_for_delivery' ? 'badge-soft-primary border-soft-primary':''}}">
@@ -28,6 +28,11 @@
                 <span
                     class="fs-12 font-semibold rounded badge __badge badge-soft-danger border-soft-danger">
                     {{ translate('returned') }}
+                </span>
+            @elseif($order['order_status'] == 'processing' ? 'badge-soft-primary':'')
+                <span
+                    class="fs-12 font-semibold rounded badge __badge badge-soft-primary border-soft-primary">
+                    {{ translate('out_for_delivery') }}
                 </span>
             @elseif($order['order_status'] == 'canceled' ? 'badge-soft-danger':'')
                 <span
@@ -77,7 +82,7 @@
     </button>
 </div>
 
-<div class="order-details-nav overflow-auto nav-menu gap-3 gap-xl-30 mb-4 text-capitalize d-flex">
+<div class="order-details-nav overflow-auto nav-menu gap-3 gap-xl-30 mb-4 text-non-capitalize d-flex">
     <button data-link="{{ route('account-order-details', ['id'=>$order->id]) }}"
             class="get-view-by-onclick {{Request::is('account-order-details')  ? 'active' :''}}">{{translate('order_summary')}}</button>
     <button data-link="{{ route('account-order-details-vendor-info', ['id'=>$order->id]) }}"

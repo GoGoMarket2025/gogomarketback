@@ -13,7 +13,7 @@
     <input type="hidden" name="default_currency_id" value="{{ $defaultCurrency?->id }}">
     <div class="table-responsive rounded-10 shadow-1 max-h-270 mb-20">
         <table class="table table-hover table-borderless">
-            <thead class="text-capitalize">
+            <thead class="text-non-capitalize">
             <tr>
                 <th>{{ translate('SL') }}</th>
                 <th>{{ translate('Currency_Name') }}</th>

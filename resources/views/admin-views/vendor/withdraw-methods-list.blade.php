@@ -5,7 +5,7 @@
     <div class="content container-fluid">
         <div class="mb-3">
             <div class="page-title-wrap d-flex justify-content-between flex-wrap align-items-center gap-3 mb-3">
-                <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                     <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
                     {{translate('withdraw_method_list')}}
                 </h2>
@@ -39,7 +39,7 @@
 
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-borderless table-nowrap align-middle">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('method_name')}}</th>

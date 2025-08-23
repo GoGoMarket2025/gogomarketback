@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/Pages.png')}}" alt="">
                 {{translate('pages')}}
             </h2>
@@ -23,7 +23,7 @@
                         @csrf
 
                         <div class="card-header">
-                            <h5 class="mb-0 text-capitalize">
+                            <h5 class="mb-0 text-non-capitalize">
                                 {{ translate(str_replace('-',' ',$page)) }}
                             </h5>
                             <label class="switcher" for="page-status">

@@ -6,11 +6,11 @@
     <div class="content container-fluid">
         <div class="mb-3">
             <div class="page-title-wrap d-flex justify-content-between flex-wrap align-items-center gap-3 mb-3">
-                <h2 class="page-title text-capitalize">
+                <h2 class="page-title text-non-capitalize">
                     <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
                     {{translate('withdrawal_methods')}}
                 </h2>
-                <button class="btn btn-primary text-capitalize" id="add-more-field">
+                <button class="btn btn-primary text-non-capitalize" id="add-more-field">
                     <i class="fi fi-rr-plus-small"></i> {{translate('add_fields')}}
                 </button>
             </div>

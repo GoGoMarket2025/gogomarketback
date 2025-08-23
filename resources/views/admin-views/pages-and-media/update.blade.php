@@ -11,7 +11,7 @@
         <div class="mb-4 pb-2">
             <div class="d-flex gap-10 align-items-center justify-content-between flex-wrap">
                 <div>
-                    <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                    <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                         {{ translate('Update') }} {{ $businessPage['title'] }}
                     </h2>
 

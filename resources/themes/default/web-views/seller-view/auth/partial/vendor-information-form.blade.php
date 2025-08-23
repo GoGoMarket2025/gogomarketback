@@ -26,7 +26,7 @@
                                                 <div class="temp-img-box">
                                                     <div class="d-flex align-items-center flex-column gap-2">
                                                         <i class="tio-upload fs-30"></i>
-                                                        <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                        <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                     </div>
                                                 </div>
                                                 <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -35,7 +35,7 @@
 
                                         <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                             <h6 class="text-uppercase mb-1 fs-14">{{translate('vendor_image')}}</h6>
-                                            <div class="text-muted text-capitalize fs-12">{{translate('image_ratio').' '.'1:1'}}</div>
+                                            <div class="text-muted text-non-capitalize fs-12">{{translate('image_ratio').' '.'1:1'}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -43,14 +43,14 @@
                         </div>
 
                         <div class="border p-3 p-xl-4 rounded mt-4">
-                            <h4 class="mb-3 text-capitalize">{{translate('shop_information')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('shop_information')}}</h4>
 
                             <div class="form-group mb-4">
-                                <label for="store_name" class="text-capitalize">{{translate('shop_Name')}} <span class="text-danger">*</span></label>
+                                <label for="store_name" class="text-non-capitalize">{{translate('shop_Name')}} <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="shop_name"  name="shop_name" placeholder="{{translate('Ex: XYZ store')}}" required>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="store_address" class="text-capitalize">{{translate('shop_address')}} <span class="text-danger">*</span></label>
+                                <label for="store_address" class="text-non-capitalize">{{translate('shop_address')}} <span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="shop_address" id="shop_address" rows="4" placeholder="{{translate('shop_address')}}" required></textarea>
                             </div>
 
@@ -62,7 +62,7 @@
                                             <div class="temp-img-box">
                                                 <div class="d-flex align-items-center flex-column gap-2">
                                                     <i class="tio-upload fs-30"></i>
-                                                    <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                    <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                 </div>
                                             </div>
                                             <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -71,8 +71,8 @@
 
                                     <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                         <h6 class="text-uppercase mb-1 fs-14">{{translate('upload_logo')}}</h6>
-                                        <div class="text-muted text-capitalize fs-12">{{translate('image_ratio').' '.'1:1'}}</div>
-                                        <div class="text-muted text-capitalize fs-12">{{translate('Image Size : Max 2 MB')}}</div>
+                                        <div class="text-muted text-non-capitalize fs-12">{{translate('image_ratio').' '.'1:1'}}</div>
+                                        <div class="text-muted text-non-capitalize fs-12">{{translate('Image Size : Max 2 MB')}}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column gap-3 align-items-center">
@@ -82,7 +82,7 @@
                                             <div class="temp-img-box">
                                                 <div class="d-flex align-items-center flex-column gap-2">
                                                     <i class="tio-upload fs-30"></i>
-                                                    <div class="fs-12 text-muted text-capitalize">{{translate('upload_file')}}</div>
+                                                    <div class="fs-12 text-muted text-non-capitalize">{{translate('upload_file')}}</div>
                                                 </div>
                                             </div>
                                             <img src="#" class="dark-support img-fit-contain border" alt="" hidden>
@@ -91,8 +91,8 @@
 
                                     <div class="d-flex flex-column gap-1 upload-img-content text-center">
                                         <h6 class="text-uppercase mb-1 fs-14">{{translate('upload_banner')}}</h6>
-                                        <div class="text-muted text-capitalize fs-12">{{translate('image_ratio').' '.'2:1'}}</div>
-                                        <div class="text-muted text-capitalize fs-12">{{translate('Image Size : Max 2 MB')}}</div>
+                                        <div class="text-muted text-non-capitalize fs-12">{{translate('image_ratio').' '.'2:1'}}</div>
+                                        <div class="text-muted text-non-capitalize fs-12">{{translate('Image Size : Max 2 MB')}}</div>
                                     </div>
                                 </div>
                             </div>

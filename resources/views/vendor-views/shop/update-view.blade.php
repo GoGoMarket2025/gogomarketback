@@ -7,7 +7,7 @@
 @section('content')
     <div class="content container-fluid">
     <div class="mb-3">
-        <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+        <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
             <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/shop-info.png')}}" alt="">
             {{translate('edit_shop_info')}}
         </h2>
@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0 text-capitalize">{{translate('edit_shop_info')}}</h5>
+                    <h5 class="mb-0 text-non-capitalize">{{translate('edit_shop_info')}}</h5>
                     <a href="{{route('vendor.shop.index')}}" class="btn btn--primary __inline-70 px-4 text-white">{{ translate('back') }}</a>
                 </div>
                 <div class="card-body">
@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name" class="title-color text-capitalize">{{translate('shop_name')}} <span class="text-danger">*</span></label>
+                                    <label for="name" class="title-color text-non-capitalize">{{translate('shop_name')}} <span class="text-danger">*</span></label>
                                     <input type="text" name="name" value="{{$shop->name}}" class="form-control" id="name"
                                             required>
                                 </div>
@@ -49,12 +49,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name" class="title-color text-capitalize">{{translate('upload_image')}}</label>
+                                    <label for="name" class="title-color text-non-capitalize">{{translate('upload_image')}}</label>
                                     <div class="custom-file text-left">
                                         <input type="file" name="image" id="custom-file-upload" class="custom-file-input image-input"
                                                data-image-id="viewer"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label text-capitalize" for="custom-file-upload">{{translate('choose_file')}}</label>
+                                        <label class="custom-file-label text-non-capitalize" for="custom-file-upload">{{translate('choose_file')}}</label>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -65,7 +65,7 @@
                             <div class="col-md-6 mb-4 mt-2">
                                 <div class="form-group">
                                     <div class="flex-start">
-                                        <label for="name" class="title-color text-capitalize">{{translate('upload_banner')}} </label>
+                                        <label for="name" class="title-color text-non-capitalize">{{translate('upload_banner')}} </label>
                                         <div class="mx-1">
                                             <span class="text-info">{{ THEME_RATIO[theme_root_path()]['Store cover Image'] }}</span>
                                         </div>
@@ -74,7 +74,7 @@
                                         <input type="file" name="banner" id="banner-upload" class="custom-file-input image-input"
                                                data-image-id="viewer-banner"
                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label text-capitalize" for="banner-upload">{{translate('choose_file')}}</label>
+                                        <label class="custom-file-label text-non-capitalize" for="banner-upload">{{translate('choose_file')}}</label>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -88,7 +88,7 @@
                             <div class="col-md-6 mb-4 mt-2">
                                 <div class="form-group">
                                     <div class="flex-start">
-                                        <label for="name" class="title-color text-capitalize">{{translate('upload_secondary_banner')}}</label>
+                                        <label for="name" class="title-color text-non-capitalize">{{translate('upload_secondary_banner')}}</label>
                                         <div class="mx-1">
                                             <span class="text-info">{{translate('ratio').' '.'( 6:1 )'}}</span>
                                         </div>
@@ -111,7 +111,7 @@
                                 <div class="col-md-6 mb-4 mt-2">
                                     <div class="form-group">
                                         <div class="flex-start">
-                                            <label for="name" class="title-color text-capitalize">{{translate('upload_offer_banner')}}</label>
+                                            <label for="name" class="title-color text-non-capitalize">{{translate('upload_offer_banner')}}</label>
                                             <div class="mx-1">
                                                 <span class="text-info">{{translate('ratio').' '.'( 7:1 )'}}</span>
                                             </div>
@@ -120,7 +120,7 @@
                                             <input type="file" name="offer_banner" id="offer-banner-upload" class="custom-file-input image-input"
                                                 data-image-id="viewer-offer-banner"
                                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                            <label class="custom-file-label text-capitalize" for="offer-banner-upload">{{translate('choose_file')}}</label>
+                                            <label class="custom-file-label text-non-capitalize" for="offer-banner-upload">{{translate('choose_file')}}</label>
                                         </div>
                                     </div>
                                     <div class="text-center">

@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/seller-reports.png')}}" alt="">
                 {{translate('vendor_Reports')}}
             </h2>
@@ -191,7 +191,7 @@
                 <div class="table-responsive">
                     <table id="datatable"
                            class="table __table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{ translate('vendor-Info') }}</th>
@@ -213,7 +213,7 @@
                                                 <h6 class="mb-1">
                                                     {{ \Str::limit($order->seller->shop->name, 20)}}
                                                 </h6>
-                                                <span class="mb-1 text-capitalize">
+                                                <span class="mb-1 text-non-capitalize">
                                                    {{$order->seller->f_name.' '.$order->seller->l_name}}
                                                 </span>
                                             </a>

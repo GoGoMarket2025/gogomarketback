@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
     @php($direction = Session::get('direction'))
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('vendor_Details')}}
             </h2>
@@ -92,7 +92,7 @@ use Illuminate\Support\Facades\Session;
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
-                    <h3 class="mb-0 text-capitalize">{{translate('order_info')}}</h3>
+                    <h3 class="mb-0 text-non-capitalize">{{translate('order_info')}}</h3>
 
                     <a type="button" class="btn btn-outline-primary text-nowrap" href="{{route('admin.vendors.order-list-export',[$seller['id'],'searchValue' => request('searchValue')])}}">
                         <img width="14" src="{{dynamicAsset(path: 'public/assets/back-end/img/excel.png')}}" class="excel" alt="">
@@ -140,7 +140,7 @@ use Illuminate\Support\Facades\Session;
                     <table id="datatable"
                            style="text-align: {{$direction === "rtl" ? 'right' : 'left'}};"
                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('order')}}</th>
@@ -173,7 +173,7 @@ use Illuminate\Support\Facades\Session;
                                         <strong class="title-name">{{translate('walking_customer')}}</strong>
                                     @else
                                         @if($order->customer)
-                                            <a class="text-dark text-capitalize" href="{{route('admin.customer.view',['user_id'=>$order['customer_id']])}}">
+                                            <a class="text-dark text-non-capitalize" href="{{route('admin.customer.view',['user_id'=>$order['customer_id']])}}">
                                                 <strong class="title-name">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</strong>
                                             </a>
                                             <a class="d-block text-dark" href="tel:{{ $order->customer['phone'] }}">{{ $order->customer['phone'] }}</a>
@@ -191,7 +191,7 @@ use Illuminate\Support\Facades\Session;
                                     @endif
                                 </td>
                                 <td>{{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $order['order_amount']))}}</td>
-                                <td class="text-capitalize">
+                                <td class="text-non-capitalize">
                                     @if($order['order_status']=='pending')
                                         <span class="badge badge-info text-bg-info">
                                             {{translate('pending')}}

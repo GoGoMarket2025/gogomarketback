@@ -225,7 +225,7 @@ $direction = Session::get('direction');
                              src="{{ getStorageImages(path:$companyLogo, type:'backend-logo') }}"
                              id="logoViewer" alt="">
                         <br>
-                        <h3 class="title text-capitalize">{{translate('order_info')}}</h3>
+                        <h3 class="title text-non-capitalize">{{translate('order_info')}}</h3>
                         <p>
                             {{translate('to_verify_when_download_your_product').','.translate('_use_your_order_info').'.'}}
                         </p>
@@ -259,7 +259,7 @@ $direction = Session::get('direction');
                 </tr>
                 <tr>
                     <td style="text-align:center;padding:16px">
-                        <div class="text-capitalize" style="margin-bottom:10px">{{translate('click_below')}}</div>
+                        <div class="text-non-capitalize" style="margin-bottom:10px">{{translate('click_below')}}</div>
                         <a href="{{route('digital-product-download-pos.index',['order_id'=>$data['order']->id,'email'=>$data['order']->customer['email']])}}"
                            style="color:#0177CD">{{url('digital-product-download-pos')}}</a>
                     </td>

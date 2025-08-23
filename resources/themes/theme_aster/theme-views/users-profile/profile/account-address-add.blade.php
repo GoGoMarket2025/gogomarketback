@@ -14,7 +14,7 @@
                                     <div class="row gy-4">
                                         <div class="col-md-6">
                                             <div class="">
-                                                <h6 class="fw-semibold text-muted mb-3 text-capitalize">{{translate('choose_label')}}</h6>
+                                                <h6 class="fw-semibold text-muted mb-3 text-non-capitalize">{{translate('choose_label')}}</h6>
                                                 <ul class="option-select-btn flex-wrap style--two gap-4 mb-4">
                                                     <li>
                                                         <label>
@@ -44,7 +44,7 @@
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label class="text-capitalize"
+                                                <label class="text-non-capitalize"
                                                        for="name">{{translate('contact_person')}}</label>
                                                 <input type="text" id="name" class="form-control" name="name"
                                                        placeholder="{{translate('ex').':'.translate('jhon').translate('doe')}}"
@@ -86,18 +86,18 @@
                                                 </a>
                                             </div>
 
-                                            <h6 class="fw-semibold text-muted mb-3 text-capitalize">{{translate('choose_address_type')}}</h6>
+                                            <h6 class="fw-semibold text-muted mb-3 text-non-capitalize">{{translate('choose_address_type')}}</h6>
                                             <div class="d-flex flex-wrap style--two gap-4 mb-3">
                                                 <div>
                                                     <label
-                                                        class="d-flex align-items-center gap-2 cursor-pointer text-capitalize">
+                                                        class="d-flex align-items-center gap-2 cursor-pointer text-non-capitalize">
                                                         <input type="radio" name="is_billing" checked="" value="1">
                                                         {{translate('billing_address')}}
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <label
-                                                        class="d-flex align-items-center gap-2 cursor-pointer text-capitalize">
+                                                        class="d-flex align-items-center gap-2 cursor-pointer text-non-capitalize">
                                                         <input type="radio" name="is_billing" value="0">
                                                         {{translate('shipping_address')}}
                                                     </label>
@@ -136,7 +136,7 @@
                                                     <button type="reset"
                                                             class="btn btn-secondary">{{translate('reset')}}</button>
                                                     <button type="submit"
-                                                            class="btn btn-primary text-capitalize">{{translate('add_address')}}</button>
+                                                            class="btn btn-primary text-non-capitalize">{{translate('add_address')}}</button>
                                                 </div>
                                             </div>
                                         </div>

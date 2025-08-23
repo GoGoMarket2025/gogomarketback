@@ -25,7 +25,7 @@
                                 class="img-fit dark-support rounded img-fluid overflow-hidden {{ $product && $product->status == 0?'blur-section':'' }}">
                             @if ($product && $product->status == 0)
                                 <span class="temporary-closed position-absolute text-center p-2">
-                                    <span class="text-capitalize">{{ translate('not_available') }}</span>
+                                    <span class="text-non-capitalize">{{ translate('not_available') }}</span>
                                 </span>
                             @endif
                         </div>

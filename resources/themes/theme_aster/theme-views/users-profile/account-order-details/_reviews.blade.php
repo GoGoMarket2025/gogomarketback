@@ -53,7 +53,7 @@
                                         <div
                                             class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
                                             <div>
-                                                <h6 class="mb-1 text-capitalize">
+                                                <h6 class="mb-1 text-non-capitalize">
                                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M11.2559 16.25H16.2586V17.5H11.2559V16.25ZM11.2559 13.75H18.7599V15H11.2559V13.75ZM11.2559 11.25H18.7599V12.5H11.2559V11.25Z" fill="#EF7822"/>
                                                         <path d="M12.8495 7.00672L10.0051 1.24609L7.16063 7.00672L0.800781 7.93047L5.40293 12.4148L4.31617 18.7461L8.7545 16.4142V15.0017L5.97758 16.4611L6.63538 12.6261L6.74669 11.978L6.27584 11.5198L3.48829 8.80297L7.34071 8.24359L7.99102 8.14922L8.2824 7.55984L10.0051 4.07047L11.7278 7.55984L12.0192 8.14922L12.6695 8.24359L17.3304 8.92172L17.5086 7.68359L12.8495 7.00672Z" fill="#EF7822"/>
@@ -119,10 +119,10 @@
                             @endisset
                             @endforeach
                             @if ($review_count == 0)
-                                <div class="text-center pt-5 text-capitalize">
+                                <div class="text-center pt-5 text-non-capitalize">
                                     <img class="mb-1" src="{{dynamicAsset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
                                          alt="">
-                                    <p class="opacity-60 mt-3 text-capitalize">{{translate('no_review_found')}}!</p>
+                                    <p class="opacity-60 mt-3 text-non-capitalize">{{translate('no_review_found')}}!</p>
                                 </div>
                             @endif
                         </div>

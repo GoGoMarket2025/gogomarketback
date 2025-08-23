@@ -79,7 +79,7 @@ if ($order->is_guest) {
             <td class="width-50 mt-1">
 
                 <div class="text-start mt-1">
-                    <strong class="text-capitalize">{{ translate('vendor_details') }}  </strong>
+                    <strong class="text-non-capitalize">{{ translate('vendor_details') }}  </strong>
                     <br>
                     @if ($order->seller_is == 'seller')
 
@@ -184,7 +184,7 @@ if ($order->is_guest) {
         <tr>
             <th></th>
             <td class="text-end">
-                <table class="text-capitalize calculation-section">
+                <table class="text-non-capitalize calculation-section">
                     <tbody>
                     <tr>
                         <th class="pb-2">{{ translate('sub_total') }} :</th>
@@ -241,7 +241,7 @@ if ($order->is_guest) {
                 <td>
                     <div class="my-4">
                         <a href="{{ route('track-order.result', ['order_id'=>$order->id, 'phone_number'=>$userPhone]) }}"
-                           class="p-3 radius-5 text-capitalize border-0 btn btn-primary">
+                           class="p-3 radius-5 text-non-capitalize border-0 btn btn-primary">
                             {{ translate('track_your_order') }}
                         </a>
                     </div>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/coupon_setup.png')}}" alt="">
                 {{translate('coupon_setup')}}
             </h2>
@@ -37,7 +37,7 @@
                                 <div class="col-md-6 col-lg-4 form-group">
                                     <div class="d-flex justify-content-between">
                                         <label for="name"
-                                               class="title-color font-weight-medium text-capitalize">{{translate('coupon_code')}}</label>
+                                               class="title-color font-weight-medium text-non-capitalize">{{translate('coupon_code')}}</label>
                                         <a href="javascript:" class="float-right c1 fs-12" id="generateCode">{{translate('generate_code')}}</a>
                                     </div>
                                     <input type="text" name="code" value=""
@@ -132,7 +132,7 @@
                 <div class="card">
                     <div class="px-3 py-4">
                         <div class="d-flex flex-wrap  gap-3 align-items-center">
-                            <h5 class="mb-0 text-capitalize d-flex gap-2 mr-auto">
+                            <h5 class="mb-0 text-non-capitalize d-flex gap-2 mr-auto">
                                 {{translate('coupon_list')}}
                                 <span class="badge badge-soft-dark radius-50 fs-12 ml-1">{{ $coupons->total() }}</span>
                             </h5>
@@ -161,7 +161,7 @@
                     <div class="table-responsive">
                         <table id="datatable"
                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table {{ Session::get('direction') === 'rtl' ? 'text-right' : 'text-left' }}">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('coupon')}}</th>
@@ -195,7 +195,7 @@
                                         <div>{{substr($coupon['title'],0,20)}}</div>
                                         <strong>{{translate('code')}}: {{$coupon['code']}}</strong>
                                     </td>
-                                    <td class="text-capitalize">{{translate(str_replace('_',' ',$coupon['coupon_type']))}}</td>
+                                    <td class="text-non-capitalize">{{translate(str_replace('_',' ',$coupon['coupon_type']))}}</td>
                                     <td>
                                         <div class="d-flex flex-wrap gap-1">
                                             <span>{{date('d M, y',strtotime($coupon['start_date']))}} - </span>

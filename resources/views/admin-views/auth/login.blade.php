@@ -43,7 +43,7 @@
                 </a>
                 <h2 class="title h1">
                     {{ translate('Make Your Business') }}
-                    <span class="fw-bold text-primary d-block text-capitalize">
+                    <span class="fw-bold text-primary d-block text-non-capitalize">
                         {{ translate('Profitable...') }}
                     </span>
                 </h2>

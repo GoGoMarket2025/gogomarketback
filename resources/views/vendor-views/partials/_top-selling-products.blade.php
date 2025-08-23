@@ -1,5 +1,5 @@
 <div class="card-header">
-    <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+    <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
         <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/top-selling-product-icon.png')}}" alt="">
         {{translate('top_selling_products')}}
     </h4>

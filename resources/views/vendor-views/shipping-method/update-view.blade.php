@@ -5,7 +5,7 @@
 @section('content')
 <div class="content container-fluid">
     <div class="mb-3">
-        <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+        <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
             <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/shipping_method.png')}}" alt="">
             {{translate('shipping_method_update')}}
         </h2>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-capitalize">
+                <div class="card-header text-non-capitalize">
                     <h5 class="mb-0">{{translate('shipping_method_update')}}</h5>
                 </div>
                 <div class="card-body">

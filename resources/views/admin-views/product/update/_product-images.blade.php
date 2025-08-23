@@ -250,7 +250,7 @@
                         <div class="form-group">
                             <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
                                 <div>
-                                    <label for="name" class="form-label text-capitalize fw-bold mb-0">
+                                    <label for="name" class="form-label text-non-capitalize fw-bold mb-0">
                                         {{ translate('Product_Preview_File') }}
                                     </label>
                                     <span class="tooltip-icon cursor-pointer" data-bs-toggle="tooltip"

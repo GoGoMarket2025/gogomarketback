@@ -15,7 +15,7 @@
                             @if($order->order_type == 'default_type' && getWebConfig(name: 'order_verification'))
                                 <div class="d-flex gap-3 flex-wrap">
                                     <div class="bg-light rounded py-2 px-3 d-flex align-items-center">
-                                        <div class="fs-14 text-capitalize">
+                                        <div class="fs-14 text-non-capitalize">
                                             {{translate('order_verification_code')}} : <strong
                                                 class="text-base">{{$order['verification_code']}}</strong>
                                         </div>
@@ -51,7 +51,7 @@
                                                 <div class="">
                                                     <div
                                                         class="_1 py-2 d-flex justify-content-between align-items-center">
-                                                        <h6 class="fs-13 font-bold text-capitalize">{{translate('payment_info')}}</h6>
+                                                        <h6 class="fs-13 font-bold text-non-capitalize">{{translate('payment_info')}}</h6>
                                                         <button type="button" class="btn btn-square d-sm-none get-view-by-onclick"
                                                                 data-link="{{route('generate-invoice',[$order->id])}}">
                                                             <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/downloads.png')}}" alt="">
@@ -59,21 +59,21 @@
                                                     </div>
                                                     <div class="fs-12">
                                                         <span
-                                                            class="text-muted text-capitalize">{{translate('payment_status')}}</span>
+                                                            class="text-muted text-non-capitalize">{{translate('payment_status')}}</span>
                                                         :
                                                         <span
-                                                            class="text-{{$order['payment_status'] == 'paid' ? 'success' : 'danger'}} text-capitalize">{{$order['payment_status'] == 'paid' ? translate('paid') : translate('unpaid')}}</span>
+                                                            class="text-{{$order['payment_status'] == 'paid' ? 'success' : 'danger'}} text-non-capitalize">{{$order['payment_status'] == 'paid' ? translate('paid') : translate('unpaid')}}</span>
                                                     </div>
                                                     <div class="mt-2 fs-12">
                                                         <span
-                                                            class="text-muted text-capitalize">{{translate('payment_method')}}</span>
+                                                            class="text-muted text-non-capitalize">{{translate('payment_method')}}</span>
                                                         :
                                                         <span
-                                                            class="text-primary text-capitalize">{{translate($order['payment_method'])}}</span>
+                                                            class="text-primary text-non-capitalize">{{translate($order['payment_method'])}}</span>
                                                     </div>
                                                     @if($order->payment_method == 'offline_payment' && isset($order->offlinePayments))
                                                         <button type="button"
-                                                                class="btn bg--secondary border border-primary-light mt-3 rounded-pill btn-sm text-capitalize fs-10 font-semi-bold"
+                                                                class="btn bg--secondary border border-primary-light mt-3 rounded-pill btn-sm text-non-capitalize fs-10 font-semi-bold"
                                                                 data-toggle="modal"
                                                                 data-target="#verifyViewModal">{{translate('see_payment_details')}}</button>
                                                     @endif
@@ -93,29 +93,29 @@
                                                     <td class="order_table_td">
                                                         <div class="">
                                                             <div class=" py-2">
-                                                                <h6 class="fs-13 font-bold text-capitalize">
+                                                                <h6 class="fs-13 font-bold text-non-capitalize">
                                                                     {{translate('shipping_address')}}:
                                                                 </h6>
                                                             </div>
                                                             <div class="">
-                                                                <span class="text-capitalize fs-12">
-                                                                    <span class="text-capitalize">
+                                                                <span class="text-non-capitalize fs-12">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px">{{translate('name')}}</span> :&nbsp; {{$shipping->contact_person_name}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px">{{translate('phone')}}</span> :&nbsp; {{$shipping->phone}},
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span class="min-w-60px">
                                                                             {{ translate('city') }}
                                                                         </span> :&nbsp; {{$shipping->city}}, {{$shipping->zip}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span class="min-w-60px">
                                                                             {{ translate('address') }}
                                                                         </span> : {{$shipping->address}}
@@ -128,47 +128,47 @@
                                                 <td class="order_table_td">
                                                     <div class="">
                                                         <div class="py-2">
-                                                            <h6 class="fs-13 font-bold text-capitalize">
+                                                            <h6 class="fs-13 font-bold text-non-capitalize">
                                                                 {{translate('billing_address')}}:
                                                             </h6>
                                                         </div>
                                                         <div class="">
                                                             @php($billing=$order['billing_address_data'])
-                                                            <span class="text-capitalize fs-12">
+                                                            <span class="text-non-capitalize fs-12">
                                                                 @if($billing)
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px">{{translate('name')}}</span> : &nbsp;{{$billing->contact_person_name}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px">{{translate('phone')}}</span> : &nbsp;{{$billing->phone}},
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span class="min-w-60px">
                                                                             {{ translate('city') }}
                                                                         </span> :&nbsp; {{$billing->city}}, {{$billing->zip}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span class="min-w-60px">
                                                                             {{translate('address')}}
                                                                         </span> :&nbsp; {{$billing->address}}
                                                                     </span>
                                                                 @elseif($shipping)
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px">{{translate('name')}}</span> : &nbsp;{{$shipping->contact_person_name}}
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px">{{translate('phone')}}</span> :&nbsp; {{$shipping->phone}},
                                                                     </span>
                                                                     <br>
-                                                                    <span class="text-capitalize">
+                                                                    <span class="text-non-capitalize">
                                                                         <span
                                                                             class="min-w-60px"> {{translate('address')}}</span> :&nbsp;
                                                                         {{$shipping->address}},
@@ -188,7 +188,7 @@
 
                                 <div class="payment mb-3 table-responsive d-none d-lg-block">
                                     <table class="table table-borderless min-width-600px">
-                                        <thead class="thead-light text-capitalize">
+                                        <thead class="thead-light text-non-capitalize">
                                         <tr class="fs-13 font-semi-bold">
                                             <th>{{translate('order_details')}}</th>
                                             <th>{{translate('qty')}}</th>
@@ -220,7 +220,7 @@
                                                                 <a href="{{route('product',[$product['slug']])}}" class="fs-14 font-semi-bold mb-2 line--limit-2 max-w-200px">
                                                                     {{isset($product['name']) ? Str::limit($product['name'], 60) : ''}}
                                                                 </a>
-                                                                <div class="fs-12 text-capitalize mb-1">
+                                                                <div class="fs-12 text-non-capitalize mb-1">
                                                                     {{ translate('unit_price_:') }}
                                                                     {{ webCurrencyConverter($detail->price) }}
                                                                 </div>
@@ -661,7 +661,7 @@
                                         </table>
 
                                         @if ($order['order_status']=='pending')
-                                            <button class="btn btn-soft-danger btn-soft-border w-100 btn-sm text-danger font-semi-bold text-capitalize mt-3 call-route-alert"
+                                            <button class="btn btn-soft-danger btn-soft-border w-100 btn-sm text-danger font-semi-bold text-non-capitalize mt-3 call-route-alert"
                                                     data-route="{{ route('order-cancel',[$order->id]) }}"
                                                     data-message="{{translate('want_to_cancel_this_order?')}}">
                                                 {{translate('cancel_order')}}
@@ -704,12 +704,12 @@
                     </div>
 
                     <div class="modal-body pt-0">
-                        <h5 class="mb-3 text-center text-capitalize fs-16 font-semi-bold">
+                        <h5 class="mb-3 text-center text-non-capitalize fs-16 font-semi-bold">
                             {{ translate('payment_verification') }}
                         </h5>
 
                         <div class="shadow-sm rounded p-3">
-                            <h6 class="mb-3 text-capitalize fs-16 font-semi-bold">
+                            <h6 class="mb-3 text-non-capitalize fs-16 font-semi-bold">
                                 {{translate('customer_information')}}
                             </h6>
 
@@ -718,7 +718,7 @@
                                     <span class=" min-w-120">{{translate('name')}}</span>
                                     <span>:</span>
                                     <span class="text-dark">
-                                        <a class="font-weight-medium fs-12 text-capitalize" href="Javascript:">
+                                        <a class="font-weight-medium fs-12 text-non-capitalize" href="Javascript:">
                                             {{$order->customer->f_name ?? translate('name_not_found') }}&nbsp;{{$order->customer->l_name ?? ''}}
                                         </a>
                                     </span>
@@ -728,7 +728,7 @@
                                     <span class=" min-w-120">{{translate('phone')}}</span>
                                     <span>:</span>
                                     <span class="text-dark">
-                                        <a class="font-weight-medium fs-12 text-capitalize" href="{{ $order?->customer?->phone ? 'tel:'.$order?->customer?->phone : 'javascript:' }}">
+                                        <a class="font-weight-medium fs-12 text-non-capitalize" href="{{ $order?->customer?->phone ? 'tel:'.$order?->customer?->phone : 'javascript:' }}">
                                             {{ $order->customer->phone ?? translate('number_not_found') }}
                                         </a>
                                     </span>
@@ -736,7 +736,7 @@
                             </div>
 
                             <div class="mt-3 border-top pt-4">
-                                <h6 class="mb-3 text-capitalize fs-16 font-semi-bold">
+                                <h6 class="mb-3 text-non-capitalize fs-16 font-semi-bold">
                                     {{ translate('payment_information') }}
                                 </h6>
 
@@ -745,7 +745,7 @@
                                     @foreach ($order->offlinePayments->payment_info as $key=>$value)
                                         @if ($key != 'method_id')
                                             <div class="d-flex align-items-center gap-2">
-                                                <span class="text-capitalize min-w-120">{{translate($key)}}</span>
+                                                <span class="text-non-capitalize min-w-120">{{translate($key)}}</span>
                                                 <span>:</span>
                                                 <span class="font-weight-medium fs-12 ">
                                                     {{$value}}
@@ -756,7 +756,7 @@
 
                                     @if($order->payment_note)
                                         <div class="d-flex align-items-start gap-2">
-                                            <span class="text-capitalize min-w-120">{{ translate('payment_none') }}</span>
+                                            <span class="text-non-capitalize min-w-120">{{ translate('payment_none') }}</span>
                                             <span>:</span>
                                             <span class="font-weight-medium fs-12 "> {{ $order->payment_note }}  </span>
                                         </div>
@@ -776,7 +776,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header border-0 pb-0">
-                    <h6 class="text-center text-capitalize m-0 flex-grow-1">{{translate('refund_details')}}</h6>
+                    <h6 class="text-center text-non-capitalize m-0 flex-grow-1">{{translate('refund_details')}}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

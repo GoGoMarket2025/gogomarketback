@@ -342,7 +342,7 @@ aside li .nav-link > span:not(:first-child) {
     border-color: rgba(1, 119, 205, 0.1);
 }
 
-thead.text-capitalize th {
+thead.text-non-capitalize th {
     font-size: 14px;
 }
 

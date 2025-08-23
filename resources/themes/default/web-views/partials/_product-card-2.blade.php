@@ -18,7 +18,7 @@
                 <div>
                     <h3 class="mb-0 letter-spacing-0">
                         <a href="{{route('product',$product->slug)}}"
-                           class="flash-product-title text-capitalize fw-semibold">
+                           class="flash-product-title text-non-capitalize fw-semibold">
                             {{ Str::limit($product['name'], 80) }}
                         </a>
                     </h3>

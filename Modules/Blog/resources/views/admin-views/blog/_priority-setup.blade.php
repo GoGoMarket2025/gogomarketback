@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/blog-logo.png') }}" alt="">
                 {{ translate('Blog') }}
             </h2>
@@ -22,7 +22,7 @@
                 <div class="row g-4">
                     <div class="col-lg-6">
                         <div class="">
-                            <h3 class="mb-3 text-capitalize">{{ translate('categories') }}</h3>
+                            <h3 class="mb-3 text-non-capitalize">{{ translate('categories') }}</h3>
                             <p class="max-w-400">{{ translate('this_blog_category_lists_groups_similar_blogs_you_can_view_categories_in_the_following_order_latest_alphabetical_or_most_clicked')}}</p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <div class="border rounded p-3 d-flex gap-4 flex-column">
                                 <div class="d-flex gap-2 justify-content-between pb-3 border-bottom">
                                     <div class="d-flex flex-column">
-                                        <h5 class="text-capitalize">{{ translate('use_default_sorting_list') }}</h5>
+                                        <h5 class="text-non-capitalize">{{ translate('use_default_sorting_list') }}</h5>
                                         <div class="d-flex gap-2 align-items-center">
                                             <img width="14" src="{{dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}" alt="">
                                             <span class="text-dark fs-12">{{translate('currently_sorting_this_section_based_on_latest_add')}}</span>
@@ -49,7 +49,7 @@
                                 <div class="">
                                     <div class="d-flex gap-2 justify-content-between">
                                         <div class="d-flex flex-column">
-                                            <h5 class="text-capitalize">{{ translate('use_custom_sorting_list') }}</h5>
+                                            <h5 class="text-non-capitalize">{{ translate('use_custom_sorting_list') }}</h5>
                                             <div class="d-flex gap-2 align-items-center">
                                                 <img width="14" src="{{dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}" alt="">
                                                 <span class="text-dark fs-12">{{ translate('you_can_sorting_this_section_by_others_way') }}</span>
@@ -72,14 +72,14 @@
 
                                             <div class="d-flex gap-2 align-items-center">
                                                 <input type="radio" class="show" name="sort_by" value="a_to_z" id="blog-category-alphabetic-order" {{ isset($blogCategoryPriority['sort_by']) && $blogCategoryPriority['sort_by'] == 'a_to_z' ? 'checked' : '' }}>
-                                                <label class="mb-0 cursor-pointer text-capitalize" for="blog-category-alphabetic-order">
+                                                <label class="mb-0 cursor-pointer text-non-capitalize" for="blog-category-alphabetic-order">
                                                     {{ translate('sort_by_Alphabetical') }} ({{'A '.translate('to').' Z' }})
                                                 </label>
                                             </div>
 
                                             <div class="d-flex gap-2 align-items-center">
                                                 <input type="radio" class="show" name="sort_by" value="z_to_a" id="blog-category-alphabetic-order-reverse" {{ isset($blogCategoryPriority['sort_by']) && $blogCategoryPriority['sort_by'] == 'z_to_a' ? 'checked' : '' }}>
-                                                <label class="mb-0 cursor-pointer text-capitalize" for="blog-category-alphabetic-order-reverse">
+                                                <label class="mb-0 cursor-pointer text-non-capitalize" for="blog-category-alphabetic-order-reverse">
                                                     {{ translate('sort_by_Alphabetical') }} ({{'Z '.translate('to').' A' }})
                                                 </label>
                                             </div>
@@ -103,7 +103,7 @@
                 <div class="row g-4">
                     <div class="col-lg-6">
                         <div class="">
-                            <h3 class="mb-3 text-capitalize">{{ translate('blog_list') }}</h3>
+                            <h3 class="mb-3 text-non-capitalize">{{ translate('blog_list') }}</h3>
                             <p class="max-w-400">{{ translate('in_the_all_blogs_section_or_a_specific_blog_category_can_view_the_blogs_in_the_following_order_latest_alphabetical_or_popularity') }} ({{ translate('most_clicked') }})</p>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                             <div class="border rounded p-3 d-flex gap-4 flex-column">
                                 <div class="d-flex gap-2 justify-content-between pb-3 border-bottom">
                                     <div class="d-flex flex-column">
-                                        <h5 class="text-capitalize">{{ translate('use_default_sorting_list') }}</h5>
+                                        <h5 class="text-non-capitalize">{{ translate('use_default_sorting_list') }}</h5>
                                         <div class="d-flex gap-2 align-items-center">
                                             <img width="14" src="{{dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}" alt="">
                                             <span class="text-dark fs-12">{{translate('currently_sorting_this_section_based_on_first_created')}}</span>
@@ -129,7 +129,7 @@
                                 <div class="">
                                     <div class="d-flex gap-2 justify-content-between">
                                         <div class="d-flex flex-column">
-                                            <h5 class="text-capitalize">{{ translate('blog_sorting_list') }}</h5>
+                                            <h5 class="text-non-capitalize">{{ translate('blog_sorting_list') }}</h5>
                                             <div class="d-flex gap-2 align-items-center">
                                                 <img width="14" src="{{dynamicAsset(path: 'public/assets/back-end/img/icons/info.svg') }}" alt="">
                                                 <span class="text-dark fs-12">{{ translate('you_can_sorting_this_section_by_others_way') }}</span>
@@ -152,14 +152,14 @@
 
                                             <div class="d-flex gap-2 align-items-center">
                                                 <input type="radio" class="show" name="sort_by" value="a_to_z" id="blog-list-alphabetic-order" {{ isset($blogPriority['sort_by']) && $blogPriority['sort_by'] == 'a_to_z' ? 'checked' : '' }}>
-                                                <label class="mb-0 cursor-pointer text-capitalize" for="blog-list-alphabetic-order">
+                                                <label class="mb-0 cursor-pointer text-non-capitalize" for="blog-list-alphabetic-order">
                                                     {{ translate('sort_by_Alphabetical') }} ({{'A '.translate('to').' Z' }})
                                                 </label>
                                             </div>
 
                                             <div class="d-flex gap-2 align-items-center">
                                                 <input type="radio" class="show" name="sort_by" value="z_to_a" id="blog-list-alphabetic-order-reverse" {{ isset($blogPriority['sort_by']) && $blogPriority['sort_by'] == 'z_to_a' ? 'checked' : '' }}>
-                                                <label class="mb-0 cursor-pointer text-capitalize" for="blog-list-alphabetic-order-reverse">
+                                                <label class="mb-0 cursor-pointer text-non-capitalize" for="blog-list-alphabetic-order-reverse">
                                                     {{ translate('sort_by_Alphabetical') }} ({{'Z '.translate('to').' A' }})
                                                 </label>
                                             </div>

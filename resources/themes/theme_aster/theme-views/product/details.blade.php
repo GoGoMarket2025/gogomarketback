@@ -241,7 +241,7 @@
                                                     <div class="digital-product-authors mb-2">
                                                         @if(count($productPublishingHouseInfo['data']) > 0)
                                                             <div class="d-flex align-items-center g-2 me-2">
-                                                                <span class="text-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
+                                                                <span class="text-non-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
                                                                 <div class="item-list">
                                                                     @foreach($productPublishingHouseInfo['data'] as $publishingHouseName)
                                                                         <a href="{{ route('products', ['publishing_house_id' => $publishingHouseName['id'], 'product_type' => 'digital', 'page'=>1]) }}"
@@ -255,7 +255,7 @@
 
                                                         @if(count($productAuthorsInfo['data']) > 0)
                                                             <div class="d-flex align-items-center g-2 me-2">
-                                                                <span class="text-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
+                                                                <span class="text-non-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
                                                                 <div class="item-list">
                                                                     @foreach($productAuthorsInfo['data'] as $productAuthor)
                                                                         <a href="{{ route('products',['author_id' => $productAuthor['id'], 'product_type' => 'digital', 'page' => 1]) }}"
@@ -408,7 +408,7 @@
                                                                     {{translate('buy_now')}}
                                                                 </button>
                                                                 <button type="button"
-                                                                        class="btn btn-primary fs-16 flex-grow-1 text-capitalize"
+                                                                        class="btn btn-primary fs-16 flex-grow-1 text-non-capitalize"
                                                                         disabled>
                                                                     {{translate('add_to_cart')}}
                                                                 </button>
@@ -422,7 +422,7 @@
                                                                     {{translate('buy_now')}}
                                                                 </button>
                                                                 <button type="button"
-                                                                        class="btn btn-primary fs-16 text-capitalize product-add-to-cart-button"
+                                                                        class="btn btn-primary fs-16 text-non-capitalize product-add-to-cart-button"
                                                                         type="button"
                                                                         data-form=".add-to-cart-details-form"
                                                                         data-update="{{ translate('update_cart') }}"
@@ -466,7 +466,7 @@
                         <div class="card-body">
                             <nav>
                                 <div class="nav justify-content-center gap-4 nav--tabs" id="nav-tab" role="tablist">
-                                    <h2 class="active text-capitalize tab_link fs-16 cursor-pointer" id="product-details-tab" data-bs-toggle="tab"
+                                    <h2 class="active text-non-capitalize tab_link fs-16 cursor-pointer" id="product-details-tab" data-bs-toggle="tab"
                                             data-bs-target="#product-details" role="tab"
                                             aria-controls="product-details"
                                             aria-selected="true">{{translate('product_details')}}</h2>
@@ -483,7 +483,7 @@
                                             <table class="table mb-0">
                                                 <thead class="table-light">
                                                 <tr>
-                                                    <th class="border-0 text-capitalize">
+                                                    <th class="border-0 text-non-capitalize">
                                                         <h3 class="fs-14">
                                                             {{translate('details_description')}}
                                                         </h3>
@@ -609,7 +609,7 @@
                                                                     <div
                                                                         class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
                                                                         <div>
-                                                                            <h6 class="mb-1 text-capitalize">{{isset($review->user)?$review->user->f_name:translate('user_not_exist')}}</h6>
+                                                                            <h6 class="mb-1 text-non-capitalize">{{isset($review->user)?$review->user->f_name:translate('user_not_exist')}}</h6>
                                                                             <div
                                                                                 class="d-flex gap-2 align-items-center">
                                                                                 <div
@@ -702,7 +702,7 @@
                     @if (count($moreProductFromSeller)>0)
                     <div class="card order-1 order-sm-0">
                         <div class="card-body">
-                            <h2 class="mb-3 text-capitalize h5">
+                            <h2 class="mb-3 text-non-capitalize h5">
                                 @if(getWebConfig(name: 'business_mode')=='multi')
                                     {{translate('more_from_the_store')}}
                                 @else
@@ -721,7 +721,7 @@
                                             </div>
                                             @php($itemReview = getOverallRating($item->reviews))
                                             <div class="media-body d-flex flex-column gap-2">
-                                                <h3 class="text-capitalize h6">{{ Str::limit($item['name'], 18) }}</h3>
+                                                <h3 class="text-non-capitalize h6">{{ Str::limit($item['name'], 18) }}</h3>
                                                 <div class="d-flex gap-2 align-items-center">
                                                     <div class="star-rating text-gold fs-12">
                                                         @for ($index = 1; $index <= 5; $index++)
@@ -802,7 +802,7 @@
                                         </div>
 
                                         <a href="{{ route('shopView',[$product->seller->id]) }}"
-                                           class="btn btn-primary btn-block text-capitalize">{{translate('visit_store')}}</a>
+                                           class="btn btn-primary btn-block text-non-capitalize">{{translate('visit_store')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -862,7 +862,7 @@
                                         @endif
                                     </div>
                                     <a href="{{ route('shopView',[0]) }}"
-                                       class="btn btn-primary btn-block text-capitalize">{{translate('visit_store')}}</a>
+                                       class="btn btn-primary btn-block text-non-capitalize">{{translate('visit_store')}}</a>
                                 </div>
                             </div>
                         </div>
@@ -875,9 +875,9 @@
                 <div class="py-4 mt-3">
                     <div class="d-flex justify-content-between gap-3 mb-4">
                         @if($web_config['business_mode'] == 'multi')
-                            <h2 class="text-capitalize">{{translate('similar_products_from_other_stores')}}</h2>
+                            <h2 class="text-non-capitalize">{{translate('similar_products_from_other_stores')}}</h2>
                         @else
-                            <h2 class="text-capitalize">{{translate('similar_products')}}</h2>
+                            <h2 class="text-non-capitalize">{{translate('similar_products')}}</h2>
                         @endif
                         <div class="swiper-nav d-flex gap-2 align-items-center">
                             <div class="swiper-button-prev top-rated-nav-prev position-static rounded-10"></div>

@@ -62,7 +62,7 @@
                         <table>
                             <tr>
                                 <th class="bold black p-0 text-left p-3">{{translate('duration')}}</th>
-                                <td class="p-0 p-3 text-capitalize">: {{ $duration }}</td>
+                                <td class="p-0 p-3 text-non-capitalize">: {{ $duration }}</td>
                             </tr>
                             <tr>
                                 <th class="bold black p-0 text-left p-3">{{translate('vendor_Info')}}</th>

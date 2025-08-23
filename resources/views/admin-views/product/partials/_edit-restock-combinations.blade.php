@@ -1,7 +1,7 @@
 @if(count($combinations) > 0)
     <div class="table-responsive">
         <table class="table physical_product_show table-borderless">
-            <thead class="text-capitalize">
+            <thead class="text-non-capitalize">
                 <tr>
                     <th class="py-2">
                         <label for="" class="control-label">

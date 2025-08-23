@@ -12,13 +12,13 @@
                     <div class="card h-100">
                         <div class="card-body p-lg-4">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                <h5 class="text-capitalize">{{translate('my_order_list')}}</h5>
+                                <h5 class="text-non-capitalize">{{translate('my_order_list')}}</h5>
                                 <div class="border rounded  custom-ps-3 py-2">
                                     <div class="d-flex gap-2">
                                         <div class="flex-middle gap-2">
                                             <i class="bi bi-sort-up-alt"></i>
                                             <span
-                                                class="d-none d-sm-inline-block text-capitalize">{{translate('show_order').':'}}</span>
+                                                class="d-none d-sm-inline-block text-non-capitalize">{{translate('show_order').':'}}</span>
                                         </div>
                                         <div class="dropdown">
                                             <button type="button"
@@ -49,7 +49,7 @@
                                             <thead class="text-primary">
                                             <tr>
                                                 <th>{{translate('SL')}}</th>
-                                                <th class="text-capitalize">{{translate('order_details')}}</th>
+                                                <th class="text-non-capitalize">{{translate('order_details')}}</th>
                                                 <th class="text-center">{{translate('status')}}</th>
                                                 <th>{{translate('amount')}}</th>
                                                 <th class="text-center">{{translate('action')}}</th>

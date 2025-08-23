@@ -36,7 +36,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                     <tr>
                                         <th>{{ translate('SL') }}</th>
                                         <th>{{ translate('brand_Logo') }}</th>
@@ -150,7 +150,7 @@
                                    for="exampleFormControlSelect1">{{ translate('select_Category') }}
                                 <span class="text-danger">*</span>
                             </label>
-                            <select class="custom-select brand-option" name="brand_id" data-placeholder="Select from dropdown" required>
+                            <select class="custom-select brand-option" name="brand_id" required>
                                 <option></option>
                             </select>
                         </div>

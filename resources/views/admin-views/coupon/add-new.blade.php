@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/coupon_setup.png') }}" alt="">
                 {{translate('coupon_setup')}}
             </h2>
@@ -42,7 +42,7 @@
                                 <div class="col-md-6 col-lg-4">
                                     <div class="d-flex justify-content-between">
                                         <label for="name"
-                                               class="form-label text-capitalize">{{translate('coupon_code')}}</label>
+                                               class="form-label text-non-capitalize">{{translate('coupon_code')}}</label>
                                         <a href="javascript:" class="text-primary fs-12" id="generateCode">{{translate('generate_code')}}</a>
                                     </div>
                                     <input type="text" name="code" value=""
@@ -190,7 +190,7 @@
                         <div class="table-responsive">
                             <table id="datatable"
                                    class="table table-hover table-borderless table-thead-bordered align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('coupon')}}</th>
@@ -210,7 +210,7 @@
                                             <div>{{substr($coupon['title'],0,20)}}</div>
                                             <strong>{{translate('code')}}: {{$coupon['code'] }}</strong>
                                         </td>
-                                        <td class="text-capitalize">{{translate(str_replace('_',' ',$coupon['coupon_type']))}}</td>
+                                        <td class="text-non-capitalize">{{translate(str_replace('_',' ',$coupon['coupon_type']))}}</td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-1">
                                                 <span>{{date('d M, y',strtotime($coupon['start_date']))}} - </span>

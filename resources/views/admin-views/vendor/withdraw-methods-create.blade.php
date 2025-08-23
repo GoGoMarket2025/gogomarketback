@@ -6,7 +6,7 @@
     <div class="content container-fluid">
         <div class="mb-3">
             <div class="page-title-wrap d-flex justify-content-between flex-wrap align-items-center gap-3 mb-3">
-                <h2 class="page-title text-capitalize h1">
+                <h2 class="page-title text-non-capitalize h1">
                     <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
                     {{translate('withdrawal_methods')}}
                 </h2>

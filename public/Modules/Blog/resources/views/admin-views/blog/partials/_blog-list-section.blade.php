@@ -1,7 +1,7 @@
 <div class="table-responsive datatable-custom">
     <table
         class="table table-hover table-borderless align-middle">
-        <thead class="text-capitalize">
+        <thead class="text-non-capitalize">
         <tr>
             <th>{{ translate('SL') }}</th>
             <th>{{ translate('Id') }}</th>

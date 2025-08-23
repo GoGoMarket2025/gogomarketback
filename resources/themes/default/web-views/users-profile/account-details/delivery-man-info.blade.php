@@ -25,7 +25,7 @@
                                     <div
                                         class="d-flex gap-2 gap-sm-3 align-items-start align-items-sm-center justify-content-between">
                                         <div class="">
-                                            <h6 class="text-capitalize mb-2">{{$order->deliveryMan->f_name}}
+                                            <h6 class="text-non-capitalize mb-2">{{$order->deliveryMan->f_name}}
                                                 &nbsp{{$order->deliveryMan->l_name}}</h6>
                                             <div class="rating-show justify-content-between fs-12">
                                                 <span class="d-inline-block text-body">
@@ -45,7 +45,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-end flex-wrap gap-3 gap-sm-3">
-                                            <button type="button" class="btn btn-soft-info text-capitalize px-2 px-md-4"
+                                            <button type="button" class="btn btn-soft-info text-non-capitalize px-2 px-md-4"
                                                     data-toggle="modal"
                                                     data-target="#chatting_modal">
                                                 <img
@@ -75,7 +75,7 @@
                                 <div class="shadow-sm bg-white rounded p-3 mt-3">
                                     <div class="d-flex align-items-center flex-wrap justify-content-between gap-2 mb-3">
                                         <h6 class="d-flex gap-2 mb-0 review-item-title"><span>{{number_format($order->deliveryManReview?->rating ,1)}}<i
-                                                    class="tio-star-half text-warning text-capitalize"></i></span> {{translate('delivery_man_review')}}
+                                                    class="tio-star-half text-warning text-non-capitalize"></i></span> {{translate('delivery_man_review')}}
                                         </h6>
                                         <div
                                             class="fs-12 text-muted">{{date('M d , Y h:i A', strtotime($order->deliveryManReview->updated_at))}}</div>
@@ -87,7 +87,7 @@
                             @if ($order->verificationImages->count()>0)
                                 <div class="shadow-sm rounded bg-white p-3 mt-3">
                                     <h6 class="mb-0 fs-12 d-flex align-items-center gap-2 lh-1 mb-3">
-                                        <i class="tio-photo-camera fs-16 text-primary text-capitalize"></i>
+                                        <i class="tio-photo-camera fs-16 text-primary text-non-capitalize"></i>
                                         {{translate('picture_upload_by')}} {{$order->deliveryMan->f_name}}
                                         &nbsp{{$order->deliveryMan->l_name}}
                                     </h6>
@@ -109,7 +109,7 @@
                                             <img alt="{{ translate('deliveryman') }}" width="20"
                                                  src="{{ theme_asset(path: 'public/assets/front-end/img/icons/van.png') }}">
                                             <div class="media-body">
-                                                <div class="text-muted text-capitalize">
+                                                <div class="text-muted text-non-capitalize">
                                                     {{translate('delivery_service_name')}}
                                                 </div>
                                                 <div class="font-weight-bold">{{$order->delivery_service_name}}</div>
@@ -134,7 +134,7 @@
                     </div>
                 @else
                     <div class="login-card">
-                        <div class="text-center pt-5 text-capitalize">
+                        <div class="text-center pt-5 text-non-capitalize">
 
                             <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/delivery-man.svg')}}" alt="">
                             <p class="opacity-60 mt-3">
@@ -162,7 +162,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header border-0 pb-0">
-                    <h6 class="text-center text-capitalize">{{translate('submit_a_review')}}</h6>
+                    <h6 class="text-center text-non-capitalize">{{translate('submit_a_review')}}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -173,7 +173,7 @@
                         @csrf
                         <input name="order_id" value="{{$order->id}}" hidden>
                         <div class="d-flex flex-column gap-2 align-items-center my-4">
-                            <h5 class="text-center text-capitalize">{{translate('rate_the_delivery_quality')}}</h5>
+                            <h5 class="text-center text-non-capitalize">{{translate('rate_the_delivery_quality')}}</h5>
                             <div class="rating-label-wrap position-relative">
 
                                 @php($style = '')

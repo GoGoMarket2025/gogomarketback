@@ -5,12 +5,12 @@
                 <div class="nav nav-tabs mb-0" id="nav-tab" role="tablist">
                     <a class="nav-link {{ request('offer_type') != 'clearance_sale' ? 'active' : '' }}"
                        href="{{ route('shopView',['id' => ($shopInfoArray['id'] != 0 ? $shopInfoArray['id'] : 0)]) }}">
-                        <h3 class="widget-title align-self-center font-bold fs-16 text-capitalize my-0">{{translate('all_product')}}</h3>
+                        <h3 class="widget-title align-self-center font-bold fs-16 text-non-capitalize my-0">{{translate('all_product')}}</h3>
                     </a>
                     @if($stockClearanceSetup && $stockClearanceProducts > 0)
                         <a class="nav-link {{ request('offer_type') == 'clearance_sale' ? 'active' : '' }}"
                            href="{{ route('shopView',['id' => ($shopInfoArray['id'] != 0 ? $shopInfoArray['id'] : 0), 'offer_type' => 'clearance_sale']) }}">
-                            <h3 class="widget-title align-self-center font-bold fs-16 text-capitalize my-0">{{translate('clearance_sale')}}</h3>
+                            <h3 class="widget-title align-self-center font-bold fs-16 text-non-capitalize my-0">{{translate('clearance_sale')}}</h3>
                         </a>
                     @endif
                 </div>
@@ -19,7 +19,7 @@
     @else
         <div>
             @if(isset($pageTitleContent) && $pageTitleContent)
-                <h5 class="font-semibold mb-1 text-capitalize">
+                <h5 class="font-semibold mb-1 text-non-capitalize">
                     {{ $pageTitleContent }}
                 </h5>
             @endif

@@ -5,11 +5,11 @@
 @section('content')
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-            <h2 class="h1 mb-1 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-1 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/banner.png') }}" alt="">
                 {{ translate('banner_Setup') }}
                 <small>
-                    <strong class="text-primary text-capitalize">
+                    <strong class="text-primary text-non-capitalize">
                         ({{ str_replace("_", " ", (theme_root_path() == "theme_fashion" ? "theme_lifestyle" : theme_root_path())) }}
                         )
                     </strong>
@@ -45,7 +45,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0 text-capitalize">{{ translate('banner_form') }}</h5>
+                        <h5 class="mb-0 text-non-capitalize">{{ translate('banner_form') }}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('admin.banner.store') }}" method="post" enctype="multipart/form-data"
@@ -268,7 +268,7 @@
                                     <div class="col-sm-12 col-lg-3">
                                         <div id="banner-btn">
                                             <button id="main-banner-add"
-                                                    class="btn btn-primary text-nowrap text-capitalize">
+                                                    class="btn btn-primary text-nowrap text-non-capitalize">
                                                 <i class="fi fi-sr-plus"></i>
                                                 {{ translate('add_banner') }}
                                             </button>
@@ -281,7 +281,7 @@
                         <div class="table-responsive">
                             <table id="columnSearchDatatable"
                                    class="table table-hover table-borderless table-thead-bordered align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th class="pl-xl-5">{{ translate('SL') }}</th>
                                     <th>{{ translate('image') }}</th>

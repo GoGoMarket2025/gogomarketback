@@ -263,7 +263,7 @@
                                                         class="dropdown-menu dropdown-menu-end shadow transaction-filter_dropdown dropdown-menu-end-0">
                                                         <div
                                                             class="d-flex justify-content-between align-items-center p-3 border-bottom">
-                                                            <h5 class="font-bold fs-16 text-capitalize m-0">
+                                                            <h5 class="font-bold fs-16 text-non-capitalize m-0">
                                                                 {{ translate('filter_data') }}
                                                             </h5>
                                                             <button id="filterCloseBtn" type="button"
@@ -273,7 +273,7 @@
                                                         </div>
                                                         <div class="p-3 overflow-auto max-h-290px">
                                                             <div class="mb-4">
-                                                                <h6 class="mb-3 text-capitalize font-bold fs-16">
+                                                                <h6 class="mb-3 text-non-capitalize font-bold fs-16">
                                                                     {{ translate('filter_by') }}
                                                                 </h6>
                                                                 <div class="d-flex gap-3 transaction_filter_by">
@@ -298,7 +298,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="mb-4">
-                                                                <h6 class="mb-3 text-capitalize font-bold fs-16">
+                                                                <h6 class="mb-3 text-non-capitalize font-bold fs-16">
                                                                     {{ translate('date_range') }}
                                                                 </h6>
                                                                 <div class="position-relative">
@@ -311,7 +311,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="mb-4">
-                                                                <h6 class="mb-3 text-capitalize font-bold fs-16">
+                                                                <h6 class="mb-3 text-non-capitalize font-bold fs-16">
                                                                     {{ translate('earn_by') }}
                                                                 </h6>
                                                                 <div class="d-flex flex-column gap-3 transaction_earn_by">
@@ -396,13 +396,13 @@
                                                                     + {{ webCurrencyConverter(amount: $item['admin_bonus']) }}
                                                                 </span>
                                                             </h6>
-                                                            <h6 class="text-muted mb-0 small text-capitalize fs-13 font-semibold">
+                                                            <h6 class="text-muted mb-0 small text-non-capitalize fs-13 font-semibold">
                                                                 {{ ucwords(str_replace('_', ' ', translate('admin_bonus'))) }}
                                                             </h6>
                                                         </div>
                                                         <div class="text-end small">
                                                             <div
-                                                                class="text-muted mb-1 text-nowrap text-capitalize font-semibold">
+                                                                class="text-muted mb-1 text-nowrap text-non-capitalize font-semibold">
                                                                 {{ date('d M, Y H:i A', strtotime($item['created_at'])) }}
                                                             </div>
                                                             @if($item['debit'] != 0)
@@ -432,7 +432,7 @@
                                                             </span>
 
                                                         </h6>
-                                                        <h6 class="text-muted mb-0 small text-capitalize fs-13 font-semibold">
+                                                        <h6 class="text-muted mb-0 small text-non-capitalize fs-13 font-semibold">
                                                             @if ($item['transaction_type'] == 'add_fund_by_admin')
                                                                 {{ translate('add_fund_by_admin') }} {{ $item['reference'] =='earned_by_referral' ? '('.translate($item['reference']).')' : '' }}
                                                             @elseif($item['transaction_type'] == 'order_place')
@@ -448,7 +448,7 @@
                                                     </div>
                                                     <div class="text-end small">
                                                         <div
-                                                            class="text-muted mb-1 text-nowrap text-capitalize font-semibold">{{date('d M, Y H:i A',strtotime($item['created_at']))}}</div>
+                                                            class="text-muted mb-1 text-nowrap text-non-capitalize font-semibold">{{date('d M, Y H:i A',strtotime($item['created_at']))}}</div>
                                                         @if($item['debit'] != 0)
                                                             <p class="text-danger fs-12 m-0">{{ translate('debit') }}</p>
                                                         @else

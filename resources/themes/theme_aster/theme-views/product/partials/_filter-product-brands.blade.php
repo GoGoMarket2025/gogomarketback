@@ -23,7 +23,7 @@
         @if($productBrands->count() > 10)
             <div class="d-flex justify-content-center">
                 <button
-                    class="btn-link text-primary btn_products_aside_brands text-capitalize">{{translate('more_brands').'...'}}
+                    class="btn-link text-primary btn_products_aside_brands text-non-capitalize">{{translate('more_brands').'...'}}
                 </button>
             </div>
         @endif

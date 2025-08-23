@@ -11,7 +11,7 @@
                     <div class="row align-items-center gy-3 mb-3 mb-sm-20">
                         <div class="col-md-9">
                             <div>
-                                <h2 class="text-capitalize">
+                                <h2 class="text-non-capitalize">
                                    {{ translate('header_section') }}
                                 </h2>
                                 <p class="fs-12 mb-0">
@@ -37,14 +37,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize">
+                                    <label class="form-label text-non-capitalize">
                                         {{translate('sub_title')}}
                                         <span class="text-danger">*</span>
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="add sub title" data-bs-title="add sub title">
                                             <i class="fi fi-sr-info"></i>
                                         </span>
                                     </label>
-                                    <textarea class="form-control text-capitalize" name="sub_title" rows="1" placeholder="{{translate('enter_sub_title')}}" data-maxlength="50">{{$vendorRegistrationHeader?->sub_title}}</textarea>
+                                    <textarea class="form-control text-non-capitalize" name="sub_title" rows="1" placeholder="{{translate('enter_sub_title')}}" data-maxlength="50">{{$vendorRegistrationHeader?->sub_title}}</textarea>
                                     <div class="d-flex justify-content-end">
                                         <span class="text-body-light">0/160</span>
                                     </div>
@@ -55,7 +55,7 @@
                             <div class="p-12 p-sm-20 bg-section rounded h-100">
                                 <div class="d-flex flex-column gap-20">
                                     <div>
-                                        <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                        <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                            {{ translate('Header_Image') }}
                                         </label>
                                         <p class="fs-12 mb-0">{{ translate('Upload_your_Header_Image') }}</p>

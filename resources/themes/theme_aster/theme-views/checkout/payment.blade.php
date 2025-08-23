@@ -6,7 +6,7 @@
 @section('content')
     <main class="main-content d-flex flex-column gap-3 py-3 mb-5">
         <div class="container">
-            <h4 class="text-center mb-3 text-capitalize">{{ translate('payment_details') }}</h4>
+            <h4 class="text-center mb-3 text-non-capitalize">{{ translate('payment_details') }}</h4>
             <div class="row payment-method-list-page">
                 <div class="col-lg-8 mb-3 mb-lg-0">
                     <div class="card h-100">
@@ -17,7 +17,7 @@
                                         data-link="{{route('shop-cart')}}">
                                         <span><i class="bi bi-check2"></i></span> {{ translate('cart') }}
                                     </li>
-                                    <li class="done cursor-pointer get-view-by-onclick text-capitalize"
+                                    <li class="done cursor-pointer get-view-by-onclick text-non-capitalize"
                                         data-link="{{route('checkout-details')}}">
                                         <span><i class="bi bi-check2"></i></span> {{ translate('shipping_details') }}
                                     </li>
@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                             @else
-                                <h5 class="mb-4 text-capitalize">{{ translate('payment_information') }}</h5>
+                                <h5 class="mb-4 text-non-capitalize">{{ translate('payment_information') }}</h5>
 
                                 <div class="mb-30">
                                     <ul class="option-select-btn d-grid flex-wrap gap-3">
@@ -47,7 +47,7 @@
                                                            <div class="d-flex align-items-center gap-3 pt-1">
                                                                 <img width="30" class="dark-support" alt=""
                                                                 src="{{ theme_asset('assets/img/icons/cash-on.png') }}">
-                                                                <span class="text-capitalize fs-16">{{ translate('cash_on_delivery') }}</span>
+                                                                <span class="text-non-capitalize fs-16">{{ translate('cash_on_delivery') }}</span>
                                                            </div>
 
                                                             <div class="w-100">
@@ -63,7 +63,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-center">
-                                                                    <a id="bring_change_amount_btn" class="btn primary-color border-0 fs-12 text-center text-capitalize shadow-none border-0 base-color p-0" data-bs-toggle="collapse" href="#bring_change_amount" role="button" aria-expanded="false" aria-controls="change_amount">
+                                                                    <a id="bring_change_amount_btn" class="btn primary-color border-0 fs-12 text-center text-non-capitalize shadow-none border-0 base-color p-0" data-bs-toggle="collapse" href="#bring_change_amount" role="button" aria-expanded="false" aria-controls="change_amount">
                                                                         {{ translate('see_more') }}
                                                                     </a>
                                                                 </div>

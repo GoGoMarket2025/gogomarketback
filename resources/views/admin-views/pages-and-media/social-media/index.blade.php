@@ -15,14 +15,14 @@
                     @csrf
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3 mb-sm-20">
-                        <h2 class="mb-0 text-capitalize">{{ translate('setup_social_media_link') }}</h2>
+                        <h2 class="mb-0 text-non-capitalize">{{ translate('setup_social_media_link') }}</h2>
                         <p class="fs-12 mb-0">{{ translate('here_you_can_add_your_social_media_links_this_will_help_you_to_show_your_social_activity_to_the_customers') }}.</p>
                     </div>
                     <div class="p-12 p-sm-20 bg-section rounded mb-3 mb-sm-20">
                         <div class="row g-3">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="name" class="form-label text-capitalize">
+                                    <label for="name" class="form-label text-non-capitalize">
                                         {{ translate('select_social_media') }}
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Select Social Media" data-bs-title="{{ translate('select_Social_Media') }}">
                                             <i class="fi fi-sr-info"></i>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="name" class="form-label text-capitalize">
+                                    <label for="name" class="form-label text-non-capitalize">
                                        {{ translate('social_media_link') }}
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Enter Social Media Link" data-bs-title="{{ translate('enter_Social_Media_Link') }}">
                                             <i class="fi fi-sr-info"></i>
@@ -65,10 +65,10 @@
         </div>
         <div class="card">
             <div class="card-body d-flex flex-column gap-20">
-                <h3 class="mb-0 text-capitalize">{{ translate('social_media_link_list') }}</h3>
+                <h3 class="mb-0 text-non-capitalize">{{ translate('social_media_link_list') }}</h3>
                 <div class="table-responsive">
                     <table class="table table-hover table-borderless {{ count($socialMediaLinks) == 0 ? 'd-none' : '' }}" id="dataTable">
-                        <thead class="text-capitalize">
+                        <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('sl') }}</th>
                                 <th>{{ translate('name') }}</th>

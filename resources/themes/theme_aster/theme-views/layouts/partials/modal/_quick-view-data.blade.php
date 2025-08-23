@@ -204,7 +204,7 @@
                                 <div class="digital-product-authors mb-2">
                                     @if(count($productPublishingHouseInfo['data']) > 0)
                                         <div class="d-flex align-items-center g-2 me-2">
-                                            <span class="text-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
+                                            <span class="text-non-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
                                             <div class="item-list">
                                                 @foreach($productPublishingHouseInfo['data'] as $publishingHouseName)
                                                     <a href="{{ route('products', ['publishing_house_id' => $publishingHouseName['id'], 'product_type' => 'digital', 'page'=>1]) }}"
@@ -218,7 +218,7 @@
 
                                     @if(count($productAuthorsInfo['data']) > 0)
                                         <div class="d-flex align-items-center g-2 me-2">
-                                            <span class="text-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
+                                            <span class="text-non-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
                                             <div class="item-list">
                                                 @foreach($productAuthorsInfo['data'] as $productAuthor)
                                                     <a href="{{ route('products',['author_id' => $productAuthor['id'], 'product_type' => 'digital', 'page' => 1]) }}"
@@ -369,7 +369,7 @@
                                             >
                                                 {{translate('buy_now')}}
                                             </button>
-                                            <button class="btn btn-primary fs-16 text-capitalize product-add-to-cart-button"
+                                            <button class="btn btn-primary fs-16 text-non-capitalize product-add-to-cart-button"
                                                     type="button"
                                                     data-form=".add-to-cart-details-form"
                                                     data-update="{{ translate('update_cart') }}"

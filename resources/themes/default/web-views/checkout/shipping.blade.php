@@ -26,7 +26,7 @@
                         <input type="hidden" id="physical_product" name="physical_product"
                                value="{{ $physical_product_view ? 'yes':'no'}}">
                         <div class="px-3 px-md-0">
-                            <h4 class="pb-2 mt-4 fs-18 text-capitalize">{{ translate('shipping_address')}}</h4>
+                            <h4 class="pb-2 mt-4 fs-18 text-non-capitalize">{{ translate('shipping_address')}}</h4>
                         </div>
 
                         @php($shippingAddresses= \App\Models\ShippingAddress::where(['customer_id'=>auth('customer')->id(), 'is_guest'=>0])->get())
@@ -37,7 +37,7 @@
                                         @if ($shippingAddresses->count() >0)
                                             <div class="d-flex align-items-center justify-content-end gap-3">
                                                 <div class="dropdown">
-                                                    <button class="form-control dropdown-toggle text-capitalize"
+                                                    <button class="form-control dropdown-toggle text-non-capitalize"
                                                             type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">
                                                         {{translate('saved_address')}}
@@ -61,9 +61,9 @@
                                                                     </div>
                                                                     <div class="media-body">
                                                                         <div
-                                                                            class="mb-1 text-capitalize">{{$address->address_type}}</div>
+                                                                            class="mb-1 text-non-capitalize">{{$address->address_type}}</div>
                                                                         <div
-                                                                            class="text-muted fs-12 text-capitalize text-wrap">{{$address->address}}</div>
+                                                                            class="text-muted fs-12 text-non-capitalize text-wrap">{{$address->address}}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -279,7 +279,7 @@
                         <div>
                             <div
                                 class="billing-methods_label d-flex flex-wrap justify-content-between gap-2 mt-4 pb-3 px-3 px-md-0">
-                                <h4 class="mb-0 fs-18 text-capitalize">{{ translate('billing_address')}}</h4>
+                                <h4 class="mb-0 fs-18 text-non-capitalize">{{ translate('billing_address')}}</h4>
 
                                 @php($billingAddresses=\App\Models\ShippingAddress::where(['customer_id'=>auth('customer')->id(), 'is_guest'=>'0'])->get())
                                 @if($physical_product_view)
@@ -314,7 +314,7 @@
                                                 <div class="d-flex align-items-center justify-content-end gap-3">
 
                                                     <div class="dropdown">
-                                                        <button class="form-control dropdown-toggle text-capitalize"
+                                                        <button class="form-control dropdown-toggle text-non-capitalize"
                                                                 type="button" id="dropdownMenuButton"
                                                                 data-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">
@@ -339,9 +339,9 @@
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <div
-                                                                                class="mb-1 text-capitalize">{{$address->address_type}}</div>
+                                                                                class="mb-1 text-non-capitalize">{{$address->address_type}}</div>
                                                                             <div
-                                                                                class="text-muted fs-12 text-capitalize text-wrap">{{$address->address}}</div>
+                                                                                class="text-muted fs-12 text-non-capitalize text-wrap">{{$address->address}}</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

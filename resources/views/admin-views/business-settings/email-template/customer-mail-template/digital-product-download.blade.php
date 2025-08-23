@@ -3,7 +3,7 @@
         <img width="100" class="mb-4" id="view-mail-icon"
              src="{{ $template->image_full_url['path'] ?? dynamicAsset(path: 'public/assets/back-end/img/email-template/congratulations.png')}}"
              alt="">
-        <h3 class="mb-3 view-mail-title text-capitalize">
+        <h3 class="mb-3 view-mail-title text-non-capitalize">
             {{$title}}
         </h3>
     </div>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="text-center gap-3 p-5">
-            <div class="text-capitalize mb-2 mt-2">{{translate('click_below')}}</div>
+            <div class="text-non-capitalize mb-2 mt-2">{{translate('click_below')}}</div>
             <a href="{{ isset($data['order']) ? route('digital-product-download-pos.index',['order_id'=>$data['order']->id,'email'=>$data['order']->customer['email']]) : 'javascript:' }}" class="{{ isset($data['order']) ? '' : 'cursor-default'}}">{{url('digital-product-download-pos')}}</a>
         </div>
     </div>

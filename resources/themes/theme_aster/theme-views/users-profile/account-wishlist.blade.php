@@ -11,7 +11,7 @@
                             <a href="javascript:"
                                data-action="{{ route('delete-wishlist-all') }}"
                                data-text = "{{translate('want_to_clear_all_wishlist').'?'}}"
-                               class="btn-link text-danger text-capitalize">
+                               class="btn-link text-danger text-non-capitalize">
                                 {{translate('clear_all')}}
                             </a>
                         @endif
@@ -25,7 +25,7 @@
                                     <a href="javascript:"
                                        data-action="{{route('delete-wishlist-all')}}"
                                        data-text = "{{translate('want_to_clear_all_wishlist').'?'}}"
-                                       class="btn-link text-danger text-capitalize delete-action">
+                                       class="btn-link text-danger text-non-capitalize delete-action">
                                         {{translate('clear_all')}}
                                     </a>
                                     @endif

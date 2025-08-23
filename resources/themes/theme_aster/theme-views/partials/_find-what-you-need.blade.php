@@ -15,7 +15,7 @@
             @endif
             @if(auth('customer')->check() && count($order_again)>0)
                 <div class="bg-primary-light rounded p-3 d-none d-sm-block">
-                    <h3 class="text-primary mb-3 mt-2 text-capitalize">{{ translate('order_again') }}</h3>
+                    <h3 class="text-primary mb-3 mt-2 text-non-capitalize">{{ translate('order_again') }}</h3>
                     <p>{{ translate('want_to_order_your_usuals') }}
                         ? {{ translate('just_reorder_from_your_previous_orders').'.' }}</p>
 
@@ -62,7 +62,7 @@
                                                     {{ $order['id'] }}
                                                 </a>
                                             </h6>
-                                            <h6 class="text-capitalize">{{ translate('final_total').':' }}
+                                            <h6 class="text-non-capitalize">{{ translate('final_total').':' }}
                                                 {{ webCurrencyConverter($order['order_amount']) }}</h6>
                                         </div>
                                         <a href="javascript:" data-order-id="{{ $order['id'] }}"
@@ -229,7 +229,7 @@
                 <div class="col-12 d-sm-none">
                     <div class="bg-primary-light rounded p-3 mt-lg-3">
                         <div class="d-flex justify-content-between align-items-center gap-2">
-                            <h3 class="text-primary my-3 text-capitalize">{{ translate('happy_club') }}</h3>
+                            <h3 class="text-primary my-3 text-non-capitalize">{{ translate('happy_club') }}</h3>
                         </div>
                         <p>{{ translate('collect_coupons_from_stores_and_apply_to_get_special_discount_from_stores') }}</p>
 

@@ -6,7 +6,7 @@
     <div class="content container-fluid">
 
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/inhouse-product-list.png') }}" alt="">
                 @if($type == 'in_house')
                     {{ translate('in_House_Product_List') }}
@@ -29,8 +29,7 @@
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="form-group">
                                     <label class="form-label" for="store">{{ translate('store') }}</label>
-                                    <select name="seller_id" class="custom-select"
-                                            data-placeholder="Select from dropdown">
+                                    <select name="seller_id" class="custom-select">
                                         <option></option>
                                         <option value="" selected>{{ translate('all_store') }}</option>
                                         @foreach ($sellers as $seller)
@@ -46,7 +45,7 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="form-label" for="store">{{ translate('brand') }}</label>
-                                <select name="brand_id" class="custom-select" data-placeholder="Select from dropdown">
+                                <select name="brand_id" class="custom-select">
                                     <option></option>
                                     <option value="" selected>{{ translate('all_brand') }}</option>
                                     @foreach ($brands as $brand)
@@ -61,7 +60,7 @@
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ translate('category') }}</label>
                                 <select class="custom-select action-get-request-onchange"
-                                        data-placeholder="Select from dropdown" name="category_id"
+                                        name="category_id"
                                         data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
                                         data-element-id="sub-category-select"
                                         data-element-type="select">
@@ -80,7 +79,7 @@
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ translate('sub_Category') }}</label>
                                 <select class="custom-select action-get-request-onchange"
-                                        data-placeholder="Select from dropdown" name="sub_category_id"
+                                        name="sub_category_id"
                                         id="sub-category-select"
                                         data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
                                         data-element-id="sub-sub-category-select"
@@ -94,7 +93,7 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ translate('sub_Sub_Category') }}</label>
-                                <select class="custom-select" data-placeholder="Select from dropdown"
+                                <select class="custom-select"
                                         name="sub_sub_category_id"
                                         id="sub-sub-category-select">
                                     <option
@@ -171,7 +170,7 @@
                     <div class="table-responsive">
                         <table id="datatable"
                                class="table table-hover table-borderless table-thead-bordered align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('product Name') }}</th>

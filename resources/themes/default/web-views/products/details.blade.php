@@ -151,14 +151,14 @@
                                         class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-1 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-1 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}"><span class="web-text-primary">{{$countOrder}}</span> {{translate('orders')}}   </span>
                                     <span class="__inline-25">    </span>
                                     <span
-                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-capitalize"> <span class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}} </span>
+                                        class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-non-capitalize"> <span class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}} </span>
                                 </div>
 
                                 @if($product['product_type'] == 'digital')
                                     <div class="digital-product-authors mb-2">
                                         @if(count($productPublishingHouseInfo['data']) > 0)
                                             <div class="d-flex align-items-center g-2 me-2">
-                                                <span class="text-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
+                                                <span class="text-non-capitalize digital-product-author-title">{{ translate('Publishing_House') }} :</span>
                                                 <div class="item-list">
                                                     @foreach($productPublishingHouseInfo['data'] as $publishingHouseName)
                                                         <a href="{{ route('products', ['publishing_house_id' => $publishingHouseName['id'], 'product_type' => 'digital', 'page'=>1]) }}"
@@ -172,7 +172,7 @@
 
                                         @if(count($productAuthorsInfo['data']) > 0)
                                             <div class="d-flex align-items-center g-2 me-2">
-                                                <span class="text-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
+                                                <span class="text-non-capitalize digital-product-author-title">{{ translate('Author') }} :</span>
                                                 <div class="item-list">
                                                     @foreach($productAuthorsInfo['data'] as $productAuthor)
                                                         <a href="{{ route('products',['author_id' => $productAuthor['id'], 'product_type' => 'digital', 'page' => 1]) }}"
@@ -245,7 +245,7 @@
                                     @if($product['product_type'] == 'digital' && $product['digital_product_file_types'] && count($product['digital_product_file_types']) > 0 && $product['digital_product_extensions'])
                                         @foreach($product['digital_product_extensions'] as $extensionKey => $extensionGroup)
                                         <div class="row flex-start mx-0 align-items-center mb-1">
-                                            <div class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-capitalize mb-2">
+                                            <div class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-non-capitalize mb-2">
                                                 {{ translate($extensionKey) }} :
                                             </div>
                                             <div>
@@ -277,7 +277,7 @@
                                     @foreach (json_decode($product->choice_options) as $key => $choice)
                                         <div class="row flex-start mx-0 align-items-center">
                                             <div
-                                                class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-capitalize mb-2">{{ $choice->title }}
+                                                class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-non-capitalize mb-2">{{ $choice->title }}
                                                 :
                                             </div>
                                             <div>
@@ -335,7 +335,7 @@
                                                 <div
                                                     class="d-none d-sm-flex justify-content-start align-items-center me-2">
                                                     <div
-                                                        class="product-description-label text-dark font-bold text-capitalize">
+                                                        class="product-description-label text-dark font-bold text-non-capitalize">
                                                         <strong>{{translate('total_price')}}</strong> :
                                                     </div>
                                                     &nbsp; <strong class="text-base product-details-chosen-price-amount"></strong>
@@ -452,11 +452,11 @@
                                     </div>
                                     @if (!$product['details'] && ($product->video_url == null || !(str_contains($product->video_url, "youtube.com/embed/"))))
                                         <div>
-                                            <div class="text-center text-capitalize py-5">
+                                            <div class="text-center text-non-capitalize py-5">
                                                 <img class="mw-90"
                                                         src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}"
                                                         alt="">
-                                                <p class="text-capitalize mt-2">
+                                                <p class="text-non-capitalize mt-2">
                                                     <small>{{translate('product_details_not_found')}}
                                                         !</small>
                                                 </p>
@@ -468,11 +468,11 @@
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     @if(count($product->reviews)==0 && $productReviews->total() == 0)
                                         <div>
-                                            <div class="text-center text-capitalize">
+                                            <div class="text-center text-non-capitalize">
                                                 <img class="mw-100"
                                                         src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
                                                         alt="">
-                                                <p class="text-capitalize">
+                                                <p class="text-non-capitalize">
                                                     <small>{{translate('No_review_given_yet')}}!</small>
                                                 </p>
                                             </div>
@@ -625,7 +625,7 @@
                                         <div class="row pb-4 mb-3">
                                             <div class="__inline-30">
                                                 <span
-                                                    class="text-capitalize">{{ translate('Product_review') }}</span>
+                                                    class="text-non-capitalize">{{ translate('Product_review') }}</span>
                                             </div>
                                         </div>
                                     @endif
@@ -688,7 +688,7 @@
                                                     <h2 class="fs-15 mb-1">
                                                         {{$product->seller->shop->name}}
                                                     </h2>
-                                                    <h3 class="text-capitalize fs-12">{{translate('vendor_info')}}</h3>
+                                                    <h3 class="text-non-capitalize fs-12">{{translate('vendor_info')}}</h3>
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center">
@@ -740,7 +740,7 @@
                                                         data-target="#chatting_modal" {{ ($product->seller->shop->temporary_close || ($product->seller->shop->vacation_status && date('Y-m-d') >= date('Y-m-d', strtotime($product->seller->shop->vacation_start_date)) && date('Y-m-d') <= date('Y-m-d', strtotime($product->seller->shop->vacation_end_date)))) ? 'disabled' : '' }}>
                                                     <img class="mb-1" alt=""
                                                         src="{{theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
-                                                    <span class="d-none d-sm-inline-block text-capitalize">
+                                                    <span class="d-none d-sm-inline-block text-non-capitalize">
                                                         {{translate('chat_with_vendor')}}
                                                     </span>
                                                 </button>
@@ -749,7 +749,7 @@
                                                    class="btn w-100 d-block text-center web--bg-primary text-white">
                                                     <img src="{{theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}"
                                                         class="mb-1" alt="">
-                                                    <span class="d-none d-sm-inline-block text-capitalize">{{translate('chat_with_vendor')}}</span>
+                                                    <span class="d-none d-sm-inline-block text-non-capitalize">{{translate('chat_with_vendor')}}</span>
                                                 </a>
                                             @endif
                                         </div>
@@ -819,7 +819,7 @@
                                                     data-target="#chatting_modal" {{ ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate)) ? 'disabled' : '' }}>
                                                 <img class="mb-1" alt=""
                                                      src="{{ theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
-                                                <span class="d-none d-sm-inline-block text-capitalize">
+                                                <span class="d-none d-sm-inline-block text-non-capitalize">
                                                         {{translate('chat_with_vendor')}}
                                                 </span>
                                             </button>
@@ -827,7 +827,7 @@
                                             <a href="{{ route('shopView',[0]) }}" class="btn w-100 d-block text-center web--bg-primary text-white">
                                                 <img class="mb-1" alt=""
                                                      src="{{ theme_asset(path: 'public/assets/front-end/img/chat-16-filled-icon.png')}}">
-                                                <span class="d-none d-sm-inline-block text-capitalize">
+                                                <span class="d-none d-sm-inline-block text-non-capitalize">
                                                         {{translate('chat_with_vendor')}}
                                                 </span>
                                             </a>
@@ -840,7 +840,7 @@
                     @endif
 
                     <div class="pt-4 pb-3">
-                        <h2 class=" __text-16px font-bold text-capitalize">
+                        <h2 class=" __text-16px font-bold text-non-capitalize">
                             @if(getWebConfig(name: 'business_mode')=='multi')
                                 {{ translate('more_from_the_store')}}
                             @else
@@ -863,13 +863,13 @@
                     <div class="card-body">
                         <div class="row flex-between align-items-center mb-2">
                             <div class="ms-1">
-                                <h2 class="text-capitalize font-bold fs-16 mb-0">{{ translate('similar_products')}}</h2>
+                                <h2 class="text-non-capitalize font-bold fs-16 mb-0">{{ translate('similar_products')}}</h2>
                             </div>
                             <div class="view_all d-flex justify-content-center align-items-center">
                                 <div>
                                     @php($category=json_decode($product['category_ids']))
                                     @if($category)
-                                        <a class="text-capitalize view-all-text web-text-primary me-1"
+                                        <a class="text-non-capitalize view-all-text web-text-primary me-1"
                                            href="{{route('products',['category_id'=> $category[0]->id,'data_from'=>'category','page'=>1])}}">{{ translate('view_all')}}
                                             <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1 ' : 'right ml-1 mr-n1'}}"></i>
                                         </a>

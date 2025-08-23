@@ -29,12 +29,12 @@
     <div class="payment-list-area">
 
         <div class="bg-primary-light rounded p-4 mt-4 mx-xl-5">
-            <h6 class="text-capitalize">{{ $method['method_name'] }} {{translate('info')}}</h6>
+            <h6 class="text-non-capitalize">{{ $method['method_name'] }} {{translate('info')}}</h6>
             <div class="row g-2 fs-12">
                 @foreach ($method['method_fields'] as $methodField)
                     <div class="col-xl-5 col-sm-6">
                         <div class="d-flex gap-2">
-                            <span class="text-muted text-capitalize">{{ translate($methodField['input_name']) }}</span>
+                            <span class="text-muted text-non-capitalize">{{ translate($methodField['input_name']) }}</span>
                             : <span class="text-dark">{{ translate($methodField['input_data']) }}</span>
                         </div>
                     </div>

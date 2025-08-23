@@ -14,7 +14,7 @@
         </div>
 
         <div class="d-none d-lg-flex gap-3 align-items-center mt-2">
-            <h6 class="text-capitalize">{{translate('order_status')}}</h6>
+            <h6 class="text-non-capitalize">{{translate('order_status')}}</h6>
             @if($order['order_status']=='failed' || $order['order_status']=='canceled')
                 <span class="badge bg-danger rounded-pill">
                     {{translate($order['order_status'] =='failed' ? 'Failed To Deliver' : $order['order_status'])}}
@@ -30,13 +30,13 @@
             @endif
         </div>
         <div class="d-none d-lg-flex gap-3 align-items-center mt-2">
-            <h6 class="text-capitalize">{{translate('payment_status')}}</h6>
+            <h6 class="text-non-capitalize">{{translate('payment_status')}}</h6>
             <div
                 class="{{ $order['payment_status']=='unpaid' ? 'text-danger':'text-dark' }}"> {{ translate($order['payment_status']) }}</div>
         </div>
         @if($order->order_type == 'default_type' && getWebConfig(name: 'order_verification'))
             <div class="d-none d-lg-flex gap-3 align-items-center mt-2">
-                <h6 class="text-capitalize">{{translate('verification_code')}}</h6>
+                <h6 class="text-non-capitalize">{{translate('verification_code')}}</h6>
                 <div class="badge bg-primary rounded-pill"> {{ $order['verification_code'] }}</div>
             </div>
         @endif
@@ -57,18 +57,18 @@
     <nav>
         <div class="nav nav-nowrap gap-3 gap-xl-4 nav--tabs hide-scrollbar">
             <a href="{{ route('account-order-details', ['id'=>$order->id]) }}"
-               class="{{Request::is('account-order-details')  ? 'active' :''}} text-capitalize">{{translate('order_summary')}}</a>
+               class="{{Request::is('account-order-details')  ? 'active' :''}} text-non-capitalize">{{translate('order_summary')}}</a>
             <a href="{{ route('account-order-details-vendor-info', ['id'=>$order->id]) }}"
-               class="{{Request::is('account-order-details-vendor-info')  ? 'active' :''}} text-capitalize">{{translate('vendor_info')}}</a>
+               class="{{Request::is('account-order-details-vendor-info')  ? 'active' :''}} text-non-capitalize">{{translate('vendor_info')}}</a>
             <a href="{{ route('account-order-details-delivery-man-info', ['id'=>$order->id]) }}"
-               class="{{Request::is('account-order-details-delivery-man-info')  ? 'active' :''}} text-capitalize">{{translate('delivery_man_info')}}</a>
+               class="{{Request::is('account-order-details-delivery-man-info')  ? 'active' :''}} text-non-capitalize">{{translate('delivery_man_info')}}</a>
             @if($order->order_type != 'POS')
                 <a href="{{ route('account-order-details-reviews', ['id'=>$order->id]) }}"
-                   class="{{ Request::is('account-order-details-reviews')  ? 'active' :''}} text-capitalize">
+                   class="{{ Request::is('account-order-details-reviews')  ? 'active' :''}} text-non-capitalize">
                     {{ translate('reviews') }}
                 </a>
                 <a href="{{route('track-order.order-wise-result-view',['order_id'=>$order['id']])}}"
-                   class="{{Request::is('track-order/order-wise-result-view*')  ? 'active' :''}} text-capitalize">
+                   class="{{Request::is('track-order/order-wise-result-view*')  ? 'active' :''}} text-non-capitalize">
                     {{ translate('track_order') }}
                 </a>
             @endif

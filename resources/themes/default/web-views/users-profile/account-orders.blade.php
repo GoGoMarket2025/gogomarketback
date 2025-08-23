@@ -22,7 +22,7 @@
                                     <tr>
                                         <td class="tdBorder">
                                             <div>
-                                                <span class="d-block spandHeadO text-start text-capitalize">
+                                                <span class="d-block spandHeadO text-start text-non-capitalize">
                                                     {{ translate('order_list') }}
                                                 </span>
                                             </div>
@@ -84,15 +84,15 @@
                                         </td>
                                         <td class="bodytr">
                                             @if($order['order_status']=='failed' || $order['order_status']=='canceled')
-                                                <span class="status-badge rounded-pill __badge badge-soft-danger fs-12 font-semibold text-capitalize">
+                                                <span class="status-badge rounded-pill __badge badge-soft-danger fs-12 font-semibold text-non-capitalize">
                                                     {{ translate($order['order_status'] =='failed' ? 'failed_to_deliver' : $order['order_status']) }}
                                                 </span>
                                             @elseif($order['order_status']=='confirmed' || $order['order_status']=='processing' || $order['order_status']=='delivered')
-                                                <span class="status-badge rounded-pill __badge badge-soft-success fs-12 font-semibold text-capitalize">
+                                                <span class="status-badge rounded-pill __badge badge-soft-success fs-12 font-semibold text-non-capitalize">
                                                     {{ translate($order['order_status']=='processing' ? 'packaging' : $order['order_status']) }}
                                                 </span>
                                             @else
-                                                <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-capitalize">
+                                                <span class="status-badge rounded-pill __badge badge-soft-primary fs-12 font-semibold text-non-capitalize">
                                                     {{ translate($order['order_status']) }}
                                                 </span>
                                             @endif
@@ -177,15 +177,15 @@
                                                 </div>
                                                 <div class="my-2">
                                                     @if($order['order_status']=='failed' || $order['order_status']=='canceled')
-                                                        <span class="status-badge __badge badge-soft-danger border-soft-danger text-capitalize">
+                                                        <span class="status-badge __badge badge-soft-danger border-soft-danger text-non-capitalize">
                                                             {{ translate($order['order_status'] =='failed' ? 'failed_to_deliver' : $order['order_status']) }}
                                                         </span>
                                                                 @elseif($order['order_status']=='confirmed' || $order['order_status']=='processing' || $order['order_status']=='delivered')
-                                                                    <span class="status-badge __badge badge-soft-success border-soft-success text-capitalize">
+                                                                    <span class="status-badge __badge badge-soft-success border-soft-success text-non-capitalize">
                                                             {{ translate($order['order_status']=='processing' ? 'packaging' : $order['order_status']) }}
                                                         </span>
                                                                 @else
-                                                                    <span class="status-badge __badge badge-soft-primary border-soft-primary text-capitalize">
+                                                                    <span class="status-badge __badge badge-soft-primary border-soft-primary text-non-capitalize">
                                                             {{ translate($order['order_status']) }}
                                                         </span>
                                                     @endif

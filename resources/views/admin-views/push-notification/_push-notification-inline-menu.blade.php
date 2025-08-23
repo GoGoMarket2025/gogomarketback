@@ -1,13 +1,13 @@
 {{-- <div class="inline-page-menu">
     <ul class="list-unstyled">
         <li class="{{ Request::is('admin/push-notification/index') ?'active':'' }}">
-            <a href="{{route('admin.third-party.firebase-configuration.setup')}}" class="text-capitalize">
+            <a href="{{route('admin.third-party.firebase-configuration.setup')}}" class="text-non-capitalize">
                 <i class="tio-notifications-on-outlined"></i>
                 {{translate('push_notification')}}
             </a>
         </li>
         <li class="{{ Request::is('admin/push-notification/firebase-configuration') ?'active':'' }}">
-            <a href="{{route('admin.third-party.firebase-configuration.setup')}}" class="text-capitalize">
+            <a href="{{route('admin.third-party.firebase-configuration.setup')}}" class="text-non-capitalize">
                 <i class="tio-cloud-outlined"></i>
                 {{translate('firebase_configuration')}}
             </a>

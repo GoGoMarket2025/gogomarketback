@@ -27,7 +27,7 @@
                     <form action="{{route('admin.orders.list',['status'=>request('status')]) }}" id="form-data" method="GET">
                         <div class="row g-3">
                             <div class="col-12">
-                                <h3 class="mb-3 text-capitalize">{{translate('filter_order') }}</h3>
+                                <h3 class="mb-3 text-non-capitalize">{{translate('filter_order') }}</h3>
                             </div>
                             @if(request('delivery_man_id'))
                                 <input type="hidden" name="delivery_man_id" value="{{ request('delivery_man_id') }}">
@@ -152,18 +152,18 @@
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-borderless">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL') }}</th>
                                     <th>{{translate('order_ID') }}</th>
-                                    <th class="text-capitalize">{{translate('order_date') }}</th>
-                                    <th class="text-capitalize">{{translate('customer_info') }}</th>
+                                    <th class="text-non-capitalize">{{translate('order_date') }}</th>
+                                    <th class="text-non-capitalize">{{translate('customer_info') }}</th>
                                     <th>{{translate('store') }}</th>
-                                    <th class="text-capitalize">{{translate('total_amount') }}</th>
+                                    <th class="text-non-capitalize">{{translate('total_amount') }}</th>
                                     @if($status == 'all')
                                         <th class="text-center">{{translate('order_status') }} </th>
                                     @else
-                                        <th class="text-capitalize">{{translate('payment_method') }} </th>
+                                        <th class="text-non-capitalize">{{translate('payment_method') }} </th>
                                     @endif
                                     <th class="text-center">{{translate('action') }}</th>
                                 </tr>
@@ -190,7 +190,7 @@
                                             <strong class="text-dark">{{translate('walking_customer')}}</strong>
                                         @else
                                             @if($order->customer)
-                                                <a class="text-body text-capitalize" href="{{route('admin.orders.details',['id'=>$order['id']])}}">
+                                                <a class="text-body text-non-capitalize" href="{{route('admin.orders.details',['id'=>$order['id']])}}">
                                                     <strong class="title-name">{{$order->customer['f_name'].' '.$order->customer['l_name'] }}</strong>
                                                 </a>
                                                 @if($order->customer['phone'])
@@ -231,7 +231,7 @@
                                         @endif
                                     </td>
                                     @if($status == 'all')
-                                        <td class="text-center text-capitalize">
+                                        <td class="text-center text-non-capitalize">
                                             @if($order['order_status']=='pending')
                                                 <span class="badge badge-info text-bg-info">
                                                     {{translate($order['order_status'])}}
@@ -259,7 +259,7 @@
                                             @endif
                                         </td>
                                     @else
-                                        <td class="text-capitalize">
+                                        <td class="text-non-capitalize">
                                             {{str_replace('_',' ',$order['payment_method'])}}
                                         </td>
                                     @endif

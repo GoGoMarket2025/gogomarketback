@@ -86,7 +86,7 @@
                     @if($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                         <li class="d-none d-xl-block">
                             <a href="{{route('vendor.auth.registration.index')}}" class="d-flex">
-                                <div class="fz-16 text-capitalize">{{ translate('become_a_vendor')}}</div>
+                                <div class="fz-16 text-non-capitalize">{{ translate('become_a_vendor')}}</div>
                             </a>
                         </li>
                     @endif
@@ -108,7 +108,7 @@
                                 <div class="border-end">
                                     <div class="dropdown search_dropdown">
                                         <button type="button"
-                                                class="border-0 px-3 bg-transparent dropdown-toggle text-dark py-0 text-capitalize header-search-dropdown-button"
+                                                class="border-0 px-3 bg-transparent dropdown-toggle text-dark py-0 text-non-capitalize header-search-dropdown-button"
                                                 data-bs-toggle="dropdown" aria-expanded="false" data-default="{{ translate('all_categories') }}">
                                             @if($categories && request('category_ids') && !empty(request('category_ids')))
                                                 @foreach($categories as $category)
@@ -133,7 +133,7 @@
                                         >
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a class="d-flex text-capitalize" data-value="all" href="javascript:">
+                                                <a class="d-flex text-non-capitalize" data-value="all" href="javascript:">
                                                     {{ translate('all_categories') }}
                                                 </a>
                                             </li>
@@ -329,14 +329,14 @@
 
                             @if ($web_config['digital_product_setting'] && count($web_config['publishing_houses']) == 1)
                                 <li>
-                                    <a class="d-flex gap-2 align-items-center text-capitalize"
+                                    <a class="d-flex gap-2 align-items-center text-non-capitalize"
                                        href="{{ route('products',['publishing_house_id' => 0, 'product_type' => 'digital', 'page'=>1]) }}">
                                         {{ translate('Publication_House')}}
                                     </a>
                                 </li>
                             @elseif ($web_config['digital_product_setting'] && count($web_config['publishing_houses']) > 1)
                                 <li>
-                                    <a class="d-flex gap-2 align-items-center text-capitalize"
+                                    <a class="d-flex gap-2 align-items-center text-non-capitalize"
                                        href="{{ route('products', ['product_type' => 'digital', 'page'=>1]) }}">
                                         {{ translate('Publication_House')}}
                                     </a>
@@ -344,8 +344,8 @@
                             @endif
                             @if($web_config['business_mode'] == 'multi' &&  $web_config['seller_registration'])
                                 <li class="d-xl-none">
-                                    <a href="{{route('vendor.auth.registration.index')}}" class="d-flex text-capitalize">
-                                        <div class="fz-16 text-capitalize">{{ translate('become_a_vendor')}}</div>
+                                    <a href="{{route('vendor.auth.registration.index')}}" class="d-flex text-non-capitalize">
+                                        <div class="fz-16 text-non-capitalize">{{ translate('become_a_vendor')}}</div>
                                     </a>
                                 </li>
                             @endif
@@ -386,7 +386,7 @@
                 <div class="d-flex align-items-center gap-3">
                     <div class="dropdown d-none d-xl-block">
                         <button
-                            class="btn btn-primary rounded-0 text-uppercase fw-bold fs-14 dropdown-toggle select-category-button text-capitalize"
+                            class="btn btn-primary rounded-0 text-uppercase fw-bold fs-14 dropdown-toggle select-category-button text-non-capitalize"
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -451,20 +451,20 @@
                                     <ul class="sub-menu">
                                         @if(getFeaturedDealsProductList()->count()>0)
                                             <li>
-                                                <a class="text-capitalize"
+                                                <a class="text-non-capitalize"
                                                    href="{{route('products',['offer_type'=>'featured_deal'])}}">{{ translate('featured_deal') }}</a>
                                             </li>
                                         @endif
 
                                         @if($web_config['flash_deals'] && count($web_config['flash_deals_products']) > 0)
                                             <li>
-                                                <a class="text-capitalize"
+                                                <a class="text-non-capitalize"
                                                    href="{{route('flash-deals',[$web_config['flash_deals']['id']??0])}}">{{ translate('flash_deal') }}</a>
                                             </li>
                                         @endif
                                         @if ($web_config['discount_product'] > 0)
                                             <li>
-                                                <a class="gap-2 align-items-center text-capitalize" href="{{ route('products',['offer_type'=>'discounted','page'=>1]) }}">
+                                                <a class="gap-2 align-items-center text-non-capitalize" href="{{ route('products',['offer_type'=>'discounted','page'=>1]) }}">
                                                     <span>{{ translate('discounted_products') }}</span>
                                                     <span><i class="bi bi-patch-check-fill text-warning"></i></span>
                                                 </a>

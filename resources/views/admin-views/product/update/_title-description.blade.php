@@ -3,7 +3,7 @@
         <div class="row gy-4">
             <div class="col-md-12">
                 <div class="position-relative nav--tab-wrapper">
-                    <ul class="nav nav-pills nav--tab text-capitalize lang_tab" id="pills-tab"
+                    <ul class="nav nav-pills nav--tab text-non-capitalize lang_tab" id="pills-tab"
                         role="tablist">
                         @foreach ($languages as $lang)
                             <li class="nav-item" role="presentation">

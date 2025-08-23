@@ -15,7 +15,7 @@
                                         <div class="col-md-6">
                                             <input type="hidden" name="id" value="{{$shippingAddress->id}}">
                                             <div class="">
-                                                <h6 class="fw-semibold text-muted mb-3 text-capitalize">{{translate('choose_label')}}</h6>
+                                                <h6 class="fw-semibold text-muted mb-3 text-non-capitalize">{{translate('choose_label')}}</h6>
                                                 <ul class="option-select-btn flex-wrap style--two gap-4 mb-4">
                                                     <li>
                                                         <label>
@@ -45,7 +45,7 @@
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="name" class="text-capitalize">{{translate('contact_person')}}</label>
+                                                <label for="name" class="text-non-capitalize">{{translate('contact_person')}}</label>
                                                 <input type="text" id="name" name="name" class="form-control"
                                                        value="{{$shippingAddress['contact_person_name']}}"
                                                        placeholder="{{translate('ex').':'.translate('jhon').translate('doe')}}">
@@ -97,7 +97,7 @@
                                                     <i class="bi bi-chevron-left fs-12"></i> {{translate('go_back')}}
                                                 </a>
                                             </div>
-                                            <h6 class="fw-semibold text-muted mb-3 text-capitalize">{{translate('choose_address_type')}}</h6>
+                                            <h6 class="fw-semibold text-muted mb-3 text-non-capitalize">{{translate('choose_address_type')}}</h6>
                                             <div class="d-flex flex-wrap style--two gap-4 mb-3">
                                                 <div>
                                                     <label class="d-flex align-items-center gap-2 cursor-pointer">
@@ -146,7 +146,7 @@
                                                     <button type="reset"
                                                             class="btn btn-secondary">{{translate('reset')}}</button>
                                                     <button type="submit"
-                                                            class="btn btn-primary text-capitalize">{{translate('update_address')}}</button>
+                                                            class="btn btn-primary text-non-capitalize">{{translate('update_address')}}</button>
                                                 </div>
                                             </div>
                                         </div>

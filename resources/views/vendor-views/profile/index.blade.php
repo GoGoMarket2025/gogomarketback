@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/my-bank-info.png')}}" alt="">
                 {{translate('my_bank_info')}}
             </h2>
@@ -24,7 +24,7 @@
                             <div class="col-sm-6 col-md-8 col-lg-6 col-xl-5">
                                 <div class="card border bank-info-card bg-bottom text--black bg-contain bg-img" style="background-image: url({{dynamicAsset(path: 'public/assets/back-end/img/wallet-bg.png')}});">
                                     <div class="p-20">
-                                        <div class="text-capitalize">
+                                        <div class="text-non-capitalize">
                                             <i class="tio-user"></i> {{translate('holder_name').':'}} <strong class="text-title">{{$vendor->holder_name ?? translate('no_data_found')}}</strong>
                                         </div>
                                     </div>

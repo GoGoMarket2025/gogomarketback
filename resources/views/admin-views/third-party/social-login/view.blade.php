@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('3rd Party - Other Configurations') }}
             </h2>
         </div>
@@ -116,7 +116,7 @@
         </div>
         <div class="card">
             <div class="card-header px-20 py-3">
-                <h2 class="text-capitalize">{{ translate('Social_Media_Login') }}</h2>
+                <h2 class="text-non-capitalize">{{ translate('Social_Media_Login') }}</h2>
                 <p class="mb-0 fs-12">
                     {{ translate('configure_social_login_options_so_customers_can_sign_in_with_their_social_media.') }}
                 </p>
@@ -375,7 +375,7 @@
                         <div class="d-flex gap-3 flex-column align-items-center text-center mb-4">
                             <img width="80" src="{{ dynamicAsset(path: 'public/assets/back-end/img/facebook.png') }}"
                                  alt="">
-                            <h5 class="modal-title text-capitalize"
+                            <h5 class="modal-title text-non-capitalize"
                                 id="staticBackdropLabel">{{ translate('facebook_API_set_up_instructions') }}</h5>
                         </div>
 

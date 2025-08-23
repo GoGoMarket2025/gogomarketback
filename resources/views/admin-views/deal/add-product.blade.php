@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" class="mb-1 mr-1" alt="">
                 {{ translate('add_new_product') }}
             </h2>
@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="mb-0 text-capitalize">{{ $deal['title'] }}</h3>
+                        <h3 class="mb-0 text-non-capitalize">{{ $deal['title'] }}</h3>
                     </div>
                     <div class="card-body">
                         <form action="{{route('admin.deal.add-product',[$deal['id']]) }}" method="post">
@@ -53,7 +53,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="px-3 py-4">
-                        <h3 class="mb-0 text-capitalize">
+                        <h3 class="mb-0 text-non-capitalize">
                             {{ translate('product_table') }}
                             <span class="badge text-dark bg-body-secondary fw-semibold rounded-50">{{ $dealProducts->total() }}</span>
                         </h3>
@@ -61,7 +61,7 @@
                     <div class="table-responsive">
                         <table
                             class="table table-hover table-borderless table-thead-bordered align-middle">
-                            <thead class="text-capitalize">
+                            <thead class="text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('image') }}</th>

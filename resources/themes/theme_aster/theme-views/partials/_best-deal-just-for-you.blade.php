@@ -11,12 +11,12 @@
                                 <div class="d-flex flex-column gap-1 max-w-280px">
                                     <div class="mb-3 mb-sm-4">
                                         <div
-                                            class="sub-title text-muted mb-1 text-capitalize">{{ translate('do_not_miss_the_chance').'!' }}
+                                            class="sub-title text-muted mb-1 text-non-capitalize">{{ translate('do_not_miss_the_chance').'!' }}
                                         </div>
-                                        <h2 class="title text-primary fw-extra-bold text-capitalize">{{ translate('todays_best_deal') }}</h2>
+                                        <h2 class="title text-primary fw-extra-bold text-non-capitalize">{{ translate('todays_best_deal') }}</h2>
                                     </div>
                                     <div class="mb-3 mb-sm-4 d-flex flex-column gap-1">
-                                        <h6 class="text-capitalize line-limit-2">{{ $dealOfTheDay->product->name }}</h6>
+                                        <h6 class="text-non-capitalize line-limit-2">{{ $dealOfTheDay->product->name }}</h6>
                                         <div class="d-flex gap-2 align-items-center">
                                             <div class="star-rating text-gold fs-12">
                                                 @for ($i = 1; $i <= 5; $i++)
@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="d-flex">
                                         <a href="{{route('product',$dealOfTheDay->product->slug)}}"
-                                           class="btn btn-primary text-capitalize">{{ translate('buy_now') }}</a>
+                                           class="btn btn-primary text-non-capitalize">{{ translate('buy_now') }}</a>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -69,12 +69,12 @@
                                 <div class="d-flex flex-column gap-1 max-w-280px">
                                     <div class="mb-3 mb-sm-4">
                                         <div
-                                            class="sub-title text-muted mb-1 text-capitalize">{{ translate('do_not_miss_the_chance').'!' }}
+                                            class="sub-title text-muted mb-1 text-non-capitalize">{{ translate('do_not_miss_the_chance').'!' }}
                                         </div>
-                                        <h2 class="title text-primary fw-extra-bold text-capitalize">{{ translate('todays_best_deal') }}</h2>
+                                        <h2 class="title text-primary fw-extra-bold text-non-capitalize">{{ translate('todays_best_deal') }}</h2>
                                     </div>
                                     <div class="mb-3 mb-sm-4 d-flex flex-column gap-1">
-                                        <h6 class="text-capitalize line-limit-2">{{ $recommendedProduct->name }}</h6>
+                                        <h6 class="text-non-capitalize line-limit-2">{{ $recommendedProduct->name }}</h6>
                                         <div class="d-flex gap-2 align-items-center">
                                             <div class="star-rating text-gold fs-12">
                                                 @for ($i = 1; $i <= 5; $i++)
@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="d-flex">
                                         <a href="{{route('product', $recommendedProduct->slug)}}"
-                                           class="btn btn-primary text-capitalize">{{ translate('buy_now') }}</a>
+                                           class="btn btn-primary text-non-capitalize">{{ translate('buy_now') }}</a>
                                     </div>
                                 </div>
                                 <div class="text-center">

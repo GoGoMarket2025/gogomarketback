@@ -14,7 +14,7 @@
                                 <img width="80" class="mb-3"
                                      src="{{dynamicAsset(path: 'public/assets/back-end/img/firebase-console.png')}}"
                                      loading="lazy" alt="">
-                                <h4 class="lh-md mb-3 text-capitalize">{{translate('go_to_firebase')}}</h4>
+                                <h4 class="lh-md mb-3 text-non-capitalize">{{translate('go_to_firebase')}}</h4>
                                 <p class="text-center">{{translate('go_to_Firebase_and_create_a_project').', '.translate('_there_are_three_steps_to_create_a_project').'. '.translate('after_completing_the_project').','. translate('_you_can_proceed_further.').'.'}}</p>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                                 <img width="80" class="mb-3"
                                      src="{{dynamicAsset(path: 'public/assets/back-end/img/firebase-settings.png')}}"
                                      loading="lazy" alt="">
-                                <h4 class="lh-md mb-3 text-capitalize">{{translate('check_settings')}}</h4>
+                                <h4 class="lh-md mb-3 text-non-capitalize">{{translate('check_settings')}}</h4>
                                 <p>{{translate('after_completing_the_project').', '.translate('you_will_see_the_project_settings').'. '. translate('in_the_project_settings').', '.translate('please_ensure_that_cloud_messaging_is_enabled').' .'}}</p>
                             </div>
                         </div>
@@ -32,9 +32,9 @@
                                 <img width="80" class="mb-3"
                                      src="{{dynamicAsset(path: 'public/assets/back-end/img/json-file.png')}}"
                                      loading="lazy" alt="">
-                                <h4 class="lh-md mb-3 text-capitalize">{{translate('how_to_get_JSON_file')}}</h4>
+                                <h4 class="lh-md mb-3 text-non-capitalize">{{translate('how_to_get_JSON_file')}}</h4>
                                 <p class="text-center">{{translate('in_project_ settings').', '.translate('_click_on_generate_new_private_key').'. '.translate('then_you_will_get_a_JSON_file').', '.translate('copy_the_JSON_file_and_paste_it_into_the_Firebase_configuration_field').', '.translate('_then_submit.').'.'}}</p>
-                                <button class="btn btn-primary w-100 max-w-250 mx-auto mt-3 text-capitalize"
+                                <button class="btn btn-primary w-100 max-w-250 mx-auto mt-3 text-non-capitalize"
                                         data-bs-dismiss="modal">{{ translate('got_it') }}</button>
                             </div>
                         </div>

@@ -24,7 +24,7 @@
         @if(count($productAuthors) > 10)
             <div class="d-flex justify-content-center">
                 <button
-                    class="btn-link text-primary btn_products_aside_brands text-capitalize">{{translate('more_authors').'...'}}
+                    class="btn-link text-primary btn_products_aside_brands text-non-capitalize">{{translate('more_authors').'...'}}
                 </button>
             </div>
         @endif

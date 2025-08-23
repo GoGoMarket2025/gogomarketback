@@ -25,7 +25,7 @@
                                         <thead class="text-primary">
                                             <tr>
                                                 <th>SL</th>
-                                                <th class="text-capitalize">{{ translate('Product_details') }}</th>
+                                                <th class="text-non-capitalize">{{ translate('Product_details') }}</th>
                                                 <th>{{ translate('Review') }}</th>
                                                 <th class="text-center">{{ translate('Price') }}</th>
                                                 <th class="text-center">{{ translate('Action') }}</th>
@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="media-body d-flex flex-column gap-1">
                                         <a href="{{ $restockProduct?->product?->slug ? route('product', $restockProduct?->product?->slug) : 'javascript' }}">
-                                            <h6 class="text-capitalize width--20ch line-limit-2 link-hover-base">
+                                            <h6 class="text-non-capitalize width--20ch line-limit-2 link-hover-base">
                                                 {{ $restockProduct?->product?->name}}
                                             </h6>
                                         </a>

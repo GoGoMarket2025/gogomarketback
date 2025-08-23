@@ -1,5 +1,5 @@
 <div class="card-header">
-    <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+    <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
         <img src="{{dynamicAsset(path: 'public/assets/back-end/img/top-customers.png')}}" alt="">
         {{translate('top_Delivery_Man')}}
     </h4>
@@ -22,7 +22,7 @@
                             </h5>
                             <div class="d-flex justify-content-center">
                                 <div class="border orders-count d-inline-flex justify-content-center fs-12 gap-1 mt-2 px-2 py-1 rounded text-nowrap">
-                                    <div class="text-capitalize">{{translate('order_delivered')}} :</div>
+                                    <div class="text-non-capitalize">{{translate('order_delivered')}} :</div>
                                     <div class="fw-semibold text-primary">{{$deliveryMan['delivered_orders_count']}}</div>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/push-notification.png') }}"
                      alt="">
                 {{ translate('Notification_Messages') }}
@@ -17,7 +17,7 @@
                 @include('admin-views.push-notification._push-notification-inline-menu')
             </div>
             <div class="col-auto">
-                <div class="text-primary d-flex align-items-center gap-3 font-weight-bolder text-capitalize">
+                <div class="text-primary d-flex align-items-center gap-3 font-weight-bolder text-non-capitalize">
                     {{ translate('read_documentation') }}
                     <div class="ripple-animation" data-bs-toggle="modal" data-bs-target="#docsModal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -99,7 +99,7 @@
                         <div class="text-center mb-1">
                             <img width="80" class="mb-4" loading="lazy" alt=""
                                  src="{{ dynamicAsset(path: 'public/assets/new/back-end/img/notice.png') }}">
-                            <h4 class="lh-md text-capitalize">{{ translate('important_notice') }}!</h4>
+                            <h4 class="lh-md text-non-capitalize">{{ translate('important_notice') }}!</h4>
                         </div>
                         <p class="mb-5">
                             {{ translate('to_include_specific_details_in_your_push_notification_message,_you_can_use_the_following_placeholders') }}

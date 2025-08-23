@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2 text-non-capitalize">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png') }}" alt="">
                 {{ translate('role_update') }}
             </h2>
@@ -33,7 +33,7 @@
                         <div class="form-group d-flex gap-2">
                             <input type="checkbox" id="select-all-module"
                                    class="form-check-input checkbox--input checkbox--input_lg cursor-pointer">
-                            <label class="form-check-label cursor-pointer text-capitalize"
+                            <label class="form-check-label cursor-pointer text-non-capitalize"
                                    for="select-all-module">{{ translate('select_all') }}</label>
                         </div>
                     </div>

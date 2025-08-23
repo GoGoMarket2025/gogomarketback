@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw-icon.png')}}" alt="">
                 {{translate('withdraw')}}
             </h2>
@@ -21,7 +21,7 @@
                     <div class="p-3">
                         <div class="row gy-1 align-items-center justify-content-between">
                             <div class="col-auto">
-                                <h5 class="text-capitalize">
+                                <h5 class="text-non-capitalize">
                                     {{ translate('withdraw_request_table')}}
                                     <span class="badge badge-soft-dark radius-50 fs-12 ml-1" id="withdraw-requests-count">{{ $withdrawRequests->total() }}</span>
                                 </h5>

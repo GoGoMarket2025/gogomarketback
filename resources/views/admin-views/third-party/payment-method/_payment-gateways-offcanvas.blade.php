@@ -4,20 +4,20 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-{{ $gateway->key_name }}"
          aria-labelledby="offcanvas-{{ str_replace('_',' ',$gateway->key_name) }}-Label">
         <div class="offcanvas-header bg-body">
-            <h3 class="mb-0 text-capitalize">
+            <h3 class="mb-0 text-non-capitalize">
                 {{ translate('Setup') }} - {{ str_replace('_',' ',$gateway->key_name) }}
             </h3>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div class="p-12 p-sm-20 bg-section rounded mb-3 mb-sm-20">
-                <h4 class="text-capitalize">{{ str_replace('_',' ', $gateway->key_name) }}</h4>
+                <h4 class="text-non-capitalize">{{ str_replace('_',' ', $gateway->key_name) }}</h4>
                 <p class="fs-12">
                     {{ translate('if_you_turn_off_customer_can_not_pay_through_this_payment_gateway') }}
                 </p>
 
                 <div class="border rounded px-3 py-2 d-flex justify-content-between align-items-center bg-white">
-                    <h4 class="text-capitalize mb-0">{{ translate('Status') }}</h4>
+                    <h4 class="text-non-capitalize mb-0">{{ translate('Status') }}</h4>
 
                     @php($additionalData = $gateway['additional_data'] != null ? json_decode($gateway['additional_data']) : [])
                     <?php

@@ -21,7 +21,7 @@
 
                             <div class="table-responsive w-auto overflow-y-hidden mb-4">
                                 <div class="position-relative nav--tab-wrapper">
-                                    <ul class="nav nav-pills nav--tab text-capitalize lang_tab" id="pills-tab"
+                                    <ul class="nav nav-pills nav--tab text-non-capitalize lang_tab" id="pills-tab"
                                         role="tablist">
                                         @foreach($language as $lang)
                                             <li class="nav-item px-0">

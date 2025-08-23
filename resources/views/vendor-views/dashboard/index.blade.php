@@ -9,7 +9,7 @@
         <div class="page-header pb-0 border-0 mb-3">
             <div class="flex-between row align-items-center mx-1">
                 <div>
-                    <h1 class="page-header-title text-capitalize">{{translate('welcome').' '.auth('seller')->user()->f_name.' '.auth('seller')->user()->l_name}}</h1>
+                    <h1 class="page-header-title text-non-capitalize">{{translate('welcome').' '.auth('seller')->user()->f_name.' '.auth('seller')->user()->l_name}}</h1>
                     <p>{{ translate('monitor_your_business_analytics_and_statistics').'.'}}</p>
                 </div>
 
@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="row justify-content-between align-items-center g-2 mb-3">
                     <div class="col-sm-6">
-                        <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+                        <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
                             <img src="{{dynamicAsset(path: 'public/assets/back-end/img/business_analytics.png')}}" alt="">
                             {{translate('order_analytics')}}
                         </h4>
@@ -52,7 +52,7 @@
             <div class="card-body">
                 <div class="row justify-content-between align-items-center g-2 mb-3">
                     <div class="col-sm-6">
-                        <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+                        <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
                             <img width="20" class="mb-1" src="{{dynamicAsset(path: 'public/assets/back-end/img/admin-wallet.png')}}" alt="">
                             {{translate('vendor_Wallet')}}
                         </h4>

@@ -6,7 +6,7 @@
     <div class="content container-fluid">
 
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
                 {{ translate($type=='new-request'?'pending_for_approval_products':($type=='approved'?'approved_products':'product_list')) }}
                 <span class="badge badge-soft-dark radius-50 fz-14 ml-1">
@@ -29,7 +29,7 @@
                                 <label class="title-color" for="store">
                                     {{ translate('brand') }}
                                 </label>
-                                <select name="brand_id" class="js-select2-custom form-control text-capitalize">
+                                <select name="brand_id" class="js-select2-custom form-control text-non-capitalize">
                                     <option value="" selected>{{ translate('all_brand') }}</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{ $brand->id}}" {{request('brand_id')==$brand->id ? 'selected' :''}}>{{ $brand->default_name }}</option>
@@ -144,15 +144,15 @@
                     <div class="table-responsive">
                         <table id="datatable"
                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
-                                <th class="text-capitalize">{{ translate('product_name') }}</th>
-                                <th class="text-center text-capitalize">{{ translate('product_type') }}</th>
-                                <th class="text-center text-capitalize">{{ translate('unit_price') }}</th>
-                                <th class="text-center text-capitalize">{{ translate('verify_status') }}</th>
+                                <th class="text-non-capitalize">{{ translate('product_name') }}</th>
+                                <th class="text-center text-non-capitalize">{{ translate('product_type') }}</th>
+                                <th class="text-center text-non-capitalize">{{ translate('unit_price') }}</th>
+                                <th class="text-center text-non-capitalize">{{ translate('verify_status') }}</th>
                                 @if($type != 'new-request' )
-                                <th class="text-center text-capitalize">{{ translate('active_status') }}</th>
+                                <th class="text-center text-non-capitalize">{{ translate('active_status') }}</th>
                                 @endif
                                 <th class="text-center">{{ translate('action') }}</th>
                             </tr>

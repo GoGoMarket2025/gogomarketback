@@ -3,7 +3,7 @@
         <div class="row gy-4">
             <div class="col-md-9">
                 <div class="position-relative nav--tab-wrapper">
-                    <ul class="nav nav-pills nav--tab text-capitalize lang_tab" id="pills-tab"
+                    <ul class="nav nav-pills nav--tab text-non-capitalize lang_tab" id="pills-tab"
                         role="tablist">
                         @foreach ($languages as $lang)
                             <li class="nav-item" role="presentation">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-3">
                 <div class="d-flex justify-content-end">
-                    <a class="btn btn-primary btn-sm p-2 text-capitalize"
+                    <a class="btn btn-primary btn-sm p-2 text-non-capitalize"
                        href="{{ route('admin.products.product-gallery') }}">
                         <i class="fi fi-rr-plus-small"></i>
                         {{ translate('add_info_from_gallery') }}

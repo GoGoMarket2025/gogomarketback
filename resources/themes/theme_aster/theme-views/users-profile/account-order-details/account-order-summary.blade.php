@@ -14,7 +14,7 @@
                     <div class="d-lg-none row align-items-center mt-2 mb-3">
                         <div class="col-9">
                             <div class="d-flex gap-3 justify-content-start mt-2">
-                                <h6 class="text-capitalize">{{translate('order_status')}}</h6>
+                                <h6 class="text-non-capitalize">{{translate('order_status')}}</h6>
 
                                 @if($order['order_status']=='failed' || $order['order_status']=='canceled')
                                     <span class="badge bg-danger rounded-pill">
@@ -31,7 +31,7 @@
                                 @endif
                             </div>
                             <div class="d-flex gap-3 justify-content-start mt-2">
-                                <h6 class="text-capitalize">{{translate('payment_status')}}</h6>
+                                <h6 class="text-non-capitalize">{{translate('payment_status')}}</h6>
                                 <div
                                     class="{{ $order['payment_status']=='unpaid' ? 'text-danger':'text-dark' }}"> {{ translate($order['payment_status']) }}</div>
                             </div>
@@ -73,13 +73,13 @@
                                         <table class="table align-middle order-details-table">
                                             <thead class="table-light">
                                             <tr>
-                                                <th class="border-0 text-capitalize">{{translate('product_details')}}</th>
+                                                <th class="border-0 text-non-capitalize">{{translate('product_details')}}</th>
                                                 <th class="border-0 text-center">{{translate('qty')}}</th>
-                                                <th class="border-0 text-center text-capitalize">{{translate('price')}}</th>
-                                                <th class="border-0 text-center text-capitalize">{{translate('discount')}}</th>
+                                                <th class="border-0 text-center text-non-capitalize">{{translate('price')}}</th>
+                                                <th class="border-0 text-center text-non-capitalize">{{translate('discount')}}</th>
                                                 <th class="border-0 text-end" {{ ($order->order_type == 'default_type' && $order->order_status=='delivered') ? 'colspan="2"':'' }}>{{translate('Total')}}</th>
                                                 @if($order->order_type == 'default_type' && ($order->order_status=='delivered' || ($order->payment_status == 'paid' && $digitalProduct)))
-                                                    <th class="border-0 text-center text-capitalize">{{translate('action')}}</th>
+                                                    <th class="border-0 text-center text-non-capitalize">{{translate('action')}}</th>
                                                 @elseif($order->order_type != 'default_type' && $order->order_status=='delivered')
                                                     <th class="border-0 text-center"></th>
                                                 @endif
@@ -121,7 +121,7 @@
                                                                             {{translate('variant')}} :{{$detail->variant}}
                                                                         </small>
                                                                     @endif
-                                                                    <div class="fs-12 text-capitalize">{{ translate('unit_price_:') }}
+                                                                    <div class="fs-12 text-non-capitalize">{{ translate('unit_price_:') }}
                                                                         {{ webCurrencyConverter($detail->price) }}</div>
                                                                 </div>
                                                             </div>
@@ -179,7 +179,7 @@
                                                                         </button>
                                                                         @include('theme-views.layouts.partials.modal._review',['id'=>$detail->id,'order_details'=>$detail,])
                                                                         @if($detail->refund_request !=0)
-                                                                            <a class="btn btn-outline-primary rounded-pill text-nowrap text-capitalize"
+                                                                            <a class="btn btn-outline-primary rounded-pill text-nowrap text-non-capitalize"
                                                                                href="{{route('refund-details',[$detail->id])}}">{{translate('refund_details')}}</a>
                                                                         @endif
                                                                         @if($refund_day_limit > 0 && $length <= $refund_day_limit && $detail->refund_request == 0)
@@ -193,7 +193,7 @@
                                                                     @endif
                                                                 @else
                                                                     <label
-                                                                        class="badge bg-info rounded-pill text-capitalize">{{translate('POS_order')}}</label>
+                                                                        class="badge bg-info rounded-pill text-non-capitalize">{{translate('POS_order')}}</label>
                                                                 @endif
                                                             </div>
                                                         </td>
@@ -233,7 +233,7 @@
 
                                                 @if($order->order_type != 'default_type')
                                                     <div class="d-flex flex-wrap justify-content-between align-`item`s-center gap-2">
-                                                        <div class="text-capitalize">{{translate('extra_discount')}}</div>
+                                                        <div class="text-non-capitalize">{{translate('extra_discount')}}</div>
                                                         <div>
                                                             - {{ webCurrencyConverter(amount:  $orderTotalPriceSummary['extraDiscount']) }}
                                                         </div>
@@ -249,7 +249,7 @@
                                                 </div>
 
                                                 <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-                                                    <div class="text-capitalize">{{translate('coupon_discount')}}</div>
+                                                    <div class="text-non-capitalize">{{translate('coupon_discount')}}</div>
                                                     <div>
                                                         - {{ webCurrencyConverter(amount:  $orderTotalPriceSummary['couponDiscount']) }}
                                                     </div>
@@ -266,7 +266,7 @@
                                                 @if($order->order_type == 'default_type' && $order?->is_shipping_free == 0)
                                                     <div
                                                         class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-                                                        <div class="text-capitalize">{{translate('shipping_fee')}}</div>
+                                                        <div class="text-non-capitalize">{{translate('shipping_fee')}}</div>
                                                         <div>
                                                             {{ webCurrencyConverter(amount:  $orderTotalPriceSummary['shippingTotal']) }}
                                                         </div>
@@ -275,7 +275,7 @@
 
                                                 <div
                                                     class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-                                                    <h4 class="text-capitalize">{{translate('total')}}</h4>
+                                                    <h4 class="text-non-capitalize">{{translate('total')}}</h4>
                                                     <h2 class="text-primary">
                                                         {{ webCurrencyConverter(amount:  $orderTotalPriceSummary['totalAmount']) }}
                                                     </h2>
@@ -284,21 +284,21 @@
                                                     <hr class="m-0">
                                                     <div
                                                         class="d-flex flex-wrap justify-content-between align-`item`s-center gap-2">
-                                                        <div class="text-capitalize fw-bold">{{translate('paid_amount')}}</div>
+                                                        <div class="text-non-capitalize fw-bold">{{translate('paid_amount')}}</div>
                                                        <div class="fw-bold">
                                                            {{ webCurrencyConverter(amount:  $orderTotalPriceSummary['paidAmount']) }}
                                                        </div>
                                                     </div>
                                                     <div
                                                         class="d-flex flex-wrap justify-content-between align-`item`s-center gap-2">
-                                                        <div class="text-capitalize fw-bold">{{translate('change_amount')}}</div>
+                                                        <div class="text-non-capitalize fw-bold">{{translate('change_amount')}}</div>
                                                         <div class="fw-bold">
                                                             {{ webCurrencyConverter(amount:  $orderTotalPriceSummary['changeAmount']) }}
                                                         </div>
                                                     </div>
                                                 @endif
                                                 @if ($order['order_status']=='pending' && $order['payment_method']=='cash_on_delivery')
-                                                    <button class="btn btn-sm  text-capitalize btn-danger mt-3 delete-action"
+                                                    <button class="btn btn-sm  text-non-capitalize btn-danger mt-3 delete-action"
                                                             data-action="{{route('order-cancel',[$order->id])}}"
                                                             data-message="{{translate('want_to_cancel_this_order').'?'}}">
                                                         {{translate('cancel_order')}}

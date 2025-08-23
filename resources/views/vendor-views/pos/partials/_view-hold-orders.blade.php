@@ -1,7 +1,7 @@
 @if ($totalHoldOrders > 0)
     <div class="table-responsive datatable-custom custom-scrollbar-pos min-h-300">
         <table class="table table-hover table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
-            <thead class="thead-light thead-50 text-capitalize">
+            <thead class="thead-light thead-50 text-non-capitalize">
             <tr>
                 <th>{{translate('SL')}}</th>
                 <th>{{translate('date')}}</th>

@@ -7,7 +7,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/3rd-party.png') }}" alt="">
                 {{ translate('payment_methods_setup') }}
             </h2>
@@ -82,7 +82,7 @@
                             <div class="card shadow-2">
                                 @php($mode = $gateway->live_values['mode'] ?? '')
                                 <div class="card-body d-flex justify-content-between align-items-center">
-                                    <h4 class="text-capitalize mb-0 d-flex gap-2 align-items-center">
+                                    <h4 class="text-non-capitalize mb-0 d-flex gap-2 align-items-center">
                                         {{ str_replace('_',' ',$gateway->key_name) }}
                                         <span class="badge text-bg-info badge-info">
                                             {{ $mode }}

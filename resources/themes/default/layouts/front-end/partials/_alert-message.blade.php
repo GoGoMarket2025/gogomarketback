@@ -28,7 +28,7 @@
             <h6 class="title text-truncate mb-1"></h6>
             <span class="message"></span>
             <div class="d-flex justify-content-between gap-3 mt-2">
-                <a href="javascript:" class="text-decoration-underline text-capitalize get-view-by-onclick product-link"
+                <a href="javascript:" class="text-decoration-underline text-non-capitalize get-view-by-onclick product-link"
                    data-link="">
                     {{translate('click_to_view')}}
                 </a>

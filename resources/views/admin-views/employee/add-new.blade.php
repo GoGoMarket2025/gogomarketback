@@ -3,7 +3,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-employee.png')}}" alt="">
                 {{translate('add_new_employee')}}
             </h2>
@@ -13,7 +13,7 @@
             @csrf
             <div class="card">
                 <div class="card-body">
-                    <h3 class="mb-0 page-header-title text-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-3">
+                    <h3 class="mb-0 page-header-title text-non-capitalize d-flex align-items-center gap-2 border-bottom pb-3 mb-3">
                         <i class="fi fi-sr-user"></i>
                         {{translate('general_information')}}
                     </h3>

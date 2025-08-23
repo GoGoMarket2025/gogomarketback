@@ -33,7 +33,7 @@
                 <div class="d-flex justify-content-center align-items-center flex-column">
                     <img src="{{ theme_asset(path: 'public/assets/front-end/img/icons/user-vector.svg') }}"
                          alt="" class="w-70px">
-                    <h2 class="text-center font-bold text-capitalize fs-20 my-4 fs-18-mobile">
+                    <h2 class="text-center font-bold text-non-capitalize fs-20 my-4 fs-18-mobile">
                         {{ translate('Sign_In') }}
                     </h2>
                 </div>

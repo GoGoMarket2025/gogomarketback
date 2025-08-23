@@ -56,10 +56,10 @@
                 <tr>
                     <td class="p-0 text-left">
                         <span class="bold black p-0 text-left">{{translate('duration')}}</span> :
-                        <span class="p-0 p-3 text-capitalize">{{ $data['duration'] }}</span>
+                        <span class="p-0 p-3 text-non-capitalize">{{ $data['duration'] }}</span>
                         <br><br>
                         <span class="bold black p-0 text-left">{{translate('vendor_Info')}}</span> :
-                        <span class="p-0 p-3 text-capitalize">{{ $data['shop_name'] }}</span>
+                        <span class="p-0 p-3 text-non-capitalize">{{ $data['shop_name'] }}</span>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

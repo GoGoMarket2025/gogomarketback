@@ -34,7 +34,7 @@
                         {{ translate('featured_products') }}
                     </h2>
                     <div class="text-end px-3 d-none d-md-block">
-                        <a class="text-capitalize view-all-text web-text-primary" href="{{route('products',['data_from'=>'featured','page'=>1])}}">
+                        <a class="text-non-capitalize view-all-text web-text-primary" href="{{route('products',['data_from'=>'featured','page'=>1])}}">
                             {{ translate('view_all')}}
                             <i class="czi-arrow-{{Session::get('direction') === 'rtl' ? 'left mr-1 ml-n1 mt-1' : 'right ml-1'}}"></i>
                         </a>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="text-center pt-2 d-md-none">
-                            <a class="text-capitalize view-all-text web-text-primary" href="{{route('products',['data_from'=>'featured','page'=>1])}}">
+                            <a class="text-non-capitalize view-all-text web-text-primary" href="{{route('products',['data_from'=>'featured','page'=>1])}}">
                                 {{ translate('view_all')}}
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1 mt-1' : 'right ml-1'}}"></i>
                             </a>
@@ -74,7 +74,7 @@
                                 <span class="text-left text-nowrap">{{ translate('see_the_latest_deals_and_exciting_new_offers')}}!</span>
                             </div>
                             <div>
-                                <a class="text-capitalize view-all-text web-text-primary" href="{{route('products',['offer_type'=>'featured_deal'])}}">
+                                <a class="text-non-capitalize view-all-text web-text-primary" href="{{route('products',['offer_type'=>'featured_deal'])}}">
                                     {{ translate('view_all')}}
                                     <i class="czi-arrow-{{Session::get('direction') === 'rtl' ? 'left mr-1 ml-n1 mt-1' : 'right ml-1'}}"></i>
                                 </a>
@@ -115,7 +115,7 @@
                 <div class="container rtl mt-4">
                     <div class="section-header">
                         <h2 class="arrival-title d-block mb-1">
-                            <div class="text-capitalize">
+                            <div class="text-non-capitalize">
                                 {{ translate('new_arrivals')}}
                             </div>
                         </h2>
@@ -183,7 +183,7 @@
                         <span> {{translate('brands')}}</span>
                     </h2>
                     <div class="__mr-2px">
-                        <a class="text-capitalize view-all-text web-text-primary" href="{{route('brands')}}">
+                        <a class="text-non-capitalize view-all-text web-text-primary" href="{{route('brands')}}">
                             {{ translate('view_all')}}
                             <i class="czi-arrow-{{Session::get('direction') === 'rtl' ? 'left mr-1 ml-n1 mt-1 float-left' : 'right ml-1 mr-n1'}}"></i>
                         </a>

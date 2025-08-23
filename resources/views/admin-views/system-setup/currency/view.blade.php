@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/system-setting.png') }}" alt="">
                 {{ translate('system_Setup') }}
             </h2>
@@ -38,7 +38,7 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize" for="name">
+                                    <label class="form-label text-non-capitalize" for="name">
                                         {{ translate('currency_name') }}
                                         <span class="text-danger">*</span>
                                         <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -55,7 +55,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize" for="symbol">
+                                    <label class="form-label text-non-capitalize" for="symbol">
                                         {{ translate('currency_symbol') }}
                                         <span class="text-danger">*</span>
                                         <span class="tooltip-icon" data-bs-toggle="tooltip"
@@ -72,7 +72,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label text-capitalize" for="currency_code">
+                                    <label class="form-label text-non-capitalize" for="currency_code">
                                         {{ translate('currency_code') }}
                                         <span class="text-danger">*</span>
                                         <span class="tooltip-icon" data-bs-toggle="tooltip"
@@ -90,7 +90,7 @@
                             @if($currencyModel['value']=='multi_currency')
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label text-capitalize" for="exchange_rate">
+                                        <label class="form-label text-non-capitalize" for="exchange_rate">
                                             {{ translate('exchange_rate') }}
                                             <span class="text-danger">*</span>
                                             <span class="tooltip-icon" data-bs-toggle="tooltip"
@@ -149,7 +149,7 @@
                     <div class="table-responsive">
                         <table
                             class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table text-start">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('currency_name') }}</th>

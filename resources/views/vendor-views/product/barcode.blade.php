@@ -10,7 +10,7 @@
     <div class="row m-2 show-div pt-3">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
             <div class="mb-3">
-                <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+                <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2">
                     <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
                     {{ translate('generate_Barcode') }}
                 </h2>
@@ -21,7 +21,7 @@
                     <div class="table-responsive">
                         <form action="{{ url()->current() }}" method="GET">
                             <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
-                                <thead class="thead-light thead-50 text-capitalize">
+                                <thead class="thead-light thead-50 text-non-capitalize">
                                 <tr>
                                     <th>{{ translate('code') }}</th>
                                     <th>{{ translate('name') }}</th>
@@ -88,13 +88,13 @@
             <div class="barcode-a4">
                 @for ($i = 0; $i < count($array); $i++)
                     <div class="item style24">
-                        <span class="barcode_site text-capitalize">
+                        <span class="barcode_site text-non-capitalize">
                             {{ getWebConfig(name: 'company_name') }}
                         </span>
-                        <span class="barcode_name text-capitalize">
+                        <span class="barcode_name text-non-capitalize">
                             {{ Str::limit($product->name, 20) }}
                         </span>
-                        <div class="barcode_price text-capitalize">
+                        <div class="barcode_price text-non-capitalize">
                             {{ setCurrencySymbol(amount: usdToDefaultCurrency(amount: $product->unit_price), currencyCode: getCurrencyCode()) }}
                         </div>
 
@@ -102,7 +102,7 @@
                             <div class="barcode_image d-flex justify-content-center">
                                 {!! DNS1D::getBarcodeHTML($product->code, 'C128') !!}
                             </div>
-                            <div class="barcode_code text-capitalize">
+                            <div class="barcode_code text-non-capitalize">
                                 {{ translate('code') }} : {{ $product->code }}
                             </div>
                         @else

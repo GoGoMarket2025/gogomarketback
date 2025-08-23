@@ -21,7 +21,7 @@
                                 <div class="media-body">
                                     <div class="d-flex gap-2 gap-sm-3 align-items-sm-center justify-content-between">
                                         <div class="">
-                                            <h6 class="text-capitalize seller-info-title mb-1 mb-sm-2">{{$order->seller->shop->name}}</h6>
+                                            <h6 class="text-non-capitalize seller-info-title mb-1 mb-sm-2">{{$order->seller->shop->name}}</h6>
                                             <div class="rating-show justify-content-between">
                                                 <span class="d-inline-block font-size-sm text-body">
                                                     @for($inc=1;$inc<=5;$inc++)
@@ -44,7 +44,7 @@
                                         </div>
 
                                         <div>
-                                            <button type="button" class="btn btn-soft-info text-capitalize px-2 px-sm-4"
+                                            <button type="button" class="btn btn-soft-info text-non-capitalize px-2 px-sm-4"
                                                     data-toggle="modal"
                                                     data-target="#chatting_modal" {{ ($order->seller->shop->temporary_close || ($order->seller->shop->vacation_status && date('Y-m-d') >= date('Y-m-d', strtotime($order->seller->shop->vacation_start_date)) && date('Y-m-d') <= date('Y-m-d', strtotime($order->seller->shop->vacation_end_date)))) ? 'disabled' : '' }}>
                                                 <img alt="" src="{{theme_asset(path: 'public/assets/front-end/img/seller-info-chat.png')}}">
@@ -65,7 +65,7 @@
                                 <div class="media-body">
                                     <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="text-capitalize">{{$web_config['company_name']}}</h6>
+                                            <h6 class="text-non-capitalize">{{$web_config['company_name']}}</h6>
                                             <div class="rating-show justify-content-between">
                                                 <span class="d-inline-block font-size-sm text-body">
                                                     @for($inc=1;$inc<=5;$inc++)
@@ -88,7 +88,7 @@
                                         </div>
 
                                         <div>
-                                            <button type="button" class="btn btn-soft-info text-capitalize px-2 px-sm-4"
+                                            <button type="button" class="btn btn-soft-info text-non-capitalize px-2 px-sm-4"
                                                     data-toggle="modal"
                                                     data-target="#chatting_modal">
                                                 <img alt="" src="{{theme_asset(path: 'public/assets/front-end/img/seller-info-chat.png')}}">

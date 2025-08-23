@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="name">
+                                            <label class="form-label text-non-capitalize" for="name">
                                                 {{ translate('sub_category_Name') }}<span
                                                     class="text-danger">*</span>
                                             </label>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label text-capitalize" for="priority">
+                                            <label class="form-label text-non-capitalize" for="priority">
                                                 {{ translate('priority') }}
                                                 <span>
                                                     <i class="tio-info-outined" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ translate('the_lowest_number_will_get_the_highest_priority') }}"></i>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-borderless align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                     <tr>
                                         <th>{{ translate('ID') }}</th>
                                         <th>{{ translate('sub_sub_category_name') }}</th>

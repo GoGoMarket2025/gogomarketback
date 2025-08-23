@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('customer_login') }}
             </h2>
         </div>
@@ -18,7 +18,7 @@
             <div class="card mb-3">
                 <div class="card-header py-3">
                     <h2>{{ translate('Login_Setup') }}</h2>
-                    <p class="mb-0 fs-12 text-capitalize">
+                    <p class="mb-0 fs-12 text-non-capitalize">
                         {{ translate('set_up_the_login_options_for_customer_access_to_the_system.') }}
                     </p>
                 </div>
@@ -78,7 +78,7 @@
                                                             {{ translate('OTP_Login') }}
                                                         </label>
                                                         <p class="fs-12 mb-0">
-                                                           {{ translate('by_enabling_manual_login,__with_otp_login_customers_can_log_in_using_their_phone_number_without_password_to_enable_this_feature') }} <a href="{{ route('admin.third-party.sms-module') }}" target="_blank" class="text-decoration-underline text-capitalize">{{ translate('configure_sms_Setup') }}</a> {{ translate('Here') }}.
+                                                           {{ translate('by_enabling_manual_login,__with_otp_login_customers_can_log_in_using_their_phone_number_without_password_to_enable_this_feature') }} <a href="{{ route('admin.third-party.sms-module') }}" target="_blank" class="text-decoration-underline text-non-capitalize">{{ translate('configure_sms_Setup') }}</a> {{ translate('Here') }}.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -231,7 +231,7 @@
             <div class="card mb-20">
                 <div class="card-header py-3">
                     <h2>{{ translate('Verification') }}</h2>
-                    <p class="mb-0 fs-12 text-capitalize">
+                    <p class="mb-0 fs-12 text-non-capitalize">
                         {{ translate('the_option_you_select_from_below_will_need_to_verify_by_customer_from_customer_app/website') }}
                     </p>
                 </div>

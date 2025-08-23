@@ -12,7 +12,7 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <div class="mb-3">
-                        <h2 class="h1 mb-0 text-capitalize d-flex gap-2">
+                        <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2">
                             <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                             {{translate('customer_details')}}
                         </h2>
@@ -47,7 +47,7 @@
                                         <strong class="value">{{$customer['email'] ?? translate('no_data_found')}}</strong>
                                     </li>
                                     <li>
-                                        <span class="key text-capitalize">{{translate('joined_date')}}</span>
+                                        <span class="key text-non-capitalize">{{translate('joined_date')}}</span>
                                         <span class="me-3">:</span>
                                         <strong class="value">{{date('d M Y',strtotime($customer['created_at']))}}</strong>
                                     </li>
@@ -61,13 +61,13 @@
                 <div class="col-xl-6 col-xxl-8">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="mb-4 d-flex align-items-center gap-2 text-capitalize">{{translate('saved_address')}}</h3>
+                            <h3 class="mb-4 d-flex align-items-center gap-2 text-non-capitalize">{{translate('saved_address')}}</h3>
                             <div class="swiper addressSwiper">
                                 <div class="swiper-wrapper">
                                     @foreach($customer->addresses as $address)
                                         <div class="swiper-slide p-3 rounded bg-section">
                                             <div class="customer-details-new-card-content">
-                                                <h4 class="name text-capitalize mb-2">{{$address['address_type'].' ( '.translate($address['is_billing'] == 0 ? 'shipping_address': 'billing_address').' )'}} </h4>
+                                                <h4 class="name text-non-capitalize mb-2">{{$address['address_type'].' ( '.translate($address['is_billing'] == 0 ? 'shipping_address': 'billing_address').' )'}} </h4>
                                                 <ul class="customer-details-new-card-content-list">
                                                     <li>
                                                         <strong class="key">{{translate('name')}}</strong>
@@ -102,7 +102,7 @@
                                 <a href="" class="order-stats">
                                     <div class="order-stats__content">
                                         <img width="20" src="{{dynamicAsset(path:'public/assets/back-end/img/customer/total-order.png')}}" alt="">
-                                        <h6 class="order-stats__subtitle text-capitalize">{{translate('total_orders')}}</h6>
+                                        <h6 class="order-stats__subtitle text-non-capitalize">{{translate('total_orders')}}</h6>
                                     </div>
                                     <span class="order-stats__title text--title">{{$orderStatusArray['total_order']}}</span>
                                 </a>
@@ -165,7 +165,7 @@
                                 <a class="order-stats">
                                     <div class="order-stats__content">
                                         <img width="20" src="{{dynamicAsset(path:'public/assets/back-end/img/customer/total-order.png')}}" alt="">
-                                        <h4 class="order-stats__subtitle text-capitalize">{{translate('total_orders')}}</h4>
+                                        <h4 class="order-stats__subtitle text-non-capitalize">{{translate('total_orders')}}</h4>
                                     </div>
                                     <span class="order-stats__title text--title">{{$orderStatusArray['total_order']}}</span>
                                 </a>
@@ -260,7 +260,7 @@
 
                         <div class="table-responsive datatable-custom">
                             <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
-                                <thead class="thead-light thead-50 text-capitalize">
+                                <thead class="thead-light thead-50 text-non-capitalize">
                                 <tr>
                                     <th>{{translate('sl')}}</th>
                                     <th>{{translate('order_ID')}}</th>

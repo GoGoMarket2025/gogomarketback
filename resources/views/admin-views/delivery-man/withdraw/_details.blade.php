@@ -7,25 +7,25 @@
             </span>
         </div>
         <div class="d-flex flex-column align-items-center gap-1 mb-3">
-            <h3 class="mb-3 text-capitalize">{{translate('withdraw_information')}}</h3>
+            <h3 class="mb-3 text-non-capitalize">{{translate('withdraw_information')}}</h3>
             <div class="d-flex gap-2 align-items-center mb-1 flex-wrap">
-                <span class="text-capitalize">{{translate('withdraw_Amount').' : '}}</span>
+                <span class="text-non-capitalize">{{translate('withdraw_Amount').' : '}}</span>
                 <span class="font-semibold">{{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $details['amount']), currencyCode: getCurrencyCode())}}</span>
                 <label class="badge {{$details['approved'] == 1 ? 'badge-success-2' : ($details['approved'] == 0 ? 'badge--primary-2':'badge--danger-2')}} mb-0">{{translate($details['approved'] == 1 ? 'approved' : ($details['approved'] == 0 ? 'pending':'denied'))}}</label>
             </div>
             <div class="d-flex gap-2 align-items-center fs-12">
-                <span class="text-capitalize">{{translate('request_time').' : '}}</span>
+                <span class="text-non-capitalize">{{translate('request_time').' : '}}</span>
                 <span>{{ date_format( $details['created_at'], 'd-M-Y, h:i:s A') }}</span>
             </div>
         </div>
         <div class="card mb-3">
             <div class="card-header">
-                <h6 class="mb-0 font-medium text-capitalize font-weight-bold">{{translate('bank_info')}}</h6>
+                <h6 class="mb-0 font-medium text-non-capitalize font-weight-bold">{{translate('bank_info')}}</h6>
             </div>
             <div class="card-body">
                 <div class="key-val-list d-flex flex-column gap-2 min-width--60px">
                     <div class="key-val-list-item d-flex gap-3">
-                        <span class="text-capitalize">{{translate('bank_name')}}</span>:
+                        <span class="text-non-capitalize">{{translate('bank_name')}}</span>:
                         <span>{{$details?->deliveryMan?->bank_name ?? translate('no_data_found')}}</span>
                     </div>
                     <div class="key-val-list-item d-flex gap-3">
@@ -33,11 +33,11 @@
                         <span>{{$details?->deliveryMan?->branch ?? translate('no_data_found') }}</span>
                     </div>
                     <div class="key-val-list-item d-flex gap-3">
-                        <span class="text-capitalize">{{translate('holder_name')}} </span>:
+                        <span class="text-non-capitalize">{{translate('holder_name')}} </span>:
                         <span>{{$details?->deliveryMan?->holder_name ?? translate('no_data_found') }}</span>
                     </div>
                     <div class="key-val-list-item d-flex gap-3">
-                        <span class="text-capitalize">{{translate('account_no')}}</span>:
+                        <span class="text-non-capitalize">{{translate('account_no')}}</span>:
                         <span>{{$details?->deliveryMan?->account_no ??  translate('no_data_found') }}</span>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="card mb-3">
             <div class="card-header">
-                <h6 class="mb-0 font-medium text-capitalize font-weight-bold">{{translate('deliveryman_info')}}</h6>
+                <h6 class="mb-0 font-medium text-non-capitalize font-weight-bold">{{translate('deliveryman_info')}}</h6>
             </div>
             <div class="card-body">
                 <div class="key-val-list d-flex flex-column gap-2 min-width--60px">
@@ -67,7 +67,7 @@
         @if($details['transaction_note'])
             <div class="card mb-3">
                 <div class="card-header">
-                    <h6 class="mb-0 font-medium text-capitalize font-weight-bold">{{translate(($details['approved'] == 0 ? 'pending':($details['approved'] ==1 ? 'approved' : 'denied' )).'_'.'Note')}}</h6>
+                    <h6 class="mb-0 font-medium text-non-capitalize font-weight-bold">{{translate(($details['approved'] == 0 ? 'pending':($details['approved'] ==1 ? 'approved' : 'denied' )).'_'.'Note')}}</h6>
                 </div>
                 <div class="card-body">
                     <div class="key-val-list d-flex flex-column gap-2 min-width--60px">

@@ -8,7 +8,7 @@
         <div class="">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
                 <div class="">
-                    <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                    <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                         <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/refund-request-list.png')}}" alt="">
                         {{translate('refund_request_list')}}
                         <span class="badge badge-soft-dark radius-50">{{$refundList->total()}}</span>
@@ -52,7 +52,7 @@
             <div class="table-responsive datatable-custom">
                 <table
                     class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table text-start">
-                    <thead class="thead-light thead-50 text-capitalize">
+                    <thead class="thead-light thead-50 text-non-capitalize">
                     <tr>
                         <th>{{translate('SL')}}</th>
                         <th class="text-center">{{translate('refund_id')}}</th>

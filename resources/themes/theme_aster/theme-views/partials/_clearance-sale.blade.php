@@ -4,9 +4,9 @@
             <div class="position-relative z-1">
                 <img src="{{ theme_asset('assets/img/clearance-sale-background.svg') }}" class="clearance-sale-bg-svg svg position-absolute w-100 h-100 z-n1 start-0" alt="">
                 <div class="px-2 px-sm-4 py-md-4 py-3">
-                    <div class="align-items-center d-flex flex-column gap-0 gap-md-2 mb-2 mb-3 mb-md-4 mt-md-3 text-capitalize">
-                        <h2 class="text-capitalize"><span class="text-primary">{{ translate('Clearance') }}</span> {{ translate('Sale') }}</h2>
-                        <h5 class="text-capitalize mb-2 clearance-save-more">{{ translate('Save_More') }}</h5>
+                    <div class="align-items-center d-flex flex-column gap-0 gap-md-2 mb-2 mb-3 mb-md-4 mt-md-3 text-non-capitalize">
+                        <h2 class="text-non-capitalize"><span class="text-primary">{{ translate('Clearance') }}</span> {{ translate('Sale') }}</h2>
+                        <h5 class="text-non-capitalize mb-2 clearance-save-more">{{ translate('Save_More') }}</h5>
                         <a href="{{ route('products', ['offer_type' => 'clearance_sale', 'page' => 1]) }}" class="btn-link">{{ translate('view_all') }} <i class="bi bi-chevron-right text-primary"></i></a>
                     </div>
                     <div class="swiper-container">

@@ -96,7 +96,7 @@
 
                                     @if ($product && $product->status == 0)
                                         <span
-                                            class="temporary-closed position-absolute text-center p-2 text-capitalize">
+                                            class="temporary-closed position-absolute text-center p-2 text-non-capitalize">
                                     <span>{{ translate('not_available') }}</span>
                                 </span>
                                     @endif

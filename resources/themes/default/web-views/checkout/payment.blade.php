@@ -37,7 +37,7 @@
                                         <div class="d-flex justify-content-between">
                                             <h5 class="mb-2 text-nowrap">{{ translate('payment_method')}}</h5>
                                             <a href="{{route('checkout-details')}}" class="d-flex align-items-center gap-2 text-primary font-weight-bold text-nowrap">
-                                                <i class="tio-back-ui fs-12 text-capitalize"></i>
+                                                <i class="tio-back-ui fs-12 text-non-capitalize"></i>
                                                 {{ translate('go_back') }}
                                             </a>
                                         </div>
@@ -46,7 +46,7 @@
 
                                 @if($cashOnDeliveryBtnShow && $cash_on_delivery['status'] || $digital_payment['status']==1 || (auth('customer')->check() && $wallet_status==1))
                                     @if(($cashOnDeliveryBtnShow && $cash_on_delivery['status']) || (auth('customer')->check() && $wallet_status==1))
-                                        <p class="text-capitalize mt-2">{{ translate('select_a_payment_method_to_proceed')}}</p>
+                                        <p class="text-non-capitalize mt-2">{{ translate('select_a_payment_method_to_proceed')}}</p>
 
                                         <div class="d-flex flex-wrap gap-3 mb-3">
                                             @if($cashOnDeliveryBtnShow && $cash_on_delivery['status'])
@@ -101,7 +101,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-center mb-10px">
-                                                <a id="bring_change_amount_btn" class="btn text-center text-capitalize text--primary fs-12 p-0" data-toggle="collapse" href="#bring_change_amount" role="button" aria-expanded="false" aria-controls="change_amount">
+                                                <a id="bring_change_amount_btn" class="btn text-center text-non-capitalize text--primary fs-12 p-0" data-toggle="collapse" href="#bring_change_amount" role="button" aria-expanded="false" aria-controls="change_amount">
                                                     {{ translate('see_more') }}
                                                 </a>
                                             </div>
@@ -118,7 +118,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-flex align-items-end gap-2">
                                                     <h5 class="mb-0 text-nowrap">{{ translate('pay_via_online')}}</h5>
-                                                    <span class="fs-10 text-capitalize mt-1">({{ translate('faster_&_secure_way_to_pay') }})</span>
+                                                    <span class="fs-10 text-non-capitalize mt-1">({{ translate('faster_&_secure_way_to_pay') }})</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@
                                                         <input type="radio" id="{{($payment_gateway->key_name)}}" name="online_payment" class="form-check-input custom-radio" value="{{($payment_gateway->key_name)}}">
                                                         <img width="30"
                                                              src="{{dynamicStorage(path: 'storage/app/public/payment_modules/gateway_image')}}/{{ $payment_gateway->additional_data && (json_decode($payment_gateway->additional_data)->gateway_image) != null ? (json_decode($payment_gateway->additional_data)->gateway_image) : ''}}" alt="">
-                                                        <span class="text-capitalize form-check-label">
+                                                        <span class="text-non-capitalize form-check-label">
                                                     @if($payment_gateway->additional_data && json_decode($payment_gateway->additional_data)->gateway_title != null)
                                                                 {{ json_decode($payment_gateway->additional_data)->gateway_title }}
                                                             @else
@@ -168,7 +168,7 @@
                                                     <div class="d-flex justify-content-between align-items-center gap-2 position-relative">
                                                 <span class="d-flex align-items-center gap-3">
                                                     <input type="radio" id="pay_offline" name="online_payment" class="custom-radio" value="pay_offline">
-                                                    <label for="pay_offline" class="cursor-pointer d-flex align-items-center gap-2 mb-0 text-capitalize">{{translate('pay_offline')}}</label>
+                                                    <label for="pay_offline" class="cursor-pointer d-flex align-items-center gap-2 mb-0 text-non-capitalize">{{translate('pay_offline')}}</label>
                                                 </span>
 
                                                         <div data-toggle="tooltip" title="{{translate('for_offline_payment_options,_please_follow_the_steps_below')}}">
@@ -179,7 +179,7 @@
                                                     <div class="mt-4 pay_offline_card d-none">
                                                         <div class="d-flex flex-wrap gap-3">
                                                             @foreach ($offline_payment_methods as $method)
-                                                                <button type="button" class="btn btn-light offline_payment_button text-capitalize" id="{{ $method->id }}">{{ $method->method_name }}</button>
+                                                                <button type="button" class="btn btn-light offline_payment_button text-non-capitalize" id="{{ $method->id }}">{{ $method->method_name }}</button>
                                                             @endforeach
                                                         </div>
                                                     </div>

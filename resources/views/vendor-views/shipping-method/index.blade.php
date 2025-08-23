@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Session;
     @php($direction = Session::get('direction'))
     <div class="content container-fluid">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/shipping_method.png')}}" alt="">
                 {{translate('shipping_method')}}
             </h2>
-            <div class="text-primary d-flex align-items-center gap-3 font-weight-bolder text-capitalize">
+            <div class="text-primary d-flex align-items-center gap-3 font-weight-bolder text-non-capitalize">
                 {{translate('delivery_restriction')}}
                 <div class="ripple-animation" data-toggle="modal" data-target="#howItWorksModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Session;
                         <div class="d-flex flex-column align-items-center gap-2">
                             <img width="80" class="mb-3" src="{{dynamicAsset(path: 'public/assets/back-end/img/delivery-restriction.png')}}"
                                  loading="lazy" alt="">
-                            <h4 class="lh-md text-capitalize">{{translate('delivery_restriction')}}</h4>
+                            <h4 class="lh-md text-non-capitalize">{{translate('delivery_restriction')}}</h4>
                             <div class="d-flex flex-column align-items-start">
                                 <p class="text--black">{{'1'.'. '.translate('you_can_only_delivery_in_added_zip_code_areas_that_has_already_selected_by_admin').'.'}}</p>
                                 <p class="text--black">{{'2'.'. '.translate('you_can_only_deliver_orders_to_the_selected_countries_which_admin_selected').'.'}}</p>
@@ -50,15 +50,15 @@ use Illuminate\Support\Facades\Session;
             <div class="col-md-12 ">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="text-capitalize mb-0 d-flex align-items-center gap-2">
+                        <h5 class="text-non-capitalize mb-0 d-flex align-items-center gap-2">
                             <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/delivery.png')}}" alt="">
                             {{translate('shipping')}}
                         </h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12 text-capitalize" style="text-align: {{$direction === "rtl" ? 'right' : 'left'}};">
-                                <select class="form-control text-capitalize w-100 shipping-type" name="shippingCategory">
+                            <div class="col-12 text-non-capitalize" style="text-align: {{$direction === "rtl" ? 'right' : 'left'}};">
+                                <select class="form-control text-non-capitalize w-100 shipping-type" name="shippingCategory">
                                     <option value="0" selected disabled>{{'---'.translate('select').'---'}}</option>
                                     <option
                                         value="order_wise" {{$shippingType=='order_wise'?'selected':'' }} >{{translate('order_wise')}} </option>
@@ -84,7 +84,7 @@ use Illuminate\Support\Facades\Session;
         <div id="order_wise_shipping">
             <div class="card mt-2">
                 <div class="card-header">
-                    <h5 class="text-capitalize mb-0 d-flex align-items-center gap-2">
+                    <h5 class="text-non-capitalize mb-0 d-flex align-items-center gap-2">
                         <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/delivery.png')}}" alt="">
                         {{translate('add_order_wise_shipping')}}
                     </h5>
@@ -133,7 +133,7 @@ use Illuminate\Support\Facades\Session;
 
             <div class="card mt-2">
                 <div class="px-3 py-4">
-                    <h5 class="text-capitalize mb-0 d-flex align-items-center gap-2">
+                    <h5 class="text-non-capitalize mb-0 d-flex align-items-center gap-2">
                         <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/delivery.png')}}" alt="">
                         {{translate('order_wise_shipping_method')}}
                         <span class="badge badge-soft-dark radius-50 fs-12">{{ $shippingMethods->count() }}</span>
@@ -142,7 +142,7 @@ use Illuminate\Support\Facades\Session;
                 <div class="table-responsive">
                     <table id="datatable"
                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table text-start">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('title')}}</th>
@@ -216,7 +216,7 @@ use Illuminate\Support\Facades\Session;
         </div>
         <div class="card mt-2" id="update_category_shipping_cost">
             <div class="px-3 pt-4">
-                <h5 class="text-capitalize mb-0 d-flex align-items-center gap-2">
+                <h5 class="text-non-capitalize mb-0 d-flex align-items-center gap-2">
                     <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/delivery.png')}}" alt="">
                     {{translate('category_wise_shipping_cost')}}
                 </h5>
@@ -227,7 +227,7 @@ use Illuminate\Support\Facades\Session;
                         @csrf
                         <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                                style="text-align: {{$direction === "rtl" ? 'right' : 'left'}};">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('category_name')}}</th>

@@ -21,13 +21,13 @@
                                     <div class="row gy-4">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label class="text-capitalize" for="f_name2">{{translate('first_name')}}</label>
+                                                <label class="text-non-capitalize" for="f_name2">{{translate('first_name')}}</label>
                                                 <input type="text" id="f_name" class="form-control" value="{{$customerDetail['f_name']}}" name="f_name" placeholder="{{translate('ex').':'.translate('jhon')}}" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label class="text-capitalize" for="l_name2">{{translate('last_name')}}</label>
+                                                <label class="text-non-capitalize" for="l_name2">{{translate('last_name')}}</label>
                                                 <input type="text" id="l_name" class="form-control" value="{{$customerDetail['l_name']}}" name="l_name" placeholder="{{translate('ex').':'.translate('doe')}}" required>
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label class="text-capitalize" for="confirm_password2">{{translate('confirm_password')}}</label>
+                                                <label class="text-non-capitalize" for="confirm_password2">{{translate('confirm_password')}}</label>
                                                 <div class="input-inner-end-ele">
                                                     <input type="password" minlength="6" id="confirm-password" name="confirm_password" class="form-control" placeholder="{{translate('ex').':'.'7+'.translate('character')}}">
                                                     <i class="bi bi-eye-slash-fill togglePassword"></i>
@@ -126,7 +126,7 @@
                                         <div class="col-12">
                                             <div class="d-flex justify-content-end gap-3">
                                                 <button type="reset" class="btn btn-secondary" id="profile-reset-button">{{translate('reset')}}</button>
-                                                <button type="submit" class="btn btn-primary text-capitalize">{{translate('update_profile')}}</button>
+                                                <button type="submit" class="btn btn-primary text-non-capitalize">{{translate('update_profile')}}</button>
                                             </div>
                                         </div>
                                     </div>

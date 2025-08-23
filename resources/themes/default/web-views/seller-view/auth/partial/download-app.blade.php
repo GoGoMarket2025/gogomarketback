@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="mt-5">
-                            <h3 class="mb-2 text-capitalize">{{$downloadVendorApp?->title ?? translate('download_free_vendor_app')}}</h3>
+                            <h3 class="mb-2 text-non-capitalize">{{$downloadVendorApp?->title ?? translate('download_free_vendor_app')}}</h3>
                             <p class="max-w-500 mb-4">{{$downloadVendorApp?->sub_title}}</p>
                             <div class="d-flex gap-3 flex-wrap">
                                 @if(isset($downloadVendorApp->download_google_app) && $downloadVendorApp?->download_google_app_status ==1)

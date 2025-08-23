@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-4">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('business_Setup') }}
             </h2>
         </div>
@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header py-3">
                         <h2>{{ translate('Websites_&_Panels') }}</h2>
-                        <p class="mb-0 fs-12 text-capitalize">
+                        <p class="mb-0 fs-12 text-non-capitalize">
                             {{ translate('Setup_your_business_logo_and_icons') }}
                         </p>
                     </div>
@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <div class="pb-12 pb-sm-20">
                                         <h3>{{ translate('Logo_&_Loader') }}</h3>
-                                        <p class="mb-0 fs-12 text-capitalize">
+                                        <p class="mb-0 fs-12 text-non-capitalize">
                                             {{ translate('here_you_can_setup_logos_for_web_site_header,_footer,_website_favicon,_website_page_loader_gif_for_better_user_experience') }}
                                         </p>
                                         <div class="bg-warning bg-opacity-10 fs-12 px-12 py-10 text-dark rounded d-flex gap-2 align-items-center mt-3">
@@ -50,7 +50,7 @@
                                                     <div class="card-body">
                                                         <div class="d-flex flex-column gap-20">
                                                             <div>
-                                                                <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                                                <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                                                     {{ translate('website_header_logo') }}
                                                                     <span class="text-danger">*</span>
                                                                 </label>
@@ -64,7 +64,7 @@
                                                                     <div class="upload-file-textbox text-center {{ $businessSetting['web_logo']['path'] ? 'd-none' : '' }}">
                                                                         <img width="34" height="34" class="svg" src="{{ getStorageImages(path: $businessSetting['web_logo'] , type: 'backend-placeholder') ?? '' }}" alt="image upload">
                                                                         <h6 class="mt-1 fw-medium lh-base text-center">
-                                                                            <span class="text-info text-capitalize">{{ translate('Click_to_upload') }}</span>
+                                                                            <span class="text-info text-non-capitalize">{{ translate('Click_to_upload') }}</span>
                                                                             <br>
                                                                             {{ translate('or_drag_and_drop') }}
                                                                         </h6>
@@ -79,7 +79,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <p class="fs-10 mb-0 text-center text-capitalize">
+                                                            <p class="fs-10 mb-0 text-center text-non-capitalize">
                                                                 {{ translate('jpg,_jpeg,_png,_gif_image_size') }} : {{ translate('Max_1_MB') }} <span class="fw-medium">{{ "(325 x 100 px)" }}</span>
                                                             </p>
                                                         </div>
@@ -92,7 +92,7 @@
                                                     <div class="card-body">
                                                         <div class="d-flex flex-column gap-20">
                                                             <div>
-                                                                <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                                                <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                                                     {{ translate('website_header_logo') }} ({{ translate('Mobile_View') }})
                                                                 </label>
                                                                 <p class="fs-12 mb-0">
@@ -107,7 +107,7 @@
                                                                     <div class="upload-file-textbox text-center">
                                                                         <img width="34" height="34" class="svg img-fluid" src="{{ getStorageImages(path: $businessSetting['mob_logo'] , type: 'backend-placeholder') }}" alt="image upload">
                                                                         <h6 class="mt-1 fw-medium lh-base text-center">
-                                                                            <span class="text-info text-capitalize">{{ translate('Click_to_upload') }}</span>
+                                                                            <span class="text-info text-non-capitalize">{{ translate('Click_to_upload') }}</span>
                                                                             <br>
                                                                             {{ translate('or_drag_and_drop') }}
                                                                         </h6>
@@ -133,7 +133,7 @@
                                                     <div class="card-body">
                                                         <div class="d-flex flex-column gap-20">
                                                             <div>
-                                                                <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                                                <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                                                     {{ translate('website_footer_logo') }}
                                                                     <span class="text-danger">*</span>
                                                                 </label>
@@ -147,7 +147,7 @@
                                                                     <div class="upload-file-textbox text-center {{ $businessSetting['footer_logo']['path'] ? 'd-none' : '' }}">
                                                                         <img width="34" height="34" class="svg img-fluid" src="{{ getStorageImages(path:$businessSetting['footer_logo'],type: 'backend-placeholder') ?? '' }}" alt="image upload">
                                                                         <h6 class="mt-1 fw-medium lh-base text-center">
-                                                                            <span class="text-info text-capitalize">{{ translate('Click_to_upload') }}</span>
+                                                                            <span class="text-info text-non-capitalize">{{ translate('Click_to_upload') }}</span>
                                                                             <br>
                                                                             {{ translate('or_drag_and_drop') }}
                                                                         </h6>
@@ -162,7 +162,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <p class="fs-10 mb-0 text-center text-capitalize">
+                                                            <p class="fs-10 mb-0 text-center text-non-capitalize">
                                                                 {{ translate('jpg,_jpeg,_png,_gif_image_size') }} : {{ translate('Max_1_MB') }} <span class="fw-medium">{{ "(325 x 100 px)" }}</span>
                                                             </p>
                                                         </div>
@@ -174,7 +174,7 @@
                                                     <div class="card-body">
                                                         <div class="d-flex flex-column gap-20">
                                                             <div>
-                                                                <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                                                <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                                                     {{ translate('Website_Favicon') }}
                                                                 </label>
                                                                 <p class="fs-12 mb-0">{{ translate('it_will_show_as_a_website_favicon') }}.</p>
@@ -186,7 +186,7 @@
                                                                     class="upload-file__wrapper">
                                                                     <div class="upload-file-textbox text-center {{ $businessSetting['fav_icon']['path'] ? 'd-none' : '' }}">
                                                                         <img width="34" height="34" class="svg img-fluid" src="{{ getStorageImages(path: $businessSetting['fav_icon'] , type: 'backend-placeholder') }}" alt="image upload">
-                                                                        <h6 class="mt-1 fw-medium lh-base text-center text-capitalize">
+                                                                        <h6 class="mt-1 fw-medium lh-base text-center text-non-capitalize">
                                                                             <span class="text-info">{{ translate('Click_to_upload') }}</span>
                                                                             <br>
                                                                             {{ translate('or_drag_and_drop') }}
@@ -212,7 +212,7 @@
                                                     <div class="card-body">
                                                         <div class="d-flex flex-column gap-20">
                                                             <div>
-                                                                <label for="" class="form-label fw-semibold mb-1 text-capitalize">
+                                                                <label for="" class="form-label fw-semibold mb-1 text-non-capitalize">
                                                                    {{ translate('Loading_GIF') }}
                                                                 </label>
                                                                 <p class="fs-12 mb-0">{{ translate('it_will_show_when_website_load_any_page') }}.</p>
@@ -224,7 +224,7 @@
                                                                     class="upload-file__wrapper">
                                                                     <div class="upload-file-textbox text-center {{ isset($businessSetting['loader_gif']['path']) && $businessSetting['loader_gif']['path'] ? 'd-none' : '' }}">
                                                                         <img width="34" height="34" class="svg img-fluid" src="{{ getStorageImages(path: $businessSetting['loader_gif'] , type: 'backend-placeholder') }}" alt="image upload">
-                                                                        <h6 class="mt-1 fw-medium lh-base text-center text-capitalize">
+                                                                        <h6 class="mt-1 fw-medium lh-base text-center text-non-capitalize">
                                                                             <span class="text-info">{{ translate('Click_to_upload') }}</span>
                                                                             <br>
                                                                             {{ translate('or_drag_and_drop') }}
@@ -253,7 +253,7 @@
                                 <div class="card-body">
                                     <div class="pb-12 pb-sm-20">
                                         <h3>{{ translate('Color_Settings') }}</h3>
-                                        <p class="mb-0 fs-12 text-capitalize">
+                                        <p class="mb-0 fs-12 text-non-capitalize">
                                             {{ translate('select_the_primary_&_secondary_colors_for_the_website_&_panels') }}
                                         </p>
                                         <div class="bg-info bg-opacity-10 fs-12 px-12 py-10 text-dark rounded d-flex gap-2 align-items-center mt-3">
@@ -295,7 +295,7 @@
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-group">
-                                                    <label class="form-label text-capitalize" for="">
+                                                    <label class="form-label text-non-capitalize" for="">
                                                        {{ translate('panel_sidebar_color') }}
                                                     </label>
                                                     <div class="d-flex align-items-center gap-10 bg-white border rounded py-2 px-10">
@@ -307,7 +307,7 @@
                                             @if(theme_root_path() == 'theme_aster')
                                                 <div class="col-lg-3">
                                                     <div class="form-group">
-                                                        <label class="form-label text-capitalize" for="">
+                                                        <label class="form-label text-non-capitalize" for="">
                                                             {{ translate('primary_light_color') }}
                                                         </label>
                                                         <div class="d-flex align-items-center gap-10 bg-white border rounded py-2 px-10">
@@ -322,7 +322,7 @@
                                 </div>
                             </div>
                             <div class="card card-sm shadow-1">
-                                <div class="card-body text-capitalize">
+                                <div class="card-body text-non-capitalize">
                                     <div class="pb-12 pb-sm-20">
                                         <h3>{{ translate('footer_app_download_button') }}</h3>
                                         <p class="mb-0 fs-12">

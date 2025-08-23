@@ -7,7 +7,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2 align-items-center">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2 align-items-center">
                 <img width="20" src="{{asset('public/assets/back-end/img/seller_sale.png')}}" alt="">
                 {{translate('product_report')}}
             </h2>
@@ -140,7 +140,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive" id="products-table">
                     <table class="table table-hover __table table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 {{Session::get('direction') === "rtl" ? 'text-right' : 'text-left'}}">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>

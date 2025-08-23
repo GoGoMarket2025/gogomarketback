@@ -14,7 +14,7 @@
             ->groupBy('cart_group_id');
 @endphp
 <div class="container">
-    <h4 class="text-center mb-3 text-capitalize">{{ translate('cart_list') }}</h4>
+    <h4 class="text-center mb-3 text-non-capitalize">{{ translate('cart_list') }}</h4>
     <form action="javascript:">
         <div class="row gy-3">
             <div class="col-lg-8">
@@ -25,7 +25,7 @@
                                 <li class="current cursor-pointer get-view-by-onclick"
                                     data-link="{{route('shop-cart')}}">
                                     <span><i class="bi bi-check2"></i></span> {{ translate('cart') }}</li>
-                                <li class="cursor-pointer text-capitalize" data-link="{{ route('checkout-details') }}">
+                                <li class="cursor-pointer text-non-capitalize" data-link="{{ route('checkout-details') }}">
                                     <span><i class="bi bi-check2"></i></span> {{ translate('shopping_details') }}</li>
                                 <li><span><i class="bi bi-check2"></i></span> {{ translate('payment') }}</li>
                             </ul>
@@ -237,12 +237,12 @@
 
                                                                 @if ($checkProductStatus == 0)
                                                                     <span class="temporary-closed position-absolute text-center p-2">
-                                                                        <span class="text-capitalize">{{ translate('not_available') }}</span>
+                                                                        <span class="text-non-capitalize">{{ translate('not_available') }}</span>
                                                                     </span>
                                                                 @endif
                                                             </div>
                                                             <div class="media-body d-flex gap-1 flex-column {{ $checkProductStatus == 0 ? 'custom-cart-opacity-50' : '' }}">
-                                                                <h6 class="text-truncate text-capitalize width--20ch">
+                                                                <h6 class="text-truncate text-non-capitalize width--20ch">
                                                                     <a href="{{ $checkProductStatus ? route('product', $cartItem['slug']):'javascript:' }}">{{$cartItem['name']}}</a>
                                                                 </h6>
 
@@ -251,7 +251,7 @@
                                                                         <span class="fs-12">{{translate('variant')}} : {{ $cartItem['variant'] }}</span>
                                                                     </div>
                                                                 @endif
-                                                                <div class="fs-12 text-capitalize">{{ translate('unit_price') }}
+                                                                <div class="fs-12 text-non-capitalize">{{ translate('unit_price') }}
                                                                     : {{ webCurrencyConverter($cartItem['price']) }}</div>
 
                                                                 @if($product->product_type == 'physical' && $getProductCurrentStock < $cartItem['quantity'])
@@ -339,7 +339,7 @@
                                                     src="{{ theme_asset(path: 'assets/img/icons/free-shipping.png') }}"
                                                     alt="{{ translate('image') }}" width="40">
                                                 @if ($free_delivery_status['amount_need'] <= 0)
-                                                    <span class="text-muted fs-16 text-capitalize">
+                                                    <span class="text-muted fs-16 text-non-capitalize">
                                                         {{ translate('you_get_free_delivery_bonus') }}
                                                     </span>
                                                 @else
@@ -407,7 +407,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="media-body d-flex gap-1 flex-column {{ $checkProductStatus == 0 ? 'custom-cart-opacity-50' : '' }}">
-                                                        <h6 class="text-truncate text-capitalize width--20ch">
+                                                        <h6 class="text-truncate text-non-capitalize width--20ch">
                                                             <a href="{{ $checkProductStatus ? route('product', $cartItem['slug']) : 'javascript:' }}">
                                                                 {{ $cartItem['name'] }}
                                                             </a>
@@ -417,7 +417,7 @@
                                                                 <span class="fs-12">{{translate('variant')}} : {{ $cartItem['variant'] }}</span>
                                                             </div>
                                                         @endif
-                                                        <div class="fs-12 text-capitalize">{{ translate('unit_price') }}
+                                                        <div class="fs-12 text-non-capitalize">{{ translate('unit_price') }}
                                                             : {{ webCurrencyConverter($cartItem['price']*$cartItem['quantity']) }}</div>
                                                         <div class="fs-12">{{ translate('discount') }}
                                                             : {{ webCurrencyConverter($cartItem['discount']*$cartItem['quantity']) }}</div>

@@ -43,7 +43,7 @@
                             d="M7.5 18C7.89782 18 8.27936 18.158 8.56066 18.4393C8.84196 18.7206 9 19.1022 9 19.5C9 19.8978 8.84196 20.2794 8.56066 20.5607C8.27936 20.842 7.89782 21 7.5 21C7.10218 21 6.72064 20.842 6.43934 20.5607C6.15804 20.2794 6 19.8978 6 19.5C6 19.1022 6.15804 18.7206 6.43934 18.4393C6.72064 18.158 7.10218 18 7.5 18ZM16.5 18C16.8978 18 17.2794 18.158 17.5607 18.4393C17.842 18.7206 18 19.1022 18 19.5C18 19.8978 17.842 20.2794 17.5607 20.5607C17.2794 20.842 16.8978 21 16.5 21C16.1022 21 15.7206 20.842 15.4393 20.5607C15.158 20.2794 15 19.8978 15 19.5C15 19.1022 15.158 18.7206 15.4393 18.4393C15.7206 18.158 16.1022 18 16.5 18Z"
                             fill="#ff5b0a"/>
                     </svg>
-                    <span class="text-capitalize">
+                    <span class="text-non-capitalize">
                         {{ translate('shopping_cart') }}
                     </span>
                 </h6>
@@ -222,12 +222,12 @@
                 </div>
 
                 @if($web_config['guest_checkout_status'] || auth('customer')->check())
-                    <a class="btn btn--primary btn-sm btn-block font-bold rounded text-capitalize"
+                    <a class="btn btn--primary btn-sm btn-block font-bold rounded text-non-capitalize"
                        href="{{route('checkout-details') }}">
                         {{ translate('proceed_to_checkout') }}
                     </a>
                 @else
-                    <a class="btn btn--primary btn-sm btn-block font-bold rounded text-capitalize"
+                    <a class="btn btn--primary btn-sm btn-block font-bold rounded text-non-capitalize"
                        href="{{route('customer.auth.login') }}">
                         {{ translate('proceed_to_checkout') }}
                     </a>
@@ -235,10 +235,10 @@
 
             @else
                 <div class="widget-cart-item">
-                    <div class="text-center text-capitalize">
+                    <div class="text-center text-non-capitalize">
                         <img class="mb-3 mw-100" src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-cart.svg') }}"
                              alt="{{ translate('cart') }}" loading="eager">
-                        <p class="text-capitalize">{{ translate('Your_Cart_is_Empty') }}!</p>
+                        <p class="text-non-capitalize">{{ translate('Your_Cart_is_Empty') }}!</p>
                     </div>
                 </div>
             @endif

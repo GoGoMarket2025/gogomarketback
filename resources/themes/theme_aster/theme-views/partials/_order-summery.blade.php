@@ -38,14 +38,14 @@
             @endif
 
             <div class="d-flex mb-3">
-                <h5 class="text-capitalize">{{ translate('order_summary') }}</h5>
+                <h5 class="text-non-capitalize">{{ translate('order_summary') }}</h5>
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <div>{{ translate('item_price') }}</div>
                 <div>{{webCurrencyConverter($product_price_total)}}</div>
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-                <div class="text-capitalize">{{ translate('product_discount') }}</div>
+                <div class="text-non-capitalize">{{ translate('product_discount') }}</div>
                 <div>{{webCurrencyConverter($total_discount_on_product)}}</div>
             </div>
             @php($coupon_discount = 0)
@@ -92,11 +92,11 @@
                 <h2 class="text-primary">{{webCurrencyConverter($product_price_total+$total_tax+$total_shipping_cost-$coupon_dis-$total_discount_on_product-$order_wise_shipping_discount)}}</h2>
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
-                <a href="{{ route('home') }}" class="btn-link text-primary text-capitalize user-select-none"><i
+                <a href="{{ route('home') }}" class="btn-link text-primary text-non-capitalize user-select-none"><i
                         class="bi bi-chevron-double-left fs-10"></i> {{ translate('continue_shopping') }}</a>
 
                 @if (str_contains(request()->url(), 'checkout-payment'))
-                    <button class="btn btn-primary text-capitalize custom-disabled"
+                    <button class="btn btn-primary text-non-capitalize custom-disabled"
                         id="proceed-to-payment-action" data-goto-checkout="{{route('customer.choose-shipping-address-other')}}"
                         data-route="{{ route('checkout-payment') }}"
                         data-type="{{ 'checkout-payment' }}"
@@ -105,7 +105,7 @@
                         {{translate('proceed_to_payment')}}
                     </button>
                 @else
-                    <button class="btn btn-primary text-capitalize {{$cart->count() <= 0 ? 'custom-disabled' : ''}}"
+                    <button class="btn btn-primary text-non-capitalize {{$cart->count() <= 0 ? 'custom-disabled' : ''}}"
                         id="proceed-to-next-action" data-goto-checkout="{{route('customer.choose-shipping-address-other')}}"
                         data-checkout-payment="{{ route('checkout-payment') }}"
                         {{ (isset($isProductNullStatus) && $isProductNullStatus == 1) ? 'disabled':''}}

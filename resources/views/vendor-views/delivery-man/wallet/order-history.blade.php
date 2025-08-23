@@ -9,7 +9,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('earning_Statement')}}
             </h2>
@@ -21,7 +21,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-4 col-lg-6 mb-2 mb-md-0">
 
-                            <h4 class="d-flex align-items-center text-capitalize gap-10 mb-0">
+                            <h4 class="d-flex align-items-center text-non-capitalize gap-10 mb-0">
                                 {{ translate('order_list') }}
                                 <span class="badge badge-soft-dark radius-50 fs-12 ml-1">{{  $orders->total() }}</span>
                             </h4>
@@ -51,7 +51,7 @@
                         <div class="card">
                             <div class="table-responsive datatable-custom">
                                 <table class="table table-hover table-borderless table-thead-bordered table-align-middle card-table text-left">
-                                    <thead class="thead-light thead-50 text-capitalize table-nowrap">
+                                    <thead class="thead-light thead-50 text-non-capitalize table-nowrap">
                                     <tr>
                                         <th>{{ translate('SL') }}</th>
                                         <th>{{ translate('order_no') }}</th>
@@ -71,7 +71,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="text-center text-capitalize">
+                                            <td class="text-center text-non-capitalize">
                                                 @if($order['order_status']=='pending')
                                                     <span class="badge badge-soft-info fs-12">
                                                     {{$order['order_status']}}

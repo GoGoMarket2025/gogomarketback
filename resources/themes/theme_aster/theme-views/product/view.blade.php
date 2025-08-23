@@ -79,7 +79,7 @@
                                         <label>
                                             <input type="radio" name="product_view" value="grid-view" hidden=""
                                                    {{(!session('product_view_style') || session('product_view_style') == 'grid-view' ? 'checked' : '' )}}>
-                                            <span class="py-2 d-flex align-items-center gap-2 text-capitalize">
+                                            <span class="py-2 d-flex align-items-center gap-2 text-non-capitalize">
                                                 <i class="bi bi-grid-fill"></i>
                                                 <span class="text-nowrap">{{ translate('grid_view') }}</span>
                                             </span>
@@ -89,7 +89,7 @@
                                         <label>
                                             <input type="radio" name="product_view" value="list-view" hidden=""
                                                    {{(session('product_view_style') == 'list-view'?'checked':'')}}>
-                                            <span class="py-2 d-flex align-items-center gap-2 text-capitalize">
+                                            <span class="py-2 d-flex align-items-center gap-2 text-non-capitalize">
                                                 <i class="bi bi-list-ul"></i>
                                                 <span class="text-nowrap">{{ translate('list_view') }}</span>
                                             </span>

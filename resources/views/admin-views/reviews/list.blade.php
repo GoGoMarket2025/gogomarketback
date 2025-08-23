@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2 align-items-center">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2 align-items-center">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/customer_review.png')}}" alt="">
                 {{translate('customer_reviews')}}
                 <span class="badge badge-info text-bg-info">{{ $reviews->total() }}</span>
@@ -125,7 +125,7 @@
 
                 <div class="table-responsive datatable-custom">
                     <table class="table table-hover table-borderless table-thead-bordered table-nowrap align-middle card-table w-100">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('Review_ID') }}</th>

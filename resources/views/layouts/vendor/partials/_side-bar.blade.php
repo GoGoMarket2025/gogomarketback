@@ -139,7 +139,7 @@
                                     <a class="nav-link " href="{{route('vendor.orders.list',['out_for_delivery'])}}"
                                        title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate text-capitalize">
+                                        <span class="text-truncate text-non-capitalize">
                                             {{translate('out_for_delivery')}}
                                             <span
                                                 class="badge badge-soft-warning badge-pill {{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}">
@@ -284,39 +284,39 @@
                                 <li class="nav-item {{Request::is('vendor/products/'.Product::LIST[URI].'/all')|| Request::is('vendor/products/'.Product::UPDATE[URI].'*')||   Request::is('vendor/products/'.Product::VIEW[URI].'*') || Request::is('vendor/products/'.Product::STOCK_LIMIT[URI])?'active':''}}">
                                     <a class="nav-link " href="{{route('vendor.products.list',['type'=>'all'])}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate text-capitalize">{{translate('product_list')}}</span>
+                                        <span class="text-truncate text-non-capitalize">{{translate('product_list')}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{Request::is('vendor/products/'.Product::LIST[URI].'/approved')?'active':''}}">
                                     <a class="nav-link " href="{{route('vendor.products.list',['type'=>'approved'])}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate text-capitalize">{{translate('approved_product_list')}}</span>
+                                        <span class="text-truncate text-non-capitalize">{{translate('approved_product_list')}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{Request::is('vendor/products/'.Product::LIST[URI].'/new-request')?'active':''}}">
                                     <a class="nav-link " href="{{route('vendor.products.list',['type'=>'new-request'])}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate text-capitalize">{{translate('new_product_request')}}</span>
+                                        <span class="text-truncate text-non-capitalize">{{translate('new_product_request')}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{Request::is('vendor/products/'.Product::LIST[URI].'/denied')?'active':''}}">
                                     <a class="nav-link " href="{{route('vendor.products.list',['type'=>'denied'])}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate text-capitalize">{{translate('denied_product_request')}}</span>
+                                        <span class="text-truncate text-non-capitalize">{{translate('denied_product_request')}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{Request::is('vendor/products/'.Product::ADD[URI])||(Request::is('vendor/products/'.Product::UPDATE[URI].'/*') && request()->has('product-gallery')) ?'active':''}}">
                                     <a class="nav-link " href="{{route('vendor.products.add')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span
-                                            class="text-truncate text-capitalize">{{translate('add_new_product')}}</span>
+                                            class="text-truncate text-non-capitalize">{{translate('add_new_product')}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{Request::is('vendor/products/'.Product::PRODUCT_GALLERY[URI])?'active':''}}">
                                     <a class="nav-link " href="{{route('vendor.products.product-gallery')}}" title="{{translate('product_gallery')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span
-                                            class="text-truncate text-capitalize">{{translate('product_gallery')}}</span>
+                                            class="text-truncate text-non-capitalize">{{translate('product_gallery')}}</span>
                                     </a>
                                 </li>
 
@@ -391,24 +391,24 @@
                                href="{{route('vendor.transaction.order-list')}}"
                                title="{{translate('transactions_Report')}}">
                                 <i class="tio-chart-bar-3 nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize">
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-non-capitalize">
                                     {{translate('transactions_Report')}}
                                 </span>
                             </a>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{ (Request::is('vendor/report/all-product') ||Request::is('vendor/report/stock-product-report')) ?'active':''}}">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link text-capitalize"
+                            <a class="js-navbar-vertical-aside-menu-link nav-link text-non-capitalize"
                                href="{{route('vendor.report.all-product')}}" title="{{translate('product_report')}}">
                                 <i class="tio-chart-bar-4 nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    <span class="position-relative text-capitalize">
+                                    <span class="position-relative text-non-capitalize">
                                         {{translate('product_report')}}
                                     </span>
                                 </span>
                             </a>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('vendor/report/order-report')?'active':''}}">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link text-capitalize"
+                            <a class="js-navbar-vertical-aside-menu-link nav-link text-non-capitalize"
                                href="{{route('vendor.report.order-report')}}"
                                title="{{translate('order_report')}}">
                                 <i class="tio-chart-bar-1 nav-icon"></i>
@@ -427,7 +427,7 @@
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('vendor.business-settings.shipping-method.index')}}" title="{{translate('shipping_methods')}}">
                                     <i class="tio-settings nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize text-capitalize">
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-non-capitalize text-non-capitalize">
                                         {{translate('shipping_methods')}}
                                     </span>
                                 </a>
@@ -437,7 +437,7 @@
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('vendor.business-settings.withdraw.index')}}" title="{{translate('withdraws')}}">
                                 <i class="tio-wallet-outlined nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize">
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-non-capitalize">
                                         {{translate('withdraws')}}
                                 </span>
                             </a>
@@ -446,7 +446,7 @@
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('vendor.profile.index')}}" title="{{translate('bank_Information')}}">
                                 <i class="tio-shop nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize">
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-non-capitalize">
                                     {{translate('bank_Information')}}
                                 </span>
                             </a>
@@ -456,7 +456,7 @@
                                href="{{route('vendor.shop.index')}}" title="{{translate('shop_Settings')}}">
                                 <i class="tio-home nav-icon"></i>
                                 <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize">
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-non-capitalize">
                                     {{translate('shop_Settings')}}
                                 </span>
                             </a>
@@ -480,7 +480,7 @@
                                     <li class="nav-item {{Request::is('vendor/delivery-man/'.DeliveryMan::INDEX[URI])?'active':''}}">
                                         <a class="nav-link " href="{{route('vendor.delivery-man.index')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate text-capitalize">{{translate('add_new')}}</span>
+                                            <span class="text-truncate text-non-capitalize">{{translate('add_new')}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item {{ Request::is('vendor/delivery-man/'.DeliveryMan::LIST[URI]) || Request::is('vendor/delivery-man/'.DeliveryMan::UPDATE[URI])  ||Request::is('vendor/delivery-man/'.DeliveryMan::RATING[URI].'/*') ||  Request::is('vendor/delivery-man/wallet*') ? 'active':''}}">
@@ -503,7 +503,7 @@
                                            title="{{translate('withdraws')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span
-                                                class="text-truncate text-capitalize">{{translate('emergency_contact')}}</span>
+                                                class="text-truncate text-non-capitalize">{{translate('emergency_contact')}}</span>
                                         </a>
                                     </li>
                                 </ul>

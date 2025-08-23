@@ -35,7 +35,7 @@
                     @endif
                     <div>
                         <a href="{{route('product', $product->slug)}}"
-                           class="flash-product-title text-capitalize fw-semibold">
+                           class="flash-product-title text-non-capitalize fw-semibold">
                             {{ Str::limit($product['name'], 50) }}
                         </a>
                     </div>

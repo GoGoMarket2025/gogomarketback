@@ -25,7 +25,7 @@
                 <div class="px-4 pt-3">
                     <ul class="nav nav-tabs w-fit-content mb-4">
                         @foreach($languages as $language)
-                            <li class="nav-item text-capitalize">
+                            <li class="nav-item text-non-capitalize">
                                 <a class="nav-link form-system-language-tab  {{ $language == $defaultLanguage? 'active':''}}" href="#"
                                    id="{{ $language}}-link">{{getLanguageName($language).'('.strtoupper($language).')'}}</a>
                             </li>
@@ -459,7 +459,7 @@
                                 <div
                                     class="form-control h-auto min-form-control-height d-flex align-items-center flex-wrap justify-content-between gap-2">
                                     <div class="d-flex gap-2">
-                                        <label class="title-color text-capitalize"
+                                        <label class="title-color text-non-capitalize"
                                                for="shipping_cost">{{ translate('shipping_cost_multiply_with_quantity') }}</label>
 
                                         <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
@@ -618,7 +618,7 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                                     <div>
-                                        <label for="name" class="title-color text-capitalize font-weight-bold mb-0">
+                                        <label for="name" class="title-color text-non-capitalize font-weight-bold mb-0">
                                             {{ translate('product_thumbnail') }}
                                             <span class="input-required-icon">*</span>
                                         </label>
@@ -675,7 +675,7 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center gap-2 mb-2">
                                     <label for="name"
-                                           class="title-color text-capitalize font-weight-bold mb-0">{{ translate('colour_wise_product_image') }}</label>
+                                           class="title-color text-non-capitalize font-weight-bold mb-0">{{ translate('colour_wise_product_image') }}</label>
                                     <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                           title="{{ translate('add_color_wise_product_images_here') }}.">
                                         <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
@@ -702,7 +702,7 @@
                                 <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
                                     <div>
                                         <label for="name"
-                                               class="title-color text-capitalize font-weight-bold mb-0">{{ translate('upload_additional_image') }}</label>
+                                               class="title-color text-non-capitalize font-weight-bold mb-0">{{ translate('upload_additional_image') }}</label>
                                         <span
                                             class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
                                         <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
@@ -876,7 +876,7 @@
                                 <div class="form-group">
                                     <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
                                         <div>
-                                            <label for="name" class="title-color text-capitalize font-weight-bold mb-0">{{ translate('Product_Preview_File') }}</label>
+                                            <label for="name" class="title-color text-non-capitalize font-weight-bold mb-0">{{ translate('Product_Preview_File') }}</label>
                                             <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                                   title="{{ translate('upload_a_suitable_file_for_a_short_product_preview.') }} {{ translate('this_preview_will_be_common_for_all_variations.') }}">
                                                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">

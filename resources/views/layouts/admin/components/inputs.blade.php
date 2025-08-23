@@ -214,8 +214,7 @@
                     <div class="border border-dashed border-primary rounded p-3">
                         <div class="form-group">
                             <label class="form-label" for="">Selection</label>
-                            <select class="custom-select" name="" data-without-search="-1"
-                                data-placeholder="Select from dropdown">
+                            <select class="custom-select" name="" data-without-search="-1">
                                 <option></option> <!-- Empty option for placeholder -->
                                 <option value="AL">Alabama</option>
                                 <option value="WY">Wyoming</option>
@@ -224,7 +223,7 @@
                         <div class="form-group">
                             <label class="form-label" for="">Selection</label>
                             <select class="custom-select" name="" data-without-search="-1"
-                                data-placeholder="Select from dropdown" disabled>
+                                disabled>
                                 <option></option> <!-- Empty option for placeholder -->
                                 <option value="AL">Alabama</option>
                                 <option value="WY">Wyoming</option>
@@ -233,7 +232,7 @@
                         <div class="form-group">
                             <label class="form-label" for="">Selection</label>
                             <select class="custom-select" name="" data-without-search="-1"
-                                data-placeholder="Select from dropdown" readonly>
+                                readonly>
                                 <option></option> <!-- Empty option for placeholder -->
                                 <option value="AL" selected>Alabama</option>
                                 <option value="WY">Wyoming</option>

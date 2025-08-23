@@ -205,7 +205,7 @@
                                         </div>
                                         @if($orderDetails->delivery_man_id && $orderDetails['order_status'] !="delivered" && $orderDetails['expected_delivery_date'] )
                                             <div class="column-2">
-                                                <div class="text-capitalize">{{ translate('estimated_delivery_date') }}</div>
+                                                <div class="text-non-capitalize">{{ translate('estimated_delivery_date') }}</div>
                                                 <div class="fw-bold">
                                                     {{date('D, d M, Y ',strtotime($orderDetails['expected_delivery_date']))}}
                                                 </div>
@@ -232,7 +232,7 @@
                                             @endif
                                         </div>
                                         <div class="column-2">
-                                            <div class="text-capitalize">{{ translate('payment_status') }}</div>
+                                            <div class="text-non-capitalize">{{ translate('payment_status') }}</div>
                                             @if($orderDetails['payment_status']=="paid")
                                                 <div class="fw-bold">{{ translate('paid') }}</div>
                                             @else
@@ -267,7 +267,7 @@
                     <div class="modal-body pt-0 px-sm-4">
                         <div class="product-table-wrap">
                             <div class="table-responsive">
-                                <table class="table text-capitalize text-start align-middle">
+                                <table class="table text-non-capitalize text-start align-middle">
                                     <thead class="mb-3">
                                     <tr>
                                         <th class="min-w-300 text-nowrap">{{translate('product_details')}}</th>
@@ -368,7 +368,7 @@
                         ?>
                         <div class="bg-light rounded border p3">
                             <div class="table-responsive">
-                                <table class="table __table text-end table-align-middle text-capitalize">
+                                <table class="table __table text-end table-align-middle text-non-capitalize">
                                     <thead>
                                     <tr>
                                         <th class="text-muted text-nowrap">{{translate('sub_total')}}</th>

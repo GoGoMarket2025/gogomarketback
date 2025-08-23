@@ -3,7 +3,7 @@
         <img src="{{ theme_asset(path: "public/assets/front-end/img/media/OTP-Verification.png")}}" alt="{{ translate('logo') }}" class="img-fluid" width="220">
     </a>
 </div>
-<h3 class="title text-center my-3 text-capitalize">{{ translate('OTP_Verification') }}</h3>
+<h3 class="title text-center my-3 text-non-capitalize">{{ translate('OTP_Verification') }}</h3>
 <p class="text-center text-muted">
     {{ translate('an_OTP_has_been_sent_to_your_email_and_phone').' '.translate('please_enter_the_OTP_in_the_field_below_to_verify_for_this_download') }}
 </p>

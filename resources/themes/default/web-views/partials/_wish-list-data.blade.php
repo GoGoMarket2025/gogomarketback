@@ -55,11 +55,11 @@
     @if($wishlists->count()==0)
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="login-card w-100 border-0 shadow-none">
-                <div class="text-center py-3 text-capitalize">
+                <div class="text-center py-3 text-non-capitalize">
                     <img src="{{ theme_asset(path: 'public/assets/front-end/img/icons/wishlist-empty-state.svg') }}" alt="" class="mb-4" width="70">
                     <h5 class="fs-14 text-muted">{{ translate('you_have_not_added_product_to_wishlist_yet') }}!</h5>
 
-                    <a href="{{ route('products') }}" class="text-capitalize btn btn--primary btn-sm font-weight-bolder mt-3">
+                    <a href="{{ route('products') }}" class="text-non-capitalize btn btn--primary btn-sm font-weight-bolder mt-3">
                         {{ translate('explore_more') }}
                     </a>
                 </div>

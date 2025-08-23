@@ -87,14 +87,14 @@
                                 <div class="row gy-2 flex-grow-1">
                                     <div class="col-12">
                                         <div class="d-md-flex justify-content-md-between">
-                                            <h3 class="text-capitalize">{{$product['name']}}</h3>
+                                            <h3 class="text-non-capitalize">{{$product['name']}}</h3>
                                             <a class="btn btn-primary btn-sm" href="{{route('admin.products.update',['id'=>$product['id'],'product-gallery'=>1]) }}">
                                                 {{translate('use_this_product_info')}}
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xl-4">
-                                        <h3 class="mb-3 text-capitalize">{{ translate('general_information') }}</h3>
+                                        <h3 class="mb-3 text-non-capitalize">{{ translate('general_information') }}</h3>
                                         <div class="pair-list">
                                             <div>
                                                 <span class="key">{{ translate('brand') }}</span>
@@ -113,13 +113,13 @@
                                             </div>
 
                                             <div>
-                                                <span class="key text-capitalize">{{ translate('product_type') }}</span>
+                                                <span class="key text-non-capitalize">{{ translate('product_type') }}</span>
                                                 <span>:</span>
                                                 <span class="value">{{ translate($product->product_type) }}</span>
                                             </div>
                                             @if($product->product_type == 'physical')
                                                 <div>
-                                                    <span class="key text-capitalize">{{ translate('product_unit') }}</span>
+                                                    <span class="key text-non-capitalize">{{ translate('product_unit') }}</span>
                                                     <span>:</span>
                                                     <span class="value">{{ $product['unit']}}</span>
                                                 </div>

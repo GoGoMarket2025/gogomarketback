@@ -11,7 +11,7 @@
     <div class="content container-fluid">
 
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('system_Setup') }}
             </h2>
         </div>
@@ -48,13 +48,13 @@
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center gap-2 mb-3">
                                     <img width="24" src="{{dynamicAsset(path: 'public/assets/back-end/img/play_store.png')}}" alt="">
-                                    <h3 class="mb-0 text-capitalize">{{translate('for_android')}}</h3>
+                                    <h3 class="mb-0 text-non-capitalize">{{translate('for_android')}}</h3>
                                 </div>
                                 <input type="hidden" name="type" value="user_app_version_control">
                                 <div class="bg-section rounded p-12 p-sm-20">
                                     <div class="form-group">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">{{ translate('minimum_user_app_version_for_force_update') }} ({{ translate('android') }})
+                                            <label class="form-label mb-0 text-non-capitalize" for="">{{ translate('minimum_user_app_version_for_force_update') }} ({{ translate('android') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
                                                       aria-label="{{ translate('define_the_minimum_Android_app_version_for_best_user_experience.') .' '. translate('if_a_user_still_do_not_have_it,_they_will_be_requested_a_force_app_update_when_they_opens_the_app.') }}"
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">{{ translate('download_URL_for_user_app') }} ({{ translate('Android') }})
+                                            <label class="form-label mb-0 text-non-capitalize" for="">{{ translate('download_URL_for_user_app') }} ({{ translate('Android') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
                                                       aria-label="{{ translate('add_the_Android_app_download_URL_that_will_redirect_users_when_they_agree_to_update_the_app.') }}"
@@ -88,12 +88,12 @@
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center gap-2 mb-3">
                                     <img width="24" src="{{dynamicAsset(path: 'public/assets/back-end/img/apple.png')}}" alt="">
-                                    <h3 class="mb-0 text-capitalize">{{translate('for_iOS')}}</h3>
+                                    <h3 class="mb-0 text-non-capitalize">{{translate('for_iOS')}}</h3>
                                 </div>
                                 <div class="bg-section rounded p-12 p-sm-20">
                                     <div class="form-group">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">
+                                            <label class="form-label mb-0 text-non-capitalize" for="">
                                                 {{ translate('minimum_user_app_version_for_force_update') }} ({{ translate('ios') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
@@ -111,7 +111,7 @@
 
                                     <div class="">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">
+                                            <label class="form-label mb-0 text-non-capitalize" for="">
                                                 {{ translate('download_URL_For_user_App') }} ({{ translate('ios') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
@@ -152,7 +152,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center gap-2 mb-3">
                                     <img width="24" src="{{dynamicAsset(path: 'public/assets/back-end/img/play_store.png')}}" alt="">
-                                    <h3 class="mb-0 text-capitalize">{{translate('for_android')}}</h3>
+                                    <h3 class="mb-0 text-non-capitalize">{{translate('for_android')}}</h3>
                                 </div>
 
                                 <input type="hidden" name="type" value="seller_app_version_control">
@@ -160,7 +160,7 @@
                                 <div class="bg-section rounded p-12 p-sm-20">
                                     <div class="form-group">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">{{ translate('minimum_Vendor_app_version') }} ({{ translate('android') }})
+                                            <label class="form-label mb-0 text-non-capitalize" for="">{{ translate('minimum_Vendor_app_version') }} ({{ translate('android') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
                                                       aria-label="{{translate('define_the_minimum_Android_app_version_for_best_user_experience').'.'.translate('if_a_user_still_do_not_have_it,_they_will_be_requested_a_force_app_update_when_they_opens_the_app').'.'}}"
@@ -177,7 +177,7 @@
 
                                     <div class="">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">{{ translate('download_URL_For_Vendor_App') }}({{ translate('android') }})
+                                            <label class="form-label mb-0 text-non-capitalize" for="">{{ translate('download_URL_For_Vendor_App') }}({{ translate('android') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
                                                       aria-label="{{ translate('add_the_Android_app_download_URL_that_will_redirect_users_when_they_agree_to_update_the_app').'.' }}"
@@ -196,7 +196,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center gap-2 mb-3">
                                     <img width="24" src="{{dynamicAsset(path: 'public/assets/back-end/img/apple.png')}}" alt="">
-                                    <h3 class="mb-0 text-capitalize">{{translate('for_iOS')}}</h3>
+                                    <h3 class="mb-0 text-non-capitalize">{{translate('for_iOS')}}</h3>
                                 </div>
                                 <div class="bg-section rounded p-12 p-sm-20">
                                     <div class="form-group">
@@ -258,7 +258,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center gap-2 mb-3">
                                     <img width="24" src="{{dynamicAsset(path: 'public/assets/back-end/img/play_store.png')}}" alt="">
-                                    <h3 class="mb-0 text-capitalize">{{translate('for_android')}}</h3>
+                                    <h3 class="mb-0 text-non-capitalize">{{translate('for_android')}}</h3>
                                 </div>
                                 <input type="hidden" name="type" value="delivery_man_app_version_control">
                                 <div class="bg-section rounded p-12 p-sm-20">
@@ -298,12 +298,12 @@
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center gap-2 mb-3">
                                     <img width="24" src="{{dynamicAsset(path: 'public/assets/back-end/img/apple.png')}}" alt="">
-                                    <h3 class="mb-0 text-capitalize">{{translate('for_iOS')}}</h3>
+                                    <h3 class="mb-0 text-non-capitalize">{{translate('for_iOS')}}</h3>
                                 </div>
                                 <div class="bg-section rounded p-12 p-sm-20">
                                     <div class="form-group">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">{{ translate('minimum_Deliveryman_App_Version') }} ({{ translate('ios') }})
+                                            <label class="form-label mb-0 text-non-capitalize" for="">{{ translate('minimum_Deliveryman_App_Version') }} ({{ translate('ios') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
                                                       aria-label="{{translate('define_the_minimum_iOS_app_version_for_best_user_experience').'.'. translate('if_a_user_still_do_not_have_it,_they_will_be_requested_a_force_app_update_when_they_opens_the_app').'.'}}"
@@ -320,7 +320,7 @@
 
                                     <div class="">
                                         <div class="d-flex align-items-center gap-2 mb-2">
-                                            <label class="form-label mb-0 text-capitalize" for="">{{ translate('download_URL_For_Deliveryman_App') }} ({{ translate('ios') }})
+                                            <label class="form-label mb-0 text-non-capitalize" for="">{{ translate('download_URL_For_Deliveryman_App') }} ({{ translate('ios') }})
                                                 <span class="tooltip-icon" data-bs-toggle="tooltip"
                                                       data-bs-placement="right"
                                                       aria-label="{{translate('add_the_iOS_app_download_URL_that_will_redirect_users_when_they_agree_to_update_the_app').'.'}}"
@@ -365,7 +365,7 @@
                                     <img width="80" class="mb-3"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/what_app_version.png')}}"
                                          loading="lazy" alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{ translate('what_is_app_version').'?' }}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{ translate('what_is_app_version').'?' }}</h4>
                                     <ul class="d-flex flex-column px-4 gap-2 mb-4">
                                         <li>{{ translate('this_app_version_means_the_minimum_version_of_Vendor_Deliveryman_and_Customer_apps_that_are_required_for_the_update') }}</li>
                                         <li>{{ translate('it_does_not_represent_the_Play_Store_or_App_Store_version') }}</li>
@@ -377,11 +377,11 @@
                                     <img width="80" class="mb-3"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/what_app_version.png')}}"
                                          loading="lazy" alt="">
-                                    <h4 class="lh-md mb-3 text-capitalize">{{ translate('app_download_link') }}</h4>
+                                    <h4 class="lh-md mb-3 text-non-capitalize">{{ translate('app_download_link') }}</h4>
                                     <ul class="d-flex flex-column px-4 gap-2 mb-4">
                                         <li>{{ translate('the_app_download_link_is_the_URL_that_allows_users_to_update_the_app_by_clicking_the_Update_App_button_within_the_app_itself') }} </li>
                                     </ul>
-                                    <button class="btn btn-primary px-10 mt-3 text-capitalize"
+                                    <button class="btn btn-primary px-10 mt-3 text-non-capitalize"
                                             data-bs-dismiss="modal">{{ translate('got_it') }}</button>
                                 </div>
                             </div>

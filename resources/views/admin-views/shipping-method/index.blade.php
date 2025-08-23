@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3 mb-sm-20">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 {{ translate('Shipping_Method') }}
             </h2>
         </div>
@@ -289,7 +289,7 @@
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-hover table-borderless">
-                                            <thead class="text-capitalize">
+                                            <thead class="text-non-capitalize">
                                             <tr>
                                                 <th>{{ translate('SL') }}</th>
                                                 <th>{{ translate('Title') }}</th>
@@ -402,7 +402,7 @@
                                           method="POST">
                                         @csrf
                                         <table class="table table-hover table-borderless">
-                                            <thead class="text-capitalize">
+                                            <thead class="text-non-capitalize">
                                             <tr>
                                                 <th>{{ translate('SL') }}</th>
                                                 <th>{{ translate('Image	') }}</th>

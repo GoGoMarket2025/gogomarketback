@@ -6,7 +6,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/shop-info.png')}}" alt="">
                 {{translate('shop_info')}}
             </h2>
@@ -47,10 +47,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div>
-                            <h4 class="mb-0 text-capitalize">{{translate('my_shop_info')}} </h4>
+                            <h4 class="mb-0 text-non-capitalize">{{translate('my_shop_info')}} </h4>
                         </div>
                         <div class="d-inline-flex gap-2">
-                            <button class="btn btn-block __inline-70 text-capitalize" data-toggle="modal" data-target="#vacation-mode-modal">
+                            <button class="btn btn-block __inline-70 text-non-capitalize" data-toggle="modal" data-target="#vacation-mode-modal">
                                 {{translate('go_to_vacation_mode')}}
                             </button>
 
@@ -100,7 +100,7 @@
                         @csrf
                         <div class="modal-header border-bottom pb-2">
                             <div>
-                                <h5 class="modal-title text-capitalize" id="exampleModalLabel">{{translate('vacation_mode')}}</h5>
+                                <h5 class="modal-title text-non-capitalize" id="exampleModalLabel">{{translate('vacation_mode')}}</h5>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -120,15 +120,15 @@
                             <div class="mb-5">*{{translate('set_vacation_mode_for_shop_means_you_will_be_not_available_receive_order_and_provider_products_for_placed_order_at_that_time')}}</div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="text-capitalize">{{translate('vacation_start')}}</label>
+                                    <label class="text-non-capitalize">{{translate('vacation_start')}}</label>
                                     <input type="date" name="vacation_start_date" value="{{ $shop->vacation_start_date }}" id="start-date-time" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="text-capitalize">{{translate('vacation_end')}}</label>
+                                    <label class="text-non-capitalize">{{translate('vacation_end')}}</label>
                                     <input type="date" name="vacation_end_date" value="{{ $shop->vacation_end_date }}" id="end-date-time" class="form-control" required>
                                 </div>
                                 <div class="col-md-12 mt-2 ">
-                                    <label class="text-capitalize">{{translate('vacation_note')}}</label>
+                                    <label class="text-non-capitalize">{{translate('vacation_note')}}</label>
                                     <textarea class="form-control" name="vacation_note" id="vacation_note">{{ $shop->vacation_note }}</textarea>
                                 </div>
                             </div>

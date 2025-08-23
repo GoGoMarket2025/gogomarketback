@@ -11036,7 +11036,7 @@ button.bg-dark:hover {
     text-transform: uppercase !important;
 }
 
-.text-capitalize {
+.text-non-capitalize {
     /* text-transform: capitalize !important; */
 }
 

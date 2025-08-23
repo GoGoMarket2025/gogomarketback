@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2 align-items-center">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2 align-items-center">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('vendor_details')}}
             </h2>
@@ -107,7 +107,7 @@
 
                     <div class="table-responsive datatable-custom">
                         <table id="columnSearchDatatable" class="table table-hover table-borderless table-thead-bordered table-nowrap align-middle card-table w-100">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('product')}}</th>

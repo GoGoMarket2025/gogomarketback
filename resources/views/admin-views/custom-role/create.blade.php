@@ -7,7 +7,7 @@
     @php($direction = Session::get('direction'))
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2 text-capitalize">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2 text-non-capitalize">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png') }}" alt="">
                 {{ translate('employee_role_setup') }}
             </h2>
@@ -33,7 +33,7 @@
                         <div class="form-group d-flex gap-2">
                             <input type="checkbox" id="select-all-module"
                                    class="form-check-input checkbox--input checkbox--input_lg cursor-pointer">
-                            <label class="form-check-label cursor-pointer text-capitalize"
+                            <label class="form-check-label cursor-pointer text-non-capitalize"
                                    for="select-all-module">
                                 {{ translate('select_all') }}
                             </label>
@@ -97,7 +97,7 @@
 
                 <div class="table-responsive">
                     <table class="table table-hover table-borderless table-thead-bordered align-middle card-table">
-                        <thead class="thead-light thead-50 text-capitalize table-nowrap">
+                        <thead class="thead-light thead-50 text-non-capitalize table-nowrap">
                         <tr>
                             <th>{{ translate('SL') }}</th>
                             <th>{{ translate('role_name') }}</th>
@@ -112,7 +112,7 @@
                             <tr>
                                 <td>{{ $key+1}}</td>
                                 <td>{{ ucwords($role['name']) }}</td>
-                                <td class="text-capitalize">
+                                <td class="text-non-capitalize">
                                     @if($role['module_access'] != null)
                                         @foreach(json_decode($role['module_access'], true) as $module)
                                             @if(array_key_exists($module, $employeeRolePermission))

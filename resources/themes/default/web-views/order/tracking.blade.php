@@ -38,7 +38,7 @@
                 <div class="modal-body pt-0 ">
                     <div class="product-table-wrap">
                         <div class="table-responsive">
-                            <table class="table __table text-capitalize text-start table-align-middle min-w400">
+                            <table class="table __table text-non-capitalize text-start table-align-middle min-w400">
                                 <thead class="mb-3">
                                 <tr>
                                     <th class="min-w-300">
@@ -145,7 +145,7 @@
 
                     <div class="bg-light rounded border p3">
                         <div class="table-responsive">
-                            <table class="table border-0 text-end table-align-middle text-capitalize">
+                            <table class="table border-0 text-end table-align-middle text-non-capitalize">
                                 <thead>
                                 <tr class="fs-14 font-semibold">
                                     <th class="text-muted font-semibold">{{translate('sub_total')}}</th>
@@ -212,7 +212,7 @@
                 </h6>
 
                 <div class="mx-auto mw-1000">
-                    <h2 class="text-center text-capitalize font-bold fs-25">{{ translate('track_order')}}</h2>
+                    <h2 class="text-center text-non-capitalize font-bold fs-25">{{ translate('track_order')}}</h2>
 
                     <form action="{{route('track-order.result')}}" type="submit" method="post" class="p-3">
                         @csrf
@@ -235,7 +235,7 @@
 
                 </div>
                 <h6 class="font-weight-bold text-center m-0 pt-5 pb-4">
-                    <span class="text-capitalize">{{ translate('your_order')}}</span> <span>:</span> <span
+                    <span class="text-non-capitalize">{{ translate('your_order')}}</span> <span>:</span> <span
                             class="text-base">{{$orderDetails['id']}}</span>
                 </h6>
                 <ul class="nav nav-tabs media-tabs nav-justified order-track-info">
@@ -248,7 +248,7 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="text-sm-center">
-                                        <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('order_placed')}}</h6>
+                                        <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('order_placed')}}</h6>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-sm-center gap-1 mt-2">
                                         <img src="{{theme_asset(path: 'public/assets/front-end/img/track-order/clock.png')}}"
@@ -272,7 +272,7 @@
                                         </div>
                                         <div class="media-body">
                                             <div class="text-sm-center">
-                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('order_confirmed')}}</h6>
+                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('order_confirmed')}}</h6>
                                             </div>
                                             @if(($orderDetails['order_status']=='confirmed') || ($orderDetails['order_status']=='processing') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered') && \App\Utils\order_status_history($orderDetails['id'],'confirmed'))
                                                 <div class="d-flex align-items-center justify-content-sm-center mt-2 gap-1">
@@ -297,7 +297,7 @@
                                         </div>
                                         <div class="media-body">
                                             <div class="text-sm-center">
-                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('preparing_shipment')}}</h6>
+                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('preparing_shipment')}}</h6>
                                             </div>
                                             @if( ($orderDetails['order_status']=='processing') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered')  && \App\Utils\order_status_history($orderDetails['id'],'processing'))
                                                 <div class="d-flex align-items-center justify-content-sm-center mt-2 gap-2">
@@ -339,11 +339,11 @@
                                             @if ($orderDetails->delivery_type == 'third_party_delivery')
                                                 <div class="mt-1">
                                                     <span class="d-flex align-items-center justify-content-sm-center text-nowrap">
-                                                        <span class="text-muted fs-14 text-capitalize">{{translate('delivery_service_name')}} : </span> <span
+                                                        <span class="text-muted fs-14 text-non-capitalize">{{translate('delivery_service_name')}} : </span> <span
                                                                 class="fs-14 fw-semibold text-dark">{{$orderDetails->delivery_service_name}}</span>
                                                     </span>
                                                     <span class="d-flex align-items-center justify-content-sm-center text-nowrap">
-                                                        <span class="text-muted fs-14 text-capitalize"> {{translate('tracking_ID')}} : </span><span
+                                                        <span class="text-muted fs-14 text-non-capitalize"> {{translate('tracking_ID')}} : </span><span
                                                                 class="fs-14 fw-semibold text-dark">{{$orderDetails->third_party_delivery_tracking_id}}</span>
                                                     </span>
                                                 </div>
@@ -351,11 +351,11 @@
                                             @if ($orderDetails->delivery_type == 'self_delivery' && isset($orderDetails->delivery_man))
                                                 <div class="mt-1">
                                                     <span class="d-flex align-items-center justify-content-sm-center text-nowrap">
-                                                        <span class="text-muted fs-14 text-capitalize">{{translate('delivery_man_name')}} : </span> <span
+                                                        <span class="text-muted fs-14 text-non-capitalize">{{translate('delivery_man_name')}} : </span> <span
                                                                 class="fs-14 fw-semibold text-dark">{{$orderDetails->delivery_man->f_name.' '.$orderDetails->delivery_man->l_name}}</span>
                                                     </span>
                                                     <span class="d-flex align-items-center justify-content-sm-center text-nowrap">
-                                                        <span class="text-muted fs-14 text-capitalize"> {{translate('contact_number')}} : </span><span
+                                                        <span class="text-muted fs-14 text-non-capitalize"> {{translate('contact_number')}} : </span><span
                                                                 class="fs-14 fw-semibold text-dark">{{$orderDetails->delivery_man->phone}}</span>
                                                     </span>
                                                 </div>
@@ -411,7 +411,7 @@
                                         </div>
                                         <div class="media-body">
                                             <div class="text-sm-center">
-                                                <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                                <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                     {{ translate('Processing') }}
                                                 </h6>
                                             </div>
@@ -469,7 +469,7 @@
                                     </div>
                                     <div class="media-body">
                                         <div class="text-sm-center">
-                                            <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">
+                                            <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">
                                                 {{ translate('order') }} {{ translate($orderDetails['order_status']) }}
                                             </h6>
                                         </div>
@@ -498,7 +498,7 @@
                                     </div>
                                     <div class="media-body">
                                         <div class="text-sm-center">
-                                            <h6 class="media-tab-title text-nowrap mb-0 text-capitalize fs-14">{{ translate('Failed_to_Deliver') }}</h6>
+                                            <h6 class="media-tab-title text-nowrap mb-0 text-non-capitalize fs-14">{{ translate('Failed_to_Deliver') }}</h6>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-sm-center gap-1 mt-2">
                                                     <span class="text-muted fs-12">
@@ -514,7 +514,7 @@
 
                 </ul>
                 <div class="text-center pt-4">
-                    <a class="btn btn--primary btn-sm text-capitalize" href="#order-details"
+                    <a class="btn btn--primary btn-sm text-non-capitalize" href="#order-details"
                        data-toggle="modal">{{ translate('view_order_details')}}</a>
                 </div>
             </div>

@@ -10,13 +10,13 @@
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap mb-4">
             <div class="">
-                <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                     <img src="{{dynamicAsset(path: 'public/assets/back-end/img/3rd-party.png')}}" alt="">
                     {{translate('add_Offline_Payment_Method')}}
                 </h2>
                 <a href="{{ route('admin.third-party.offline-payment-method.index') }}" class="d-flex mt-2 gap-1 align-items-center text-decoration-none">
                     <i class="fi fi-rr-arrow-small-left mt-1 fs-5"></i>
-                    <span class="text text-capitalize">{{translate('Back_to_Offline_Payment_Mathods')}}</span>
+                    <span class="text text-non-capitalize">{{translate('Back_to_Offline_Payment_Mathods')}}</span>
                 </a>
             </div>
 
@@ -36,13 +36,13 @@
                             <p class="fs-12">{{translate('choose_your_preferred_payment_method_such_as_bank,_mobile_wallet,_digital_cards,_etc').' . '.translate('that_customers_will_choose_from_and_add_relevant_input_fields_for_the_payment_method').'.'}}</p>
                         </div>
 
-                        <a href="javascript:" id="add-input-fields-group" class="btn btn-primary btn-sm text-capitalize text-nowrap">
+                        <a href="javascript:" id="add-input-fields-group" class="btn btn-primary btn-sm text-non-capitalize text-nowrap">
                             <i class="fi fi-sr-add"></i> {{ translate('add_new_field') }}
                         </a>
                     </div>
 
                     <div class="form-group p-12 p-sm-20 bg-section rounded">
-                        <label for="method_name" class="form-label text-capitalize">{{ translate('payment_method_name') }}</label> <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="add payment method name" data-bs-title="add payment method name">
+                        <label for="method_name" class="form-label text-non-capitalize">{{ translate('payment_method_name') }}</label> <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="add payment method name" data-bs-title="add payment method name">
                             <i class="fi fi-sr-info"></i>
                         </span>
                         <input type="text" class="form-control" placeholder="{{ translate('ex').':'.translate('bkash') }}" name="method_name" required>
@@ -54,7 +54,7 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="input_name" class="form-label text-capitalize">{{ translate('input_field_Name') }}</label>
+                                        <label for="input_name" class="form-label text-non-capitalize">{{ translate('input_field_Name') }}</label>
                                         <input type="text" name="input_name[]" class="form-control" placeholder="{{ translate('ex').':'.translate('bank_Name') }}" required>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                             <p class="fs-12">{{translate('add_relevant_input_fields_for_customers_to_fill-up_after_completing_the_offline_payment').' . '. translate('you_can_add_multiple_input_fields_&_place_holders_and_define_them_as_‘Is_Required’,_so_customers_cannot_complete_offline_payment_without_adding_that_information').'.'}}</p>
                         </div>
 
-                        <a href="javascript:" id="add-customer-input-fields-group" class="btn btn-primary text-nowrap btn-sm text-capitalize">
+                        <a href="javascript:" id="add-customer-input-fields-group" class="btn btn-primary text-nowrap btn-sm text-non-capitalize">
                             <i class="fi fi-sr-add"></i> {{ translate('add_new_field') }}
                         </a>
                     </div>
@@ -99,7 +99,7 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="form-label text-capitalize">{{ translate('input_field_Name') }}</label>
+                                        <label class="form-label text-non-capitalize">{{ translate('input_field_Name') }}</label>
                                         <input type="text" name="customer_input[]" class="form-control" placeholder="{{ translate('ex').':'.translate('payment_By') }}" required>
                                     </div>
                                 </div>
@@ -151,7 +151,7 @@
                                         <img width="80" class="mb-3"
                                              src="{{dynamicAsset(path: 'public/assets/back-end/img/delivery2.png')}}" loading="lazy"
                                              alt="">
-                                        <h4 class="lh-md mb-3 text-capitalize">{{translate('create_your_custom_offline_payment_method')}}</h4>
+                                        <h4 class="lh-md mb-3 text-non-capitalize">{{translate('create_your_custom_offline_payment_method')}}</h4>
                                         <ul class="d-flex flex-column px-4 gap-2 mb-4">
                                             <li>
                                                 {{translate('for_a_personalised_payment_experience').'!'}}
@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="d-flex flex-column align-items-center gap-2">
-                                        <h4 class="lh-md mb-3 text-capitalize">{{translate('how_does_offline_payment_method_work').'?'}}</h4>
+                                        <h4 class="lh-md mb-3 text-non-capitalize">{{translate('how_does_offline_payment_method_work').'?'}}</h4>
                                         <ul class="d-flex flex-column px-4 gap-2 mb-4">
                                             <li>
                                                 {{translate('step').' '.'1'.' :'.translate('add').' ‘'.translate('Payment_Information').'’'}}
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="d-flex flex-column align-items-center gap-2">
-                                        <h4 class="lh-md mb-3 text-capitalize">{{translate('important_note')}}<i></i></h4>
+                                        <h4 class="lh-md mb-3 text-non-capitalize">{{translate('important_note')}}<i></i></h4>
                                         <ul class="d-flex flex-column px-4 gap-2 mb-4">
                                             <li>{{translate('you_can_add_one_or_more_offline_payment_methods_for_your_customers')}}</li>
                                             <li>{{translate('when_a_customer_chooses_the_‘Offline Payment’_during_checkout_and_chooses_their_favorite_payment_method,_they_must_fill-up_all_the_required_information_to_confirm_payment').'.'}} </li>
@@ -192,12 +192,12 @@
                                         <img width="80" class="mb-3"
                                              src="{{dynamicAsset(path: 'public/assets/back-end/img/confirmed.png')}}" loading="lazy"
                                              alt="">
-                                        <h4 class="lh-md mb-3 text-capitalize">{{translate('the_two-in-one_benefits_of_‘Offline_Payment_Method’_Feature').':'}}</h4>
+                                        <h4 class="lh-md mb-3 text-non-capitalize">{{translate('the_two-in-one_benefits_of_‘Offline_Payment_Method’_Feature').':'}}</h4>
                                         <ul class="d-flex flex-column px-4 gap-2 mb-4">
                                             <li>{{translate('get_paid_from_customers')}}</li>
                                             <li>{{translate('introduce_more_convenient_payment_methods_for_customersEnjoy').'!'}}</li>
                                         </ul>
-                                        <button type="button" class="btn btn-primary px-10 mt-3 text-capitalize" data-bs-dismiss="modal">{{ translate('got_it') }}</button>
+                                        <button type="button" class="btn btn-primary px-10 mt-3 text-non-capitalize" data-bs-dismiss="modal">{{ translate('got_it') }}</button>
                                     </div>
                                 </div>
                             </div>

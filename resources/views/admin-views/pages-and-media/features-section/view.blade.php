@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/Pages.png')}}" alt="">
                 {{ translate('pages') }}
             </h2>
@@ -24,7 +24,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 mb-3">
-                                        <label for="title text-capitalize">{{ translate('title') }}</label>
+                                        <label for="title text-non-capitalize">{{ translate('title') }}</label>
                                         <input type="text" class="form-control mt-2" name="features_section_top[title]"
                                                placeholder="{{ translate('type_your_title_text') }}"
                                                value="{{ isset($featuresSectionTop) ? (json_decode($featuresSectionTop->value)->title ?? '') : '' }}">
@@ -44,7 +44,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h5 class="mb-0 mt-3">{{ translate('features_Section').' '.'-'.' '.translate('middle') }}</h5>
-                                <span id="add-this-features-card-middle" class="btn btn-primary text-capitalize">
+                                <span id="add-this-features-card-middle" class="btn btn-primary text-non-capitalize">
                                     <i class="tio-add pr-2"></i>{{ translate('add_new') }}
                                 </span>
                             </div>
@@ -63,7 +63,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="mb-3">
-                                                            <label for="title" class="form-label text-capitalize">{{ translate('Title') }}</label>
+                                                            <label for="title" class="form-label text-non-capitalize">{{ translate('Title') }}</label>
                                                             <input type="text" class="form-control"
                                                                    name="features_section_middle[title][]"
                                                                    value="{{ $item->title }}" required
@@ -92,7 +92,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="mb-3">
-                                                            <label for="title" class="form-label text-capitalize">{{ translate('Title') }}</label>
+                                                            <label for="title" class="form-label text-non-capitalize">{{ translate('Title') }}</label>
                                                             <input type="text" class="form-control"
                                                                    name="features_section_middle[title][]"
                                                                    value="" required
@@ -121,7 +121,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <h5 class="mb-0 mt-3">{{ translate('features_Section').' '.'-'.' '.translate('bottom') }}</h5>
-                            <span id="add-this-features-card-bottom" class="btn btn-primary text-capitalize">
+                            <span id="add-this-features-card-bottom" class="btn btn-primary text-non-capitalize">
                                 <i class="tio-add pr-2"></i>{{ translate('add_new') }}
                             </span>
                         </div>
@@ -141,14 +141,14 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label text-capitalize">{{ translate('Title') }}</label>
+                                                        <label for="title" class="form-label text-non-capitalize">{{ translate('Title') }}</label>
                                                         <input type="text" class="form-control" disabled
                                                                value="{{ $item->title }}"
                                                                name="icontitle"
                                                                placeholder="{{ translate('type_your_title_text') }}">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label text-capitalize">{{ translate('Sub_Title') }}</label>
+                                                        <label for="title" class="form-label text-non-capitalize">{{ translate('Sub_Title') }}</label>
                                                         <textarea class="form-control" disabled
                                                                   placeholder="{{ translate('type_your_subtitle_text') }}">{{ $item->subtitle }}</textarea>
                                                     </div>
@@ -183,14 +183,14 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label text-capitalize">{{ translate('Title') }}</label>
+                                                        <label for="title" class="form-label text-non-capitalize">{{ translate('Title') }}</label>
                                                         <input type="text" class="form-control"
                                                                name="features_section_bottom[title][]"
                                                                value="" required
                                                                placeholder="{{ translate('type_your_title_text') }}">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label text-capitalize">{{ translate('Sub_Title') }}</label>
+                                                        <label for="title" class="form-label text-non-capitalize">{{ translate('Sub_Title') }}</label>
                                                         <textarea class="form-control"
                                                                   name="features_section_bottom[subtitle][]" required
                                                                   placeholder="{{ translate('type_your_subtitle_text') }}"></textarea>
@@ -214,7 +214,7 @@
                                                             <div class="d-flex flex-column justify-content-center align-items-center">
                                                                 <img src="{{asset('public/assets/back-end/img/icons/product-upload-icon.svg')}}"
                                                                      class="w-50" alt="">
-                                                                <h3 class="text-muted text-capitalize">{{ translate('upload_icon') }}</h3>
+                                                                <h3 class="text-muted text-non-capitalize">{{ translate('upload_icon') }}</h3>
                                                             </div>
                                                         </div>
                                                     </div>

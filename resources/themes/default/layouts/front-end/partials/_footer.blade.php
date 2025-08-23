@@ -147,7 +147,7 @@
                             class="d-flex align-items-center mobile-view-center-align text-start justify-content-between">
                             <div class="">
                                 <span
-                                    class="mb-4 font-weight-bold footer-header text-capitalize">{{ translate('start_a_conversation') }}</span>
+                                    class="mb-4 font-weight-bold footer-header text-non-capitalize">{{ translate('start_a_conversation') }}</span>
                             </div>
                             <div
                                 class="flex-grow-1 d-none d-md-block {{Session::get('direction') === "rtl" ? 'me-2 ' : 'ml-2'}}">

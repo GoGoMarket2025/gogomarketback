@@ -27,17 +27,17 @@
                                 <div class="media-body">
                                     <div class="d-flex flex-column">
                                         <div class="d-flex gap-2 align-items-center">
-                                            <h6 class="text-capitalize m-0 fs-14 font-semibold">{{ \App\Utils\customer_info()->f_name }} {{ \App\Utils\customer_info()->l_name }}</h6>
+                                            <h6 class="text-non-capitalize m-0 fs-14 font-semibold">{{ \App\Utils\customer_info()->f_name }} {{ \App\Utils\customer_info()->l_name }}</h6>
                                             <div class="d-none d-sm-block">
                                                 <span
                                                     @if($ticket->priority == 'Urgent')
-                                                        class="py-2 badge badge-danger rounded text-capitalize"
+                                                        class="py-2 badge badge-danger rounded text-non-capitalize"
                                                     @elseif($ticket->priority == 'High')
-                                                        class="py-2 badge badge-warning rounded text-capitalize"
+                                                        class="py-2 badge badge-warning rounded text-non-capitalize"
                                                     @elseif($ticket->priority == 'Medium')
-                                                        class="py-2 badge badge-success rounded text-capitalize"
+                                                        class="py-2 badge badge-success rounded text-non-capitalize"
                                                     @else
-                                                        class="py-2 badge badge-info rounded text-capitalize"
+                                                        class="py-2 badge badge-info rounded text-non-capitalize"
                                                     @endif
                                                     >{{ translate($ticket->type) }}</span>
                                             </div>
@@ -47,7 +47,7 @@
                                                 <div>{{translate('status')}}:</div>
                                                 <span class="{{$ticket->status ==  'open' ? ' text-info ' : 'text-danger'}} fw-semibold">{{ ucwords($ticket->status) }}</span>
                                             </div>
-                                            <div class="d-flex align-items-center gap-2 gap-md-3 text-capitalize">
+                                            <div class="d-flex align-items-center gap-2 gap-md-3 text-non-capitalize">
                                                 <div>{{translate('priority')}}:</div>
                                                 <span
                                                     @if($ticket->priority == 'Urgent')
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             @if($ticket->status != 'close')
-                                <a href="{{route('support-ticket.close',[$ticket['id']])}}" class="btn btn-sm fs-14 font-semibold text-capitalize btn-outline-danger d-none d-sm-inline-block">{{ translate('close_this_ticket') }}</a>
+                                <a href="{{route('support-ticket.close',[$ticket['id']])}}" class="btn btn-sm fs-14 font-semibold text-non-capitalize btn-outline-danger d-none d-sm-inline-block">{{ translate('close_this_ticket') }}</a>
                                 <a href="{{route('support-ticket.close',[$ticket['id']])}}" class="btn btn-outline-danger btn-sm d-sm-none">{{ translate('close') }}</a>
                             @endif
                         </div>

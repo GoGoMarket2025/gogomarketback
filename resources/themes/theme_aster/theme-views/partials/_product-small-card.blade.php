@@ -64,7 +64,7 @@
 
         <h6 class="product__title text-truncate width--80">
             <a href="{{route('product',$product->slug)}}"
-               class="text-capitalize text-truncate">{{ $product['name'] }}</a>
+               class="text-non-capitalize text-truncate">{{ $product['name'] }}</a>
         </h6>
         <a href="{{route('product',$product->slug)}}">
             <div class="product__price d-flex flex-wrap column-gap-2">

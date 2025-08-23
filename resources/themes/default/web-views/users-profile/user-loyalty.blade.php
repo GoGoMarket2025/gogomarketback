@@ -19,7 +19,7 @@
                     <div class="card-body">
 
                         <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
-                            <h5 class="font-bold m-0 fs-16 text-capitalize">{{translate('loyalty_point')}}</h5>
+                            <h5 class="font-bold m-0 fs-16 text-non-capitalize">{{translate('loyalty_point')}}</h5>
 
                             <button class="profile-aside-btn btn btn--primary px-2 rounded px-2 py-1 d-lg-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"
@@ -40,7 +40,7 @@
                                          width="18">
                                 </button>
                                 <div class="how-to-use-hover-ele">
-                                    <h6 class='subtitle text-capitalize mb-2 fs-14 font-bold'>{{translate('how_to_use')}}</h6>
+                                    <h6 class='subtitle text-non-capitalize mb-2 fs-14 font-bold'>{{translate('how_to_use')}}</h6>
                                     <ul class='pl-4 fs-12'>
                                         <li>
                                             {{translate('convert_your_loyalty_point_to_wallet_money')}}.
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-md-6 d-none d-sm-block">
                                 <div class="my-wallet-card-content h-100 text-break-word">
-                                    <h6 class="subtitle text-capitalize">{{translate('how_to_use')}}</h6>
+                                    <h6 class="subtitle text-non-capitalize">{{translate('how_to_use')}}</h6>
                                     <ul class="fs-13">
                                         <li>
                                             {{translate('convert_your_loyalty_point_to_wallet_money')}}.
@@ -175,7 +175,7 @@
                                             class="dropdown-menu dropdown-menu-end shadow transaction-filter_dropdown dropdown-menu-end-0">
                                             <div
                                                 class="d-flex justify-content-between align-items-center p-3 border-bottom">
-                                                <h5 class="text-capitalize"> {{ translate('filter_data') }}</h5>
+                                                <h5 class="text-non-capitalize"> {{ translate('filter_data') }}</h5>
                                                 <button id="filterCloseBtn" type="button"
                                                         class="btn text-absolute-white border-0 rounded-circle lh-1 p-0 m-0 pt-1 d-flex justify-content-center align-items-center">
                                                     <i class="fa fa-close"></i>
@@ -183,7 +183,7 @@
                                             </div>
                                             <div class="p-3 overflow-auto max-h-290px">
                                                 <div class="mb-4">
-                                                    <h6 class="mb-3 text-capitalize"> {{ translate('filter_by') }}</h6>
+                                                    <h6 class="mb-3 text-non-capitalize"> {{ translate('filter_by') }}</h6>
                                                     <div class="d-flex gap-3 transaction_filter_by">
                                                         <label type="button"
                                                                class="btn p-2 min-w-60px {{ $filterBy == '' || $filterBy == 'all' ? 'btn-outline-primary' : 'btn-outline-secondary' }}">
@@ -206,7 +206,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-4">
-                                                    <h6 class="mb-3 text-capitalize">{{ translate('date_range') }}</h6>
+                                                    <h6 class="mb-3 text-non-capitalize">{{ translate('date_range') }}</h6>
                                                     <div class="position-relative">
                                                         <span class="fa fa-calendar icon-absolute-on-right"></span>
                                                         <input type="text" id="dateRangeInput" name="transaction_range"
@@ -215,7 +215,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-4">
-                                                    <h6 class="mb-3 text-capitalize"> {{ translate('earn_by') }}</h6>
+                                                    <h6 class="mb-3 text-non-capitalize"> {{ translate('earn_by') }}</h6>
                                                     <div class="d-flex flex-column gap-3 transaction_earn_by">
                                                         <label
                                                             class="d-flex justify-content-between align-items-center">
@@ -276,7 +276,7 @@
                                                 {{ $item['debit'] != 0 ? ' - '.$item['debit'] : ' + '.$item['credit'] }}
                                             </span>
                                         </h6>
-                                        <h6 class="text-muted text-capitalize mb-0 fs-13 font-semibold">
+                                        <h6 class="text-muted text-non-capitalize mb-0 fs-13 font-semibold">
                                             {{str_replace('_', ' ',$item['transaction_type'])}}
                                         </h6>
                                     </div>
@@ -369,7 +369,7 @@
                                 </span>
                             </div>
                             <div class="my-wallet-card-content text-break-word">
-                                <h6 class="subtitle text-capitalize text-primary">
+                                <h6 class="subtitle text-non-capitalize text-primary">
                                     {{translate('Note')}}
                                 </h6>
                                 <ul>

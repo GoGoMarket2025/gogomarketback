@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/admin-wallet.png')}}" alt="">
                 {{translate('wallet_bonus_setup')}}
             </h2>
@@ -48,7 +48,7 @@
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
                                 <label for="bonus_title"
-                                       class="mb-2 text-capitalize d-flex">{{translate('bonus_title')}}</label>
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('bonus_title')}}</label>
                                 <input type="text" name="title" class="form-control" id="bonus_title"
                                        placeholder="{{translate('ex').':'.translate('EID_Dhamaka')}}" required>
                             </div>
@@ -56,7 +56,7 @@
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
                                 <label for="short_desc"
-                                       class="mb-2 text-capitalize d-flex">{{translate('short_description')}}</label>
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('short_description')}}</label>
                                 <input type="text" name="description" class="form-control" id="short_desc"
                                        placeholder="{{translate('ex').':'.translate('EID_Dhamaka')}}">
                             </div>
@@ -64,7 +64,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4">
                             <div class="form-group">
                                 <label for="bonus-type"
-                                       class="mb-2 text-capitalize d-flex">{{translate('bonus_type')}}</label>
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('bonus_type')}}</label>
                                 <select name="bonus_type" id="bonus-type" class="form-select" required>
                                     <option value="percentage">{{translate('percentage').'(%)'}}</option>
                                     <option value="fixed">{{translate('fixed_amount')}}</option>
@@ -74,7 +74,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4" id="bonus_amount_area">
                             <div class="form-group">
                                 <label for="bonus_amount"
-                                       class="mb-2 text-capitalize d-flex">
+                                       class="mb-2 text-non-capitalize d-flex">
                                         {{translate('bonus_amount')}} (<span id="bonus-title-percent">{{translate('%')}}</span>)
                                 </label>
                                 <input type="number" name="bonus_amount" min="0" class="form-control" value="0"
@@ -84,7 +84,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4">
                             <div class="form-group">
                                 <label for="min_add_money_amount"
-                                       class="mb-2 text-capitalize d-flex">{{translate('minimum_add_amount')}}
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('minimum_add_amount')}}
                                     ({{ getCurrencySymbol(currencyCode: getCurrencyCode(type: 'default')) }})</label>
                                 <input type="number" name="min_add_money_amount" min="0" class="form-control"
                                        id="min_add_money_amount" value="0" placeholder="{{translate('ex').':'.'100'}}"
@@ -95,7 +95,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4" id="max-bonus-amount-area">
                             <div class="form-group">
                                 <label for="max_bonus_amount"
-                                       class="mb-2 text-capitalize d-flex">{{translate('maximum_bonus')}}
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('maximum_bonus')}}
                                     ({{ getCurrencySymbol(currencyCode: getCurrencyCode(type: 'default')) }})</label>
                                 <input type="number" min="0" name="max_bonus_amount" value="0" class="form-control"
                                        id="max_bonus_amount" placeholder="{{translate('ex').':'.'5000'}}">
@@ -104,7 +104,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4">
                             <div class="form-group">
                                 <label for="start-date-time"
-                                       class="mb-2 text-capitalize d-flex">{{translate('start_date')}}</label>
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('start_date')}}</label>
                                 <input type="date" name="start_date_time" id="start-date-time" class="form-control"
                                        required>
                             </div>
@@ -112,7 +112,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4">
                             <div class="form-group">
                                 <label for="end-date-time"
-                                       class="mb-2 text-capitalize d-flex">{{translate('end_date')}}</label>
+                                       class="mb-2 text-non-capitalize d-flex">{{translate('end_date')}}</label>
                                 <input type="date" name="end_date_time" id="end-date-time" class="form-control">
                             </div>
                         </div>
@@ -156,7 +156,7 @@
 
                 <div class="table-responsive">
                     <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                        <thead class="thead-light thead-50 text-capitalize">
+                        <thead class="thead-light thead-50 text-non-capitalize">
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('bonus_title')}}</th>

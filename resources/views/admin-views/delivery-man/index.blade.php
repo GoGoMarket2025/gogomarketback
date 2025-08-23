@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-delivery-man.png')}}" alt="">
                 {{translate('add_new_delivery_man')}}
             </h2>
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-4">
-                                        <label class="mb-2 d-flex text-capitalize" for="confirm_password">
+                                        <label class="mb-2 d-flex text-non-capitalize" for="confirm_password">
                                             {{translate('confirm_password')}}
                                         </label>
 

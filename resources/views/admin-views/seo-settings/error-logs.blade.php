@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/seo-settings.svg') }}" alt="">
                 {{ translate('SEO_Settings') }}
             </h2>
@@ -23,7 +23,7 @@
                     </p>
                 </div>
                 <div>
-                    <button data-bs-toggle="modal" data-bs-target="#cleanErrorLog" type="button" class="btn bg-danger bg-opacity-10 text-danger border border-danger text-capitalize d-none {{ getDemoModeFormButton(type: 'class') }}" id="clear-all-log">
+                    <button data-bs-toggle="modal" data-bs-target="#cleanErrorLog" type="button" class="btn bg-danger bg-opacity-10 text-danger border border-danger text-non-capitalize d-none {{ getDemoModeFormButton(type: 'class') }}" id="clear-all-log">
                         {{ translate('clear_all_log') }}
                     </button>
 
@@ -45,8 +45,8 @@
                                 </div>
                             </th>
                             <th class="w-45 text-center">{{translate('hits')}}</th>
-                            <th class="w-200 text-center text-capitalize">{{translate('last_hit_date')}}</th>
-                            <th class="w-200 text-center text-capitalize">{{translate('redirection_link')}}</th>
+                            <th class="w-200 text-center text-non-capitalize">{{translate('last_hit_date')}}</th>
+                            <th class="w-200 text-center text-non-capitalize">{{translate('redirection_link')}}</th>
                             <th class="text-center w-60">{{translate('action')}}</th>
                         </tr>
                         </thead>
@@ -70,7 +70,7 @@
                                 <td>
                                     @if($errorLog['redirect_url'])
                                         <div class="d-flex flex-wrap justify-content-center">
-                                            <button class="btn btn-outline-primary edit-content-btn text-capitalize edit-redirect-link" data-id="{{$errorLog['id']}}"
+                                            <button class="btn btn-outline-primary edit-content-btn text-non-capitalize edit-redirect-link" data-id="{{$errorLog['id']}}"
                                                 data-redirect-url="{{$errorLog['redirect_url']}}"
                                                 data-redirect-status="{{$errorLog['redirect_status']}}"
                                             >
@@ -79,7 +79,7 @@
                                         </div>
                                     @else
                                         <div class="d-flex flex-wrap justify-content-center">
-                                            <button class="btn btn-outline-success add-content-btn text-capitalize add-redirect-link" data-id="{{$errorLog['id']}}">
+                                            <button class="btn btn-outline-success add-content-btn text-non-capitalize add-redirect-link" data-id="{{$errorLog['id']}}">
                                                 <i class="fi fi-rr-plus"></i> {{translate('add_link')}}
                                             </button>
                                         </div>

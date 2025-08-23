@@ -22,8 +22,7 @@
                         <label class="form-label" for="">
                             {{ translate('country_code') }}
                         </label>
-                        <select name="code" class="custom-select image-var-select"
-                                data-placeholder="Select from dropdown">
+                        <select name="code" class="custom-select image-var-select">
                             <option></option>
                             @foreach(File::files(base_path('public/assets/front-end/img/flags')) as $path)
                                 @if(pathinfo($path)['filename'] != 'en' && pathinfo($path)['filename'] == $language['code'])

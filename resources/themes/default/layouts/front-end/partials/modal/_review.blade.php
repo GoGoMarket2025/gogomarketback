@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header border-0 pb-0">
-                <h6 class="text-center text-capitalize">{{translate('submit_a_review')}}</h6>
+                <h6 class="text-center text-non-capitalize">{{translate('submit_a_review')}}</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="text-center text-capitalize">
+                                <div class="text-center text-non-capitalize">
                                     <img src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}"
                                          alt=""
                                          width="100">
@@ -96,7 +96,7 @@
                     <div class="mb-5 mt-3">
                         <div class="star-rating-form">
                             <div class="star-wrap">
-                                <h3 class="text-capitalize text-center mb-3">{{translate('rate_the_quality')}}</h3>
+                                <h3 class="text-non-capitalize text-center mb-3">{{translate('rate_the_quality')}}</h3>
                                 <input class="rating" name="rating" value="{{$order_details->reviewData?->rating}}" hidden>
 
                                 <input class="star" checked type="radio" value="-1" id="skip-star" name="star-radio"
@@ -124,7 +124,7 @@
                     </div>
 
                     <div class="mt-3">
-                        <h6 class="mb-4 text-capitalize">{{translate('upload_images')}}</h6>
+                        <h6 class="mb-4 text-non-capitalize">{{translate('upload_images')}}</h6>
                         <div class="mt-2">
                             <div class="d-flex gap-2 flex-wrap">
                                 <div class="d-flex gap-4 flex-wrap coba_review">

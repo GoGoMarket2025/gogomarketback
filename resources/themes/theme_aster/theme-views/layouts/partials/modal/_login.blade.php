@@ -38,7 +38,7 @@
                         {{ translate('login_to_your_account.') }}
                         @if($customerManualLogin)
                             {{ translate('do_not_have_account').'?' }}
-                            <span class="text-primary fw-bold text-capitalize" data-bs-toggle="modal"
+                            <span class="text-primary fw-bold text-non-capitalize" data-bs-toggle="modal"
                                   data-bs-target="#registerModal">
                                 {{translate('sign_up')}}
                             </span>

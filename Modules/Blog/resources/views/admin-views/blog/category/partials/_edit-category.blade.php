@@ -7,7 +7,7 @@
             <div class="position-relative nav--tab-wrapper">
                 <ul class="nav nav-pills nav--tab lang_tab gap-3 mb-4">
                     @foreach($languages as $lang)
-                    <li class="nav-item text-capitalize px-0 {{$lang == $defaultLanguage ? 'active':''}}">
+                    <li class="nav-item text-non-capitalize px-0 {{$lang == $defaultLanguage ? 'active':''}}">
                         <a class="nav-link lang-link form-dynamic-language-tab px-2 {{$lang == $defaultLanguage ? 'active':''}}"
                            href="javascript:"
                            data-lang="{{ $lang }}"

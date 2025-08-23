@@ -5,7 +5,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex gap-2 align-items-center">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex gap-2 align-items-center">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/add-new-seller.png')}}" alt="">
                 {{translate('vendor_details')}}
             </h2>
@@ -80,7 +80,7 @@
                 <div class="card-body">
                     <div class="row align-items-center mb-4">
                         <div class="col-lg-4 mb-3 mb-lg-0">
-                            <h3 class="mb-0 text-capitalize d-flex gap-1 align-items-center">{{ translate('transaction_table')}}
+                            <h3 class="mb-0 text-non-capitalize d-flex gap-1 align-items-center">{{ translate('transaction_table')}}
                                 <span class="badge badge-info text-bg-info">{{$transactions->total()}}</span>
                             </h3>
                         </div>
@@ -105,11 +105,11 @@
                                     <div class="select-wrapper flex-grow-1">
                                         <select class="form-select" name="status">
                                             <option value="0" selected disabled>{{'---'.translate('select_status').'---'}}</option>
-                                            <option class="text-capitalize"
+                                            <option class="text-non-capitalize"
                                                     value="all" {{ request('status') == 'all'? 'selected' : '' }} >{{translate('all')}} </option>
-                                            <option class="text-capitalize"
+                                            <option class="text-non-capitalize"
                                                     value="disburse" {{ request('status') == 'disburse'? 'selected' : '' }} >{{translate('disburse')}} </option>
-                                            <option class="text-capitalize"
+                                            <option class="text-non-capitalize"
                                                     value="hold" {{ request('status') == 'hold'? 'selected' : '' }}>{{translate('hold')}}</option>
                                         </select>
                                     </div>
@@ -125,7 +125,7 @@
                         <table id="datatable"
                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
-                            <thead class="thead-light thead-50 text-capitalize">
+                            <thead class="thead-light thead-50 text-non-capitalize">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('vendor_name')}}</th>

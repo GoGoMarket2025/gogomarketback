@@ -9,7 +9,7 @@
 
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{dynamicAsset(path: 'public/assets/back-end/img/refund-request-list.png')}}" alt="">
                 {{translate('refund_details')}}
             </h2>
@@ -49,7 +49,7 @@
                                 <span class="left">{{translate('refund_id')}} </span> <span>:</span> <span class="right">{{$refund->id}}</span>
                             </li>
                             <li class="align-items-center">
-                                <span class="left text-capitalize">{{translate('refund_requested_date')}}</span>
+                                <span class="left text-non-capitalize">{{translate('refund_requested_date')}}</span>
                                 <span>:</span>
                                 <span class="right">{{date('d M Y, h:s:A',strtotime($refund['created_at']))}}</span>
                             </li>
@@ -204,7 +204,7 @@
             <div class="col-sm-6">
                     <div class="card h-100 refund-details-card--2">
                         <div class="card-body">
-                            <h4 class="mb-3 text-capitalize">{{translate('refund_reason_by_customer')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('refund_reason_by_customer')}}</h4>
                             <p>
                                 {{$refund->refund_reason}}
                             </p>
@@ -224,15 +224,15 @@
             <div class="col-sm-6">
                     <div class="card h-100 refund-details-card--2">
                         <div class="card-body">
-                            <h4 class="mb-3 text-capitalize">{{translate('deliveryman_info')}}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{translate('deliveryman_info')}}</h4>
                             <div class="key-val-list d-flex flex-column gap-2 min-width--60px">
                                 @if($order->deliveryMan)
                                     <div class="key-val-list-item d-flex gap-3">
-                                        <span class="text-capitalize">{{translate('name')}}</span>:
+                                        <span class="text-non-capitalize">{{translate('name')}}</span>:
                                         <span>{{$order->deliveryMan->f_name . ' ' .$order->deliveryMan->l_name}}</span>
                                     </div>
                                     <div class="key-val-list-item d-flex gap-3">
-                                        <span class="text-capitalize">{{translate('email_address')}}</span>:
+                                        <span class="text-non-capitalize">{{translate('email_address')}}</span>:
                                         <span>
                                         <a class="text-dark"
                                            href="mailto:{{ $order->deliveryMan->email }}">{{$order->deliveryMan?->email }}
@@ -240,7 +240,7 @@
                                     </span>
                                     </div>
                                     <div class="key-val-list-item d-flex gap-3">
-                                        <span class="text-capitalize">{{translate('phone_number')}} </span>:
+                                        <span class="text-non-capitalize">{{translate('phone_number')}} </span>:
                                         <span>
                                         <a class="text-dark"
                                            href="tel:{{ $order->deliveryMan->phone }}">{{$order->deliveryMan?->phone }}
@@ -268,7 +268,7 @@
                             <div class="table-responsive datatable-custom">
                                 <table
                                     class="table table-hover text-center table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                                    <thead class="thead-light thead-50 text-capitalize">
+                                    <thead class="thead-light thead-50 text-non-capitalize">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
                                         <th>{{translate('changed_by')}}</th>
@@ -284,7 +284,7 @@
                                             <td>
                                                 {{$key+1}}
                                             </td>
-                                            <td class="text-capitalize">
+                                            <td class="text-non-capitalize">
                                                 {{$status->change_by == 'seller' ? 'vendor' : $status->change_by}}
                                             </td>
                                             <td>{{date('d M Y, h:s:A',strtotime($refund['created_at']))}}</td>
@@ -294,7 +294,7 @@
                                                     {{$status->message}}
                                                 </div>
                                             </td>
-                                            <td class="text-capitalize">
+                                            <td class="text-non-capitalize">
                                                 {{translate($status->status)}}
                                             </td>
                                         </tr>

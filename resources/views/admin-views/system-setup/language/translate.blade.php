@@ -14,14 +14,14 @@
     <div class="content container-fluid">
 
         <div class="mb-4 pb-2">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img src="{{dynamicAsset(path: 'public/assets/back-end/img/language.png')}}" alt="">
                 {{translate('View Translations -')}} {{ $languageName . '(' . $lang . ')' }}
             </h2>
 
             <a href="{{route('admin.system-setup.language.index')}}" class="d-flex mt-2 gap-1 align-items-center text-decoration-none">
                 <i class="fi fi-rr-arrow-small-left mt-1 fs-5"></i>
-                <span class="text text-capitalize">{{translate('Back to Language Setup')}}</span>
+                <span class="text text-non-capitalize">{{translate('Back to Language Setup')}}</span>
             </a>
         </div>
 

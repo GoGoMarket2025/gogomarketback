@@ -6,7 +6,7 @@
     <div class="content container-fluid text-start">
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-10 mb-3">
             <div class="">
-                <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+                <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                     <img src="{{ dynamicAsset('public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
                     {{ translate('product_details') }}
                 </h2>
@@ -299,11 +299,11 @@
                 <div class="d-flex gap-3 flex-wrap">
                     <div class="border p-3 w-100-mobile w-170">
                         <div class="d-flex flex-column mb-1">
-                            <h6 class="fw-normal text-capitalize">{{ translate('total_sold') }} :</h6>
+                            <h6 class="fw-normal text-non-capitalize">{{ translate('total_sold') }} :</h6>
                             <h3 class="text-primary fs-18">{{ $product['qtySum'] }}</h3>
                         </div>
                         <div class="d-flex flex-column">
-                            <h6 class="fw-normal text-capitalize">{{ translate('total_sold_amount') }} :</h6>
+                            <h6 class="fw-normal text-non-capitalize">{{ translate('total_sold_amount') }} :</h6>
                             <h3 class="text-primary fs-18">
                                 {{setCurrencySymbol(amount: usdToDefaultCurrency(amount: ($product['priceSum'] - $product['discountSum']))) }}
                             </h3>
@@ -312,7 +312,7 @@
 
                     <div class="row gy-3 flex-grow-1">
                         <div class="col-sm-6 col-xl-4">
-                            <h4 class="mb-3 text-capitalize">{{ translate('general_information') }}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{ translate('general_information') }}</h4>
 
                             <div class="pair-list">
                                 @if($product?->product_type == 'physical')
@@ -334,13 +334,13 @@
                                 </div>
 
                                 <div>
-                                    <span class="key text-capitalize">{{ translate('product_type') }}</span>
+                                    <span class="key text-non-capitalize">{{ translate('product_type') }}</span>
                                     <span>:</span>
                                     <span class="value">{{ translate($product->product_type) }}</span>
                                 </div>
                                 @if($product->product_type == 'physical')
                                     <div>
-                                        <span class="key text-capitalize">{{ translate('product_unit') }}</span>
+                                        <span class="key text-non-capitalize">{{ translate('product_unit') }}</span>
                                         <span>:</span>
                                         <span class="value">{{ $product['unit'] }}</span>
                                     </div>
@@ -358,11 +358,11 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-xl-4">
-                            <h4 class="mb-3 text-capitalize">{{ translate('price_information') }}</h4>
+                            <h4 class="mb-3 text-non-capitalize">{{ translate('price_information') }}</h4>
 
                             <div class="pair-list">
                                 <div>
-                                    <span class="key text-capitalize">{{ translate('unit_price') }}</span>
+                                    <span class="key text-non-capitalize">{{ translate('unit_price') }}</span>
                                     <span>:</span>
                                     <span class="value">
                                         {{setCurrencySymbol(amount: usdToDefaultCurrency(amount: $product->unit_price), currencyCode: getCurrencyCode()) }}
@@ -384,7 +384,7 @@
                                 </div>
                                 @if($product->product_type == 'physical')
                                     <div>
-                                        <span class="key text-capitalize">{{ translate('shipping_cost') }}</span>
+                                        <span class="key text-non-capitalize">{{ translate('shipping_cost') }}</span>
                                         <span>:</span>
                                         <span class="value">
                                             {{ setCurrencySymbol(amount: usdToDefaultCurrency(amount: $product->shipping_cost)) }}
@@ -397,7 +397,7 @@
 
                                 @if(getProductPriceByType(product: $product, type: 'discount', result: 'value') > 0)
                                     <div>
-                                        <span class="key text-capitalize">{{ translate('discount') }}</span>
+                                        <span class="key text-non-capitalize">{{ translate('discount') }}</span>
                                         <span>:</span>
                                         @if($product?->clearanceSale?->discount_type == 'percentage' ? '-' : '') @endif
                                         {{ getProductPriceByType(product: $product, type: 'discount', result: 'string') }}
@@ -435,10 +435,10 @@
                         <div class="table-responsive datatable-custom">
                             <table
                                 class="table table-borderless table-nowrap table-align-middle card-table w-100 text-start">
-                                <thead class="thead-light thead-50 text-capitalize">
+                                <thead class="thead-light thead-50 text-non-capitalize">
                                 <tr>
                                     <th class="text-center">{{ translate('SKU') }}</th>
-                                    <th class="text-center text-capitalize">{{ translate('variation_wise_price') }}</th>
+                                    <th class="text-center text-non-capitalize">{{ translate('variation_wise_price') }}</th>
                                     <th class="text-center">{{ translate('stock') }}</th>
                                     <th></th>
                                 </tr>
@@ -472,7 +472,7 @@
                             <div class="table-responsive datatable-custom">
                                 <table
                                     class="table table-borderless table-nowrap table-align-middle card-table w-100 text-start">
-                                    <thead class="thead-light thead-50 text-capitalize">
+                                    <thead class="thead-light thead-50 text-non-capitalize">
                                     <tr>
                                         <th class="text-center">{{ translate('SL') }}</th>
                                         <th class="text-center">{{ translate('Variation_Name') }}</th>
@@ -489,7 +489,7 @@
                                             <td class="text-center">
                                                 {{ $key+1 }}
                                             </td>
-                                            <td class="text-center text-capitalize">
+                                            <td class="text-center text-non-capitalize">
                                                 <span class="py-1">{{ $variation->variant_key ?? '-' }}</span>
                                             </td>
                                             <td class="text-center">
@@ -526,11 +526,11 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <h4 class="mb-3 text-capitalize">
+                            <h4 class="mb-3 text-non-capitalize">
                                 {{ $product?->seoInfo?->title ?? ( $product->meta_title ?? translate('meta_title_not_found').' '.'!')}}
                             </h4>
                         </div>
-                        <p class="text-capitalize">
+                        <p class="text-non-capitalize">
                             {{ $product?->seoInfo?->description ?? ($product->meta_description ?? translate('meta_description_not_found').' '.'!')}}
                         </p>
                         @if($product?->seoInfo?->image_full_url['path'] || $product->meta_image_full_url['path'])
@@ -592,7 +592,7 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <h4 class="mb-3 text-capitalize">
+                            <h4 class="mb-3 text-non-capitalize">
                                 {{$product['video_provider'].' '.translate('video_link')}}
                             </h4>
                         </div>
@@ -627,7 +627,7 @@
             <div class="table-responsive datatable-custom">
                 <table
                     class="table table-hover table-borderless table-thead-bordered align-middle">
-                    <thead class="text-capitalize">
+                    <thead class="text-non-capitalize">
                         <tr>
                             <th>{{ translate('SL') }}</th>
                             <th>{{ translate('Review_ID') }}</th>

@@ -185,7 +185,7 @@
                         <div class="table-responsive">
                             <table
                                 class="table table-hover table-borderless table-thead-bordered table-nowrap align-middle">
-                                <thead class="text-capitalize">
+                                <thead class="text-non-capitalize">
                                 <tr>
                                     <th>{{ translate('ID') }}</th>
                                     @if (theme_root_path() == 'theme_aster')

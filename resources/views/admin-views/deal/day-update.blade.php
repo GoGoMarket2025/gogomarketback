@@ -3,7 +3,7 @@
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
-            <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
+            <h2 class="h1 mb-0 text-non-capitalize d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/deal_of_the_day.png') }}" alt="">
                 {{ translate('update_Deal_of_The_Day') }}
             </h2>
@@ -21,7 +21,7 @@
                             @php($defaultLanguage = $language[0])
                             <ul class="nav nav-tabs w-fit-content mb-4">
                                 @foreach($language as $lang)
-                                    <li class="nav-item text-capitalize">
+                                    <li class="nav-item text-non-capitalize">
                                         <a class="nav-link lang-link {{ $lang == $defaultLanguage? 'active':'' }}"
                                            href="javascript:"
                                            id="{{ $lang }}-link">{{getLanguageName($lang).'('.strtoupper($lang).')' }}</a>
