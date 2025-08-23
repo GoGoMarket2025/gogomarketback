@@ -77,7 +77,7 @@
                                                              width="20"
                                                              src="{{dynamicAsset(path: 'public/assets/front-end/img/flags/'.$data['code'].'.png')}}"
                                                              alt="{{$data['name']}}"/>
-                                                        <span class="text-non-capitalize">{{$data['name']}}</span>
+                                                        <span class="text-non-capitalize">{{translate($data['name'])}}</span>
                                                     </a>
                                                 </li>
                                             @endif
