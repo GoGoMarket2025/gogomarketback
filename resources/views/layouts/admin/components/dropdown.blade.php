@@ -61,8 +61,7 @@
                             <div id="liveAlertPlaceholder">
                                 <div></div>
                             </div>
-                            <select class="custom-select" name="" data-without-search="-1"
-                                data-placeholder="Select from dropdown">
+                            <select class="custom-select" name="" data-without-search="-1">
                                 <option></option> <!-- Empty option for placeholder -->
                                 <option value="AL">Alabama</option>
                                 <option value="WY">Wyoming</option>
@@ -81,8 +80,7 @@
                             <div class="tab-content position-absolute start-0 top-100 shadow-lg bg-white p-1 z-3 mw-100" id="myTabContent">
                                 <div class="tab-pane fade show active" id="html-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                                     <div class="component-snippets-code-container">
-<pre><code><select class="custom-select" name="" data-without-search="-1"
-    data-placeholder="Select from dropdown">
+<pre><code><select class="custom-select" name="" data-without-search="-1">
     <option></option> <!-- Empty option for placeholder -->
     <option value="AL">Alabama</option>
     <option value="WY">Wyoming</option>
@@ -105,7 +103,7 @@
                             <div id="liveAlertPlaceholder">
                                 <div></div>
                             </div>
-                            <select class="custom-select" name="" data-placeholder="Select from dropdown">
+                            <select class="custom-select" name="">
                                 <option></option> <!-- Empty option for placeholder -->
                                 <option value="AL">Alabama</option>
                                 <option value="WY">Wyoming</option>
@@ -123,7 +121,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="html-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                                 <div class="component-snippets-code-container">
-<pre><code><select class="custom-select" name="" data-placeholder="Select from dropdown">
+<pre><code><select class="custom-select" name="">
     <option></option> <!-- Empty option for placeholder -->
     <option value="AL">Alabama</option>
     <option value="WY">Wyoming</option>

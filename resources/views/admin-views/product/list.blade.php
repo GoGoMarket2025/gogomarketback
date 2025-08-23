@@ -29,8 +29,7 @@
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="form-group">
                                     <label class="form-label" for="store">{{ translate('store') }}</label>
-                                    <select name="seller_id" class="custom-select"
-                                            data-placeholder="Select from dropdown">
+                                    <select name="seller_id" class="custom-select">
                                         <option></option>
                                         <option value="" selected>{{ translate('all_store') }}</option>
                                         @foreach ($sellers as $seller)
@@ -46,7 +45,7 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="form-label" for="store">{{ translate('brand') }}</label>
-                                <select name="brand_id" class="custom-select" data-placeholder="Select from dropdown">
+                                <select name="brand_id" class="custom-select">
                                     <option></option>
                                     <option value="" selected>{{ translate('all_brand') }}</option>
                                     @foreach ($brands as $brand)
@@ -61,7 +60,7 @@
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ translate('category') }}</label>
                                 <select class="custom-select action-get-request-onchange"
-                                        data-placeholder="Select from dropdown" name="category_id"
+                                        name="category_id"
                                         data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
                                         data-element-id="sub-category-select"
                                         data-element-type="select">
@@ -80,7 +79,7 @@
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ translate('sub_Category') }}</label>
                                 <select class="custom-select action-get-request-onchange"
-                                        data-placeholder="Select from dropdown" name="sub_category_id"
+                                        name="sub_category_id"
                                         id="sub-category-select"
                                         data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
                                         data-element-id="sub-sub-category-select"
@@ -94,7 +93,7 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label for="name" class="form-label">{{ translate('sub_Sub_Category') }}</label>
-                                <select class="custom-select" data-placeholder="Select from dropdown"
+                                <select class="custom-select"
                                         name="sub_sub_category_id"
                                         id="sub-sub-category-select">
                                     <option

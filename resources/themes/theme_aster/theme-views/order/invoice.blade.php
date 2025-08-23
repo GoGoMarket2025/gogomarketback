@@ -403,7 +403,7 @@
             color: #222222;
         }
         .text-capitalize{
-            text-transform: capitalize;
+            /* text-transform: capitalize; */
         }
         .text-dark, strong {
             color: #222222;

@@ -436,7 +436,7 @@
                                     <label class="form-label fw-semibold">
                                         {{translate('delivery_man')}}
                                     </label>
-                                    <select class="custom-select" data-placeholder="Select from dropdown"
+                                    <select class="custom-select"
                                             name="delivery_man_id" id="addDeliveryMan" data-order-id="{{$order['id']}}">
                                         <option
                                             value="0">{{translate('select')}}</option>
@@ -765,7 +765,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="country" class="form-label">{{translate('country')}}</label>
-                                        <select name="country" id="country" class="custom-select" data-placeholder="Select from dropdown">
+                                        <select name="country" id="country" class="custom-select">
                                             @forelse($countries as $country)
                                                 <option value="{{ $country['name'] }}" {{ isset($shipping_address) && $country['name'] == $shipping_address->country ? 'selected'  : ''}}>{{ $country['name'] }}</option>
                                             @empty

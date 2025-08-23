@@ -484,7 +484,6 @@
                                         name="delivery_man_id"
                                         id="addDeliveryMan"
                                         data-order-id="{{$order['id']}}"
-                                        data-placeholder="Select from dropdown"
                                         {{ $order->order_status == 'delivered' ? 'disabled' : '' }}
                                         >
                                         <option></option>

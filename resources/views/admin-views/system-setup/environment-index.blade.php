@@ -274,8 +274,7 @@
                                     @csrf
                                     <div class="form-group mb-3">
                                         <label class="form-label" for="">{{ translate('Force_HTTPS') }}</label>
-                                        <select name="force_https" class="custom-select"
-                                                data-placeholder="Select from dropdown">
+                                        <select name="force_https" class="custom-select">
                                             <option></option>
                                             <option value="true" {{ env('FORCE_HTTPS') ? 'selected' : '' }}>
                                                 {{ translate('true') }}
@@ -311,8 +310,7 @@
 
                                     <div class="form-group mb-3">
                                         <label class="form-label" for="">{{ translate('Optimize_Type') }}</label>
-                                        <select name="optimize_type" class="custom-select"
-                                                data-placeholder="Select from dropdown">
+                                        <select name="optimize_type" class="custom-select">
                                             <option></option>
                                             <option value="cache">{{ translate('Clear_All_Cache') }}</option>
                                             <option value="migrate">{{ translate('Migrate_Database') }}</option>
@@ -345,8 +343,7 @@
                                     @csrf
                                     <div class="form-group mb-3">
                                         <label class="form-label" for="">{{ translate('Install') }}</label>
-                                        <select name="status" class="custom-select"
-                                                data-placeholder="Select from dropdown">
+                                        <select name="status" class="custom-select">
                                             <option></option>
                                             <option value="yes">{{ translate('Yes') }}</option>
                                         </select>
