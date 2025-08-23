@@ -2584,6 +2584,6 @@ return [
     'email_password_reset_otp' => 'Your verification code is:',
 	'and_order' => 'and order',
 	"english" => "English",
-	"Русский" => "Russian",
-	"O'zbek tili" => "Uzbek"
+	"Русский" => "Русский",
+	"O'zbek tili" => "O'zbek tili"
 ];

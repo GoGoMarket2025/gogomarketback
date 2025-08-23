@@ -5369,7 +5369,7 @@ return [
 	"create_your_own_store" => "Создайте свой собственный магазин",
 	"already_have_store" => "Уже есть магазин",
 	"Send_Message_to_Deliveryman" => "Отправить сообщение курьеру",
-	"english" => "Английский",
+	"english" => "English",
 	"Русский" => "Русский",
-	"O'zbek tili" => "Узбекский"
+	"O'zbek tili" => "O'zbek tili"
 ];

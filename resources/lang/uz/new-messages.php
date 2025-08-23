@@ -5370,6 +5370,6 @@ return [
 	"already_have_store" => "Allaqachon do'kon bor",
 	"Send_Message_to_Deliveryman" => "Kuryerga xabar yuboring",
 	"english" => "English",
-	"Русский" => "Rus tili",
+	"Русский" => "Русский",
 	"O'zbek tili" => "O'zbek tili"
 ];
