@@ -2583,7 +2583,7 @@ return [
     'email_wallet_credit' => 'Amount successfully credited to your wallet.',
     'email_password_reset_otp' => 'Your verification code is:',
 	'and_order' => 'and order',
-	"english" => "Uzbek",
+	"english" => "English",
 	"Русский" => "Russian",
-	"O'zbek tili" => "English"
+	"O'zbek tili" => "Uzbek"
 ];
