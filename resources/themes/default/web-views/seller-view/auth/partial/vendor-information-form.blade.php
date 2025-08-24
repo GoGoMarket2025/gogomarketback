@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <h3 class="mb-4">{{translate('create_an_account')}}</h3>
                         <div class="border p-3 p-xl-4 rounded">
-                            <h4 class="mb-3">{{translate('vendor_information')}}</h4> я тут
+                            <h4 class="mb-3">Информация о руководители</h4>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group mb-4">
@@ -16,6 +16,21 @@
                                     <div class="form-group mb-4">
                                         <label  for="l_name">{{translate('last_name')}} <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" name="l_name" placeholder="{{translate('ex').': Doe'}}" required>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label  for="passport_serial">{{translate('passport_serial')}} <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="passport_serial" placeholder="AA" required>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label  for="passport_number">{{translate('passport_number')}} <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="passport_number" placeholder="123456" required>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label  for="passport_issue_name">{{translate('passport_issue_name')}} <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="passport_issue_name" placeholder="Кем выдан" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -52,6 +67,65 @@
                             <div class="form-group mb-4">
                                 <label for="store_address" class="text-non-capitalize">{{translate('shop_address')}} <span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="shop_address" id="shop_address" rows="4" placeholder="{{translate('shop_address')}}" required></textarea>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="organization_type">{{ translate('organization_type') }} <span class="text-danger">*</span></label>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="organization_type" id="org_type_ip" value="1" required>
+                                        <label class="form-check-label" for="org_type_ip">{{ translate('ИП') }}</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="organization_type" id="org_type_ooo" value="2" required>
+                                        <label class="form-check-label" for="org_type_ooo">{{ translate('ООО') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="organization_name">{{translate('organization_name')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="organization_name" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="organization_oked">{{translate('organization_oked')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="organization_oked" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="bank_account_number">{{translate('bank_account_number')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="bank_account_number" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="bank_name">{{translate('bank_name')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="bank_name" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="bank_mfo_code">{{translate('bank_mfo_code')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="bank_mfo_code" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="identification_number">{{translate('identification_number')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="identification_number" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="vat_percent">{{translate('vat_percent')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="vat_percent" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="latitude">{{translate('latitude')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="latitude" placeholder="123456" required>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label  for="longitude">{{translate('longitude')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="longitude" placeholder="123456" required>
                             </div>
 
                             <div class="d-flex justify-content-between border p-3 p-xl-4 rounded mb-4">

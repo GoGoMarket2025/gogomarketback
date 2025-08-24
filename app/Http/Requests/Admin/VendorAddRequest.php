@@ -42,6 +42,20 @@ class VendorAddRequest extends FormRequest
             'longitude' => 'nullable|numeric|between:-180,180',
             'vat_percent' => 'required|integer|in:0,12',
             'identification_number' => 'nullable|string|max:14',
+            // Организация
+            'organization_type'     => 'nullable|string|max:50',
+            'organization_name'     => 'nullable|string|max:255',
+            'organization_oked'     => 'nullable|digits_between:4,6',
+
+            // Банк
+            'bank_account_number'   => 'nullable|digits_between:16,30',
+            'bank_name'             => 'nullable|string|max:255',
+            'bank_mfo_code'         => ['nullable', 'digits:5'],           // МФО — 5 цифр
+
+            // Паспорт
+            'passport_serial'       => 'nullable|string|size:2',
+            'passport_number'       => 'nullable|digits_between:7,9',
+            'passport_issue_name'   => 'nullable|string|max:255',
         ];
     }
 
