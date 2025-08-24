@@ -73,8 +73,23 @@
                             </div>
 
                             <div class="form-group mb-3">
+                                <label for="vat_percent" class="form-label">Ставка НДС</label>
+                                <input type="text" name="vat_percent" id="vat_percent" class="form-control" value="{{$seller?->shop->vat_percent}}">
+                            </div>
+
+                            <div class="form-group mb-3">
                                 <label for="organization_oked" class="form-label">ОКЭД</label>
                                 <input type="text" name="organization_oked" id="organization_oked" class="form-control" value="{{$seller?->shop->organization_oked}}">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="latitude" class="form-label">Широта</label>
+                                <input type="text" name="latitude" id="latitude" class="form-control" value="{{$seller?->shop->latitude}}">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="longitude" class="form-label">Долгота</label>
+                                <input type="text" name="longitude" id="longitude" class="form-control" value="{{$seller?->shop->longitude}}">
                             </div>
                         </div>
                         <div class="col-md-6">
