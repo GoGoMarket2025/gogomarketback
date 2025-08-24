@@ -143,13 +143,19 @@
                                             @if (json_decode($product->choice_options) != null)
                                                 @foreach (json_decode($product->choice_options) as $key => $value)
                                                     <div>
-                                                        @if (array_filter($value->options) != null)
+                                                        @php
+                                                            $currentLocale = getDefaultLanguage();
+                                                            $options = isset($value->options->$currentLocale) ? $value->options->$currentLocale :
+                                                                      (isset($value->options_default) ? $value->options_default :
+                                                                      (is_array($value->options) ? $value->options : []));
+                                                        @endphp
+                                                        @if (array_filter($options) != null)
                                                             <span class="key">{{ translate($value->title) }}</span>
                                                             <span>:</span>
                                                             <span class="value">
-                                                    @foreach ($value->options as $index => $option)
+                                                    @foreach ($options as $index => $option)
                                                                     {{ $option }}
-                                                                    @if ($index === array_key_last(($value->options)))
+                                                                    @if ($index === array_key_last(($options)))
                                                                         @break
                                                                     @endif
                                                                     ,

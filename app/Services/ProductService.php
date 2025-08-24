@@ -286,7 +286,22 @@ class ProductService
                 $str = 'choice_options_' . $no;
                 $item['name'] = 'choice_' . $no;
                 $item['title'] = $request->choice[$key];
-                $item['options'] = explode(',', implode('|', $request[$str]));
+
+                // Get all supported languages
+                $languages = getWebConfig('language');
+
+                // Initialize options for each language
+                $options_by_language = [];
+                foreach ($languages as $language) {
+                    $options_by_language[$language['code']] = explode(',', implode('|', $request[$str]));
+                }
+
+                // Set options for all languages
+                $item['options'] = $options_by_language;
+
+                // Keep the original format for backward compatibility
+                $item['options_default'] = explode(',', implode('|', $request[$str]));
+
                 $choice_options[] = $item;
             }
         }

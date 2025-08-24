@@ -123,7 +123,13 @@
                                     <strong class="text-dark">{{ ucfirst($choice->title) }}</strong>
                                 </div>
                                 <div class="d-flex gap-2 flex-wrap">
-                                    @foreach ($choice->options as $index => $option)
+                                    @php
+                                        $currentLocale = getDefaultLanguage();
+                                        $options = isset($choice->options->$currentLocale) ? $choice->options->$currentLocale :
+                                                  (isset($choice->options_default) ? $choice->options_default :
+                                                  (is_array($choice->options) ? $choice->options : []));
+                                    @endphp
+                                    @foreach ($options as $index => $option)
                                         <input class="btn-check" type="radio"
                                                id="{{ $choice->name }}-{{ $option }}"
                                                name="{{ $choice->name }}" value="{{ $option }}"

@@ -35,6 +35,7 @@ class DeliveryManRepository implements DeliveryManRepositoryInterface
     {
         $query = $this->deliveryMan->with($relations)
             ->withCount('orders')
+
             ->when($searchValue, function ($query) use ($searchValue) {
                 $searchTerms = explode(' ', $searchValue);
                 $query->where(function ($query) use ($searchTerms) {
