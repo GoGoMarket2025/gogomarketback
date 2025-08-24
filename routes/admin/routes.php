@@ -393,6 +393,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Vendor::SALES_COMMISSION_UPDATE[URI] . '/{id}', 'updateSalesCommission')->name('sales-commission-update');
             Route::get(Vendor::ORDER_DETAILS[URI] . '/{order_id}/{vendor_id}', 'getOrderDetailsView')->name('order-details');
             Route::get(Vendor::VIEW[URI] . '/{id}/{tab?}', 'getView')->name('view');
+            Route::get(Vendor::EDIT[URI] . '/{id}', 'getEditView')->name('edit');
+            Route::post(Vendor::UPDATE_SHOP[URI] . '/{id}', 'updateShop')->name('update-shop');
             Route::post(Vendor::UPDATE_SETTING[URI] . '/{id}', 'updateSetting')->name('update-setting');
 
             Route::get(Vendor::WITHDRAW_LIST[URI], 'getWithdrawListView')->name('withdraw_list');

@@ -144,11 +144,18 @@
                                        class="text-dark">{{$seller->rating_count}} {{translate('reviews')}}</a>
                                 </div>
                                 @if ( $seller['status']!="pending" && $seller['status']!="suspended" && $seller['status']!="rejected" && $seller?->shop)
-                                    <a href="{{route('shopView', ['id'=> $seller?->shop['id']])}}"
-                                       class="btn btn-outline-primary" target="_blank">
-                                        <i class="fi fi-rr-globe"></i>
-                                        {{translate('view_live')}}
-                                    </a>
+                                    <div class="d-flex gap-2">
+                                        <a href="{{route('admin.vendors.edit', ['id'=> $seller['id']])}}"
+                                           class="btn btn-primary">
+                                            <i class="fi fi-rr-edit"></i>
+                                            {{translate('edit')}}
+                                        </a>
+                                        <a href="{{route('shopView', ['id'=> $seller?->shop['id']])}}"
+                                           class="btn btn-outline-primary" target="_blank">
+                                            <i class="fi fi-rr-globe"></i>
+                                            {{translate('view_live')}}
+                                        </a>
+                                    </div>
                                 @endif
                             </div>
                         </div>

@@ -575,4 +575,67 @@ class VendorController extends BaseController
     }
 
 
+    public function getEditView($id): View|RedirectResponse
+    {
+        $seller = $this->vendorRepo->getFirstWhere(
+            params: ['id' => $id],
+            relations: ['shop']
+        );
+
+        if (!$seller) {
+            ToastMagic::error(translate('vendor_not_found_It_may_be_deleted'));
+            return redirect()->route('admin.vendors.vendor-list');
+        }
+
+        return view(Vendor::EDIT[VIEW], [
+            'seller' => $seller,
+        ]);
+    }
+
+    public function updateShop(Request $request, $id): RedirectResponse
+    {
+        $seller = $this->vendorRepo->getFirstWhere(
+            params: ['id' => $id],
+            relations: ['shop']
+        );
+
+        if (!$seller || !$seller->shop) {
+            ToastMagic::error(translate('vendor_or_shop_not_found'));
+            return redirect()->route('admin.vendors.vendor-list');
+        }
+
+        $shop = $seller->shop;
+
+        $shopData = [
+            'name' => $request->name,
+            'contact' => $request->contact,
+            'address' => $request->address,
+            'identification_number' => $request->identification_number,
+            'organization_type' => $request->organization_type,
+            'organization_name' => $request->organization_name,
+            'organization_oked' => $request->organization_oked,
+            'bank_account_number' => $request->bank_account_number,
+            'bank_name' => $request->bank_name,
+            'bank_mfo_code' => $request->bank_mfo_code,
+            'passport_serial' => $request->passport_serial,
+            'passport_number' => $request->passport_number,
+            'passport_issue_name' => $request->passport_issue_name,
+        ];
+
+        // Handle image upload if provided
+        if ($request->hasFile('image')) {
+            $shopData['image'] = $this->shopService->uploadImage(
+                image: $request->file('image'),
+                directory: 'shop',
+                oldImage: $shop->image,
+                oldImageStorageType: $shop->image_storage_type ?? 'public'
+            );
+            $shopData['image_storage_type'] = 'public';
+        }
+
+        $this->shopRepo->update(id: $shop->id, data: $shopData);
+
+        ToastMagic::success(translate('shop_information_updated_successfully'));
+        return redirect()->route('admin.vendors.view', $id);
+    }
 }
