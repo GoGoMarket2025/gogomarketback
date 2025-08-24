@@ -15,26 +15,33 @@
             <div class="position-relative nav--tab-wrapper">
                 <ul class="nav nav-pills nav--tab">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('admin.vendors.view', $seller['id']) }}">{{translate('shop_overview')}}</a>
+                        <a class="nav-link active"
+                           href="{{ route('admin.vendors.view', $seller['id']) }}">{{translate('shop_overview')}}</a>
                     </li>
                     @if ($seller['status']!="pending")
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'order']) }}">{{translate('order')}}</a>
+                            <a class="nav-link"
+                               href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'order']) }}">{{translate('order')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'product']) }}">{{translate('product')}}</a>
+                            <a class="nav-link"
+                               href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'product']) }}">{{translate('product')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'clearance_sale']) }}">{{translate('clearance_sale_products')}}</a>
+                            <a class="nav-link"
+                               href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'clearance_sale']) }}">{{translate('clearance_sale_products')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'setting']) }}">{{translate('setting')}}</a>
+                            <a class="nav-link"
+                               href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'setting']) }}">{{translate('setting')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'transaction']) }}">{{translate('transaction')}}</a>
+                            <a class="nav-link"
+                               href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'transaction']) }}">{{translate('transaction')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'review']) }}">{{translate('review')}}</a>
+                            <a class="nav-link"
+                               href="{{ route('admin.vendors.view',['id'=>$seller['id'], 'tab'=>'review']) }}">{{translate('review')}}</a>
                         </li>
                     @endif
                 </ul>
@@ -54,21 +61,26 @@
             <div class="card-body">
                 <div class="d-flex flex-wrap gap-3 justify-content-between">
                     <div class="media flex-column flex-sm-row gap-3">
-                        <img width="170" class="rounded-circle object-fit-cover aspect-1" src="{{ getStorageImages(path: $seller?->shop->image_full_url, type: 'backend-basic') }}" alt="{{translate('image')}}">
+                        <img width="170" class="rounded-circle object-fit-cover aspect-1"
+                             src="{{ getStorageImages(path: $seller?->shop->image_full_url, type: 'backend-basic') }}"
+                             alt="{{translate('image')}}">
                         <div class="media-body">
                             @if($seller?->shop->temporary_close || ($seller?->shop->vacation_status && $current_date >= date('Y-m-d', strtotime($seller?->shop->vacation_start_date)) && $current_date <= date('Y-m-d', strtotime($seller?->shop->vacation_end_date))))
                                 <div class="d-flex justify-content-between gap-2 mb-4">
                                     @if($seller->shop->temporary_close)
-                                        <div class="btn btn-soft-danger">{{translate('this_shop_currently_close_now')}} </div>
+                                        <div
+                                            class="btn btn-soft-danger">{{translate('this_shop_currently_close_now')}} </div>
                                     @elseif($seller->shop->vacation_status && $current_date >= date('Y-m-d', strtotime($seller->shop->vacation_start_date)) && $current_date <= date('Y-m-d', strtotime($seller->shop->vacation_end_date)))
-                                        <div class="btn btn-soft-danger">{{translate('this_shop_currently_on_vacation')}} </div>
+                                        <div
+                                            class="btn btn-soft-danger">{{translate('this_shop_currently_on_vacation')}} </div>
                                     @endif
                                 </div>
                             @endif
                             <div class="d-block">
                                 <h2 class="mb-2 pb-1">{{ $seller->shop? $seller->shop->name : translate("shop_Name")." : ".translate("update_Please") }}</h2>
                                 <div class="d-flex gap-3 flex-wrap mb-3 lh-1">
-                                    <div class="review-hover position-relative cursor-pointer d-flex gap-2 align-items-center">
+                                    <div
+                                        class="review-hover position-relative cursor-pointer d-flex gap-2 align-items-center">
                                         <i class="fi fi-sr-star"></i>
                                         <span>{{ round($seller->average_rating, 1) }}</span>
                                         <div class="review-details-popup">
@@ -78,7 +90,9 @@
                                                     <li class="d-flex align-items-center font-size-sm">
                                                         <span class="me-3">{{'5'.' '.translate('star')}}</span>
                                                         <div class="progress flex-grow-1">
-                                                            <div class="progress-bar width--100" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar width--100" role="progressbar"
+                                                                 aria-valuenow="0" aria-valuemin="0"
+                                                                 aria-valuemax="100"></div>
                                                         </div>
                                                         <span class="ml-3">{{$seller->single_rating_5}}</span>
                                                     </li>
@@ -112,7 +126,8 @@
                                                     <li class="d-flex align-items-center font-size-sm">
                                                         <span class="me-3">{{'2'.' '.translate('star')}}</span>
                                                         <div class="progress flex-grow-1">
-                                                            <div class="progress-bar width--20" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                                            <div class="progress-bar width--20" role="progressbar"
+                                                                 aria-valuenow="0" aria-valuemin="0"
                                                                  aria-valuemax="100"></div>
                                                         </div>
                                                         <span class="ml-3">{{$seller->single_rating_1}}</span>
@@ -129,47 +144,67 @@
                                        class="text-dark">{{$seller->rating_count}} {{translate('reviews')}}</a>
                                 </div>
                                 @if ( $seller['status']!="pending" && $seller['status']!="suspended" && $seller['status']!="rejected" && $seller?->shop)
-                                    <a href="{{route('shopView', ['id'=> $seller?->shop['id']])}}" class="btn btn-outline-primary" target="_blank">
-                                       <i class="fi fi-rr-globe"></i>
-                                       {{translate('view_live')}}
-                                    </a>
+                                    <div class="d-flex gap-2">
+                                        <a href="{{route('admin.vendors.edit', ['id'=> $seller['id']])}}"
+                                           class="btn btn-primary">
+                                            <i class="fi fi-rr-edit"></i>
+                                            {{translate('edit')}}
+                                        </a>
+                                        <a href="{{route('shopView', ['id'=> $seller?->shop['id']])}}"
+                                           class="btn btn-outline-primary" target="_blank">
+                                            <i class="fi fi-rr-globe"></i>
+                                            {{translate('view_live')}}
+                                        </a>
+                                    </div>
                                 @endif
                             </div>
                         </div>
                     </div>
                     @if ($seller['status']=="pending")
                         <div class="d-flex justify-content-sm-end flex-wrap gap-2 mb-3">
-                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}" id="reject-form" method="POST">
+                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}"
+                                  id="reject-form" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$seller['id']}}">
                                 <input type="hidden" name="status" value="rejected">
-                                <button type="button" class="btn btn-danger form-alert" data-message="{{translate('want_to_reject_this_vendor').'?'}}" data-id="reject-form">{{translate('reject')}}</button>
+                                <button type="button" class="btn btn-danger form-alert"
+                                        data-message="{{translate('want_to_reject_this_vendor').'?'}}"
+                                        data-id="reject-form">{{translate('reject')}}</button>
                             </form>
-                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}" id="approve-form" method="POST">
+                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}"
+                                  id="approve-form" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$seller['id']}}">
                                 <input type="hidden" name="status" value="approved">
-                                <button type="button" class="btn btn-success form-alert" data-message="{{translate('want_to_approve_this_vendor').'?'}}" data-id="approve-form">{{translate('approve')}}</button>
+                                <button type="button" class="btn btn-success form-alert"
+                                        data-message="{{translate('want_to_approve_this_vendor').'?'}}"
+                                        data-id="approve-form">{{translate('approve')}}</button>
                             </form>
                         </div>
                     @endif
                     @if ($seller['status']=="approved")
                         <div class="d-flex justify-content-sm-end flex-wrap gap-2 mb-3">
-                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}" id="suspend-form" method="POST">
+                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}"
+                                  id="suspend-form" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$seller['id']}}">
                                 <input type="hidden" name="status" value="suspended">
-                                <button type="button" class="btn btn-danger px-5 form-alert" data-message="{{translate('want_to_suspend_this_vendor').'?'}}" data-id="suspend-form">{{translate('suspend_this_vendor')}}</button>
+                                <button type="button" class="btn btn-danger px-5 form-alert"
+                                        data-message="{{translate('want_to_suspend_this_vendor').'?'}}"
+                                        data-id="suspend-form">{{translate('suspend_this_vendor')}}</button>
                             </form>
                         </div>
                     @endif
                     @if ($seller['status']=="suspended" || $seller['status']=="rejected")
                         <div class="d-flex justify-content-sm-end flex-wrap gap-2 mb-3">
-                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}" id="active-form" method="POST">
+                            <form class="d-inline-block" action="{{route('admin.vendors.updateStatus')}}"
+                                  id="active-form" method="POST">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$seller['id']}}">
                                 <input type="hidden" name="status" value="approved">
-                                <button type="button" class="btn btn-success px-5 form-alert" data-message="{{translate('want_to_active_this_vendor').'?'}}" data-id="active-form">{{translate('active')}}</button>
+                                <button type="button" class="btn btn-success px-5 form-alert"
+                                        data-message="{{translate('want_to_active_this_vendor').'?'}}"
+                                        data-id="active-form">{{translate('active')}}</button>
                             </form>
                         </div>
                     @endif
@@ -211,10 +246,67 @@
                                 </div>
 
                                 <div>
+                                    <span class="key">ИНН / ПИНФЛ</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->identification_number}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">ИНН / ПИНФЛ</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->identification_number}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">Тип</span>
+                                    <span>:</span>
+                                    <span class="value">
+                                        @if($seller?->shop?->organization_type == 1)
+                                            {{ translate('ИП') }}
+                                        @elseif($seller?->shop?->organization_type == 2)
+                                            {{ translate('ООО') }}
+                                        @else
+                                            -
+                                        @endif
+                                        </span>
+                                </div>
+
+                                <div>
+                                    <span class="key">Организация</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->organization_name}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">ОКЭД</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->organization_oked}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">Счет в банке</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->bank_account_number}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">Название банка</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->bank_name}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">МФО банка</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->bank_mfo_code}}</span>
+                                </div>
+
+                                <div>
                                     <span class="key">{{translate('status')}}</span>
                                     <span>:</span>
                                     <span class="value">
-                                        <span class="badge badge-{{$seller['status']=='approved'? 'info' :'danger'}} text-bg-{{$seller['status']=='approved'? 'info' :'danger'}}">
+                                        <span
+                                            class="badge badge-{{$seller['status']=='approved'? 'info' :'danger'}} text-bg-{{$seller['status']=='approved'? 'info' :'danger'}}">
                                             {{ $seller['status']=='approved'? translate('active') : translate('inactive') }}
                                         </span>
                                     </span>
@@ -228,7 +320,8 @@
                                 <div>
                                     <span class="key">{{translate('name')}}</span>
                                     <span>:</span>
-                                    <span class="value text-non-capitalize">{{$seller['f_name'].' '.$seller['l_name']}}</span>
+                                    <span
+                                        class="value text-non-capitalize">{{$seller['f_name'].' '.$seller['l_name']}}</span>
                                 </div>
 
                                 <div>
@@ -242,6 +335,19 @@
                                     <span>:</span>
                                     <span class="value">{{$seller['phone']}}</span>
                                 </div>
+
+                                <div>
+                                    <span class="key">Серия паспорта</span>
+                                    <span>:</span>
+                                    <span
+                                        class="value">{{$seller?->shop->passport_serial}} {{$seller?->shop->passport_number}}</span>
+                                </div>
+
+                                <div>
+                                    <span class="key">Выдан</span>
+                                    <span>:</span>
+                                    <span class="value">{{$seller?->shop->passport_issue_name}}</span>
+                                </div>
                             </div>
                         </div>
                         @if ($seller['status']!="pending")
@@ -254,26 +360,30 @@
                                             <div>
                                                 <span class="key text-nowrap">{{translate('bank_name')}}</span>
                                                 <span class="px-2">:</span>
-                                                <span class="value ">{{ $seller['bank_name'] ?? translate('no_data_found') }}</span>
+                                                <span
+                                                    class="value ">{{ $seller['bank_name'] ?? translate('no_data_found') }}</span>
                                             </div>
 
                                             <div>
                                                 <span class="key text-nowrap">{{translate('branch')}}</span>
                                                 <span class="px-2">:</span>
-                                                <span class="value">{{ $seller['branch'] ?? translate('no_data_found') }}</span>
+                                                <span
+                                                    class="value">{{ $seller['branch'] ?? translate('no_data_found') }}</span>
                                             </div>
                                         </div>
                                         <div class="pair-list">
                                             <div>
                                                 <span class="key text-nowrap">{{translate('holder_name')}}</span>
                                                 <span class="px-2">:</span>
-                                                <span class="value">{{ $seller['holder_name'] ?? translate('no_data_found') }}</span>
+                                                <span
+                                                    class="value">{{ $seller['holder_name'] ?? translate('no_data_found') }}</span>
                                             </div>
 
                                             <div>
                                                 <span class="key text-nowrap">{{translate('A/C_No')}}</span>
                                                 <span class="px-2">:</span>
-                                                <span class="value">{{ $seller['account_no'] ?? translate('no_data_found') }}</span>
+                                                <span
+                                                    class="value">{{ $seller['account_no'] ?? translate('no_data_found') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -300,7 +410,8 @@
                     <div class="row g-2" id="order_stats">
                         <div class="col-lg-4">
                             <div class="border rounded h-100 d-flex justify-content-center align-items-center">
-                                <div class="card-body d-flex flex-column gap-10 align-items-center justify-content-center">
+                                <div
+                                    class="card-body d-flex flex-column gap-10 align-items-center justify-content-center">
                                     <img width="48" class="mb-2"
                                          src="{{dynamicAsset(path: 'public/assets/back-end/img/withdraw.png')}}" alt="">
                                     <h3 class="for-card-count mb-0 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->total_earning)) : 0 }}</h3>
@@ -317,11 +428,13 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->pending_withdraw)) : 0}}</h3>
-                                                <div class="text-non-capitalize mb-0">{{translate('pending_Withdraw')}}</div>
+                                                <div
+                                                    class="text-non-capitalize mb-0">{{translate('pending_Withdraw')}}</div>
                                             </div>
                                             <div>
                                                 <img width="40" class="mb-2"
-                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/pw.png')}}" alt="">
+                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/pw.png')}}"
+                                                     alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -331,10 +444,12 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->commission_given)) : 0}}</h3>
-                                                <div class="text-non-capitalize mb-0">{{translate('total_Commission_given')}}</div>
+                                                <div
+                                                    class="text-non-capitalize mb-0">{{translate('total_Commission_given')}}</div>
                                             </div>
                                             <div>
-                                                <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/tcg.png')}}"
+                                                <img width="40"
+                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/tcg.png')}}"
                                                      alt="">
                                             </div>
                                         </div>
@@ -350,7 +465,8 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/aw.png')}}"
+                                                <img width="40"
+                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/aw.png')}}"
                                                      alt="">
                                             </div>
                                         </div>
@@ -361,10 +477,12 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->delivery_charge_earned)) : 0}}</h3>
-                                                <div class="text-non-capitalize mb-0">{{translate('total_delivery_charge_earned')}}</div>
+                                                <div
+                                                    class="text-non-capitalize mb-0">{{translate('total_delivery_charge_earned')}}</div>
                                             </div>
                                             <div>
-                                                <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/tdce.png')}}"
+                                                <img width="40"
+                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/tdce.png')}}"
                                                      alt="">
                                             </div>
                                         </div>
@@ -375,10 +493,12 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->total_tax_collected)) : 0}}</h3>
-                                                <div class="text-non-capitalize mb-0">{{translate('total_tax_given')}}</div>
+                                                <div
+                                                    class="text-non-capitalize mb-0">{{translate('total_tax_given')}}</div>
                                             </div>
                                             <div>
-                                                <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/ttg.png')}}"
+                                                <img width="40"
+                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/ttg.png')}}"
                                                      alt="">
                                             </div>
                                         </div>
@@ -389,10 +509,13 @@
                                         <div class="d-flex gap-2 justify-content-between align-items-center">
                                             <div class="d-flex flex-column align-items-start">
                                                 <h3 class="mb-1 fz-24">{{ $seller->wallet ? setCurrencySymbol(amount: usdToDefaultCurrency(amount: $seller->wallet->collected_cash)) : 0}}</h3>
-                                                <div class="text-non-capitalize mb-0">{{translate('collected_cash')}}</div>
+                                                <div
+                                                    class="text-non-capitalize mb-0">{{translate('collected_cash')}}</div>
                                             </div>
                                             <div>
-                                                <img width="40" src="{{dynamicAsset(path: 'public/assets/back-end/img/cc.png')}}" alt="">
+                                                <img width="40"
+                                                     src="{{dynamicAsset(path: 'public/assets/back-end/img/cc.png')}}"
+                                                     alt="">
                                             </div>
                                         </div>
                                     </div>

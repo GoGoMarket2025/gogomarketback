@@ -65,6 +65,17 @@ class Shop extends Model
         'longitude',
         'vat_percent',
         'identification_number',
+        // новые поля для организации и банка
+        'organization_type',
+        'organization_name',
+        'organization_oked',
+        'bank_account_number',
+        'bank_name',
+        'bank_mfo_code',
+        // паспортные данные
+        'passport_serial',
+        'passport_number',
+        'passport_issue_name',
     ];
 
     /**

@@ -105,6 +105,16 @@ enum Vendor
         VIEW => 'admin-views.vendor.view.clearance_sale',
     ];
 
+    const EDIT = [
+        URI => 'edit',
+        VIEW => 'admin-views.vendor.edit'
+    ];
+
+    const UPDATE_SHOP = [
+        URI => 'update-shop',
+        VIEW => ''
+    ];
+
 
 
 }
