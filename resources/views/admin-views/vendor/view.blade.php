@@ -251,7 +251,7 @@
                                 </div>
 
                                 <div>
-                                    <span class="key">{{ translate('organization_type') }}</span>
+                                    <span class="key">Тип</span>
                                     <span>:</span>
                                     <span class="value">
                                         @if($seller?->shop?->organization_type == 1)
@@ -265,7 +265,7 @@
                                 </div>
 
                                 <div>
-                                    <span class="key">Название организации</span>
+                                    <span class="key">Организация</span>
                                     <span>:</span>
                                     <span class="value">{{$seller?->shop->organization_name}}</span>
                                 </div>
@@ -330,14 +330,14 @@
                                 </div>
 
                                 <div>
-                                    <span class="key">Серия и номер паспорта</span>
+                                    <span class="key">Серия паспорта</span>
                                     <span>:</span>
                                     <span
                                         class="value">{{$seller?->shop->passport_serial}} {{$seller?->shop->passport_number}}</span>
                                 </div>
 
                                 <div>
-                                    <span class="key">{{translate('passport_issue_name')}}</span>
+                                    <span class="key">Место получения</span>
                                     <span>:</span>
                                     <span class="value">{{$seller?->shop->passport_issue_name}}</span>
                                 </div>
