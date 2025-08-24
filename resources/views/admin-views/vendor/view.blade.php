@@ -337,7 +337,7 @@
                                 </div>
 
                                 <div>
-                                    <span class="key">Место получения</span>
+                                    <span class="key">Выдан</span>
                                     <span>:</span>
                                     <span class="value">{{$seller?->shop->passport_issue_name}}</span>
                                 </div>
