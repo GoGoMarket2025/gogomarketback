@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <h3 class="mb-4">{{translate('create_an_account')}}</h3>
                         <div class="border p-3 p-xl-4 rounded">
-                            <h4 class="mb-3">{{translate('vendor_information')}}</h4>
+                            <h4 class="mb-3">{{translate('vendor_information')}}</h4> я тут
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group mb-4">
