@@ -953,7 +953,7 @@ ol.breadcrumb {
 }
 
 .card-top-bg-element .pair-list .key {
-    min-width: 100px;
+    min-width: 140px;
     --flex-basis: 100px;
     flex-basis: var(--flex-basis);
     white-space: nowrap;
