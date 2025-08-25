@@ -220,20 +220,37 @@
                         </div>
                         @php($recaptcha = getWebConfig(name: 'recaptcha'))
                         @if(isset($recaptcha) && $recaptcha['status'] == 1)
+                            {{-- Контейнер для Google reCAPTCHA в форме регистрации продавца --}}
                             <div id="recaptcha-element-vendor-register" class="w-100 pt-2" data-type="image"></div>
                         @else
+                            {{-- Фолбэк-капча с картинкой и обновлением --}}
                             <div class="mt-2">
                                 <div class="row py-2">
                                     <div class="col-6 pr-0">
-                                        <input type="text" class="form-control __h-40" name="default_recaptcha_id_seller_regi" id="default-recaptcha-id-vendor-register" value=""
-                                               placeholder="{{translate('enter_captcha_value')}}" autocomplete="off" required>
+                                        <input
+                                            type="text"
+                                            class="form-control __h-40"
+                                            name="default_recaptcha_id_seller_regi"
+                                            id="default-recaptcha-id-vendor-register"
+                                            value=""
+                                            placeholder="{{ translate('enter_captcha_value') }}"
+                                            autocomplete="off"
+                                            required
+                                        >
                                     </div>
                                     <div class="col-6 input-icons mb-2 w-100 rounded bg-white">
-                                    <span class="d-flex align-items-center align-items-center get-vendor-regi-recaptcha-verify"
-                                          data-link="{{ route('vendor.auth.recaptcha', ['tmp'=>':dummy-id']) }}">
-                                        <img src="{{ route('vendor.auth.recaptcha', ['tmp'=>1]).'?captcha_session_id=vendorRecaptchaSessionKey' }}" alt="" class="rounded __h-40" id="default_recaptcha_id">
-                                        <i class="tio-refresh position-relative cursor-pointer p-2"></i>
-                                    </span>
+                                        <span
+                                            class="d-flex align-items-center align-items-center get-vendor-regi-recaptcha-verify"
+                                            data-link="{{ route('vendor.auth.recaptcha', ['tmp'=>':dummy-id']) }}"
+                                        >
+                                            <img
+                                                src="{{ route('vendor.auth.recaptcha', ['tmp'=>1]).'?captcha_session_id=vendorRecaptchaSessionKey' }}"
+                                                alt=""
+                                                class="rounded __h-40"
+                                                id="default_recaptcha_id"
+                                            >
+                                            <i class="tio-refresh position-relative cursor-pointer p-2"></i>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -268,6 +285,44 @@
 }
 </style>
 @push('script')
+@if(isset($recaptcha) && $recaptcha['status'] == 1)
+    <script>
+        "use strict";
+
+        (function () {
+            function renderVendorRecaptcha() {
+                var elId = 'recaptcha-element-vendor-register';
+                var el = document.getElementById(elId);
+                if (!el) return;
+
+                // не рендерим повторно
+                if (el.getAttribute('data-widget-id')) return;
+
+                var widgetId = grecaptcha.render(elId, {
+                    sitekey: '{{ getWebConfig(name: 'recaptcha')['site_key'] }}'
+                });
+                el.setAttribute('data-widget-id', widgetId);
+            }
+
+            // Если grecaptcha уже есть — рендерим сразу, иначе повесим onload
+            if (window.grecaptcha && typeof grecaptcha.render === 'function') {
+                renderVendorRecaptcha();
+            } else {
+                // экспортируем колбэк в window — его вызовет api.js через onload
+                window.renderVendorRecaptcha = renderVendorRecaptcha;
+
+                // подключаем api.js, если ещё не подключён
+                if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
+                    var s = document.createElement('script');
+                    s.src = 'https://www.google.com/recaptcha/api.js?onload=renderVendorRecaptcha&render=explicit';
+                    s.async = true;
+                    s.defer = true;
+                    document.head.appendChild(s);
+                }
+            }
+        })();
+    </script>
+@endif
 @if(getWebConfig('map_api_status') == 1)
   <script
     src="https://maps.googleapis.com/maps/api/js?key={{ getWebConfig('map_api_key') }}&callback=callBackMerchantMap&loading=async&libraries=places&v=3.56"
