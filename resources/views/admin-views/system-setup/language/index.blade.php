@@ -341,7 +341,7 @@
                                     <button type="{{ getDemoModeFormButton(type: 'button') }}"
                                             class="btn btn-danger max-w-120 flex-grow-1 {{ getDemoModeFormButton(type: 'class') }}"
                                             data-bs-dismiss="modal">
-                                        {{ translate('Yes_Delete') }}
+                                        {{ translate('yes_delete_it') }}
                                     </button>
                                 </div>
                             </div>

@@ -223,7 +223,7 @@
                         </div>
                     </div>
                     <div class="row gy-3 flex-grow-1 w-100">
-                        <div class="col-sm-6 col-xxl-3">
+                        <div class="col-sm-6 col-xxl-4">
                             <h4 class="mb-3 text-non-capitalize">{{translate('shop_information')}}</h4>
 
                             <div class="pair-list">
@@ -313,7 +313,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-xxl-3">
+                        <div class="col-sm-6 col-xxl-4">
                             <h4 class="mb-3 text-non-capitalize">{{translate('vendor_information')}}</h4>
 
                             <div class="pair-list">
@@ -350,48 +350,48 @@
                                 </div>
                             </div>
                         </div>
-                        @if ($seller['status']!="pending")
-                            <div class="col-xxl-6">
-                                <div class="bg-light p-3 border border-primary-light rounded">
-                                    <h4 class="mb-3 text-non-capitalize">{{translate('bank_information')}}</h4>
+                    </div>
+                </div>
+                @if ($seller['status']!="pending")
+                    <div class="col-xxl-6 mt-5">
+                        <div class="bg-light p-3 border border-primary-light rounded">
+                            <h4 class="mb-3 text-non-capitalize">{{translate('bank_information')}}</h4>
 
-                                    <div class="d-flex flex-wrap flex-sm-nowrap gap-4 gap-sm-5">
-                                        <div class="pair-list">
-                                            <div>
-                                                <span class="key text-nowrap">{{translate('bank_name')}}</span>
-                                                <span class="px-2">:</span>
-                                                <span
-                                                    class="value ">{{ $seller['bank_name'] ?? translate('no_data_found') }}</span>
-                                            </div>
+                            <div class="d-flex flex-wrap flex-sm-nowrap gap-4 gap-sm-5">
+                                <div class="pair-list">
+                                    <div>
+                                        <span class="key text-nowrap">{{translate('bank_name')}}</span>
+                                        <span class="px-2">:</span>
+                                        <span
+                                            class="value ">{{ $seller['bank_name'] ?? translate('no_data_found') }}</span>
+                                    </div>
 
-                                            <div>
-                                                <span class="key text-nowrap">{{translate('branch')}}</span>
-                                                <span class="px-2">:</span>
-                                                <span
-                                                    class="value">{{ $seller['branch'] ?? translate('no_data_found') }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="pair-list">
-                                            <div>
-                                                <span class="key text-nowrap">{{translate('holder_name')}}</span>
-                                                <span class="px-2">:</span>
-                                                <span
-                                                    class="value">{{ $seller['holder_name'] ?? translate('no_data_found') }}</span>
-                                            </div>
+                                    <div>
+                                        <span class="key text-nowrap">{{translate('branch')}}</span>
+                                        <span class="px-2">:</span>
+                                        <span
+                                            class="value">{{ $seller['branch'] ?? translate('no_data_found') }}</span>
+                                    </div>
+                                </div>
+                                <div class="pair-list">
+                                    <div>
+                                        <span class="key text-nowrap">{{translate('holder_name')}}</span>
+                                        <span class="px-2">:</span>
+                                        <span
+                                            class="value">{{ $seller['holder_name'] ?? translate('no_data_found') }}</span>
+                                    </div>
 
-                                            <div>
-                                                <span class="key text-nowrap">{{translate('A/C_No')}}</span>
-                                                <span class="px-2">:</span>
-                                                <span
-                                                    class="value">{{ $seller['account_no'] ?? translate('no_data_found') }}</span>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <span class="key text-nowrap">{{translate('A/C_No')}}</span>
+                                        <span class="px-2">:</span>
+                                        <span
+                                            class="value">{{ $seller['account_no'] ?? translate('no_data_found') }}</span>
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
         @if ($seller['status']!="pending")
