@@ -235,3 +235,12 @@
         </div>
     </div>
 </div>
+<style>
+.custom-radio {
+    border: 1px solid #ddd !important;
+    clip: auto !important;
+    height: 1rem !important;
+    position: static !important;
+    width: 1rem !important;
+}
+</style>
