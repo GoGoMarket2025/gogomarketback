@@ -217,40 +217,27 @@
                                 </div>
                             </div>
                         </div>
-                        @php($recaptcha = getWebConfig(name: 'recaptcha'))
                         @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                            {{-- Контейнер для Google reCAPTCHA в форме регистрации продавца --}}
-                            <div id="recaptcha-element-vendor-register" class="w-100 pt-2" data-type="image"></div>
+                            <div id="recaptcha_element" class="w-100;" data-type="image"></div>
+                            <br/>
                         @else
-                            {{-- Фолбэк-капча с картинкой и обновлением --}}
-                            <div class="mt-2">
-                                <div class="row py-2">
-                                    <div class="col-6 pr-0">
-                                        <input
-                                            type="text"
-                                            class="form-control __h-40"
-                                            name="default_recaptcha_id_seller_regi"
-                                            id="default-recaptcha-id-vendor-register"
-                                            value=""
-                                            placeholder="{{ translate('enter_captcha_value') }}"
-                                            autocomplete="off"
-                                            required
-                                        >
-                                    </div>
-                                    <div class="col-6 input-icons mb-2 w-100 rounded bg-white">
-                                        <span
-                                            class="d-flex align-items-center align-items-center get-vendor-regi-recaptcha-verify"
-                                            data-link="{{ route('vendor.auth.recaptcha', ['tmp'=>':dummy-id']) }}"
-                                        >
-                                            <img
-                                                src="{{ route('vendor.auth.recaptcha', ['tmp'=>1]).'?captcha_session_id=vendorRecaptchaSessionKey' }}"
-                                                alt=""
-                                                class="rounded __h-40"
-                                                id="default_recaptcha_id"
-                                            >
-                                            <i class="tio-refresh position-relative cursor-pointer p-2"></i>
-                                        </span>
-                                    </div>
+                            <div class="row p-2">
+                                <div class="col-6 pr-0">
+                                    <input type="text" class="form-control form-control-lg form-control-focus-none h-50px"
+                                        id="vendor-login-recaptcha-input"
+                                        name="vendorRecaptchaKey" value="" required
+                                        placeholder="{{translate('enter_captcha_value')}}">
+                                </div>
+                                <div class="col-6 input-icons bg-white rounded">
+                                    <a class="get-login-recaptcha-verify cursor-pointer get-session-recaptcha-auto-fill"
+                                    data-link="{{ URL('vendor/auth/recaptcha/') }}"
+                                    data-session="{{ 'vendorRecaptchaSessionKey' }}"
+                                    data-input="#vendor-login-recaptcha-input"
+                                    >
+                                        <img src="{{ URL('/vendor/auth/recaptcha/1?captcha_session_id=vendorRecaptchaSessionKey') }}"
+                                            class="input-field w-90 h-50px img-fit p-0 rounded" id="default_recaptcha_id" alt="">
+                                        <i class="tio-refresh icon"></i>
+                                    </a>
                                 </div>
                             </div>
                         @endif
@@ -285,42 +272,15 @@
 </style>
 @push('script')
 @if(isset($recaptcha) && $recaptcha['status'] == 1)
-    <script>
+    <script type="text/javascript">
         "use strict";
-
-        (function () {
-            function renderVendorRecaptcha() {
-                var elId = 'recaptcha-element-vendor-register';
-                var el = document.getElementById(elId);
-                if (!el) return;
-
-                // не рендерим повторно
-                if (el.getAttribute('data-widget-id')) return;
-
-                var widgetId = grecaptcha.render(elId, {
-                    sitekey: '{{ getWebConfig(name: 'recaptcha')['site_key'] }}'
-                });
-                el.setAttribute('data-widget-id', widgetId);
-            }
-
-            // Если grecaptcha уже есть — рендерим сразу, иначе повесим onload
-            if (window.grecaptcha && typeof grecaptcha.render === 'function') {
-                renderVendorRecaptcha();
-            } else {
-                // экспортируем колбэк в window — его вызовет api.js через onload
-                window.renderVendorRecaptcha = renderVendorRecaptcha;
-
-                // подключаем api.js, если ещё не подключён
-                if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
-                    var s = document.createElement('script');
-                    s.src = 'https://www.google.com/recaptcha/api.js?onload=renderVendorRecaptcha&render=explicit';
-                    s.async = true;
-                    s.defer = true;
-                    document.head.appendChild(s);
-                }
-            }
-        })();
+        var onloadCallback = function () {
+            grecaptcha.render('recaptcha_element', {
+                'sitekey': '{{ getWebConfig(name: 'recaptcha')['site_key'] }}'
+            });
+        };
     </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 @endif
 @if(getWebConfig('map_api_status') == 1)
   <script
