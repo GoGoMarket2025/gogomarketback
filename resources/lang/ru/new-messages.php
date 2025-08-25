@@ -5371,5 +5371,7 @@ return [
 	"Send_Message_to_Deliveryman" => "Отправить сообщение курьеру",
 	"english" => "English",
 	"Русский" => "Русский",
-	"O'zbek tili" => "O'zbek tili"
+	"O'zbek tili" => "O'zbek tili",
+	"ooo" => "ООО",
+	"ip" => "ИП"
 ];

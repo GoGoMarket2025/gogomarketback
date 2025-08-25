@@ -5371,5 +5371,7 @@ return [
 	"Send_Message_to_Deliveryman" => "Kuryerga xabar yuboring",
 	"english" => "English",
 	"Русский" => "Русский",
-	"O'zbek tili" => "O'zbek tili"
+	"O'zbek tili" => "O'zbek tili",
+	"ooo" => "MChJ",
+	"ip" => "YTT"
 ];

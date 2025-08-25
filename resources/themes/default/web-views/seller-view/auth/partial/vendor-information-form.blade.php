@@ -69,19 +69,45 @@
                                 <textarea class="form-control" name="shop_address" id="shop_address" rows="4" placeholder="{{translate('shop_address')}}" required></textarea>
                             </div>
 
-                            <div class="form-group mb-4">
-                                <label for="organization_type">{{ translate('organization_type') }} <span class="text-danger">*</span></label>
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="organization_type" id="org_type_ip" value="1" required>
-                                        <label class="form-check-label" for="org_type_ip">{{ translate('ИП') }}</label>
+                            <!-- ORGANIZATION TYPE (styled like payment radios) -->
+                            <div class="form-group mb-4" id="orgTypeGroup">
+                                <label for="org_type_ip" class="text-non-capitalize">
+                                    {{ translate('organization_type') }} <span class="text-danger">*</span>
+                                </label>
+
+                                <div class="d-flex flex-wrap gap-3">
+                                    <div class="card cursor-pointer">
+                                        <!-- ИП -->
+                                        <label class="m-0">
+                                        <div class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer">
+                                            <input type="radio"
+                                                id="org_type_ip"
+                                                name="organization_type"
+                                                value="1"
+                                                class="custom-radio"
+                                                required>
+                                            <div class="fs-12">{{ translate('ip') }}</div>
+                                        </div>
+                                        </label>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="organization_type" id="org_type_ooo" value="2" required>
-                                        <label class="form-check-label" for="org_type_ooo">{{ translate('ООО') }}</label>
+
+                                    <div class="card cursor-pointer">
+                                        <!-- ООО -->
+                                        <label class="m-0">
+                                        <div class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer">
+                                            <input type="radio"
+                                                id="org_type_ooo"
+                                                name="organization_type"
+                                                value="2"
+                                                class="custom-radio"
+                                                required>
+                                            <div class="fs-12">{{ translate('ooo') }}</div>
+                                        </div>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="form-group mb-4">
                                 <label  for="organization_name">{{translate('organization_name')}} <span class="text-danger">*</span></label>
@@ -118,15 +144,36 @@
                                 <input class="form-control" type="text" name="vat_percent" placeholder="123456" required>
                             </div>
 
+                            <!-- latitude -->
                             <div class="form-group mb-4">
-                                <label  for="latitude">{{translate('latitude')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="latitude" placeholder="123456" required>
+                                <label for="latitude">{{translate('latitude')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="latitude" name="latitude" placeholder="41.3111" required>
                             </div>
 
+                            <!-- longitude -->
                             <div class="form-group mb-4">
-                                <label  for="longitude">{{translate('longitude')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="longitude" placeholder="123456" required>
+                                <label for="longitude">{{translate('longitude')}} <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="longitude" name="longitude" placeholder="69.2797" required>
                             </div>
+
+                            {{-- Карта для выбора координат --}}
+                            @php($default_location = getWebConfig(name: 'default_location'))
+                            @if(getWebConfig('map_api_status') == 1)
+                            <div class="form-group">
+                                <label class="mb-2">{{ translate('map') }}</label>
+                                <div class="map-area-alert-border">
+                                <input id="pac-input-merchant"
+                                        class="controls rounded __inline-46 location-search-input-field"
+                                        type="text"
+                                        placeholder="{{translate('search_here')}}"
+                                        title="{{translate('search_your_location_here')}}" />
+                                <div id="location_map_canvas_merchant" style="height: 220px; border-radius: 8px;"></div>
+                                <button type="button" class="btn btn--primary mt-3 w-100" onclick="locateMeMerchant()">
+                                    📍 {{ translate('locate_me') }}
+                                </button>
+                                </div>
+                            </div>
+                            @endif
 
                             <div class="d-flex justify-content-between border p-3 p-xl-4 rounded mb-4">
                                 <div class="d-flex flex-column gap-3 align-items-center">
@@ -173,20 +220,37 @@
                         </div>
                         @php($recaptcha = getWebConfig(name: 'recaptcha'))
                         @if(isset($recaptcha) && $recaptcha['status'] == 1)
+                            {{-- Контейнер для Google reCAPTCHA в форме регистрации продавца --}}
                             <div id="recaptcha-element-vendor-register" class="w-100 pt-2" data-type="image"></div>
                         @else
+                            {{-- Фолбэк-капча с картинкой и обновлением --}}
                             <div class="mt-2">
                                 <div class="row py-2">
                                     <div class="col-6 pr-0">
-                                        <input type="text" class="form-control __h-40" name="default_recaptcha_id_seller_regi" id="default-recaptcha-id-vendor-register" value=""
-                                               placeholder="{{translate('enter_captcha_value')}}" autocomplete="off" required>
+                                        <input
+                                            type="text"
+                                            class="form-control __h-40"
+                                            name="default_recaptcha_id_seller_regi"
+                                            id="default-recaptcha-id-vendor-register"
+                                            value=""
+                                            placeholder="{{ translate('enter_captcha_value') }}"
+                                            autocomplete="off"
+                                            required
+                                        >
                                     </div>
                                     <div class="col-6 input-icons mb-2 w-100 rounded bg-white">
-                                    <span class="d-flex align-items-center align-items-center get-vendor-regi-recaptcha-verify"
-                                          data-link="{{ route('vendor.auth.recaptcha', ['tmp'=>':dummy-id']) }}">
-                                        <img src="{{ route('vendor.auth.recaptcha', ['tmp'=>1]).'?captcha_session_id=vendorRecaptchaSessionKey' }}" alt="" class="rounded __h-40" id="default_recaptcha_id">
-                                        <i class="tio-refresh position-relative cursor-pointer p-2"></i>
-                                    </span>
+                                        <span
+                                            class="d-flex align-items-center align-items-center get-vendor-regi-recaptcha-verify"
+                                            data-link="{{ route('vendor.auth.recaptcha', ['tmp'=>':dummy-id']) }}"
+                                        >
+                                            <img
+                                                src="{{ route('vendor.auth.recaptcha', ['tmp'=>1]).'?captcha_session_id=vendorRecaptchaSessionKey' }}"
+                                                alt=""
+                                                class="rounded __h-40"
+                                                id="default_recaptcha_id"
+                                            >
+                                            <i class="tio-refresh position-relative cursor-pointer p-2"></i>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -211,3 +275,220 @@
         </div>
     </div>
 </div>
+<style>
+.custom-radio {
+    border: 1px solid #ddd !important;
+    clip: auto !important;
+    height: 1rem !important;
+    position: static !important;
+    width: 1rem !important;
+}
+</style>
+@push('script')
+@if(isset($recaptcha) && $recaptcha['status'] == 1)
+    <script>
+        "use strict";
+
+        (function () {
+            function renderVendorRecaptcha() {
+                var elId = 'recaptcha-element-vendor-register';
+                var el = document.getElementById(elId);
+                if (!el) return;
+
+                // не рендерим повторно
+                if (el.getAttribute('data-widget-id')) return;
+
+                var widgetId = grecaptcha.render(elId, {
+                    sitekey: '{{ getWebConfig(name: 'recaptcha')['site_key'] }}'
+                });
+                el.setAttribute('data-widget-id', widgetId);
+            }
+
+            // Если grecaptcha уже есть — рендерим сразу, иначе повесим onload
+            if (window.grecaptcha && typeof grecaptcha.render === 'function') {
+                renderVendorRecaptcha();
+            } else {
+                // экспортируем колбэк в window — его вызовет api.js через onload
+                window.renderVendorRecaptcha = renderVendorRecaptcha;
+
+                // подключаем api.js, если ещё не подключён
+                if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
+                    var s = document.createElement('script');
+                    s.src = 'https://www.google.com/recaptcha/api.js?onload=renderVendorRecaptcha&render=explicit';
+                    s.async = true;
+                    s.defer = true;
+                    document.head.appendChild(s);
+                }
+            }
+        })();
+    </script>
+@endif
+@if(getWebConfig('map_api_status') == 1)
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key={{ getWebConfig('map_api_key') }}&callback=callBackMerchantMap&loading=async&libraries=places&v=3.56"
+    defer>
+  </script>
+  <script>
+    "use strict";
+
+    async function initMerchantMap() {
+      // стартовая точка
+      const startLat = {{ $default_location ? $default_location['lat'] : '41.3111' }};   // Tashkent by default
+      const startLng = {{ $default_location ? $default_location['lng'] : '69.2797' }};
+
+      const latInput = document.getElementById('latitude');
+      const lngInput = document.getElementById('longitude');
+      const addrArea  = document.getElementById('shop_address'); // опционально, если есть поле адреса
+
+      // если уже есть значения в инпутах — используем их как старт
+      const center = {
+        lat: parseFloat(latInput?.value || startLat) || startLat,
+        lng: parseFloat(lngInput?.value || startLng) || startLng,
+      };
+
+      const { Map } = await google.maps.importLibrary("maps");
+      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+      const mapEl = document.getElementById('location_map_canvas_merchant');
+
+      const map = new Map(mapEl, {
+        center,
+        zoom: 13,
+        mapId: 'roadmap'
+      });
+
+      const marker = new AdvancedMarkerElement({
+        map,
+        position: center
+      });
+
+      // в глобальную область — пригодится в locateMeMerchant()
+      window.__merchantMap = map;
+      window.__merchantMarker = marker;
+
+      const geocoder = new google.maps.Geocoder();
+
+      // клик по карте — ставим маркер и пишем координаты
+      map.addListener('click', (e) => {
+        const coords = e.latLng.toJSON();
+        marker.position = coords;
+        map.panTo(e.latLng);
+
+        latInput.value = coords.lat;
+        lngInput.value = coords.lng;
+
+        // обратное геокодирование (опционально — в #shop_address)
+        if (addrArea) {
+          geocoder.geocode({ location: coords }, (results, status) => {
+            if (status === "OK" && results?.[0]) {
+              addrArea.value = buildAddressString(results[0].address_components);
+            }
+          });
+        }
+      });
+
+      // поиск по places
+      const searchInput = document.getElementById('pac-input-merchant');
+      const searchBox = new google.maps.places.SearchBox(searchInput);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(searchInput);
+
+      map.addListener("bounds_changed", () => {
+        searchBox.setBounds(map.getBounds());
+      });
+
+      let searchMarkers = [];
+      searchBox.addListener("places_changed", () => {
+        const places = searchBox.getPlaces();
+        if (!places || !places.length) return;
+
+        // убрать старые маркеры
+        searchMarkers.forEach(m => m.setMap && m.setMap(null));
+        searchMarkers = [];
+
+        const bounds = new google.maps.LatLngBounds();
+
+        places.forEach((place) => {
+          if (!place.geometry || !place.geometry.location) return;
+
+          const m = new AdvancedMarkerElement({
+            map,
+            position: place.geometry.location,
+            title: place.name
+          });
+
+          // клик по маркеру из поиска — зафиксировать координаты в инпуты
+          m.addListener?.('gmp-click', () => {
+            const p = m.position; // google.maps.LatLng|object
+            const lat = typeof p.lat === 'function' ? p.lat() : p.lat;
+            const lng = typeof p.lng === 'function' ? p.lng() : p.lng;
+            latInput.value = lat;
+            lngInput.value = lng;
+            marker.position = { lat, lng };
+          });
+
+          searchMarkers.push(m);
+
+          if (place.geometry.viewport) bounds.union(place.geometry.viewport);
+          else bounds.extend(place.geometry.location);
+        });
+
+        map.fitBounds(bounds);
+      });
+
+      // вспомогалки
+      function get(comp, type) {
+        return comp.find(c => c.types.includes(type))?.long_name || '';
+      }
+      function buildAddressStringFromComponents(components){
+        const region       = get(components, 'administrative_area_level_1');
+        const district     = get(components, 'administrative_area_level_2') || get(components, 'locality');
+        const street       = get(components, 'route');
+        const streetNumber = get(components, 'street_number');
+        const parts = [
+          region,
+          district,
+          [streetNumber, street].filter(Boolean).join(' ')
+        ];
+        return parts.filter(Boolean).join(', ');
+      }
+      window.buildAddressString = buildAddressStringFromComponents; // экспорт для клик/геокодера
+    }
+
+    // кнопка «Найти меня»
+    function locateMeMerchant() {
+      if (!navigator.geolocation) {
+        alert("{{ translate('your_browser_does_not_support_geolocation') }}");
+        return;
+      }
+      const map = window.__merchantMap;
+      const marker = window.__merchantMarker;
+      const latInput = document.getElementById('latitude');
+      const lngInput = document.getElementById('longitude');
+      const addrArea  = document.getElementById('shop_address');
+
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        marker.position = coords;
+        map.setCenter(coords);
+        map.setZoom(15);
+
+        latInput.value = coords.lat;
+        lngInput.value = coords.lng;
+
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ location: coords }, (results, status) => {
+          if (status === "OK" && results?.[0] && addrArea) {
+            addrArea.value = buildAddressString(results[0].address_components);
+          }
+        });
+      }, (err) => {
+        alert("{{ translate('geolocation_error') }}: " + err.message);
+      });
+    }
+
+    // колбэк из script src
+    function callBackMerchantMap(){
+      initMerchantMap();
+    }
+  </script>
+@endif
+@endpush
