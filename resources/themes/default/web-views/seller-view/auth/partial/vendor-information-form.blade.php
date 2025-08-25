@@ -30,7 +30,7 @@
 
                                     <div class="form-group mb-4">
                                         <label  for="passport_issue_name">{{translate('passport_issue_name')}} <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="passport_issue_name" placeholder="Кем выдан" required>
+                                        <input class="form-control" type="text" name="passport_issue_name" placeholder="" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -111,37 +111,37 @@
 
                             <div class="form-group mb-4">
                                 <label  for="organization_name">{{translate('organization_name')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="organization_name" placeholder="123456" required>
+                                <input class="form-control" type="text" name="organization_name" placeholder="" required>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label  for="organization_oked">{{translate('organization_oked')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="organization_oked" placeholder="123456" required>
+                                <input class="form-control" type="text" name="organization_oked" placeholder="" required>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label  for="bank_account_number">{{translate('bank_account_number')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="bank_account_number" placeholder="123456" required>
+                                <input class="form-control" type="text" name="bank_account_number" placeholder="" required>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label  for="bank_name">{{translate('bank_name')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="bank_name" placeholder="123456" required>
+                                <input class="form-control" type="text" name="bank_name" placeholder="" required>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label  for="bank_mfo_code">{{translate('bank_mfo_code')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="bank_mfo_code" placeholder="123456" required>
+                                <input class="form-control" type="text" name="bank_mfo_code" placeholder="" required>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label  for="identification_number">{{translate('identification_number')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="identification_number" placeholder="123456" required>
+                                <input class="form-control" type="text" name="identification_number" placeholder="" required>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label  for="vat_percent">{{translate('vat_percent')}} <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="vat_percent" placeholder="123456" required>
+                                <input class="form-control" type="text" name="vat_percent" placeholder="" required>
                             </div>
 
                             <!-- latitude -->
@@ -160,7 +160,6 @@
                             @php($default_location = getWebConfig(name: 'default_location'))
                             @if(getWebConfig('map_api_status') == 1)
                             <div class="form-group">
-                                <label class="mb-2">{{ translate('map') }}</label>
                                 <div class="map-area-alert-border">
                                 <input id="pac-input-merchant"
                                         class="controls rounded __inline-46 location-search-input-field"
