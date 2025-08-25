@@ -85,6 +85,7 @@
                                             value="1"
                                             class="custom-radio"
                                             required>
+                                        <img width="20" src="{{ theme_asset(path: 'public/assets/front-end/img/icons/user-check.png') }}" alt="">
                                         <span class="fs-12">{{ translate('ИП') }}</span>
                                     </span>
                                     </label>
@@ -98,11 +99,13 @@
                                             value="2"
                                             class="custom-radio"
                                             required>
+                                        <img width="20" src="{{ theme_asset(path: 'public/assets/front-end/img/icons/building.png') }}" alt="">
                                         <span class="fs-12">{{ translate('ООО') }}</span>
                                     </span>
                                     </label>
                                 </div>
                             </div>
+
 
                             <div class="form-group mb-4">
                                 <label  for="organization_name">{{translate('organization_name')}} <span class="text-danger">*</span></label>
@@ -233,19 +236,27 @@
     </div>
 </div>
 <style>
-  /* Шим под стиль payment radios */
-  #orgTypeGroup .custom-radio{position:absolute;opacity:0;pointer-events:none}
+  /* Карточка под radio — как на оплате */
   #orgTypeGroup .org-card{
     border:1px solid #e9ecef;
     border-radius:.5rem;
     transition:border-color .2s,background-color .2s,box-shadow .2s;
   }
-  #orgTypeGroup .org-card.active{
+  #orgTypeGroup .org-card:hover{
+    border-color:#cfd6dc;
+  }
+  /* Выбранное состояние — чистый CSS через :has (работает в современных браузерах) */
+  #orgTypeGroup .org-card:has(> input.custom-radio:checked){
     border-color:#0d6efd;
     background:#f0f7ff;
     box-shadow:0 0 0 .2rem rgba(13,110,253,.125);
   }
+  /* Чуть выровнять видимый кружок из payment.css */
+  #orgTypeGroup .custom-radio{
+    margin-right:.25rem;
+  }
 </style>
+
 <script>
   // Подсветка активной «карточки» как на платежной странице
   document.addEventListener('DOMContentLoaded', function () {
@@ -258,3 +269,11 @@
     sync(); // на случай server-side checked
   });
 </script>
+<style>
+  /* Fallback-стили для класса .active (если включишь JS выше) */
+  #orgTypeGroup .org-card.active{
+    border-color:#0d6efd;
+    background:#f0f7ff;
+    box-shadow:0 0 0 .2rem rgba(13,110,253,.125);
+  }
+</style>
