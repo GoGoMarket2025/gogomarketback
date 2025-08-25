@@ -126,7 +126,7 @@
                                                            placeholder="{{translate('search_here')}}"/>
                                                     <div class="__h-200px" id="location_map_canvas"></div>
                                                     <button onclick="locateMe()" type="button" class="btn btn--primary mt-3" style="width: 100%">
-                                                        📍 Найти меня
+                                                        📍 {{ translate('locate_me') }}
                                                     </button>
                                                 </div>
                                             </div>
