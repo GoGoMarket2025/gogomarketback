@@ -2585,5 +2585,7 @@ return [
 	'and_order' => 'and order',
 	"english" => "English",
 	"Русский" => "Русский",
-	"O'zbek tili" => "O'zbek tili"
+	"O'zbek tili" => "O'zbek tili",
+	"ooo" => "LLC",
+	"ip" => "IE"
 ];

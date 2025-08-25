@@ -79,14 +79,14 @@
                                     <div class="card cursor-pointer">
                                         <!-- ИП -->
                                         <label class="m-0">
-                                        <div class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer p-3">
+                                        <div class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer">
                                             <input type="radio"
                                                 id="org_type_ip"
                                                 name="organization_type"
                                                 value="1"
                                                 class="custom-radio"
                                                 required>
-                                            <div class="fs-12">{{ translate('ИП') }}</div>
+                                            <div class="fs-12">{{ translate('ip') }}</div>
                                         </div>
                                         </label>
                                     </div>
@@ -94,14 +94,14 @@
                                     <div class="card cursor-pointer">
                                         <!-- ООО -->
                                         <label class="m-0">
-                                        <div class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer p-3">
+                                        <div class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer">
                                             <input type="radio"
                                                 id="org_type_ooo"
                                                 name="organization_type"
                                                 value="2"
                                                 class="custom-radio"
                                                 required>
-                                            <div class="fs-12">{{ translate('ООО') }}</div>
+                                            <div class="fs-12">{{ translate('ooo') }}</div>
                                         </div>
                                         </label>
                                     </div>
