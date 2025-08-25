@@ -69,19 +69,41 @@
                                 <textarea class="form-control" name="shop_address" id="shop_address" rows="4" placeholder="{{translate('shop_address')}}" required></textarea>
                             </div>
 
-                            <div class="form-group mb-4">
-                                <label for="organization_type">{{ translate('organization_type') }} <span class="text-danger">*</span></label>
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="organization_type" id="org_type_ip" value="1" required>
-                                        <label class="form-check-label" for="org_type_ip">{{ translate('ИП') }}</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="organization_type" id="org_type_ooo" value="2" required>
-                                        <label class="form-check-label" for="org_type_ooo">{{ translate('ООО') }}</label>
-                                    </div>
+                            <div class="form-group mb-4" id="orgTypeGroup2">
+                                <label for="org_type_ip" class="text-non-capitalize">
+                                    {{ translate('organization_type') }} <span class="text-danger">*</span>
+                                </label>
+
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <!-- ИП -->
+                                    <label class="m-0">
+                                    <span class="btn btn-block d-flex gap-2 align-items-center cursor-pointer p-3 org-type-card">
+                                        <input class="custom-radio"
+                                            type="radio"
+                                            name="organization_type"
+                                            id="org_type_ip"
+                                            value="1"
+                                            required>
+                                        <span class="radio-dot" aria-hidden="true"></span>
+                                        <span class="fs-12">{{ translate('ИП') }}</span>
+                                    </span>
+                                    </label>
+
+                                    <!-- ООО -->
+                                    <label class="m-0">
+                                    <span class="btn btn-block d-flex gap-2 align-items-center cursor-pointer p-3 org-type-card">
+                                        <input class="custom-radio"
+                                            type="radio"
+                                            name="organization_type"
+                                            id="org_type_ooo"
+                                            value="2"
+                                            required>
+                                        <span class="radio-dot" aria-hidden="true"></span>
+                                        <span class="fs-12">{{ translate('ООО') }}</span>
+                                    </span>
+                                    </label>
                                 </div>
-                            </div>
+                                </div>
 
                             <div class="form-group mb-4">
                                 <label  for="organization_name">{{translate('organization_name')}} <span class="text-danger">*</span></label>
@@ -211,3 +233,59 @@
         </div>
     </div>
 </div>
+<style>
+  /* Прячем нативный radio, кликаем по всей «карточке» */
+  #orgTypeGroup2 .custom-radio{
+    position:absolute; opacity:0; pointer-events:none;
+  }
+
+  #orgTypeGroup2 .org-type-card{
+    border:1px solid #e9ecef;
+    border-radius:.5rem;
+    transition:border-color .2s, background-color .2s, box-shadow .2s;
+  }
+
+  #orgTypeGroup2 .radio-dot{
+    width:16px; height:16px;
+    border:2px solid #adb5bd;
+    border-radius:50%;
+    display:inline-block;
+    position:relative;
+    flex:0 0 16px;
+  }
+
+  /* Активное состояние всей «кнопки» */
+  #orgTypeGroup2 .org-type-card.active{
+    border-color:#0d6efd;
+    background:#f0f7ff;
+    box-shadow:0 0 0 .2rem rgba(13,110,253,.125);
+  }
+  #orgTypeGroup2 .org-type-card.active .radio-dot{
+    border-color:#0d6efd;
+  }
+  #orgTypeGroup2 .org-type-card.active .radio-dot::after{
+    content:"";
+    position:absolute; inset:3px;
+    background:#0d6efd; border-radius:50%;
+  }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const cards = document.querySelectorAll('#orgTypeGroup2 .org-type-card');
+
+  function syncOrgTypeActive(){
+    cards.forEach(card => {
+      const input = card.querySelector('input[type="radio"]');
+      card.classList.toggle('active', input.checked);
+    });
+  }
+
+  cards.forEach(card => {
+    const input = card.querySelector('input[type="radio"]');
+    input.addEventListener('change', syncOrgTypeActive);
+  });
+
+  // если значение подставится сервером или валидацией
+  syncOrgTypeActive();
+});
+</script>
