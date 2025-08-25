@@ -171,6 +171,24 @@
                                    required>
                         </div>
 
+                        {{-- Карта для выбора координат --}}
+                        @php($default_location = getWebConfig(name: 'default_location'))
+                        @if(getWebConfig('map_api_status') == 1)
+                        <div class="form-group">
+                            <div class="map-area-alert-border">
+                            <input id="pac-input-merchant"
+                                    class="controls rounded __inline-46 location-search-input-field"
+                                    type="text"
+                                    placeholder="{{translate('search_here')}}"
+                                    title="{{translate('search_your_location_here')}}" />
+                            <div id="location_map_canvas_merchant" style="height: 220px; border-radius: 8px;"></div>
+                            <button type="button" class="btn btn--primary mt-3 w-100" onclick="locateMeMerchant()">
+                                📍 {{ translate('locate_me') }}
+                            </button>
+                            </div>
+                        </div>
+                        @endif
+
                         <div class="col-lg-6 form-group">
                             <label for="vat_percent"
                                    class="mb-2 d-flex gap-1 align-items-center">Ставка НДС</label>
@@ -279,4 +297,172 @@
 
 @push('script')
     <script src="{{ dynamicAsset(path: 'public/assets/new/back-end/js/admin/vendor.js') }}"></script>
+    @if(getWebConfig('map_api_status') == 1)
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key={{ getWebConfig('map_api_key') }}&callback=callBackMerchantMap&loading=async&libraries=places&v=3.56"
+    defer>
+  </script>
+  <script>
+    "use strict";
+
+    async function initMerchantMap() {
+      // стартовая точка
+      const startLat = {{ $default_location ? $default_location['lat'] : '41.3111' }};   // Tashkent by default
+      const startLng = {{ $default_location ? $default_location['lng'] : '69.2797' }};
+
+      const latInput = document.getElementById('latitude');
+      const lngInput = document.getElementById('longitude');
+      const addrArea  = document.getElementById('shop_address'); // опционально, если есть поле адреса
+
+      // если уже есть значения в инпутах — используем их как старт
+      const center = {
+        lat: parseFloat(latInput?.value || startLat) || startLat,
+        lng: parseFloat(lngInput?.value || startLng) || startLng,
+      };
+
+      const { Map } = await google.maps.importLibrary("maps");
+      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+      const mapEl = document.getElementById('location_map_canvas_merchant');
+
+      const map = new Map(mapEl, {
+        center,
+        zoom: 13,
+        mapId: 'roadmap'
+      });
+
+      const marker = new AdvancedMarkerElement({
+        map,
+        position: center
+      });
+
+      // в глобальную область — пригодится в locateMeMerchant()
+      window.__merchantMap = map;
+      window.__merchantMarker = marker;
+
+      const geocoder = new google.maps.Geocoder();
+
+      // клик по карте — ставим маркер и пишем координаты
+      map.addListener('click', (e) => {
+        const coords = e.latLng.toJSON();
+        marker.position = coords;
+        map.panTo(e.latLng);
+
+        latInput.value = coords.lat;
+        lngInput.value = coords.lng;
+
+        // обратное геокодирование (опционально — в #shop_address)
+        if (addrArea) {
+          geocoder.geocode({ location: coords }, (results, status) => {
+            if (status === "OK" && results?.[0]) {
+              addrArea.value = buildAddressString(results[0].address_components);
+            }
+          });
+        }
+      });
+
+      // поиск по places
+      const searchInput = document.getElementById('pac-input-merchant');
+      const searchBox = new google.maps.places.SearchBox(searchInput);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(searchInput);
+
+      map.addListener("bounds_changed", () => {
+        searchBox.setBounds(map.getBounds());
+      });
+
+      let searchMarkers = [];
+      searchBox.addListener("places_changed", () => {
+        const places = searchBox.getPlaces();
+        if (!places || !places.length) return;
+
+        // убрать старые маркеры
+        searchMarkers.forEach(m => m.setMap && m.setMap(null));
+        searchMarkers = [];
+
+        const bounds = new google.maps.LatLngBounds();
+
+        places.forEach((place) => {
+          if (!place.geometry || !place.geometry.location) return;
+
+          const m = new AdvancedMarkerElement({
+            map,
+            position: place.geometry.location,
+            title: place.name
+          });
+
+          // клик по маркеру из поиска — зафиксировать координаты в инпуты
+          m.addListener?.('gmp-click', () => {
+            const p = m.position; // google.maps.LatLng|object
+            const lat = typeof p.lat === 'function' ? p.lat() : p.lat;
+            const lng = typeof p.lng === 'function' ? p.lng() : p.lng;
+            latInput.value = lat;
+            lngInput.value = lng;
+            marker.position = { lat, lng };
+          });
+
+          searchMarkers.push(m);
+
+          if (place.geometry.viewport) bounds.union(place.geometry.viewport);
+          else bounds.extend(place.geometry.location);
+        });
+
+        map.fitBounds(bounds);
+      });
+
+      // вспомогалки
+      function get(comp, type) {
+        return comp.find(c => c.types.includes(type))?.long_name || '';
+      }
+      function buildAddressStringFromComponents(components){
+        const region       = get(components, 'administrative_area_level_1');
+        const district     = get(components, 'administrative_area_level_2') || get(components, 'locality');
+        const street       = get(components, 'route');
+        const streetNumber = get(components, 'street_number');
+        const parts = [
+          region,
+          district,
+          [streetNumber, street].filter(Boolean).join(' ')
+        ];
+        return parts.filter(Boolean).join(', ');
+      }
+      window.buildAddressString = buildAddressStringFromComponents; // экспорт для клик/геокодера
+    }
+
+    // кнопка «Найти меня»
+    function locateMeMerchant() {
+      if (!navigator.geolocation) {
+        alert("{{ translate('your_browser_does_not_support_geolocation') }}");
+        return;
+      }
+      const map = window.__merchantMap;
+      const marker = window.__merchantMarker;
+      const latInput = document.getElementById('latitude');
+      const lngInput = document.getElementById('longitude');
+      const addrArea  = document.getElementById('shop_address');
+
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        marker.position = coords;
+        map.setCenter(coords);
+        map.setZoom(15);
+
+        latInput.value = coords.lat;
+        lngInput.value = coords.lng;
+
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ location: coords }, (results, status) => {
+          if (status === "OK" && results?.[0] && addrArea) {
+            addrArea.value = buildAddressString(results[0].address_components);
+          }
+        });
+      }, (err) => {
+        alert("{{ translate('geolocation_error') }}: " + err.message);
+      });
+    }
+
+    // колбэк из script src
+    function callBackMerchantMap(){
+      initMerchantMap();
+    }
+  </script>
+@endif
 @endpush
