@@ -76,33 +76,35 @@
                                 </label>
 
                                 <div class="d-flex flex-wrap gap-3">
-                                    <!-- ИП -->
-                                    <label class="m-0">
-                                    <span class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer p-3 org-card">
-                                        <input type="radio"
-                                            id="org_type_ip"
-                                            name="organization_type"
-                                            value="1"
-                                            class="custom-radio"
-                                            required>
-                                        <img width="20" src="{{ theme_asset(path: 'public/assets/front-end/img/icons/user-check.png') }}" alt="">
-                                        <span class="fs-12">{{ translate('ИП') }}</span>
-                                    </span>
-                                    </label>
+                                    <div class="card cursor-pointer">
+                                        <!-- ИП -->
+                                        <label class="m-0">
+                                        <span class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer p-3">
+                                            <input type="radio"
+                                                id="org_type_ip"
+                                                name="organization_type"
+                                                value="1"
+                                                class="custom-radio"
+                                                required>
+                                            <span class="fs-12">{{ translate('ИП') }}</span>
+                                        </span>
+                                        </label>
+                                    </div>
 
-                                    <!-- ООО -->
-                                    <label class="m-0">
-                                    <span class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer p-3 org-card">
-                                        <input type="radio"
-                                            id="org_type_ooo"
-                                            name="organization_type"
-                                            value="2"
-                                            class="custom-radio"
-                                            required>
-                                        <img width="20" src="{{ theme_asset(path: 'public/assets/front-end/img/icons/building.png') }}" alt="">
-                                        <span class="fs-12">{{ translate('ООО') }}</span>
-                                    </span>
-                                    </label>
+                                    <div class="card cursor-pointer">
+                                        <!-- ООО -->
+                                        <label class="m-0">
+                                        <span class="btn btn-block click-if-alone d-flex gap-2 align-items-center cursor-pointer p-3">
+                                            <input type="radio"
+                                                id="org_type_ooo"
+                                                name="organization_type"
+                                                value="2"
+                                                class="custom-radio"
+                                                required>
+                                            <span class="fs-12">{{ translate('ООО') }}</span>
+                                        </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
 
