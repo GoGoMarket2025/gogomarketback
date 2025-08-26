@@ -13,9 +13,9 @@ class AddDealTypeToFlashDeals extends Migration
      */
     public function up()
     {
-        Schema::table('flash_deals', function (Blueprint $table) {
-            $table->string('deal_type')->nullable();
-        });
+//        Schema::table('flash_deals', function (Blueprint $table) {
+//            $table->string('deal_type')->nullable();
+//        });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddDealTypeToFlashDeals extends Migration
      */
     public function down()
     {
-        Schema::table('flash_deals', function (Blueprint $table) {
-            $table->dropColumn(['deal_type']);
-        });
+//        Schema::table('flash_deals', function (Blueprint $table) {
+//            $table->dropColumn(['deal_type']);
+//        });
     }
 }
