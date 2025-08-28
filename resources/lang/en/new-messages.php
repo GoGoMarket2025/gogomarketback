@@ -2587,5 +2587,8 @@ return [
 	"Русский" => "Русский",
 	"O'zbek tili" => "O'zbek tili",
 	"ooo" => "LLC",
-	"ip" => "IE"
+	"ip" => "IE",
+	"pay_via_Wallet" => "Pay via GoGo Wallet",
+	"transaction_yet" => "Transaction yet",
+	"you_do_not_have_any" => "You do not have any",
 ];
